@@ -7,6 +7,7 @@
 *
 *	Plugin Name: WP White Label Login
 *	Plugin URI: http://alpha.devision7.com/wordpress-plugins/
+* GitHub Plugin URI: devuri/wp-white-label-login
 *	Description: Simple one click very light weight, White Label Log in, Registration and Lost Password Page, Activate it and forget it...
 *	Version: 1.0.0
 *	Author: DeVision7.com
