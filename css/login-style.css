@@ -1,6 +1,20 @@
 /**************************************************
 			  message      LOGIN
 ***************************************************/
+.wll-header {
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 1.5;
+    font-size: initial;
+}
+
 #login {
     width:34%;
     padding: 8% 0px 0px;
@@ -9,6 +23,7 @@
 }
 .login form {
     box-shadow: 0 1px 3px #ffffff;
+    border: none;
 }
 
 #loginrgstrfrm{
@@ -30,13 +45,12 @@
 	border: thin solid #CCCCCC;
 }
 #loginrgstrfrm .imprti{
-
 	 font-weight: bold;
 }
 
 #login_error, .login .message {
     margin: 10px;
-    color: #CB4721;
+    /* color: #CB4721; */
 }
 #login_error  {
  	  border: solid thin #8a1f11;
@@ -45,8 +59,8 @@
 }
 
 .login #nav {
-    margin: 4px 0 0;
-    border-top: solid thin darkgray;
+    margin: 8px 0 0;
+    font-size: initial;
 }
 
 
@@ -57,7 +71,6 @@ body.login h1{
 	font-size: 24px;
 	font-weight: 100;
 	color: #008EC2;
-	padding-top: 40px;
 }
 
 body h2 a{
@@ -73,14 +86,12 @@ body.login {
 body.login p#nav a {
 	color:#666666 !important;
 	text-decoration:none;
-	font-weight:bold;
 	margin:0 5px;
 
 }
 body a {
 	color:#474748 !important;
 	text-decoration:none;
-	font-weight:bold;
 	margin:0 5px;
 
 }
@@ -110,13 +121,23 @@ hr{
 
 }
 /**************************************************
-		REMOVE THE LOGO
+		 THE LOGO
 ***************************************************/
-#login h1 a, .login h1 a {
-         background-image: url('https://jm.ziplaw.com/wp-content/uploads/Court-8-140x140.jpg');
-         background-repeat: no-repeat;
-         padding-bottom: 8px;
-     }
+.login h1 a {
+    -webkit-background-size: 100px;
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #444;
+    font-size: 20px;
+    line-height: initial;
+    margin: 0 auto;
+    padding-bottom: 0px;
+    width: 100%;
+    text-indent: -9999px;
+    outline: 0;
+    display: block;
+}
 
 /**************************************************
 		LOGIN FORM
@@ -126,26 +147,23 @@ hr{
     background-color: black;
     border-radius: 18px;
     background: none;
+    opacity: 0.9;
 }
 
 #login {
-	border-radius::2px !important;
-	border-radius:2px !important;
-	border-radius:20px;
 	background-repeat: repeat-x;
 	background-position: left top;
 	margin-top: 2em;
 	margin-right: auto;
-	margin-bottom: 12em;
+	margin-bottom: 6em;
 	margin-left: auto;
-	padding: 8px;
+	padding: 26px;
 }
 
 .login form .input, .login input[type="text"] {
   transition: all 0.2s linear 0s;
-  background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.95);
+  background: none repeat scroll 0% 0% rgba(255, 255, 255,);
   padding: 8px;
-  margin: 4px;
   border-radius: 2px;
   color: rgb(68, 68, 68);
 	margin-bottom:1em;
@@ -153,17 +171,30 @@ hr{
 	font-size: 18px !important;
 	width: 100%;
 	font-weight: normal;
-
 }
+
+#wp-submit, input[type="submit"] {
+    transition: all 0.2s linear 0s;
+    margin-top: 20px;
+    /* background: #d4f1ff; */
+    border-radius: 2px;
+    /* color: rgb(68, 68, 68); */
+    border-radius: 4px !important;
+    font-size: 18px !important;
+    width: 100%;
+    font-weight: normal;
+}
+
 #reg_passmail {
-	text-align:center;
-	font-weight: bold;
-	text-transform: capitalize;
-	padding: 5px;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 5px;
+    font-size: initial;
 }
 
 .login #login_error, .login .message {
     border-left: 4px solid #00a0d2;
+    font-size: initial;
     border-left-color: rgb(0, 160, 210);
     padding: 12px;
     margin-left: 0;

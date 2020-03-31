@@ -1,0 +1,38 @@
+p {
+    line-height: 1.5;
+    font-size: initial;
+}
+.wll-header h2 a {
+  font-size: inherit;
+  font-weight: 400;
+}
+#login {
+	  width:400px;
+}
+
+#login {
+	background-repeat: repeat-x;
+	background-position: left top;
+	margin-top: 2%;
+	margin-right: auto;
+	margin-bottom: 4%;
+  padding: 26px;
+}
+
+/** LOGO **/
+.login h1 a {
+    -webkit-background-size: 100px;
+    background-position: center;
+    background-size: 200px;
+    height: 200px;
+    width: 100%;
+    background-repeat: no-repeat;
+    color: #444;
+    font-size: 20px;
+    line-height: initial;
+    margin: 0 auto;
+    padding-bottom: 0px;
+    text-indent: -9999px;
+    outline: 0;
+    display: block;
+}
