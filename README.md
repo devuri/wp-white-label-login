@@ -11,7 +11,7 @@ Easy to use and very simple after you activate this plugin you can choose to cha
 
 But maybe you want to change the logo or change the login page background, well you can now easily change the default logo and set custom login page background.
 
-##  Easy Custom Login Page 
+###  Easy Custom Login Page 
 * Change WordPress login logo
 * Change login background
 * Custom WordPress Login Page Footer
