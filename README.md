@@ -1,8 +1,29 @@
 # WP White Label Login
 ![screenshot](https://user-images.githubusercontent.com/4777400/77988677-8ce1b900-72e2-11ea-81cc-f93c835119b4.png)
 
+### White Label Login, Custom Login Page, Registration, and Lost Password Page Activate it and forget it...
 
-Simple one click very light weight, White Label Log in, Registration and Lost Password Page, Activate it and forget it....
+== Description ==
+
+Simple one-click very lightweight, White Label Custom WordPress Login Page, Registration, and Lost Password Page.
+
+Easy to use and very simple after you activate this plugin you can choose to change some settings or leave everything as is the login page has already been white-labeled and customized.
+
+But maybe you want to change the logo or change the login page background, well you can now easily change the default logo and set custom login page background.
+
+##  Easy Custom Login Page 
+* Change WordPress login logo
+* Change login background
+* Custom WordPress Login Page Footer
+* Add Custom Login Page CSS
+* Customize the Login page header
+
+By far the simplest login white label plugin for any WordPress Website no fiddles and strings, activate and you are done.
+
+Easy to use, simple settings options, simplified sensible defaults, you never need to change a single setting the new settings are completely optional.
+
+If you found a bug or have suggestions head over to the [Support Section](https://wordpress.org/support/plugin/wp-white-label-login/)
+
 
 ## Getting Started
 
