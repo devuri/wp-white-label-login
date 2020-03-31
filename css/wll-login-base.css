@@ -1,9 +1,27 @@
 /*** misc ****/
-.g-recaptcha {
-	margin: auto;
+#lostpasswordform div.g-recaptcha, #loginform div.g-recaptcha, #registerform div.g-recaptcha {
+    margin: auto !important;
+}
+
+.wll-header {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: none;
+	color: #747474;
+}
+
+.login .message {
+	color: #747474;
 }
 
 /* body **************************************/
+body.login p#nav a {
+	color:#666666;
+	text-decoration:none;
+	margin:0 5px;
+}
+
 body.login h1{
 	font-weight: 100;
 	color: #008EC2;
@@ -17,12 +35,6 @@ body h2 a{
 
 body.login {
 	background-color: #FFFFFF;
-}
-
-body.login p#nav a {
-	color:#666666 !important;
-	text-decoration:none;
-	margin:0 5px;
 }
 
 body a {
@@ -99,7 +111,7 @@ hr{
 
 /** LOGO **/
 .login h1 a {
-	background-size: 200px;
+	background-size: 190px;
 	height: 200px;
 	width: 100%;
 }
@@ -144,6 +156,7 @@ hr{
 
 .footer-copyright{
 	padding-bottom: 20px;
+	color: #747474;
 }
 
 #reg_passmail {
