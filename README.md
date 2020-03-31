@@ -1,4 +1,6 @@
 # WP White Label Login
+![screenshot](https://user-images.githubusercontent.com/4777400/77988677-8ce1b900-72e2-11ea-81cc-f93c835119b4.png)
+
 
 Simple one click very light weight, White Label Log in, Registration and Lost Password Page, Activate it and forget it....
 
