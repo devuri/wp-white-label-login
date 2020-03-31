@@ -1,7 +1,7 @@
 # WP White Label Login
 ![screenshot](https://user-images.githubusercontent.com/4777400/77988677-8ce1b900-72e2-11ea-81cc-f93c835119b4.png)
 
-### White Label Login, Custom Login Page, Registration, and Lost Password Page Activate it and forget it...
+### White Label Login, Custom WordPress Login Page, Registration, and Lost Password Page
 
 == Description ==
 
