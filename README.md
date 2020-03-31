@@ -29,8 +29,6 @@ Enable automatic updates with [GitHub Updater](https://github.com/afragen/github
 
 ## Built With
 
- [Devision7 Alpha](http://alpha.devision7.com/) - Dv7 Plugin QuickStarter
-	WP White Label Login  is built using the Dv7 Plugin QuickStarter @ DeVision7.
 
 	WP White Label Login  , like WordPress, is licensed under the GPL.
 	Use it to make something cool, have fun, and share.
