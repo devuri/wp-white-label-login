@@ -3,8 +3,6 @@
 
 ### White Label Login, Custom WordPress Login Page, Registration, and Lost Password Page
 
-== Description ==
-
 Simple one-click very lightweight, White Label Custom WordPress Login Page, Registration, and Lost Password Page.
 
 Easy to use and very simple after you activate this plugin you can choose to change some settings or leave everything as is the login page has already been white-labeled and customized.
