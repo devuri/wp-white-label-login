@@ -5,28 +5,28 @@ body.login {
 body a {
 	text-decoration:none;
 	margin:0 5px;
-	color: #e02024 !important;
+	color: #000 !important;
 }
 
 body.login p#nav a {
-	color: red;
+	color: #000;
 	text-decoration:none;
 	margin:0 5px;
 }
 
 .login #login_error, .login .message {
-    border-left: 4px solid #e02024;
+    border-left: 4px solid #000;
 }
 
 #wp-submit, input[type="submit"] {
     transition: all 0.2s linear 0s;
     margin-top: 20px;
-    background: #e02024;
+    background: #000;
     border-radius: 2px;
     color: rgb(255, 255, 255);
     border-radius: 4px !important;
     font-size: 18px !important;
     width: 100%;
     font-weight: normal;
-    border-color: #d92024;
+    border-color: #000;
 }
