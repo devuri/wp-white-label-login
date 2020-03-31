@@ -51,9 +51,9 @@ Enable automatic updates with [GitHub Updater](https://github.com/afragen/github
 
 ## Authors
 
-* **Devuri** - *Initial work* - [DeVision7](http://devision7.com/)
+* **Devuri** - *Initial work* - [SwitchWebdev.com](http://SwitchWebdev.com/)
 
-More PLugins Here [D7 WordPress Plugins](http://alpha.devision7.com/wordpress-plugins/).
+More PLugins Here [SwitchWebdev.com WordPress Plugins](http://SwitchWebdev.com/wordpress-plugins/).
 
 ## License
 
