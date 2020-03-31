@@ -97,13 +97,14 @@ final class White_Label_Login {
    */
   public function enqueue_style($style = 'wll-base'){
     $wp_login_styles = array(
-      'wll-base'       => 'wll-login-base.css',
-      'wll-background' => 'wll-login-box-bg.css',
-      'wll-bootstrap'  => 'login-bootstrap.css',
-      'wll-header'     => 'wll-login-header.css',
-      'wll-default'    => 'wll-login-default.css',
-      'wll-align-right' => 'wll-align-right.css',
-      'wll-align-left' => 'wll-align-left.css',
+      'wll-base'          => 'wll-login-base.css',
+      'wll-background'    => 'wll-login-box-bg.css',
+      'wll-bootstrap'     => 'login-bootstrap.css',
+      'wll-header-shadow' => 'wll-header-shadow.css',
+      'wll-default'       => 'wll-login-default.css',
+      'wll-align-right'   => 'wll-align-right.css',
+      'wll-align-left'    => 'wll-align-left.css',
+      'wll-user-styles'   => 'wll-user-stylesheet.css',
     );
     return wp_enqueue_style( $style, plugins_url('css/'.$wp_login_styles[$style], __FILE__ ), array(), WPWLL_VERSION, 'all' );
   }
@@ -115,13 +116,14 @@ final class White_Label_Login {
    * @return
    */
   public function login_styles() {
-    $this->enqueue_style('wll-header');
+    //$this->enqueue_style('wll-header-shadow');
     $this->enqueue_style('wll-base');
     $this->enqueue_style('wll-default');
-    //$this->enqueue_style('wll-align-right');
+    $this->enqueue_style('wll-align-right');
     //$this->enqueue_style('wll-align-left');
-	  //$this->enqueue_style('wll-background');
+	  $this->enqueue_style('wll-background');
 	  //$this->enqueue_style('wll-bootstrap');
+	  //$this->enqueue_style('wll-user-styles');
 
     // use theme styles (users can turn this on if they want its off by default)
     // wp_enqueue_style('wll-theme-style',get_stylesheet_directory_uri() . '/style.css',array(),wp_get_theme()->get('Version') );
@@ -154,7 +156,7 @@ final class White_Label_Login {
       'name' => get_bloginfo( 'name' ),
       'url' => get_bloginfo( 'url' ),
       'admin_url' => get_admin_url(),
-      'background_color' => '#ffffff',
+      'background_color' => 'none',
       'header_text' => get_bloginfo( 'description' ),
       'footer_text' => '...',
     );
@@ -210,6 +212,7 @@ final class White_Label_Login {
     ?><style type="text/css">
       #login h1 a, .login h1 a {
         background-image: url(<?php $this->logo(); ?>);
+        background-position: top;
       }
       </style><?php
   }
@@ -226,13 +229,14 @@ final class White_Label_Login {
 
     $footer  = '<br/><br/> </div>';
     $footer .= '<p class="footer-copyright" align="center">';
+    $footer .= '<br/>';
+    $footer .= $this->site_info('footer_text');
     $footer .= '<br/><br/>';
     $footer .= 'Copyright © '.$year.' <a href=" '.$this->site_info('url').' ">';
     $footer .= $this->site_info('name');
     $footer .= '</a>';
     $footer .= ' All Rights Reserved. ';
     $footer .= '<br/>';
-    $footer .= $this->site_info('footer_text');
     $footer .= '<br/></p> ';
   	echo $footer;
   }
