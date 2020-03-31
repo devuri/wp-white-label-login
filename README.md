@@ -25,7 +25,7 @@ Upload the plugin to your WordPress website, Activate it,
 
 # Supports
 
-Enable automatic updates with [GitHub Updater](https://github.com/afragen/github-updater)
+White Label Login is hosted on the offical WordPress Plugin Repository get  automatic updates with [WordPress](https://wordpress.org/plugins/wp-white-label-login/)
 
 ## Built With
 
