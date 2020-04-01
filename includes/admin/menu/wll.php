@@ -16,7 +16,7 @@ $wllmenu = array(
   $wllsubmenu = array(
     'Logo',
     'Background',
-    //'Random Background',
+    'Custom Background',
     'Form Align',
     //'CSS',
     //'Custom CSS',
