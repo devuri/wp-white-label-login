@@ -38,7 +38,11 @@ if ( isset( $_POST['submit'] ) ){
 	    echo $wllform->table('open');
 
 			// align
-			$align = array('left','right','center');
+			$align = array(
+				'left' 		=> 0,
+				'right' 	=> 1,
+				'center'	=> 2,
+			);
 			echo $wllform->select($align,'Align Form');
 
 	    // close table
@@ -54,7 +58,7 @@ if ( isset( $_POST['submit'] ) ){
 <?php endif;
 
 if ($wllform->processing) {
-	echo '<a class="browser button button-hero" href="'.admin_url('/admin.php?page=login-form-align').'">Back</a>';
+	echo '<a class="browser button button-hero" href="'.admin_url('/admin.php?page=wll-form-align').'">Back</a>';
 }
 ?>
 </div><!--frmwrap-->
