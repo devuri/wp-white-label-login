@@ -6,20 +6,23 @@ $wllmenu = array(
   'WP White Label',
   'manage_options',
   'white-label-options',
-  'memlockdown_callback',
-  6.5,
+  'wllmenu_callback',
   'dashicons-art',
-  'mls',
+  6.5,
+  'wll',
   $wll,
 );
 
   $wllsubmenu = array(
-    'Login Logo',
-    'Login Background',
-    'Login Form Align',
+    'Logo',
+    'Background',
+    //'Random Background',
+    'Form Align',
+    //'CSS',
+    //'Custom CSS',
     //'Color Scheme',
-    //'CSS'
+    //'Login Themes'
   );
 
 // initialize menu
-new Wll_Admin_Menu($wllmenu,$wllsubmenu);
+$wll_admin_menu = new Wll_Admin_Menu($wllmenu,$wllsubmenu);
