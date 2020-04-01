@@ -54,7 +54,7 @@ if ( isset( $_POST['submit'] ) ){
 <?php endif;
 
 if ($wllform->processing) {
-	echo '<a class="browser button button-hero" href="'.admin_url('/admin.php?page=white-label-options').'">Back</a>';
+	echo '<a class="browser button button-hero" href="'.admin_url('/admin.php?page=login-form-align').'">Back</a>';
 }
 ?>
 </div><!--frmwrap-->
