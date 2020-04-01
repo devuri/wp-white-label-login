@@ -106,9 +106,10 @@ final class Wll_Form_Helper {
    * @param  array  $options [description]
    * @return [type]          [description]
    */
-  public function select($options = array(),$fieldname = 'name',$required = false){
+  public function select($options = array(),$fieldname = 'name', $js='do_some_js_action', $required = false){
     // set reuired
     $require = $this->is_required($required);
+    $js_function = $js;
     $defualt_select = '<option selected="selected">Select an option</option>';
 
     // lets build out the select field
@@ -121,14 +122,14 @@ final class Wll_Form_Helper {
     $select .= '</label>';
     $select .= '</th>';
     $select .= '<td>';
-    $select .= '<select name="'.strtolower(str_replace(" ", "_", $fieldname)).'" id="'.strtolower(str_replace(" ", "_", $fieldname)).'" class="uk-select">';
+    $select .= '<select onchange="'.$js_function.'()" name="'.strtolower(str_replace(" ", "_", $fieldname)).'" id="'.strtolower(str_replace(" ", "_", $fieldname)).'" class="uk-select">';
     /**
      * Options list Output
      * @var array $options
      */
     if (is_array($options)) {
       foreach ($options as $optkey => $optvalue) {
-        $select .= '<option value="'.$optkey.'">'.$optvalue.'</option>';
+        $select .= '<option value="'.$optvalue.'">'.ucfirst($optkey).'</option>';
       }
     }
     $select .= '</select>';
