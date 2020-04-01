@@ -16,12 +16,6 @@
 }
 
 /* body **************************************/
-body.login p#nav a {
-	color:#666666;
-	text-decoration:none;
-	margin:0 5px;
-}
-
 body.login h1{
 	font-weight: 100;
 	color: #008EC2;
@@ -35,6 +29,12 @@ body h2 a{
 
 body.login {
 	background-color: #FFFFFF;
+}
+
+body.login p#nav a {
+	color:#666666;
+	text-decoration:none;
+	margin:0 5px;
 }
 
 body a {
@@ -112,7 +112,7 @@ hr{
 /** LOGO **/
 .login h1 a {
 	background-size: 190px;
-	height: 200px;
+	height: 190px;
 	width: 100%;
 }
 /*** LOGIN FORM ***************************/
