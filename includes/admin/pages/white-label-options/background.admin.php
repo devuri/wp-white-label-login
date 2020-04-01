@@ -1,6 +1,15 @@
-<?php
+<style media="all">
+.image-preview img {
+-webkit-transition: background-color 2s ease-out;
+-moz-transition: background-color 2s ease-out;
+-o-transition: background-color 2s ease-out;
+transition: background-color 2s ease-out;
+}
 
-	// options
+</style> <?php
+
+	// vars
+		$background_images = $this->plugin()->background();
 		$get_background = $this->plugin()->option('background');
 
 
@@ -17,7 +26,7 @@ if ( isset( $_POST['submit'] ) ){
 	}
 
 	// get the value
-	$wll_background = $wllform->input_val('login_background_url');
+	$wll_background = $wllform->input_val('background');
 
 
 	// clean up before we save
@@ -35,17 +44,18 @@ if ( isset( $_POST['submit'] ) ){
 	 Give us a rating on <a target="_blank" href="https://wordpress.org/plugins/wp-white-label-login/">WordPress.org</a>.
 </div>
 <hr/>
-Background <br/>
-<img width="400"src="<?php echo $get_background; ?>" alt="">
+<?php if ( ! $wllform->processing ): ?>
+<img id="image-preview" class="image-preview" width="400"src="<?php echo $get_background; ?>" alt="">
 <hr/>
 <div id="frmwrap" >
-<?php if ( ! $wllform->processing ): ?>
 		<form action="" method="POST"	enctype="multipart/form-data"><?php
 	    // open table
 	    echo $wllform->table('open');
 
 			// background
-			echo $wllform->input('Login Background url', $get_background);
+			echo $wllform->select($background_images ,'Background','wll_preview_bg_image');
+
+			//echo $wllform->input('Login Background url', $get_background);
 
 	    // close table
 	    echo $wllform->table('close');
@@ -60,7 +70,13 @@ Background <br/>
 <?php endif;
 
 if ($wllform->processing) {
-	echo '<a class="browser button button-hero" href="'.admin_url('/admin.php?page=login-background').'">Back</a>';
+	echo '<a class="browser button button-hero" href="'.admin_url('/admin.php?page=wll-background').'">Back</a>';
 }
 ?>
 </div><!--frmwrap-->
+<script type="text/javascript">
+	function wll_preview_bg_image(){
+		document.getElementById("image-preview").src = document.getElementById("background").value;
+		console.log('bg_value');
+	}
+</script>
