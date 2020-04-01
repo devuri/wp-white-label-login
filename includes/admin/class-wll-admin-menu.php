@@ -28,14 +28,93 @@ final class Wll_Admin_Menu {
      */
     const WPWLL_ADMIN_VERSION = '3.1.4';
 
+    /**
+     * $page_title
+     *
+     * (Required) The text to be displayed in the title tags of the page when the menu is selected.
+     * @var string
+     */
+    private $page_title;
 
     /**
-     * $menu_args
+     * $menu_title
      *
-     * @var array menu_args
+     * (string) (Required) The text to be used for the menu.
+     * @var string
      * @link https://developer.wordpress.org/reference/functions/add_menu_page/
      */
-    private $menu_args;
+    private $menu_title;
+
+    /**
+     * $capability
+     *
+     * (string) (Required) The capability required for this menu to be displayed to the user.
+     * @var string
+     * @link https://developer.wordpress.org/reference/functions/add_menu_page/
+     */
+    private $capability;
+
+    /**
+     * $menu_slug
+     *
+     * (string) (Required) The slug name to refer to this menu by.
+     * Should be unique for this menu page and only include lowercase alphanumeric,
+     * dashes, and underscores characters to be compatible with sanitize_key().
+     * @var string
+     * @link https://developer.wordpress.org/reference/functions/add_menu_page/
+     */
+    private $menu_slug;
+
+    /**
+     * $function
+     *
+     * (callable) (Optional) The function to be called
+     * to output the content for this page.Default value: ''
+     * @var string
+     * @link https://developer.wordpress.org/reference/functions/add_menu_page/
+     */
+    private $function;
+
+    /**
+     * $icon_url
+     *
+     * (string) (Optional) The URL to the icon to be used for this menu.
+     * Pass a base64-encoded SVG using a data URI,
+     * which will be colored to match the color scheme.
+     * This should begin with 'data:image/svg+xml;base64,'.
+     * Pass the name of a Dashicons helper class to use a font icon, e.g. 'dashicons-chart-pie'.
+     * Pass 'none' to leave div.wp-menu-image empty so an icon can be added via CSS.
+     * Default value: ''
+     * @var string
+     * @link https://developer.wordpress.org/reference/functions/add_menu_page/
+     */
+    private $icon_url;
+
+    /**
+     * $position
+     *
+     * (int) (Optional) The position in the menu order this item should appear.
+     * Default value: null
+     * @var int
+     * @link https://developer.wordpress.org/reference/functions/add_menu_page/
+     */
+    private $position;
+
+    /**
+     * $prefix
+     *
+     * main menu prefix used to add prefix for page=$prefix-menu-slug
+     * @var string
+     */
+    private $prefix;
+
+    /**
+     * $plugin
+     *
+     * get the current plugin object which gives access to plugin methods etc
+     * @var object
+     */
+    private $plugin;
 
     /**
      * $submenu_args
@@ -44,13 +123,6 @@ final class Wll_Admin_Menu {
      * @link https://developer.wordpress.org/reference/functions/add_submenu_page/
      */
     private $submenu_args;
-
-    /**
-     * $submenu_access
-     *
-     * @var string submenu_access example 'manage_options'
-     */
-    private $submenu_access;
 
     /**
      * Stand alone Submenu for settings (options-general.php)
@@ -78,7 +150,19 @@ final class Wll_Admin_Menu {
      * @since 1.0
      */
     function __construct(array $main_menu, array $submenu_items = array(), array $admin_only = array()) {
-      $this->menu_args = $main_menu;
+
+      // define main menu args
+      $this->page_title = $main_menu[0];
+      $this->menu_title = $main_menu[1];
+      $this->capability = $main_menu[2];
+      $this->menu_slug  = $main_menu[3];
+      $this->function   = array( $this, 'menu_callback' );
+      $this->icon_url   = $main_menu[5];
+      $this->position   = $main_menu[6];
+      $this->prefix     = $main_menu[7];
+      $this->plugin     = $main_menu[8];
+
+      // submenu
       $this->submenu_args = $submenu_items;
 
       // Admin Only Settings Menu
@@ -94,6 +178,26 @@ final class Wll_Admin_Menu {
       // footer_separator
       add_action( 'swa_footer',array( $this, 'footer_separator' ) );
 
+    }
+
+    /**
+     * menu_args
+     *
+     * @return array get the menu args
+     */
+    public function menu_args(){
+      $menu_args = array(
+        $this->page_title,
+        $this->menu_title,
+        $this->capability,
+        $this->menu_slug,
+        $this->function,
+        $this->icon_url,
+        $this->position,
+        $this->prefix,
+        $this->plugin
+      );
+      return $menu_args;
     }
 
     /**
@@ -118,19 +222,21 @@ final class Wll_Admin_Menu {
      * @return object
      */
     public function instance(){
-      return new self($this->menu_args,$this->submenu_args,$this->settings_args);
+      return new self($this->menu_args(),$this->submenu_args,$this->settings_args);
     }
+
+
 
     /**
      * Get the current plugin object
      *
      * this is an object passed in as the last param
-     * when you define the $main_menu that will give uss access
+     * when you define the $main_menu array that will give uss access
      * to all the methods vars etc if we need them.
      * @return object
      */
     public function plugin(){
-      return $this->menu_args[8];
+      return $this->plugin;
     }
 
     /**
@@ -178,7 +284,8 @@ final class Wll_Admin_Menu {
      */
     public function menu_callback() {
       # get page name
-      $mpage = $this->get_thepage_name();
+      # we dont need the prefix here so remove it 
+      $mpage = str_replace($this->prefix.'-', '', $this->get_thepage_name());
       $this->admin_page($mpage);
     }
 
@@ -199,7 +306,7 @@ final class Wll_Admin_Menu {
      * @param  string $page_name
      * @since 2.0
      */
-    public function admin_submenu_page($page_name = 'admin') {
+    public function admin_submenu_page() {
       # set page title
       $page_title = ucfirst($this->get_thepage_name());
       $this->admin_smenu = true;
@@ -221,9 +328,9 @@ final class Wll_Admin_Menu {
       foreach ($this->submenu_args as $key => $subm_item) {
          #slugs
         if ($key == 0) {
-            $subm_slug = $this->menu_args[3];
+            $subm_slug = $this->menu_slug;
         } else {
-            $subm_slug = sanitize_title($subm_item);
+            $subm_slug = sanitize_title($this->prefix.'-'.$subm_item);
         }
 
           // build out the sub menu items
@@ -234,6 +341,17 @@ final class Wll_Admin_Menu {
           }
         }
       echo '</h2>';
+    }
+
+    /**
+     * menu_slug
+     *
+     * get the menu slug without the $prefix
+     * @return [type] [description]
+     */
+    public function menu_slug(){
+      $m_slug = str_replace($this->prefix.'-','',$this->menu_slug);
+      return $m_slug;
     }
 
     /**
@@ -250,7 +368,7 @@ final class Wll_Admin_Menu {
         $admin_file = plugin_dir_path( __FILE__ ). 'pages/admin-options/'.$admin_page.'.admin.php';
       } else {
         $wllform = new Wll_Form();
-        $admin_file = plugin_dir_path( __FILE__ ). 'pages/'.$this->menu_args[3].'/'.$admin_page.'.admin.php';
+        $admin_file = plugin_dir_path( __FILE__ ). 'pages/'.$this->menu_slug().'/'.$admin_page.'.admin.php';
       }
 
       /**
@@ -266,8 +384,8 @@ final class Wll_Admin_Menu {
         $file_location_error = '<h1> Menu file location error : Experiencing Technical Issues, Please Contact Admin </h1>';
           # only show full file path to admin user
         if ( current_user_can('manage_options') ) {
-          $file_location_error = '<h2> Please check file location, Page Does not Exist</h2>';
-          $file_location_error .=  '<span class="alert-danger">'.$admin_file . '</span> location of file was not found </p>';
+          $file_location_error  = '<h2> Please check file location, Page Does not Exist</h2>';
+          $file_location_error .= '<span class="alert-danger">'.$admin_file . '</span> location of file was not found </p>';
         }
           // user feedback
           echo $file_location_error;
@@ -341,9 +459,9 @@ final class Wll_Admin_Menu {
      */
     public function get_menu_title(){
       $menu_title = '<h2 class="wll-admin-dashicons-before ';
-      $menu_title .= $this->menu_args[6];
+      $menu_title .= $this->icon_url;
       $menu_title .= '">';
-      $menu_title .= $this->menu_args[0];
+      $menu_title .= $this->page_title;
       $menu_title .= '</h2>';
       return $menu_title;
     }
@@ -356,21 +474,19 @@ final class Wll_Admin_Menu {
      * @since 1.0
      */
     public function build_menu() {
+
+      // prefix the slug to avoid any conflicts
+      $this->menu_slug = $this->prefix.'-'.$this->menu_slug;
+
       // Main Menu
-      $page_title  = $this->menu_args[0];
-      $menu_title  = $this->menu_args[1];
-      $capability  = $this->menu_args[2];
-      $menu_slug   = $this->menu_args[3];
-      $position    = $this->menu_args[5];
-      $icon_url    = $this->menu_args[6];
       add_menu_page(
-        $page_title,
-        $menu_title,
-        $capability,
-        $menu_slug,
+        $this->page_title,
+        $this->menu_title,
+        $this->capability,
+        $this->menu_slug,
         array( $this, 'menu_callback' ),
-        $icon_url,
-        $position
+        $this->icon_url,
+        $this->position
       );
 
       /**
@@ -384,17 +500,17 @@ final class Wll_Admin_Menu {
         #slugs
         if ($key == 0) {
           // change the slug for first item to match parent slug
-          $subm_slug = $this->menu_args[3];
+          $subm_slug = $this->menu_slug;
         } else {
           // keep current slug
-          $subm_slug = sanitize_title($subm_item);
+          $subm_slug = sanitize_title($this->prefix.'-'.$subm_item);
         }
           // build out the sub menu items
           add_submenu_page(
-            $menu_slug,
+            $this->menu_slug,
             ucfirst($subm_item),
             ucwords($subm_item),
-            $capability,
+            $this->capability,
             $subm_slug,
             array( $this, 'menu_callback' )
           );
