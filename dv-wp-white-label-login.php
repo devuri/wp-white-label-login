@@ -120,8 +120,7 @@ final class White_Label_Login {
     //$this->enqueue_style('header-shadow');
     $this->enqueue_style('base');
     $this->enqueue_style('default');
-    //$this->enqueue_style('align-right');
-    $this->enqueue_style('align-left');
+    $this->align();
 	  $this->enqueue_style('box-background');
 	  //$this->enqueue_style('color-scheme');
 	  //$this->enqueue_style('bootstrap');
@@ -129,6 +128,28 @@ final class White_Label_Login {
 
     // use theme styles (users can turn this on if they want its off by default)
     // wp_enqueue_style('wll-theme-style',get_stylesheet_directory_uri() . '/style.css',array(),wp_get_theme()->get('Version') );
+  }
+
+  /**
+   * align
+   *
+   * get the form alignment as set in the
+   * options section
+   * @return
+   */
+  public function align(){
+    switch ($this->option('align')) {
+    case 0:
+        $align = $this->enqueue_style('align-left');
+        break;
+    case 1:
+        $align = $this->enqueue_style('align-right');
+        break;
+    case 2:
+        $align = '';
+        break;
+    }
+    return $align;
   }
 
   /**
@@ -164,6 +185,24 @@ final class White_Label_Login {
       'footer_text' => '...',
     );
     return $site_info[$info];
+  }
+
+  public function background(){
+    $background_images = array(
+      'defualt'         => plugins_url('images/wpwll-background.jpeg' , __FILE__ ),
+      'daria-i5iIhHSAtp4'  => plugins_url('images/daria-nepriakhina-i5iIhHSAtp4-.jpg' , __FILE__ ),
+      'laptop-2557571'  => plugins_url('images/laptop-2557571_1920.jpg' , __FILE__ ),
+      'office-820390'  => plugins_url('images/office-820390_1920.jpg' , __FILE__ ),
+      'iphone-791450'   => plugins_url('images/iphone-791450_1920.jpg' , __FILE__ ),
+      'office-932926'   => plugins_url('images/office-932926_1920.jpg' , __FILE__ ),
+      'laptop-2434393'  => plugins_url('images/laptop-2434393_1920.jpg' , __FILE__ ),
+      'woman-1181215'   => plugins_url('images/woman-in-front-of-laptop-computer-1181215.jpg' , __FILE__ ),
+      'laptop-2434393'  => plugins_url('images/laptop-2434393_1920.jpg' , __FILE__ ),
+      'cat-4977436'  => plugins_url('images/cat-4977436_1920.jpg' , __FILE__ ),
+      'blond-1866951'   => plugins_url('images/blond-1866951_1920.jpg' , __FILE__ ),
+      'laptop-157316'   => plugins_url('images/laptop-157316457.jpeg' , __FILE__ ),
+    );
+    return $background_images;
   }
 
   /**
