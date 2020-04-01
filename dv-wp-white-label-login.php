@@ -5,7 +5,7 @@
  * Description: Simple one click, White Label Log in, Registration and Lost Password Page, Activate it and forget it...
  * Author:      SwitchWebdev.com
  * Author URI:  https://switchwebdev.com
- * Version:     4.3.1
+ * Version:     4.3.3
  * License:     GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: wp-white-label-login
@@ -42,7 +42,7 @@
     }
 
   # plugin directory
-	  define("WPWLL_VERSION", '4.3.1');
+	  define("WPWLL_VERSION", '4.3.3');
 
   # plugin directory
     define("WPWLL_DIR", dirname(__FILE__));
@@ -100,7 +100,7 @@ final class White_Label_Login {
       'wll-base'          => 'wll-login-base.css',
       'wll-background'    => 'wll-login-box-bg.css',
       'wll-bootstrap'     => 'login-bootstrap.css',
-      'wll-header-shadow' => 'wll-header-shadow.css',
+      'wll-header-shadow' => 'wll-header-box-shadow.css',
       'wll-default'       => 'wll-login-default.css',
       'wll-align-right'   => 'wll-align-right.css',
       'wll-align-left'    => 'wll-align-left.css',
@@ -119,11 +119,10 @@ final class White_Label_Login {
     //$this->enqueue_style('wll-header-shadow');
     $this->enqueue_style('wll-base');
     $this->enqueue_style('wll-default');
-    $this->enqueue_style('wll-align-right');
+    //$this->enqueue_style('wll-align-right');
     //$this->enqueue_style('wll-align-left');
-	  $this->enqueue_style('wll-background');
+	  //$this->enqueue_style('wll-background');
 	  //$this->enqueue_style('wll-bootstrap');
-	  //$this->enqueue_style('wll-user-styles');
 
     // use theme styles (users can turn this on if they want its off by default)
     // wp_enqueue_style('wll-theme-style',get_stylesheet_directory_uri() . '/style.css',array(),wp_get_theme()->get('Version') );
@@ -138,8 +137,9 @@ final class White_Label_Login {
    */
   public function option($opt = 'logo'){
     $option = array(
-      'logo' => get_option('wpwll_logo_url'),
-      'background' => get_option('wpwll_background_url')
+      'logo'       => get_option('wpwll_logo_url'),
+      'background' => get_option('wpwll_background_url'),
+      'align'      => get_option('wpwll_align')
     );
     return $option[$opt];
   }
@@ -156,7 +156,7 @@ final class White_Label_Login {
       'name' => get_bloginfo( 'name' ),
       'url' => get_bloginfo( 'url' ),
       'admin_url' => get_admin_url(),
-      'background_color' => 'none',
+      'background_color' => '#ffffff',
       'header_text' => get_bloginfo( 'description' ),
       'footer_text' => '...',
     );
@@ -212,7 +212,6 @@ final class White_Label_Login {
     ?><style type="text/css">
       #login h1 a, .login h1 a {
         background-image: url(<?php $this->logo(); ?>);
-        background-position: top;
       }
       </style><?php
   }
@@ -229,14 +228,13 @@ final class White_Label_Login {
 
     $footer  = '<br/><br/> </div>';
     $footer .= '<p class="footer-copyright" align="center">';
-    $footer .= '<br/>';
-    $footer .= $this->site_info('footer_text');
     $footer .= '<br/><br/>';
     $footer .= 'Copyright © '.$year.' <a href=" '.$this->site_info('url').' ">';
     $footer .= $this->site_info('name');
     $footer .= '</a>';
     $footer .= ' All Rights Reserved. ';
     $footer .= '<br/>';
+    $footer .= $this->site_info('footer_text');
     $footer .= '<br/></p> ';
   	echo $footer;
   }
@@ -248,6 +246,15 @@ final class White_Label_Login {
 // initiate --------------------------------------------------------
 
 
-  require_once WPWLL_DIR .'/includes/class-wpwll-settings.php';
+// Setup the menu builder class
+if (!class_exists('Wll_Admin_Menu')) {
+  require_once plugin_dir_path( __FILE__ ). 'includes/admin/class-wll-admin-menu.php';
+ }
 
-  $wll_settings = new WPWLL_Settings();
+ // Form Class
+ if (!class_exists('Wll_Form_Helper')) {
+   require_once plugin_dir_path( __FILE__ ). 'includes/admin/class-wll-form-helper.php';
+  }
+
+// Menu Item
+require_once plugin_dir_path( __FILE__ ). 'includes/admin/menu/wll.php';
