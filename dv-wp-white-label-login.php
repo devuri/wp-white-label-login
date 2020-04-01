@@ -97,14 +97,15 @@ final class White_Label_Login {
    */
   public function enqueue_style($style = 'wll-base'){
     $wp_login_styles = array(
-      'wll-base'          => 'wll-login-base.css',
-      'wll-background'    => 'wll-login-box-bg.css',
-      'wll-bootstrap'     => 'login-bootstrap.css',
-      'wll-header-shadow' => 'wll-header-box-shadow.css',
-      'wll-default'       => 'wll-login-default.css',
-      'wll-align-right'   => 'wll-align-right.css',
-      'wll-align-left'    => 'wll-align-left.css',
-      'wll-user-styles'   => 'wll-user-stylesheet.css',
+      'base'            => 'wll-base.css',
+      'box-background'  => 'wll-box-background.css',
+      'bootstrap'       => 'wll-bootstrap.css',
+      'color-scheme'    => 'wll-color-scheme.css',
+      'header-shadow'   => 'wll-header-shadow.css',
+      'default'         => 'wll-default.css',
+      'align-right'     => 'wll-align-right.css',
+      'align-left'      => 'wll-align-left.css',
+      'user-styles'     => 'wll-user-stylesheet.css',
     );
     return wp_enqueue_style( $style, plugins_url('css/'.$wp_login_styles[$style], __FILE__ ), array(), WPWLL_VERSION, 'all' );
   }
@@ -116,14 +117,15 @@ final class White_Label_Login {
    * @return
    */
   public function login_styles() {
-    //$this->enqueue_style('wll-header-shadow');
-    $this->enqueue_style('wll-base');
-    $this->enqueue_style('wll-default');
-    $this->enqueue_style('wll-align-right');
-    //$this->enqueue_style('wll-align-left');
-	  $this->enqueue_style('wll-background');
-	  //$this->enqueue_style('wll-bootstrap');
-	  //$this->enqueue_style('wll-user-styles');
+    //$this->enqueue_style('header-shadow');
+    $this->enqueue_style('base');
+    $this->enqueue_style('default');
+    //$this->enqueue_style('align-right');
+    $this->enqueue_style('align-left');
+	  $this->enqueue_style('box-background');
+	  //$this->enqueue_style('color-scheme');
+	  //$this->enqueue_style('bootstrap');
+	  //$this->enqueue_style('user-styles');
 
     // use theme styles (users can turn this on if they want its off by default)
     // wp_enqueue_style('wll-theme-style',get_stylesheet_directory_uri() . '/style.css',array(),wp_get_theme()->get('Version') );

@@ -1,11 +1,11 @@
 <?php
 
 # Lockdown Menu
-$wll_menu = array(
+$wllmenu = array(
   'White Label Login Settings',
   'WP White Label',
   'manage_options',
-  'white-label-login-options',
+  'white-label-options',
   'memlockdown_callback',
   6.5,
   'dashicons-art',
@@ -13,12 +13,13 @@ $wll_menu = array(
   $wll,
 );
 
-  $wll_submenu = array(
+  $wllsubmenu = array(
     'Logo',
     'Background',
     'Align',
+    'Color Scheme',
     'CSS'
   );
 
 // initialize menu
-new Wll_Admin_Menu($wll_menu);
+new Wll_Admin_Menu($wllmenu);

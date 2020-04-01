@@ -18,7 +18,7 @@ if ( isset( $_POST['submit'] ) ){
 	}
 
 	// get the lcg_value
-	$wll_logo = $wllform->input_val('login_background_url');
+	$wll_logo = $wllform->input_val('login_logo_url');
 	$wll_background = $wllform->input_val('login_background_url');
 
 
@@ -29,9 +29,10 @@ if ( isset( $_POST['submit'] ) ){
 
 
 	// TODO
-	// esc url 
+	// esc url
 	// update options
-	//update_option('mlockdown_status', $wlloptions);
+	update_option('wpwll_logo_url', $wll_logo);
+	update_option('wpwll_background_url',$wll_background);
 
 }
 ?><div class"wll-status">
@@ -74,7 +75,7 @@ Background <br/>
 <?php endif;
 
 if ($wllform->processing) {
-	echo '<a class="browser button button-hero" href="'.admin_url('/admin.php?page=white-label-login-options').'">Back</a>';
+	echo '<a class="browser button button-hero" href="'.admin_url('/admin.php?page=white-label-options').'">Back</a>';
 }
 ?>
 </div><!--frmwrap-->
