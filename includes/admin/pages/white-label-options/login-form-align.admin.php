@@ -1,7 +1,7 @@
 <?php
 
 	// options
-		$get_logo 			= $this->plugin()->option('logo');
+		$get_align 			= $this->plugin()->option('align');
 
 /**
  * Process the data
@@ -16,27 +16,20 @@ if ( isset( $_POST['submit'] ) ){
 	}
 
 	// get the lcg_value
-	$wll_logo = $wllform->input_val('login_logo_url');
+	$wll_align = $wllform->input_val('align_form');
 
 
 	// clean up before we save
-	sanitize_text_field($wll_logo);
+	sanitize_text_field($wll_align);
 
 
-
-	// TODO
-	// esc url
-	update_option('wpwll_logo_url', $wll_logo);
-
+	// esc
+	update_option('wpwll_align', $wll_align);
 
 }
 ?><div class"wll-status">
-	<strong>Get Awesome free Photos:</strong> <a target="_blank" href="https://pixabay.com/photos/search/">pixabay.com</a> .
-	 Give us a rating on <a target="_blank" href="https://wordpress.org/plugins/wp-white-label-login/">WordPress.org</a>.
-</div>
-<hr/>
-Logo <br/>
-<img width="200"src="<?php echo $get_logo; ?>" alt="">
+	<!-- graphic -->
+	</div>
 <hr/>
 <div id="frmwrap" >
 <?php if ( ! $wllform->processing ): ?>
@@ -44,8 +37,9 @@ Logo <br/>
 	    // open table
 	    echo $wllform->table('open');
 
-			// Logo
-			echo $wllform->input('Login Logo url', $get_logo );
+			// align
+			$align = array('left','right','center');
+			echo $wllform->select($align,'Align Form');
 
 	    // close table
 	    echo $wllform->table('close');

@@ -14,12 +14,12 @@ $wllmenu = array(
 );
 
   $wllsubmenu = array(
-    'Logo',
-    'Background',
-    'Align',
-    'Color Scheme',
-    'CSS'
+    'Login Logo',
+    'Login Background',
+    'Login Form Align',
+    //'Color Scheme',
+    //'CSS'
   );
 
 // initialize menu
-new Wll_Admin_Menu($wllmenu);
+new Wll_Admin_Menu($wllmenu,$wllsubmenu);
