@@ -12,6 +12,17 @@
 	line-height: 2em;
 }
 
+#wll-textarea-css{
+    width: 100%;
+    background-color: black;
+    color: aliceblue;
+    font-family: inherit;
+    font-size: inherit;
+    border: 0px;
+    border-radius: inherit;
+    padding: 8px;
+}
+
 .wll-admin-wrap select{
   font-size: initial;
   font-weight: 500;
