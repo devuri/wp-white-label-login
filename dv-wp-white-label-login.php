@@ -57,11 +57,11 @@
 
 
 		$wpwll_default_logo = plugins_url('images/wpwll-logo.png', __FILE__ );
-		$wpwll_default_background = plugins_url('images/wpwll-background.jpeg', __FILE__ );
+		$wpwll_default_background = plugins_url('images/laptop-157316457.jpeg', __FILE__ );
 
 	// set up some options
-		update_option('wpwll_logo_url', '');
-		update_option('wpwll_background_url','');
+		update_option('wpwll_logo_url', $wpwll_default_logo);
+		update_option('wpwll_background_url', $wpwll_default_background);
 
 	}
 
@@ -78,16 +78,51 @@
 final class White_Label_Login {
 
   /**
-   * __construct
+   * $on
    *
-   * do some setting up on initiate
+   * check whether this is turned on or off
+   * @var boolean
    */
-  function __construct(){
+  public $on;
+
+  /**
+   * [__construct description]
+   * @param boolean $init on or off
+   */
+  function __construct( $init = false){
+
+    /**
+     * check if the plugin
+     * is on or off
+     * @var [type]
+     */
+    $this->on = $init;
+
+    /**
+     * if the plugin is on lets make the login pretty
+     * @var [type]
+     */
+    if ($this->on) {
+      $this->white_label_login();
+    }
+
+  }
+
+  /**
+   * white_label_login()
+   *
+   * start up and make the login pretty
+   * return status
+   * @return boolean
+   */
+  public function white_label_login(){
     add_action( 'login_enqueue_scripts', array( $this , 'login_styles') );
     add_action( 'login_enqueue_scripts', array( $this , 'login_logo') );
     add_filter( 'login_headerurl', array( $this , 'logo_link') );
     add_filter( 'login_head', array( $this , 'header') );
     add_filter( 'login_footer', array( $this , 'footer') );
+    $this->on = 1;
+    return $this->on;
   }
 
   /**
@@ -297,7 +332,7 @@ final class White_Label_Login {
 
 
 // initiate --------------------------------------------------------
-  $wll = new White_Label_Login();
+   $wll = new White_Label_Login(true);
 // initiate --------------------------------------------------------
 
 
