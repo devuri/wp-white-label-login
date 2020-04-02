@@ -17,7 +17,7 @@ body.login p#nav a {
 .login #login_error, .login .message {
     border-left: 4px solid #000;
 }
-
+/*
 #wp-submit, input[type="submit"] {
     transition: all 0.2s linear 0s;
     margin-top: 20px;
@@ -30,3 +30,4 @@ body.login p#nav a {
     font-weight: normal;
     border-color: #000;
 }
+*/
