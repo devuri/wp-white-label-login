@@ -19,7 +19,7 @@ $wllmenu = array(
     'Custom Background',
     'Form Align',
     //'CSS',
-    //'Custom CSS',
+    'Custom CSS',
     //'Color Scheme',
     //'Login Themes'
   );
