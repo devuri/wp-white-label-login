@@ -7,7 +7,7 @@ p {
   font-weight: 400;
 }
 #login {
-	  width:400px;
+	  width:360px;
 }
 
 #login {
@@ -19,12 +19,24 @@ p {
   padding: 26px;
 }
 
+.login form {
+    margin-top: 20px;
+    margin-left: 0;
+    padding: 26px 24px 46px;
+    font-weight: 400;
+    overflow: hidden;
+    background: #fff;
+    border: 0px solid #ccd0d4;
+    box-shadow: 0 0px 0px rgba(0,0,0,.04);
+    /*box-shadow: 0 1px 3px rgba(0,0,0,.04);*/
+}
+
 /** LOGO **/
 .login h1 a {
-    -webkit-background-size: 100px;
+    -webkit-background-size: 120px;
     background-position: center;
-    background-size: 190px;
-    height: 200px;
+    background-size: 120px;
+    height: 120px;
     width: 100%;
     background-repeat: no-repeat;
     color: #444;
