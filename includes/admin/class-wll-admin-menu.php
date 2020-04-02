@@ -3,7 +3,7 @@
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
  * @package   	Wll_Admin_Menu
- * @version   	3.1.4
+ * @version   	3.1.5
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
  * @link      	https://switchwebdev.com
@@ -26,7 +26,7 @@ final class Wll_Admin_Menu {
     /**
      * class version
      */
-    const WPWLL_ADMIN_VERSION = '3.1.4';
+    const WPWLL_ADMIN_VERSION = '3.1.5';
 
     /**
      * $page_title
@@ -117,6 +117,16 @@ final class Wll_Admin_Menu {
     private $plugin;
 
     /**
+     * $wp_slug
+     *
+     * set the current plugin slug if its not
+     * available in the WordPress repo use github user/slug
+     * we will get this from the $plugin object
+     * @var string
+     */
+    public $wp_slug;
+
+    /**
      * $submenu_args
      *
      * @var array submenu_args
@@ -161,6 +171,9 @@ final class Wll_Admin_Menu {
       $this->position   = $main_menu[6];
       $this->prefix     = $main_menu[7];
       $this->plugin     = $main_menu[8];
+
+      // setup the slug
+      $this->wp_slug     = $this->plugin->wp_slug();
 
       // submenu
       $this->submenu_args = $submenu_items;
@@ -284,7 +297,7 @@ final class Wll_Admin_Menu {
      */
     public function menu_callback() {
       # get page name
-      # we dont need the prefix here so remove it 
+      # we dont need the prefix here so remove it
       $mpage = str_replace($this->prefix.'-', '', $this->get_thepage_name());
       $this->admin_page($mpage);
     }
