@@ -1,4 +1,9 @@
-
+#wll-important-notice {
+    padding: 4px;
+    background-color: blanchedalmond;
+    margin-left: -20px;
+    text-align: center;
+}
 .wll-admin-wrap {
   width: 90%;
   margin: 0 auto;
@@ -28,7 +33,7 @@
   width: 100%;
   padding: 20px;
   background-color: #fff;
-  position: fixed;
+  /*position: fixed;*/
   z-index: 10;
   margin-left: -20px;
   margin-bottom: 20px;
