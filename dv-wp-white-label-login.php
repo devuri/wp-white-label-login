@@ -42,7 +42,7 @@
     }
 
   # plugin directory
-	  define("WPWLL_VERSION", '4.3.4');
+	  define("WPWLL_VERSION", '4.3.5');
 
   # plugin directory
     define("WPWLL_DIR", dirname(__FILE__));
@@ -62,7 +62,7 @@
 	// set up some options
 		update_option('wpwll_logo_url', $wpwll_default_logo);
 		update_option('wpwll_background_url', $wpwll_default_background);
-
+		update_option('wpwll_background_url', 2 );
 	}
 
 	// Deactivate
@@ -70,6 +70,7 @@
 	function wpwll_deactivation() {
 		delete_option('wpwll_logo_url');
 		delete_option('wpwll_background_url');
+		delete_option('wpwll_align');
 	}
 
 /**
@@ -105,7 +106,6 @@ final class White_Label_Login {
     if ($this->on) {
       $this->white_label_login();
     }
-
   }
 
   /**
@@ -120,6 +120,7 @@ final class White_Label_Login {
     add_action( 'login_enqueue_scripts', array( $this , 'login_logo') );
     add_filter( 'login_headerurl', array( $this , 'logo_link') );
     add_filter( 'login_head', array( $this , 'header') );
+    add_filter( 'login_head', array( $this , 'body') );
     add_filter( 'login_footer', array( $this , 'footer') );
     $this->on = 1;
     return $this->on;
@@ -163,14 +164,26 @@ final class White_Label_Login {
    * @return
    */
   public function login_styles() {
-    //$this->enqueue_style('header-shadow');
+    $this->enqueue_style('header-shadow');
     $this->enqueue_style('base');
     $this->enqueue_style('default');
     $this->align();
-	  $this->enqueue_style('box-background');
+	  //$this->enqueue_style('box-background');
 	  //$this->enqueue_style('color-scheme');
 	  //$this->enqueue_style('bootstrap');
-	  //$this->enqueue_style('user-styles');
+
+
+    /**
+     * $user_custom_css
+     *
+     * lets add the user defined css to user stylesheet
+     * wp_add_inline_style Adds the extra CSS styles.
+     * @var string
+     * @link https://developer.wordpress.org/reference/functions/wp_add_inline_style/
+     */
+    $this->enqueue_style('user-styles');
+    $user_custom_css = $this->option('custom_css');
+    wp_add_inline_style( 'user-styles', $user_custom_css );
 
     // use theme styles (users can turn this on if they want its off by default)
     // wp_enqueue_style('wll-theme-style',get_stylesheet_directory_uri() . '/style.css',array(),wp_get_theme()->get('Version') );
@@ -209,7 +222,8 @@ final class White_Label_Login {
     $option = array(
       'logo'       => get_option('wpwll_logo_url'),
       'background' => get_option('wpwll_background_url'),
-      'align'      => get_option('wpwll_align')
+      'align'      => get_option('wpwll_align'),
+      'custom_css' => get_option('wpwll_custom_css')
     );
     return $option[$opt];
   }
@@ -265,9 +279,29 @@ final class White_Label_Login {
     $header .= '</a></h2>';
     $header .= $this->site_info('header_text');
     $header .= '</div>';
-    $header .= '<div style="background-repeat: no-repeat; background-color: '.$this->site_info('background_color').'; background-position: center; background-size: 100%; background-image: url('.$this->option('background').');">';
-    $header .= '<br/>';
+    //$header .= '<div style="background-repeat: no-repeat; background-color: ';
+    //$header .= $this->site_info('background_color').'; background-position: center; background-size: 100%; ';
+    //$header .= 'background-image: url('.$this->option('background').');">';
+    //$header .= '<br/>';
   	echo $header;
+  }
+
+  /**
+   * Bodycustom_css
+   *
+   * the page body
+   * @return
+   */
+  public function body() {
+    ?><style type="text/css">
+      body {
+        background-image: url(<?php echo $this->option('background'); ?>);
+        background-attachment: fixed;
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position: top;
+      }
+      </style><?php
   }
 
   /**
@@ -314,17 +348,16 @@ final class White_Label_Login {
   public function footer() {
   	$year = date("Y");
 
-    $footer  = '<br/><br/> </div>';
-    $footer .= '<p class="footer-copyright" align="center">';
-    $footer .= '<br/>';
+    //$footer  = '<br/><br/> </div>';
+    $footer  = '<div id="footer" class="footer-copyright" align="center">';
+    $footer .= '<p class="footer_text">';
     $footer .= $this->site_info('footer_text');
-    $footer .= '<br/><br/>';
+    $footer .= '</p>';
     $footer .= 'Copyright © '.$year.' <a href=" '.$this->site_info('url').' ">';
     $footer .= $this->site_info('name');
     $footer .= '</a>';
     $footer .= ' All Rights Reserved. ';
-    $footer .= '<br/>';
-    $footer .= '<br/></p> ';
+    $footer .= '</div> ';
   	echo $footer;
   }
 
@@ -348,3 +381,17 @@ if (!class_exists('Wll_Admin_Menu')) {
 
 // Menu Item
 require_once plugin_dir_path( __FILE__ ). 'includes/admin/menu/wll.php';
+
+// customizer
+require_once plugin_dir_path( __FILE__ ). 'customizer.php';
+
+add_action( 'admin_menu', 'wll_customize_submenu' );
+function wll_customize_submenu() {
+  add_submenu_page(
+    'themes.php',
+        __( 'White Label Login Customizer', 'wp-white-label-login' ),
+        __( 'White Label Login', 'wp-white-label-login' ),
+        'manage_options',
+        '/customize.php?autofocus[section]=white_label_login'
+    );
+}
