@@ -60,7 +60,7 @@ Logo <br/>
 <?php endif;
 
 if ($wllform->processing) {
-	echo '<a class="browser button button-hero" href="'.admin_url('/admin.php?page=white-label-options').'">Back</a>';
+	echo '<a class="button button-hero" href="'.admin_url('/admin.php?page=wll-white-label-options').'">Back</a>';
 }
 ?>
 </div><!--frmwrap-->
