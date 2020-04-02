@@ -10,9 +10,12 @@
 
 
 ?><head>
-<meta charset="UTF-8">
-
-</head>
+<div id="wll-important-notice">
+  <span class="wll-notice-message">
+    If you found a bug or have suggestions head over to the
+    <a href="https://wordpress.org/support/plugin/<?php print($this->wp_slug); ?>" target="_blank" rel="noopener noreferrer">Plugins Support Section</a>.
+  </span>
+</div>
 <header class="wll-header">
 </header>
 <div class="wll-container">
