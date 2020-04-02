@@ -2,10 +2,10 @@
 /**
  * Plugin Name: White Label Login
  * Plugin URI:  https://switchwebdev.com/wordpress-plugins/
- * Description: Simple one click, White Label Log in, Registration and Lost Password Page, Activate it and forget it...
+ * Description: White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
  * Author:      SwitchWebdev.com
  * Author URI:  https://switchwebdev.com
- * Version:     4.3.4
+ * Version:     4.3.6
  * License:     GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: wp-white-label-login
@@ -42,7 +42,7 @@
     }
 
   # plugin directory
-	  define("WPWLL_VERSION", '4.3.5');
+	  define("WPWLL_VERSION", '4.3.6');
 
   # plugin directory
     define("WPWLL_DIR", dirname(__FILE__));
@@ -62,15 +62,19 @@
 	// set up some options
 		update_option('wpwll_logo_url', $wpwll_default_logo);
 		update_option('wpwll_background_url', $wpwll_default_background);
-		update_option('wpwll_background_url', 2 );
+		update_option('wpwll_align', 2 );
+		update_option('wpwll_custom_css', '' );
+
+    // TODO redirect to a welcome admin page
 	}
 
 	// Deactivate
+	// TODO setup an option for uninstall (delete options or keep them)
+	// TODO ask the user before we delete these values
+	// TODO Move these to uninstall.php
 	register_deactivation_hook( __FILE__, 'wpwll_deactivation' );
 	function wpwll_deactivation() {
-		delete_option('wpwll_logo_url');
-		delete_option('wpwll_background_url');
-		delete_option('wpwll_align');
+		// moved to uninstall.php
 	}
 
 /**
