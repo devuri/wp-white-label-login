@@ -5,7 +5,7 @@
  * Description: Simple one click, White Label Log in, Registration and Lost Password Page, Activate it and forget it...
  * Author:      SwitchWebdev.com
  * Author URI:  https://switchwebdev.com
- * Version:     4.3.4
+ * Version:     4.3.3
  * License:     GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: wp-white-label-login
@@ -42,7 +42,7 @@
     }
 
   # plugin directory
-	  define("WPWLL_VERSION", '4.3.4');
+	  define("WPWLL_VERSION", '4.3.3');
 
   # plugin directory
     define("WPWLL_DIR", dirname(__FILE__));
@@ -88,6 +88,17 @@ final class White_Label_Login {
     add_filter( 'login_headerurl', array( $this , 'logo_link') );
     add_filter( 'login_head', array( $this , 'header') );
     add_filter( 'login_footer', array( $this , 'footer') );
+  }
+
+  /**
+   * wp_slug
+   *
+   * WordPress.org repo slug 
+   * @return [type] [description]
+   */
+  public function wp_slug(){
+    $wpslug = 'wp-white-label-login';
+    return $wpslug;
   }
 
   /**
