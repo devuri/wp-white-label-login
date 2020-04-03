@@ -19,7 +19,7 @@ $wp_customize->add_control(
 		'wpwll_custom_css',
 		array(
 			'label'       => __( 'Login Page CSS' ),
-			'section'     => 'white_label_login',
+			'section'     => 'white_label_css',
 			'code_type'   => 'text/css',
 			'input_attrs' => array(
 				'aria-describedby' => 'editor-keyboard-trap-help-1 editor-keyboard-trap-help-2 editor-keyboard-trap-help-3 editor-keyboard-trap-help-4',

@@ -294,12 +294,11 @@ final class White_Label_Login {
    */
   public function header() {
     $header  = '<div id="wll-header" class="wll-header" align="center">';
-    $header .= '<h1 align="center">';
+    $header .= '<h2 align="center">';
+    $header .= '<a  href="'.$this->site_info('url').'" title="'.$this->site_info('name').'">';
     $header .= $this->site_info('name');
-    //$header .= '<a  href="'.$this->site_info('url').'" title="'.$this->site_info('name').'">';
-    //$header .= $this->site_info('name');
-    //$header .= '</a>';
-    $header .= '</h1>';
+    $header .= '</a>';
+    $header .= '</h2>';
     $header .= $this->site_info('header_text');
     $header .= '</div>';
     //$header .= '<div style="background-repeat: no-repeat; background-color: ';
@@ -417,4 +416,16 @@ function wll_customize_submenu() {
         'manage_options',
         '/customize.php?autofocus[section]=white_label_login'
     );
+}
+
+
+add_action( 'customize_preview_init', 'cd_customizer' );
+function cd_customizer() {
+	wp_enqueue_script(
+		  'cd_customizer',
+		  plugins_url( '/js/customizer.js',__FILE__ ),
+		  array( 'jquery','customize-preview' ),
+		  '',
+		  true
+	);
 }

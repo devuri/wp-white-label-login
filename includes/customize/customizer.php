@@ -41,13 +41,55 @@ final class Wll_Customizer {
 			$description .= '<li id="editor-keyboard-trap-help-4">' . __( 'Screen reader users: when in forms mode, you may need to press the Esc key twice.' ) . '</li>';
 			$description .= '</ul>';
 
-			$wp_customize->add_section( 'white_label_login',
+			// Add Theme Options Panel.
+			$wp_customize->add_panel( 'wll_options_panel', array(
+				'priority'       => 180,
+				'capability'     => 'edit_theme_options',
+				'theme_supports' => '',
+				'title'          => esc_html__( 'White  Label Login Options', 'gridbox' ),
+			) );
+
+			$wp_customize->add_section( 'white_label_layout',
 				array(
-					'title'              => __( 'White Label Login' ),
-					'priority'           => 210,
+					'title'              => __( 'Layout' ),
+					//'priority'           => 210,
 					'capability'				 => 'manage_options',
 					//'description_hidden' => true,
 					'description'        => $description,
+					'panel'        			 => 'wll_options_panel',
+				)
+			);
+
+			$wp_customize->add_section( 'white_label_logo',
+				array(
+					'title'              => __( 'Login Logo' ),
+					//'priority'           => 210,
+					'capability'				 => 'manage_options',
+					//'description_hidden' => true,
+					'description'        => $description,
+					'panel'        			 => 'wll_options_panel',
+				)
+			);
+
+			$wp_customize->add_section( 'white_label_background',
+				array(
+					'title'              => __( 'Login Background' ),
+					//'priority'           => 210,
+					'capability'				 => 'manage_options',
+					//'description_hidden' => true,
+					'description'        => $description,
+					'panel'        			 => 'wll_options_panel',
+				)
+			);
+
+			$wp_customize->add_section( 'white_label_css',
+				array(
+					'title'              => __( 'Custom Login CSS' ),
+					//'priority'           => 210,
+					'capability'				 => 'manage_options',
+					//'description_hidden' => true,
+					'description'        => $description,
+					'panel'        			 => 'wll_options_panel',
 				)
 			);
 
@@ -63,7 +105,7 @@ final class Wll_Customizer {
 				require_once plugin_dir_path( __FILE__ ). 'setting/blogname.php';
 
 			// copyright
-				//require_once plugin_dir_path( __FILE__ ). 'setting/copyright-text.php';
+				require_once plugin_dir_path( __FILE__ ). 'setting/copyright-text.php';
 
 		}
 }

@@ -15,7 +15,7 @@ $wp_customize->add_control(
 		$wp_customize, 'wpwll_background_url',
 			array(
 				'label' 		=> __( 'Background' ),
-				'section' 	=> 'white_label_login',
+				'section' 	=> 'white_label_background',
 				'mime_type' => 'image',
 			)
 		)

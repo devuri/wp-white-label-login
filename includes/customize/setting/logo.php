@@ -6,7 +6,7 @@ $wp_customize->add_setting( 'wpwll_logo_url',
 		'type' 							=> 'option', //  setup the option here
 		'capability' 				=> 'manage_options',
 		'default' 					=> '',
-		'transport' 				=> 'postMessage', // or 'refresh'
+		'transport' 				=> 'refresh', // or 'refresh'
 		'sanitize_callback' => 'absint'
 	) );
 
@@ -15,7 +15,7 @@ $wp_customize->add_control(
 		$wp_customize, 'wpwll_logo_url',
 			array(
 				'label' 		=> __( 'Login logo' ),
-				'section' 	=> 'white_label_login',
+				'section' 	=> 'white_label_logo',
 				'mime_type' => 'image',
 				'width' => 120,
     		'height' => 120

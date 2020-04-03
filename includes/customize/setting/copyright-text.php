@@ -1,8 +1,7 @@
 <?php
 
 
-//adding setting for copyright text
-/*
+
 $wp_customize->add_setting( 'wpwll_copyright_text',
 	array(
 		//'type' => 'option', //  setup the option here
@@ -14,7 +13,6 @@ $wp_customize->add_setting( 'wpwll_copyright_text',
 
 $wp_customize->add_control('wpwll_copyright_text', array(
 		'label'   => 'Change Copyright Text',
-		'section' => 'white_label_login',
+		'section' => 'white_label_layout',
 		'type'    => 'text',
 ));
-*/
