@@ -8,7 +8,7 @@
 	 Give us a rating on <a target="_blank" href="https://wordpress.org/plugins/wp-white-label-login/">WordPress.org</a>.
 </div>
 <hr/>
-<img width="200"src="<?php echo wp_get_attachment_url($get_logo); ?>" alt="">
+<img width="120"src="<?php echo wp_get_attachment_url($get_logo); ?>" alt="">
 <hr/>
 <div id="frmwrap" >
 	<?php echo $this->plugin()->customizer_button('Change Logo'); ?>

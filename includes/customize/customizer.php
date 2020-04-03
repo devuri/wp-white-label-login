@@ -60,6 +60,8 @@ final class Wll_Customizer {
 			// css
 				require_once plugin_dir_path( __FILE__ ). 'setting/custom-css.php';
 
+				require_once plugin_dir_path( __FILE__ ). 'setting/blogname.php';
+
 			// copyright
 				//require_once plugin_dir_path( __FILE__ ). 'setting/copyright-text.php';
 

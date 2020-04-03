@@ -42,7 +42,7 @@
     }
 
   # plugin directory
-	  define("WPWLL_VERSION", '4.3.7');
+	  define("WPWLL_VERSION", '4.3.73');
 
   # plugin directory
     define("WPWLL_DIR", dirname(__FILE__));
@@ -150,7 +150,7 @@ final class White_Label_Login {
   public function customizer_button($cbutton_text = 'Use The Customizer'){
     // render button
     $customizer_button  = '<a class="button button-hero"';
-    $customizer_button .= 'href="'.admin_url("/customize.php?autofocus[section]=white_label_login").'">';
+    $customizer_button .= 'href="'.admin_url('/customize.php?url='.urlencode(home_url('/wp-login.php')).'&autofocus[section]=white_label_login').'">';
     $customizer_button .= $cbutton_text;
     $customizer_button .= '</a>';
     return $customizer_button;
@@ -293,11 +293,13 @@ final class White_Label_Login {
    * @return
    */
   public function header() {
-    $header  = '<div class="wll-header" align="center">';
-    $header .= '<h2 align="center">';
-    $header .= '<a  href="'.$this->site_info('url').'" title="'.$this->site_info('name').'">';
+    $header  = '<div id="wll-header" class="wll-header" align="center">';
+    $header .= '<h1 align="center">';
     $header .= $this->site_info('name');
-    $header .= '</a></h2>';
+    //$header .= '<a  href="'.$this->site_info('url').'" title="'.$this->site_info('name').'">';
+    //$header .= $this->site_info('name');
+    //$header .= '</a>';
+    $header .= '</h1>';
     $header .= $this->site_info('header_text');
     $header .= '</div>';
     //$header .= '<div style="background-repeat: no-repeat; background-color: ';
