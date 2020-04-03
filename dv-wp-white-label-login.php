@@ -142,6 +142,21 @@ final class White_Label_Login {
   }
 
   /**
+   * customizer_button()
+   *
+   * quick link to the customizer
+   * @return string
+   */
+  public function customizer_button($cbutton_text = 'Use The Customizer'){
+    // render button
+    $customizer_button  = '<a class="button button-hero"';
+    $customizer_button .= 'href="'.admin_url("/customize.php?autofocus[section]=white_label_login").'">';
+    $customizer_button .= $cbutton_text;
+    $customizer_button .= '</a>';
+    return $customizer_button;
+   }
+
+  /**
    * enqueue_style
    * @param  string $style stylesheet
    * @return
@@ -299,7 +314,7 @@ final class White_Label_Login {
   public function body() {
     ?><style type="text/css">
       body {
-        background-image: url(<?php echo $this->option('background'); ?>);
+        background-image: url(<?php echo wp_get_attachment_url($this->option('background')); ?>);
         background-attachment: fixed;
         background-size:cover;
         background-repeat: no-repeat;
@@ -315,7 +330,7 @@ final class White_Label_Login {
    * @return string
    */
   public function logo(){
-    echo $this->option('logo');
+    echo wp_get_attachment_url($this->option('logo'));
   }
 
   /**

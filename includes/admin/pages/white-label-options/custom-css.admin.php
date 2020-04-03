@@ -9,10 +9,12 @@
  */
 
 ?>
+
+CSS Settings can be updated via the Customizer
 <hr/>
-CSS Settings can be updated via the Customizer<br/>
+
 <div id="frmwrap" >
-	<a class="button button-hero" href="<?php print(admin_url('/customize.php?autofocus[section]=white_label_login')); ?>">Use The Customizer</a>
+	<?php echo $this->plugin()->customizer_button(); ?>
 	<hr/>
 	<div class"wll-css">
 		<label for="input">CSS</label>
