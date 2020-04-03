@@ -13,22 +13,20 @@ p {
 #login {
 	background-repeat: repeat-x;
 	background-position: left top;
-	margin-top: 2%;
+	margin-top: 8%;
 	margin-right: auto;
 	margin-bottom: 4%;
   padding: 26px;
 }
 
 .login form {
-    margin-top: 20px;
+    margin-top: 0px;
     margin-left: 0;
     padding: 26px 24px 46px;
     font-weight: 400;
     overflow: hidden;
-    background: #fff;
     border: 0px solid #ccd0d4;
     box-shadow: 0 0px 0px rgba(0,0,0,.04);
-    /*box-shadow: 0 1px 3px rgba(0,0,0,.04);*/
 }
 
 /** LOGO **/

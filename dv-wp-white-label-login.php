@@ -5,7 +5,7 @@
  * Description: White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
  * Author:      SwitchWebdev.com
  * Author URI:  https://switchwebdev.com
- * Version:     4.3.6
+ * Version:     4.3.7
  * License:     GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: wp-white-label-login
@@ -42,7 +42,7 @@
     }
 
   # plugin directory
-	  define("WPWLL_VERSION", '4.3.6');
+	  define("WPWLL_VERSION", '4.3.7');
 
   # plugin directory
     define("WPWLL_DIR", dirname(__FILE__));
@@ -163,15 +163,16 @@ final class White_Label_Login {
    */
   public function enqueue_style($style = 'wll-base'){
     $wp_login_styles = array(
-      'base'            => 'wll-base.css',
-      'box-background'  => 'wll-box-background.css',
-      'bootstrap'       => 'wll-bootstrap.css',
-      'color-scheme'    => 'wll-color-scheme.css',
-      'header-shadow'   => 'wll-header-shadow.css',
-      'default'         => 'wll-default.css',
-      'align-right'     => 'wll-align-right.css',
-      'align-left'      => 'wll-align-left.css',
-      'user-styles'     => 'wll-user-stylesheet.css',
+      'base'              => 'wll-base.css',
+      'loginform-background'  => 'wll-loginform-background.css',
+      'login-background'  => 'wll-login-background.css',
+      'bootstrap'         => 'wll-bootstrap.css',
+      'color-scheme'      => 'wll-color-scheme.css',
+      'header-shadow'     => 'wll-header-shadow.css',
+      'default'           => 'wll-default.css',
+      'align-right'       => 'wll-align-right.css',
+      'align-left'        => 'wll-align-left.css',
+      'user-styles'       => 'wll-user-stylesheet.css',
     );
     return wp_enqueue_style( $style, plugins_url('css/'.$wp_login_styles[$style], __FILE__ ), array(), WPWLL_VERSION, 'all' );
   }
@@ -187,7 +188,8 @@ final class White_Label_Login {
     $this->enqueue_style('base');
     $this->enqueue_style('default');
     $this->align();
-	  //$this->enqueue_style('box-background');
+    //$this->enqueue_style('loginform-background');
+	  $this->enqueue_style('login-background');
 	  //$this->enqueue_style('color-scheme');
 	  //$this->enqueue_style('bootstrap');
 
@@ -318,7 +320,7 @@ final class White_Label_Login {
         background-attachment: fixed;
         background-size:cover;
         background-repeat: no-repeat;
-        background-position: top;
+        background-position: bottom;
       }
       </style><?php
   }
@@ -402,7 +404,7 @@ if (!class_exists('Wll_Admin_Menu')) {
 require_once plugin_dir_path( __FILE__ ). 'includes/admin/menu/wll.php';
 
 // customizer
-require_once plugin_dir_path( __FILE__ ). 'customizer.php';
+require_once plugin_dir_path( __FILE__ ). 'includes/customize/customizer.php';
 
 add_action( 'admin_menu', 'wll_customize_submenu' );
 function wll_customize_submenu() {
