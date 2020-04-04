@@ -19,6 +19,11 @@
 <header class="wll-header">
 </header>
 <div class="wll-container">
+         <div class="updated notice notice-my-class is-dismissible" data-notice="prefix_deprecated">
+             <p><?php _e( 'Rate this plugin', 'wp-white-label-login' ); ?>
+               <a href="https://wordpress.org/support/plugin/<?php print($this->wp_slug); ?>" target="_blank" rel="noopener noreferrer">Plugins Page WordPress.org</a>
+             </p>
+         </div>
   <div class="wll-admin-wrap"><?php
 
           if (!$this->admin_smenu) {
