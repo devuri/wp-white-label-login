@@ -15,11 +15,11 @@ CSS Settings can be updated via the Customizer
 
 <div id="frmwrap" >
 	<?php echo $this->plugin()->customizer_button(); ?>
-	<hr/>
+	<!--<hr/>
 	<div class"wll-css">
 		<label for="input">CSS</label>
   <textarea class="form-css-text" id="wll-textarea-css" rows="10" disabled>
-		<?php echo $get_custom_css ?>
+		<?php // echo $get_custom_css ?>
   </textarea>
-		</div>
+</div>-->
 </div><!--frmwrap-->
