@@ -5,9 +5,9 @@
 if ( class_exists( 'WP_Customize_Control' ) ) :
 
 	/**
-	 * Displays the upgrade teaser in the Customizer.
+	 * Displays the upgrade message .
 	 */
-	class Wll_Customize_Pro_Control extends WP_Customize_Control {
+	class WllCustomizeProControl extends WP_Customize_Control {
 		/**
 		 * Render Control
 		 */
@@ -38,7 +38,7 @@ endif;
 /**
  *
  */
-final class Wll_Customizer {
+final class WhiteLabelCustomizer {
 
 
 	/**
@@ -179,14 +179,14 @@ final class Wll_Customizer {
 		);
 
 		/**
-		 * Load up the settings
+		 * Load up the Settings
 		 * @var [type]
 		 */
-		require_once plugin_dir_path( __FILE__ )	. 'settings/logo.php';
-		require_once plugin_dir_path( __FILE__ )	. 'settings/layout.php';
-		require_once plugin_dir_path( __FILE__ )	. 'settings/background.php';
-		require_once plugin_dir_path( __FILE__ )	. 'settings/custom-css.php';
-		require_once plugin_dir_path( __FILE__ )	. 'settings/copyright-text.php';
-		require_once plugin_dir_path( __FILE__ )	. 'settings/extras.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/Logo.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/Layout.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/Background.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/Css.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/Copyright.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/Extras.php';
 	}
 }

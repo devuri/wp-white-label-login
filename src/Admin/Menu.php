@@ -21,4 +21,4 @@ $wllmenu = array(
   );
 
 // initialize menu
-$wll_admin_menu = new Wll_Admin_Menu($wllmenu,$wllsubmenu);
+$wll_admin_menu = new AdminMenu($wllmenu,$wllsubmenu);

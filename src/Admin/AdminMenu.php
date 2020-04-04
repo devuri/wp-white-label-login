@@ -19,14 +19,14 @@
  * ----------------------------------------------------------------------------
  */
 
-use Switchwebdev\Admin\Wll_Form\Wll_Form_Helper as Wll_Form;
+use Switchwebdev\Admin\Form\FormHelper as Form;
 
-final class Wll_Admin_Menu {
+final class AdminMenu {
 
     /**
      * class version
      */
-    const WPWLL_ADMIN_VERSION = '3.1.5';
+    const ADMINVERSION = '3.1.5';
 
     /**
      * $page_title
@@ -258,7 +258,7 @@ final class Wll_Admin_Menu {
      * Simple CSS Styles
      */
     public function admin_page_styles() {
-        wp_enqueue_style( 'wll-admin-style', plugin_dir_url( __FILE__ ) . 'css/wll-admin.css', array(), self::WPWLL_ADMIN_VERSION, 'all' );
+        wp_enqueue_style( 'wll-admin-style', WPWLL_URL . 'assets/admin-css/wll-admin.css', array(), self::ADMINVERSION, 'all' );
     }
 
     /**
@@ -325,9 +325,9 @@ final class Wll_Admin_Menu {
       $this->admin_smenu = true;
 
 
-      require_once plugin_dir_path( __FILE__ ). 'head.php';
+      require_once plugin_dir_path( __FILE__ ). 'Pages/head.php';
       $this->autoload_admin_page($page_name);
-      require_once plugin_dir_path( __FILE__ ). 'footer.php';
+      require_once plugin_dir_path( __FILE__ ). 'Pages/footer.php';
     }
 
     /**
@@ -377,11 +377,11 @@ final class Wll_Admin_Menu {
     public function autoload_admin_page($admin_page) {
 
       if ($this->admin_smenu) {
-        $wllform = new Wll_Form();
-        $admin_file = plugin_dir_path( __FILE__ ). 'pages/admin-options/'.$admin_page.'.admin.php';
+        $form = new Form();
+        $admin_file = plugin_dir_path( __FILE__ ). 'Pages/admin-options/'.$admin_page.'.admin.php';
       } else {
-        $wllform = new Wll_Form();
-        $admin_file = plugin_dir_path( __FILE__ ). 'pages/'.$this->menu_slug().'/'.$admin_page.'.admin.php';
+        $form = new Form();
+        $admin_file = plugin_dir_path( __FILE__ ). 'Pages/'.$this->menu_slug().'/'.$admin_page.'.admin.php';
       }
 
       /**
@@ -416,9 +416,9 @@ final class Wll_Admin_Menu {
 
       $page_title = ucfirst($this->get_thepage_name());
 
-      require_once plugin_dir_path( __FILE__ ). 'head.php';
+      require_once plugin_dir_path( __FILE__ ). 'Pages/head.php';
       $this->autoload_admin_page($page_name);
-      require_once plugin_dir_path( __FILE__ ). 'footer.php';
+      require_once plugin_dir_path( __FILE__ ). 'Pages/footer.php';
     }
 
     /**
@@ -456,10 +456,10 @@ final class Wll_Admin_Menu {
          * @link https://developer.wordpress.org/reference/functions/sanitize_title/
          */
         $menu_name = sanitize_title($menu_name);
-        if ( file_exists( plugin_dir_path( __FILE__ ). 'menu/'.$menu_name.'.php' ) ) {
-          require_once plugin_dir_path( __FILE__ ). 'menu/'.$menu_name.'.php';
+        if ( file_exists( plugin_dir_path( __FILE__ ). 'Pages/'.$menu_name.'.php' ) ) {
+          require_once plugin_dir_path( __FILE__ ). 'Pages/'.$menu_name.'.php';
         } else {
-          $debug['make_menu_error'] = plugin_dir_path( __FILE__ ). 'menu/'.$menu_name.'.php';
+          $debug['make_menu_error'] = plugin_dir_path( __FILE__ ). 'Pages/'.$menu_name.'.php';
         }
       }
     }
