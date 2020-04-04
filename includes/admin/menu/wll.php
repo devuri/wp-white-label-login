@@ -15,13 +15,9 @@ $wllmenu = array(
 
   $wllsubmenu = array(
     'Logo',
-    'Background',
     'Custom Background',
-    'Form Align',
-    //'CSS',
     'Custom CSS',
-    //'Color Scheme',
-    //'Login Themes'
+    'Upgrade',
   );
 
 // initialize menu
