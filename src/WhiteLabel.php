@@ -55,7 +55,7 @@ final class WhiteLabel {
      * Load up the Customizer
      * lets load up the customizer stuff here
      */
-    require_once plugin_dir_path( __FILE__ ). 'includes/customize/class-wll-customizer.php';
+    require_once WPWLL_DIR . '/src/Customizer/WhiteLabelCustomizer.php';
   }
 
   /**
@@ -108,18 +108,18 @@ final class WhiteLabel {
    */
   public function enqueue_style($style = 'wll-base'){
     $wp_login_styles = array(
-      'base'              => 'wll-base.css',
-      'loginform-background'  => 'wll-loginform-background.css',
-      'login-background'  => 'wll-login-background.css',
-      'bootstrap'         => 'wll-bootstrap.css',
-      'color-scheme'      => 'wll-color-scheme.css',
-      'header-shadow'     => 'wll-header-shadow.css',
-      'default'           => 'wll-default.css',
-      'align-right'       => 'wll-align-right.css',
-      'align-left'        => 'wll-align-left.css',
-      'user-styles'       => 'wll-user-stylesheet.css',
+      'wll-base'              => 'wll-base.css',
+      'wll-loginform-background'  => 'wll-loginform-background.css',
+      'wll-login-background'  => 'wll-login-background.css',
+      'wll-bootstrap'         => 'wll-bootstrap.css',
+      'wll-color-scheme'      => 'wll-color-scheme.css',
+      'wll-header-shadow'     => 'wll-header-shadow.css',
+      'wll-default'           => 'wll-default.css',
+      'wll-align-right'       => 'wll-align-right.css',
+      'wll-align-left'        => 'wll-align-left.css',
+      'wll-user-styles'       => 'wll-user-stylesheet.css',
     );
-    return wp_enqueue_style( $style, plugins_url('css/'.$wp_login_styles[$style], __FILE__ ), array(), WPWLL_VERSION, 'all' );
+    return wp_enqueue_style( $style, WPWLL_URL . 'assets/css/'.$wp_login_styles[$style], array(), WPWLL_VERSION, 'all' );
   }
 
   /**
@@ -129,14 +129,14 @@ final class WhiteLabel {
    * @return
    */
   public function login_styles() {
-    $this->enqueue_style('header-shadow');
-    $this->enqueue_style('base');
-    $this->enqueue_style('default');
+    $this->enqueue_style('wll-header-shadow');
+    $this->enqueue_style('wll-base');
+    $this->enqueue_style('wll-default');
     $this->align();
-    //$this->enqueue_style('loginform-background');
-	  $this->enqueue_style('login-background');
-	  //$this->enqueue_style('color-scheme');
-	  //$this->enqueue_style('bootstrap');
+    //$this->enqueue_style('wll-loginform-background');
+	  $this->enqueue_style('wll-login-background');
+	  //$this->enqueue_style('wll-color-scheme');
+	  //$this->enqueue_style('wll-bootstrap');
 
 
     /**
@@ -147,9 +147,9 @@ final class WhiteLabel {
      * @var string
      * @link https://developer.wordpress.org/reference/functions/wp_add_inline_style/
      */
-    $this->enqueue_style('user-styles');
+    $this->enqueue_style('wll-user-styles');
     $user_custom_css = $this->option('custom_css');
-    wp_add_inline_style( 'user-styles', $user_custom_css );
+    wp_add_inline_style( 'wll-user-styles', $user_custom_css );
 
     // use theme styles (users can turn this on if they want its off by default)
     // wp_enqueue_style('wll-theme-style',get_stylesheet_directory_uri() . '/style.css',array(),wp_get_theme()->get('Version') );
@@ -165,10 +165,10 @@ final class WhiteLabel {
   public function align(){
     switch ($this->setting('form_layout')) {
     case 'left':
-        $align = $this->enqueue_style('align-left');
+        $align = $this->enqueue_style('wll-align-left');
         break;
     case 'right':
-        $align = $this->enqueue_style('align-right');
+        $align = $this->enqueue_style('wll-align-right');
         break;
     case 'center':
         $align = '';
@@ -221,24 +221,6 @@ final class WhiteLabel {
       'footer_text' => '...',
     );
     return $site_info[$info];
-  }
-
-  public function background(){
-    $background_images = array(
-      'defualt'         => plugins_url('images/wpwll-background.jpeg' , __FILE__ ),
-      'daria-i5iIhHSAtp4'  => plugins_url('images/daria-nepriakhina-i5iIhHSAtp4-.jpg' , __FILE__ ),
-      'laptop-2557571'  => plugins_url('images/laptop-2557571_1920.jpg' , __FILE__ ),
-      'office-820390'  => plugins_url('images/office-820390_1920.jpg' , __FILE__ ),
-      'iphone-791450'   => plugins_url('images/iphone-791450_1920.jpg' , __FILE__ ),
-      'office-932926'   => plugins_url('images/office-932926_1920.jpg' , __FILE__ ),
-      'laptop-2434393'  => plugins_url('images/laptop-2434393_1920.jpg' , __FILE__ ),
-      'woman-1181215'   => plugins_url('images/woman-in-front-of-laptop-computer-1181215.jpg' , __FILE__ ),
-      'laptop-2434393'  => plugins_url('images/laptop-2434393_1920.jpg' , __FILE__ ),
-      'cat-4977436'  => plugins_url('images/cat-4977436_1920.jpg' , __FILE__ ),
-      'blond-1866951'   => plugins_url('images/blond-1866951_1920.jpg' , __FILE__ ),
-      'laptop-157316'   => plugins_url('images/laptop-157316457.jpeg' , __FILE__ ),
-    );
-    return $background_images;
   }
 
   /**

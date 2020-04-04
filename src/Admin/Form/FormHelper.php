@@ -1,13 +1,13 @@
 <?php
 
-namespace Switchwebdev\Admin\Wll_Form;
+namespace Switchwebdev\Admin\Form;
 
 /**
- * Wll_Form_Helper
+ * FormHelper
  *
  * form helper class
  */
-final class Wll_Form_Helper {
+final class FormHelper {
   public $processing = false;
 
   /**

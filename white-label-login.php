@@ -5,7 +5,7 @@
  * Description: White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
  * Author:      SwitchWebdev.com
  * Author URI:  https://switchwebdev.com
- * Version:     5.0.1
+ * Version:     5.1.1
  * License:     GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: wp-white-label-login
@@ -80,23 +80,23 @@
 
 
   // Load the WhiteLabel class.
-  require_once dirname( __FILE__ ) . '/src/WhiteLabel.php';
+  require_once WPWLL_DIR . '/src/WhiteLabel.php';
 
 // initiate --------------------------------------------------------
-   $wll = new White_Label_Login(true);
-   $wll_customizer = new Wll_Customizer($wll);
+   $wll = new WhiteLabel(true);
+   $wll_customizer = new WhiteLabelCustomizer($wll);
 // initiate --------------------------------------------------------
 
 
 // Setup the menu builder class
-if (!class_exists('Wll_Admin_Menu')) {
-  require_once plugin_dir_path( __FILE__ ). 'includes/admin/class-wll-admin-menu.php';
+if (!class_exists('AdminMenu')) {
+  require_once plugin_dir_path( __FILE__ ). 'src/Admin/AdminMenu.php';
  }
 
  // Form Class
- if (!class_exists('Wll_Form_Helper')) {
-   require_once plugin_dir_path( __FILE__ ). 'includes/admin/class-wll-form-helper.php';
+ if (!class_exists('FormHelper')) {
+   require_once plugin_dir_path( __FILE__ ). 'src/Admin/Form/FormHelper.php';
   }
 
 // Menu Item
-require_once plugin_dir_path( __FILE__ ). 'includes/admin/menu/wll.php';
+require_once plugin_dir_path( __FILE__ ). 'src/Admin/Menu.php';
