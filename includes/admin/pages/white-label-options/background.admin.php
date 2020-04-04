@@ -10,7 +10,7 @@ transition: background-color 2s ease-out;
 
 	// vars
 		$background_images = $this->plugin()->background();
-		$get_background = $this->plugin()->option('background');
+		$get_background = $this->plugin()->setting('background_image');
 
 
 /**
