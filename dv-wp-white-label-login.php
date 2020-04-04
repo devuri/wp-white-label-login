@@ -5,7 +5,7 @@
  * Description: White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
  * Author:      SwitchWebdev.com
  * Author URI:  https://switchwebdev.com
- * Version:     4.3.7
+ * Version:     5.0.1
  * License:     GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: wp-white-label-login
@@ -13,7 +13,7 @@
  * Usage:
  * Tags:
  *
- * Requires PHP: 5.4+
+ * Requires PHP: 5.6+
  * Tested up to PHP: 7.0
  *
  * Copyright 2018 - 2020 Uriel Wilson, support@switchwebdev.com
@@ -29,7 +29,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  * ----------------------------------------------------------------------------
  * @category  	Plugin
- * @copyright 	Copyright © 2018 Uriel Wilson.
+ * @copyright 	Copyright © 2020 Uriel Wilson.
  * @package   	WhiteLabelLogin
  * @author    	Uriel Wilson
  * @link      	https://switchwebdev.com
@@ -42,7 +42,7 @@
     }
 
   # plugin directory
-	  define("WPWLL_VERSION", '4.3.73');
+	  define("WPWLL_VERSION", '5.0.1');
 
   # plugin directory
     define("WPWLL_DIR", dirname(__FILE__));
@@ -54,24 +54,25 @@
 	//Activate
 	register_activation_hook( __FILE__, 'wpwll_activation' );
 	function wpwll_activation() {
-
-
-		$wpwll_default_logo = plugins_url('images/wpwll-logo.png', __FILE__ );
-		$wpwll_default_background = plugins_url('images/laptop-157316457.jpeg', __FILE__ );
-
-	// set up some options
-		update_option('wpwll_logo_url', $wpwll_default_logo);
-		update_option('wpwll_background_url', $wpwll_default_background);
-		update_option('wpwll_align', 2 );
+	   // set up some options
+	   $wpwlldefauts = array(
+       'logo' => '0',
+       'background_image' => '0',
+       'form_layout' => 'center',
+       'copyright_text' => 'All Rights Reserved',
+       'background_attachment' => 'fixed',
+       'background_repeat' => 'no-repeat',
+       'background_position' => 'bottom',
+       'background_color' => '#ffffff'
+     );
+		update_option('wpwll_options', $wpwlldefauts );
 		update_option('wpwll_custom_css', '' );
-
     // TODO redirect to a welcome admin page
 	}
 
 	// Deactivate
 	// TODO setup an option for uninstall (delete options or keep them)
 	// TODO ask the user before we delete these values
-	// TODO Move these to uninstall.php
 	register_deactivation_hook( __FILE__, 'wpwll_deactivation' );
 	function wpwll_deactivation() {
 		// moved to uninstall.php
@@ -120,14 +121,19 @@ final class White_Label_Login {
    * @return boolean
    */
   public function white_label_login(){
+    add_action( 'admin_menu', array( $this , 'appearance_submenu') );
     add_action( 'login_enqueue_scripts', array( $this , 'login_styles') );
     add_action( 'login_enqueue_scripts', array( $this , 'login_logo') );
     add_filter( 'login_headerurl', array( $this , 'logo_link') );
     add_filter( 'login_head', array( $this , 'header') );
     add_filter( 'login_head', array( $this , 'body') );
     add_filter( 'login_footer', array( $this , 'footer') );
-    $this->on = 1;
-    return $this->on;
+
+    /**
+     * Load up the Customizer
+     * lets load up the customizer stuff here
+     */
+    require_once plugin_dir_path( __FILE__ ). 'includes/customize/class-wll-customizer.php';
   }
 
   /**
@@ -141,6 +147,23 @@ final class White_Label_Login {
     return $wpslug;
   }
 
+
+  /**
+   * Appearance submenu
+   *
+   * Lets add a submenu for the Customizer
+   * @return [type] [description]
+   */
+  public function appearance_submenu() {
+    add_submenu_page(
+      'themes.php',
+          __( 'White Label Login Customizer', 'wp-white-label-login' ),
+          __( 'White Label Login', 'wp-white-label-login' ),
+          'manage_options',
+          '/customize.php?url='.urlencode(home_url('/wp-login.php'))
+      );
+  }
+
   /**
    * customizer_button()
    *
@@ -150,7 +173,7 @@ final class White_Label_Login {
   public function customizer_button($cbutton_text = 'Use The Customizer'){
     // render button
     $customizer_button  = '<a class="button button-hero"';
-    $customizer_button .= 'href="'.admin_url('/customize.php?url='.urlencode(home_url('/wp-login.php')).'&autofocus[section]=white_label_login').'">';
+    $customizer_button .= 'href="'.admin_url('/customize.php?url='.urlencode(home_url('/wp-login.php'))).'">';
     $customizer_button .= $cbutton_text;
     $customizer_button .= '</a>';
     return $customizer_button;
@@ -218,14 +241,14 @@ final class White_Label_Login {
    * @return
    */
   public function align(){
-    switch ($this->option('align')) {
-    case 0:
+    switch ($this->setting('form_layout')) {
+    case 'left':
         $align = $this->enqueue_style('align-left');
         break;
-    case 1:
+    case 'right':
         $align = $this->enqueue_style('align-right');
         break;
-    case 2:
+    case 'center':
         $align = '';
         break;
     }
@@ -241,12 +264,22 @@ final class White_Label_Login {
    */
   public function option($opt = 'logo'){
     $option = array(
-      'logo'       => get_option('wpwll_logo_url'),
-      'background' => get_option('wpwll_background_url'),
-      'align'      => get_option('wpwll_align'),
-      'custom_css' => get_option('wpwll_custom_css')
+      'wpwll_options' => get_option('wpwll_options'),
+      'custom_css'    => get_option('wpwll_custom_css')
     );
     return $option[$opt];
+  }
+
+  /**
+   * settings
+   *
+   * setup some the options array
+   * @param  string $opt
+   * @return string
+   */
+  public function setting($set = 'background'){
+    $setting = $this->option('wpwll_options');
+    return $setting[$set];
   }
 
   /**
@@ -299,17 +332,37 @@ final class White_Label_Login {
     $header .= $this->site_info('name');
     $header .= '</a>';
     $header .= '</h2>';
+    $header .= '<div class="wll-site-description">';
     $header .= $this->site_info('header_text');
     $header .= '</div>';
-    //$header .= '<div style="background-repeat: no-repeat; background-color: ';
-    //$header .= $this->site_info('background_color').'; background-position: center; background-size: 100%; ';
-    //$header .= 'background-image: url('.$this->option('background').');">';
-    //$header .= '<br/>';
+    $header .= '</div>';
   	echo $header;
   }
 
   /**
-   * Bodycustom_css
+   * e_background
+   *
+   * Output the CSS property
+   * @return string
+   */
+  public function print_css( $property='background_repeat' ){
+    $css = $this->setting('background_repeat');
+    echo $css;
+  }
+
+  /**
+   * e_background
+   *
+   * echo the background for background-image css
+   * @return string
+   * @link https://developer.wordpress.org/reference/functions/wp_get_attachment_url/
+   */
+  public function e_background(){
+    $background_img = wp_get_attachment_url($this->setting('background_image'));
+    echo $background_img;
+  }
+  /**
+   * Body
    *
    * the page body
    * @return
@@ -317,11 +370,12 @@ final class White_Label_Login {
   public function body() {
     ?><style type="text/css">
       body {
-        background-image: url(<?php echo wp_get_attachment_url($this->option('background')); ?>);
-        background-attachment: fixed;
-        background-size:cover;
-        background-repeat: no-repeat;
-        background-position: bottom;
+        background-color: <?php echo $this->setting('background_color'); ?>;
+        background-image: url(<?php $this->e_background(); ?>);
+        background-attachment: <?php echo $this->setting('background_attachment'); ?>;
+        background-size: <?php echo $this->setting('background_size'); ?>;
+        background-repeat: <?php echo $this->setting('background_repeat'); ?>;
+        background-position: <?php echo $this->setting('background_position'); ?>;
       }
       </style><?php
   }
@@ -333,7 +387,7 @@ final class White_Label_Login {
    * @return string
    */
   public function logo(){
-    echo wp_get_attachment_url($this->option('logo'));
+    echo wp_get_attachment_url($this->setting('logo'));
   }
 
   /**
@@ -377,8 +431,10 @@ final class White_Label_Login {
     $footer .= '</p>';
     $footer .= 'Copyright © '.$year.' <a href=" '.$this->site_info('url').' ">';
     $footer .= $this->site_info('name');
-    $footer .= '</a>';
-    $footer .= ' All Rights Reserved. ';
+    $footer .= '</a> ';
+    $footer .= '<span class="wll-footer-copyright-text"> ';
+    $footer .= $this->setting('copyright_text');
+    $footer .= '</span> ';
     $footer .= '</div> ';
   	echo $footer;
   }
@@ -388,6 +444,7 @@ final class White_Label_Login {
 
 // initiate --------------------------------------------------------
    $wll = new White_Label_Login(true);
+   $wll_customizer = new Wll_Customizer($wll);
 // initiate --------------------------------------------------------
 
 
@@ -403,29 +460,3 @@ if (!class_exists('Wll_Admin_Menu')) {
 
 // Menu Item
 require_once plugin_dir_path( __FILE__ ). 'includes/admin/menu/wll.php';
-
-// customizer
-require_once plugin_dir_path( __FILE__ ). 'includes/customize/customizer.php';
-
-add_action( 'admin_menu', 'wll_customize_submenu' );
-function wll_customize_submenu() {
-  add_submenu_page(
-    'themes.php',
-        __( 'White Label Login Customizer', 'wp-white-label-login' ),
-        __( 'White Label Login', 'wp-white-label-login' ),
-        'manage_options',
-        '/customize.php?autofocus[section]=white_label_login'
-    );
-}
-
-
-add_action( 'customize_preview_init', 'cd_customizer' );
-function cd_customizer() {
-	wp_enqueue_script(
-		  'cd_customizer',
-		  plugins_url( '/js/customizer.js',__FILE__ ),
-		  array( 'jquery','customize-preview' ),
-		  '',
-		  true
-	);
-}
