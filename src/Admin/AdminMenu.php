@@ -2,8 +2,8 @@
 /**
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
- * @package   	Wll_Admin_Menu
- * @version   	3.1.5
+ * @package   	AdminMenu
+ * @version   	3.1.6
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
  * @link      	https://switchwebdev.com
@@ -26,7 +26,7 @@ final class AdminMenu {
     /**
      * class version
      */
-    const ADMINVERSION = '3.1.5';
+    const ADMINVERSION = '3.1.6';
 
     /**
      * $page_title
@@ -124,7 +124,7 @@ final class AdminMenu {
      * we will get this from the $plugin object
      * @var string
      */
-    public $wp_slug;
+    public $slug;
 
     /**
      * $submenu_args
@@ -173,7 +173,7 @@ final class AdminMenu {
       $this->plugin     = $main_menu[8];
 
       // setup the slug
-      $this->wp_slug     = $this->plugin->wp_slug();
+      $this->slug     = $this->plugin->slug();
 
       // submenu
       $this->submenu_args = $submenu_items;

@@ -1,15 +1,23 @@
 <?php
 
+
+	/**
+	 * [$transport_type description]
+	 * @var string //'postMessage' or 'refresh'
+	 * @link https://developer.wordpress.org/themes/customize-api/customizer-objects/
+	 */
+	$transport_type = 'refresh';
+
 /**
  * Background Color
  * @var [type]
  */
 $wp_customize->add_setting( 'wpwll_options[background_color]',
 	array(
-		'type' 							=> 'option', //  setup the option here
+		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> '#ffffff',
-		'transport' 				=> 'postMessage', // or 'refresh'
+		'transport' 				=> $transport_type,
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -32,7 +40,7 @@ $wp_customize->add_setting( 'wpwll_options[background_image]',
 	array(
 		'type' 							=> 'option', //  setup the option here
 		'capability' 				=> 'manage_options',
-		'transport' 				=> 'postMessage', // or 'refresh'
+		'transport' 				=> $transport_type, // or 'refresh'
 		'sanitize_callback' => 'absint',
 	) );
 
@@ -56,7 +64,7 @@ $wp_customize->add_setting( 'wpwll_options[background_attachment]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'fixed',
-		'transport' 				=> 'postMessage', // or 'refresh'
+		'transport' 				=> $transport_type, // or 'refresh'
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
@@ -82,7 +90,7 @@ $wp_customize->add_setting( 'wpwll_options[background_size]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'cover',
-		'transport' 				=> 'postMessage', // or 'refresh'
+		'transport' 				=> $transport_type, // or 'refresh'
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
@@ -111,7 +119,7 @@ $wp_customize->add_setting( 'wpwll_options[background_repeat]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'no-repeat',
-		'transport' 				=> 'postMessage', // or 'refresh'
+		'transport' 				=> $transport_type, // or 'refresh'
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
@@ -140,7 +148,7 @@ $wp_customize->add_setting( 'wpwll_options[background_position]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'bottom',
-		'transport' 				=> 'postMessage', // or 'refresh'
+		'transport' 				=> $transport_type, // or 'refresh'
 		'sanitize_callback' => 'sanitize_title',
 	) );
 

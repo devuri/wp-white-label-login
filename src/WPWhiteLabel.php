@@ -1,38 +1,69 @@
 <?php
 
+
 /**
  * Main class White_Label_Login
  */
-final class WhiteLabel {
+final class WPWhiteLabel {
 
   /**
-   * $on
+   * $enable
    *
    * check whether this is turned on or off
    * @var boolean
    */
-  public $on;
+  public $enable;
 
   /**
-   * [__construct description]
-   * @param boolean $init on or off
+   * $instance
+   *
+   * setup WPWhiteLabel
+   * @var object
    */
-  function __construct( $init = false){
+  private static $instance;
 
-    /**
-     * check if the plugin
-     * is on or off
-     * @var [type]
-     */
-    $this->on = $init;
+  /**
+   * [instance description]
+   * @param  boolean $init active
+   * @return object
+   */
+  public static function instance($init = false) {
 
-    /**
-     * if the plugin is on lets make the login pretty
-     * @var [type]
-     */
-    if ($this->on) {
-      $this->init();
+    if ( ! isset( self::$instance ) && ! ( self::$instance instanceof WPWhiteLabel ) ) {
+
+      self::$instance = new WPWhiteLabel();
+      self::$instance->load_textdomain();
+      self::$instance->includes();
+
+      /**
+       * check if the plugin
+       * is on or off
+       * @var [type]
+       */
+      self::$instance->enable = $init;
+
+      /**
+       * if the plugin is on lets make the login pretty
+       * @var [type]
+       */
+      if (self::$instance->enable) {
+        self::$instance->init();
+      }
+
+      add_action( 'plugins_loaded', array( self::$instance, 'objects' ), 10 );
+
     }
+    return self::$instance;
+  }
+
+  /**
+   * Loads the plugin language files.
+   *
+   * @since 1.0.0
+   */
+  public function load_textdomain() {
+
+    load_plugin_textdomain( 'wp-white-label-login', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
   }
 
   /**
@@ -50,12 +81,38 @@ final class WhiteLabel {
     add_filter( 'login_head', array( $this , 'header') );
     add_filter( 'login_head', array( $this , 'body') );
     add_filter( 'login_footer', array( $this , 'footer') );
+  }
 
-    /**
-     * Load up the Customizer
-     * lets load up the customizer stuff here
-     */
-    require_once WPWLL_DIR . '/src/Customizer/WhiteLabelCustomizer.php';
+  /**
+	 * Include files.
+	 *
+	 * @since 1.0.0
+	 */
+	private function includes() {
+
+		// includes
+		require_once WPWLL_DIR . '/src/Customizer/WhiteLabelCustomizer.php';
+
+		// Admin/Dashboard stuff
+		if ( is_admin() ) {
+			require_once WPWLL_DIR . '/src/Admin/AdminMenu.php';
+			require_once WPWLL_DIR . '/src/Admin/Form/FormHelper.php';
+			require_once WPWLL_DIR . '/src/Admin/Menu.php';
+		}
+	}
+
+  /**
+   * Setup objects.
+   *
+   * @since 1.0.0
+   */
+  public function objects() {
+
+    // objects
+    $this->customizer = new WhiteLabelCustomizer(self::$instance);
+
+    // ok sparky everything seems to be loaded
+    do_action( 'wpwhitelabel_loaded' );
   }
 
   /**
@@ -64,7 +121,7 @@ final class WhiteLabel {
    * WordPress.org repo slug
    * @return [type] [description]
    */
-  public function wp_slug(){
+  public function slug(){
     $wpslug = 'wp-white-label-login';
     return $wpslug;
   }

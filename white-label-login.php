@@ -78,25 +78,21 @@
 		// moved to uninstall.php
 	}
 
+  /**
+   * require_once // Load the WhiteLabel class.
+   * @var [type]
+   */
+  require_once WPWLL_DIR . '/src/WPWhiteLabel.php';
 
-  // Load the WhiteLabel class.
-  require_once WPWLL_DIR . '/src/WhiteLabel.php';
-
-// initiate --------------------------------------------------------
-   $wll = new WhiteLabel(true);
-   $wll_customizer = new WhiteLabelCustomizer($wll);
-// initiate --------------------------------------------------------
-
-
-// Setup the menu builder class
-if (!class_exists('AdminMenu')) {
-  require_once plugin_dir_path( __FILE__ ). 'src/Admin/AdminMenu.php';
- }
-
- // Form Class
- if (!class_exists('FormHelper')) {
-   require_once plugin_dir_path( __FILE__ ). 'src/Admin/Form/FormHelper.php';
+  /**
+   * [wpwhitelabel description]
+   * @return object [description]
+   */
+  function wpwhitelabel() {
+    // new up wll object
+  	return WPWhiteLabel::instance(true);
   }
 
-// Menu Item
-require_once plugin_dir_path( __FILE__ ). 'src/Admin/Menu.php';
+// initiate --------------------------------------------------------
+    wpwhitelabel();
+// initiate --------------------------------------------------------
