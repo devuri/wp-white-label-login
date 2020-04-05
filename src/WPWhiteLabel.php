@@ -387,7 +387,7 @@ final class WPWhiteLabel {
   	$year = date("Y");
 
     //$footer  = '<br/><br/> </div>';
-    $footer  = '<div id="footer" class="footer-copyright" align="center">';
+    $footer  = '<div id="footer" class="footer-copyright" align="'.$this->setting('footer_alignment').'">';
     $footer .= '<p class="footer_text">';
     $footer .= $this->site_info('footer_text');
     $footer .= '</p>';
