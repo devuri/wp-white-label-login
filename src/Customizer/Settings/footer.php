@@ -22,6 +22,28 @@ $wp_customize->add_control('wpwll_options[copyright_text]', array(
 ));
 
 /**
+ * Footer Color
+ * @var [type]
+ */
+$wp_customize->add_setting( 'wpwll_options[footer_text_color]',
+	array(
+		'type' 							=> 'option',
+		'capability' 				=> 'manage_options',
+		'default' 					=> '#747474',
+		'transport' 				=> $header_preview_type,
+		'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+$wp_customize->add_control(
+	 new WP_Customize_Color_Control(
+		$wp_customize, 'wpwll_options[footer_text_color]',
+		 array(
+			 'label' => __( 'Text Color' ),
+			 'description' => __( 'Select a color' ),
+			 'section' => 'white_label_footer', // Add a default or your own section
+			)
+	) );
+/**
  * Footer Alignment
  * @var [type]
  */

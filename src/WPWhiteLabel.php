@@ -387,13 +387,14 @@ final class WPWhiteLabel {
   	$year = date("Y");
 
     //$footer  = '<br/><br/> </div>';
-    $footer  = '<div id="footer" class="footer-copyright" align="'.$this->setting('footer_alignment').'">';
+    $footer  = '<div  style="color: '.$this->setting('footer_text_color').';" id="footer" class="footer-copyright" align="'.$this->setting('footer_alignment').'">';
     $footer .= '<p class="footer_text">';
     $footer .= $this->site_info('footer_text');
     $footer .= '</p>';
-    $footer .= 'Copyright © '.$year.' <a href=" '.$this->site_info('url').' ">';
+    $footer .= 'Copyright © ';
+    //$footer .= '<a href=" '.$this->site_info('url').' ">';
     $footer .= $this->site_info('name');
-    $footer .= '</a> ';
+    //$footer .= '</a> ';
     $footer .= '<span class="wll-footer-copyright-text"> ';
     $footer .= $this->setting('copyright_text');
     $footer .= '</span> ';
