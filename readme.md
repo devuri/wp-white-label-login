@@ -11,7 +11,7 @@ But maybe you want to change the logo or change the login page background, well 
 
 ![screenshot](https://user-images.githubusercontent.com/4777400/77988677-8ce1b900-72e2-11ea-81cc-f93c835119b4.png)
 
-###  Easy Custom Login Page Customizer detailed features:
+###  Custom Login Page Customizer detailed features:
 * Custom Login page header
 * Custom Login page header background color
 * Custom Login page header description text
