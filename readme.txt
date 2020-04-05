@@ -21,18 +21,18 @@ But maybe you want to change the logo or change the login page background, well 
 
 = Custom Login Page Customizer detailed feature list: =
 * Custom Login page header
-* Custom Login page header background color
+* Custom Login page header background-color
 * Custom Login page header description text
 * Custom Login page header link
 * Custom logo Change WordPress login logo
 * Custom Login page logo link
 * Change login form alignment
 * Add a custom background image
-* Add a custom background-attachment property set whether background image scrolls with the rest of the page, or is fixed
+* Add a custom background-attachment property set whether background image scrolls with the rest of the page or is fixed
 * Add a custom background-size specifies the size of the background images
-* Add a custom background-repeat property set if/how background image will be repeated.
+* Add a custom background-repeat property sets if/how the background image will be repeated.
 * Add a custom background-position property set the starting position of a background image.
-* Add a custom background color
+* Add a custom background-color
 * Add Custom Login Page CSS
 * Custom WordPress Login Page Footer
 
@@ -40,11 +40,12 @@ By far the simplest login white label plugin for any WordPress Website, activate
 
 Easy to use, simple settings options, simplified sensible defaults, you never need to change a single setting the new settings are completely optional.
 
-The plugin options can be found by going to Appearance > Customize > White Label Login Options
+The plugin options can be found by going to Appearance > Customize > White Label Login Options.
+
 If you found a bug or have suggestions head over to the [Support Section](https://wordpress.org/support/plugin/wp-white-label-login/)
 
-
 == Installation ==
+
 1. Upload White Label Login to the /wp-content/plugins/ directory.
 2. Activate the plugin through the \'Plugins\' menu in WordPress.
 3. That’s it!.
@@ -66,8 +67,8 @@ The plugin options can be found by going to Appearance > Customize > White Label
 
 == Screenshots ==
 
-1. ...
-2. ...
+1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif).
+2. This is the second screen shot
 
 == Changelog ==
 
