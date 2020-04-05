@@ -287,14 +287,15 @@ final class WPWhiteLabel {
    * @return
    */
   public function header() {
-    $header  = '<div id="wll-header" class="wll-header" align="center">';
-    $header .= '<h2 align="center">';
-    $header .= '<a  href="'.$this->site_info('url').'" title="'.$this->site_info('name').'">';
-    $header .= $this->site_info('name');
-    $header .= '</a>';
+    $header  = '<div style="background-color: '.$this->setting('header_background_color').'; color: '.$this->setting('header_text_color').';" id="wll-header" class="wll-header" ';
+    $header .= 'align="'.$this->setting('header_alignment').'">';
+    $header .= '<h2 align="'.$this->setting('header_alignment').'">';
+    //$header .= '<a  href="'.$this->site_info('url').'" title="'.$this->site_info('name').'">';
+    $header .= $this->setting('header_title');
+    //$header .= '</a>';
     $header .= '</h2>';
     $header .= '<div class="wll-site-description">';
-    $header .= $this->site_info('header_text');
+    $header .= $this->setting('header_description');
     $header .= '</div>';
     $header .= '</div>';
   	echo $header;
