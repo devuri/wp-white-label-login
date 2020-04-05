@@ -2,11 +2,11 @@
 
 
 	/**
-	 * [$transport_type description]
+	 * [$header_preview_type description]
 	 * @var string //'postMessage' or 'refresh'
 	 * @link https://developer.wordpress.org/themes/customize-api/customizer-objects/
 	 */
-	$transport_type = 'refresh';
+	$header_preview_type = 'refresh';
 
 
 	$wp_customize->add_setting( 'wpwll_options[header_title]',
@@ -14,7 +14,7 @@
 			'type' => 'option', //  setup the option here
 			'capability' => 'manage_options',
 			'default' => get_bloginfo( 'name' ),
-			'transport' => $transport_type, // or 'refresh'
+			'transport' => $header_preview_type, // or 'refresh'
 			'sanitize_callback' => 'sanitize_text_field'
 		) );
 
@@ -31,7 +31,7 @@
 			'type' => 'option', //  setup the option here
 			'capability' => 'manage_options',
 			'default' => get_bloginfo( 'description' ),
-			'transport' => $transport_type, // or 'refresh'
+			'transport' => $header_preview_type, // or 'refresh'
 			'sanitize_callback' => 'sanitize_text_field'
 		) );
 
@@ -51,7 +51,7 @@
 			'type' 							=> 'option',
 			'capability' 				=> 'manage_options',
 			'default' 					=> '#000000',
-			'transport' 				=> $transport_type,
+			'transport' 				=> $header_preview_type,
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 
@@ -74,7 +74,7 @@ $wp_customize->add_setting( 'wpwll_options[header_background_color]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> '#ffffff',
-		'transport' 				=> $transport_type,
+		'transport' 				=> $header_preview_type,
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -96,8 +96,8 @@ $wp_customize->add_setting( 'wpwll_options[header_alignment]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
-		'default' 					=> 'bottom',
-		'transport' 				=> $transport_type, // or 'refresh'
+		'default' 					=> 'center',
+		'transport' 				=> $header_preview_type, // or 'refresh'
 		'sanitize_callback' => 'sanitize_title',
 	) );
 

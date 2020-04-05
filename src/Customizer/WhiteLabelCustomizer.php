@@ -163,7 +163,7 @@ final class WhiteLabelCustomizer {
 		 */
 		$wp_customize->add_section( 'white_label_footer',
 			array(
-				'title'              => __( 'Login Footer' ),
+				'title'              => __( 'Footer' ),
 				//'priority'           => 210,
 				'capability'				 => 'manage_options',
 				//'description_hidden' => true,
@@ -196,7 +196,7 @@ final class WhiteLabelCustomizer {
 		require_once plugin_dir_path( __FILE__ )	. 'Settings/layout.php';
 		require_once plugin_dir_path( __FILE__ )	. 'Settings/background.php';
 		require_once plugin_dir_path( __FILE__ )	. 'Settings/css.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/copyright.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/footer.php';
 		require_once plugin_dir_path( __FILE__ )	. 'Settings/extras.php';
 	}
 }
