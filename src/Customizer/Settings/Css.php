@@ -8,7 +8,6 @@ $wp_customize->add_setting( 'wpwll_custom_css',
 		'capability' => 'manage_options',
 		'default' => '',
 		'transport' => 'postMessage',
-		//'transport' => 'refresh', // or postMessage
 		'sanitize_callback' => 'wp_strip_all_tags',
 	) );
 
