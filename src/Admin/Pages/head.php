@@ -13,8 +13,10 @@
 ?><head>
 <div id="wll-important-notice">
   <span class="wll-notice-message">
-    If you found a bug or have suggestions head over to the
+    Do you have suggestions head over to the
     <a href="https://wordpress.org/support/plugin/<?php print($this->wp_slug); ?>" target="_blank" rel="noopener noreferrer">Plugins Support Section</a>.
+    If you enjoy using this plugin
+    <a href="https://wordpress.org/plugins/wp-white-label-login/#reviews" target="_blank" rel="noopener noreferrer">please leave a positive feedback here.</a>.
   </span>
 </div>
 <header class="wll-header">
