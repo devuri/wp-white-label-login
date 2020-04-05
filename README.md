@@ -20,9 +20,9 @@ But maybe you want to change the logo or change the login page background, well 
 * Custom Login page logo link
 * Change login form alignment
 * Add a custom background image
-* Add a custom background image background-attachment property set whether background image scrolls with the rest of the page, or is fixed
-* Add a custom background image background-size specifies the size of the background images
-* Add a custom background image background-repeat property set if/how background image will be repeated.
+* Add a custom background-attachment property set whether background image scrolls with the rest of the page, or is fixed
+* Add a custom background-size specifies the size of the background images
+* Add a custom background-repeat property set if/how background image will be repeated.
 * Add a custom background-position property set the starting position of a background image.
 * Add a custom background color
 * Add Custom Login Page CSS
