@@ -11,12 +11,22 @@ But maybe you want to change the logo or change the login page background, well 
 
 ![screenshot](https://user-images.githubusercontent.com/4777400/77988677-8ce1b900-72e2-11ea-81cc-f93c835119b4.png)
 
-###  Easy Custom Login Page 
-* Change WordPress login logo
-* Change login background
-* Custom WordPress Login Page Footer
+###  Easy Custom Login Page Customizer detailed features:
+* Custom Login page header
+* Custom Login page header background color
+* Custom Login page header description text
+* Custom Login page header link
+* Custom logo Change WordPress login logo
+* Custom Login page logo link
+* Change login form alignment
+* Add a custom background image
+* Add a custom background image background-attachment property set whether background image scrolls with the rest of the page, or is fixed
+* Add a custom background image background-size specifies the size of the background images
+* Add a custom background image background-repeat property set if/how background image will be repeated.
+* Add a custom background-position property set the starting position of a background image.
+* Add a custom background color
 * Add Custom Login Page CSS
-* Customize the Login page header
+* Custom WordPress Login Page Footer
 
 ![screenshot-2](https://user-images.githubusercontent.com/4777400/78467339-4a98ed00-76d1-11ea-829e-a0eb7a01f31f.png)
 
