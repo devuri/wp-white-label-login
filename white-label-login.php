@@ -60,6 +60,7 @@
        'background_image' => '0',
        'form_layout' => 'center',
        'copyright_text' => 'All Rights Reserved',
+       'footer_text_color' => '#747474',
        'footer_alignment' => 'center',
        'background_attachment' => 'fixed',
        'background_repeat' => 'no-repeat',
