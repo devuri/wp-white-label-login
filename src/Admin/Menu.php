@@ -1,6 +1,6 @@
 <?php
 
-# Lockdown Menu
+
 $wllmenu = array(
   'White Label Login Settings',
   'WP White Label',
@@ -10,15 +10,14 @@ $wllmenu = array(
   'dashicons-art',
   6.5,
   'wll',
-  $wll,
+  wpwhitelabel(),
 );
 
   $wllsubmenu = array(
     'Logo',
     'Custom Background',
     'Custom CSS',
-    'Upgrade',
-  );
+);
 
 // initialize menu
 $wll_admin_menu = new AdminMenu($wllmenu,$wllsubmenu);
