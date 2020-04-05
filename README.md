@@ -18,6 +18,8 @@ But maybe you want to change the logo or change the login page background, well 
 * Add Custom Login Page CSS
 * Customize the Login page header
 
+![screenshot-2](https://user-images.githubusercontent.com/4777400/78467339-4a98ed00-76d1-11ea-829e-a0eb7a01f31f.png)
+
 By far the simplest login white label plugin for any WordPress Website no fiddles and strings, activate and you are done.
 
 Easy to use, simple settings options, simplified sensible defaults, you never need to change a single setting the new settings are completely optional.
