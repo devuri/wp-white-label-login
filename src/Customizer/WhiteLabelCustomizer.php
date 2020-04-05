@@ -107,6 +107,15 @@ final class WhiteLabelCustomizer {
 		);
 
 		// Add Section.
+		$wp_customize->add_section( 'white_label_header',
+			array(
+				'title'              => __( 'Header' ),
+				'capability'				 => 'manage_options',
+				'description'        => $description,
+				'panel'        			 => 'wll_options_panel',
+			)
+		);
+		// Add Section.
 		$wp_customize->add_section( 'white_label_logo',
 			array(
 				'title'              => __( 'Login Logo' ),
@@ -154,7 +163,7 @@ final class WhiteLabelCustomizer {
 		 */
 		$wp_customize->add_section( 'white_label_footer',
 			array(
-				'title'              => __( 'Login Footer' ),
+				'title'              => __( 'Footer' ),
 				//'priority'           => 210,
 				'capability'				 => 'manage_options',
 				//'description_hidden' => true,
@@ -182,11 +191,12 @@ final class WhiteLabelCustomizer {
 		 * Load up the Settings
 		 * @var [type]
 		 */
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/Logo.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/Layout.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/Background.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/Css.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/Copyright.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/Extras.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/header.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/logo.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/layout.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/background.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/css.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/footer.php';
+		require_once plugin_dir_path( __FILE__ )	. 'Settings/extras.php';
 	}
 }

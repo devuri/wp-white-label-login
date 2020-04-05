@@ -63,7 +63,12 @@
        'background_attachment' => 'fixed',
        'background_repeat' => 'no-repeat',
        'background_position' => 'bottom',
-       'background_color' => '#ffffff'
+       'background_color' => '#ffffff',
+       'header_title' => get_bloginfo('name'),
+       'header_description' => get_bloginfo('description'),
+       'header_text_color' => '#000000',
+       'header_background_color' => '#ffffff',
+       'header_alignment' => 'center'
      );
 		update_option('wpwll_options', $wpwlldefauts );
 		update_option('wpwll_custom_css', '' );
