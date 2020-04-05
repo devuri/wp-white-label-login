@@ -1,4 +1,4 @@
-# WP White Label Login
+# White Label Login
 
 
 ### White Label Login, Custom WordPress Login Page, Registration, and Lost Password Page
