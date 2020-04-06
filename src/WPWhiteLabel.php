@@ -36,7 +36,7 @@ final class WPWhiteLabel {
       self::$instance->includes();
 
       /**
-       * check if the plugin
+       * check if the plugin$sections->whitelabel_options()
        * is on or off
        * @var [type]
        */
@@ -91,6 +91,8 @@ final class WPWhiteLabel {
 	private function includes() {
 
 		// includes
+		require_once WPWLL_DIR . '/src/Customizer/WhiteLabelOptions.php';
+		require_once WPWLL_DIR . '/src/Customizer/Sections.php';
 		require_once WPWLL_DIR . '/src/Customizer/WhiteLabelCustomizer.php';
 
 		// Admin/Dashboard stuff
