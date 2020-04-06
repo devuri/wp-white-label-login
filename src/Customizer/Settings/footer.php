@@ -6,7 +6,7 @@
  */
 $footer_preview_type = 'refresh';
 
-$wp_customize->add_setting( 'wpwll_options[copyright_text]',
+$this->customizer()->add_setting( 'wpwll_options[copyright_text]',
 	array(
 		'type' => 'option', //  setup the option here
 		'capability' => 'manage_options',
@@ -15,7 +15,7 @@ $wp_customize->add_setting( 'wpwll_options[copyright_text]',
 		'sanitize_callback' => 'sanitize_text_field'
 	) );
 
-$wp_customize->add_control('wpwll_options[copyright_text]', array(
+$this->customizer()->add_control('wpwll_options[copyright_text]', array(
 		'label'   => 'Change Copyright Text',
 		'section' => 'white_label_footer',
 		'type'    => 'text',
@@ -25,7 +25,7 @@ $wp_customize->add_control('wpwll_options[copyright_text]', array(
  * Footer Color
  * @var [type]
  */
-$wp_customize->add_setting( 'wpwll_options[footer_text_color]',
+$this->customizer()->add_setting( 'wpwll_options[footer_text_color]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
@@ -34,9 +34,9 @@ $wp_customize->add_setting( 'wpwll_options[footer_text_color]',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
-$wp_customize->add_control(
+$this->customizer()->add_control(
 	 new WP_Customize_Color_Control(
-		$wp_customize, 'wpwll_options[footer_text_color]',
+		$this->customizer(), 'wpwll_options[footer_text_color]',
 		 array(
 			 'label' => __( 'Text Color' ),
 			 'description' => __( 'Select a color' ),
@@ -47,7 +47,7 @@ $wp_customize->add_control(
  * Footer Alignment
  * @var [type]
  */
-$wp_customize->add_setting( 'wpwll_options[footer_alignment]',
+$this->customizer()->add_setting( 'wpwll_options[footer_alignment]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
@@ -56,7 +56,7 @@ $wp_customize->add_setting( 'wpwll_options[footer_alignment]',
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
-$wp_customize->add_control( 'wpwll_options[footer_alignment]',
+$this->customizer()->add_control( 'wpwll_options[footer_alignment]',
 	array(
 			'type' 				=> 'radio',
 			'section' 			=> 'white_label_footer',

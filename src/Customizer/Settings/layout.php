@@ -1,7 +1,7 @@
 <?php
 
 
-$wp_customize->add_setting( 'wpwll_options[form_layout]',
+$this->customizer()->add_setting( 'wpwll_options[form_layout]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
@@ -10,7 +10,7 @@ $wp_customize->add_setting( 'wpwll_options[form_layout]',
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
-$wp_customize->add_control( 'wpwll_options[form_layout]',
+$this->customizer()->add_control( 'wpwll_options[form_layout]',
 	array(
 	  'type' => 'radio',
 	  'section' => 'white_label_layout',

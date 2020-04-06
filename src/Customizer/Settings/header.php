@@ -9,7 +9,7 @@
 	$header_preview_type = 'refresh';
 
 
-	$wp_customize->add_setting( 'wpwll_options[header_title]',
+	$this->customizer()->add_setting( 'wpwll_options[header_title]',
 		array(
 			'type' => 'option', //  setup the option here
 			'capability' => 'manage_options',
@@ -18,7 +18,7 @@
 			'sanitize_callback' => 'sanitize_text_field'
 		) );
 
-	$wp_customize->add_control('wpwll_options[header_title]', array(
+	$this->customizer()->add_control('wpwll_options[header_title]', array(
 			'label'   => 'Title',
 			'section' => 'white_label_header',
 			'description' 	=> __( 'The header title text.' ),
@@ -26,7 +26,7 @@
 	));
 
 
-	$wp_customize->add_setting( 'wpwll_options[header_description]',
+	$this->customizer()->add_setting( 'wpwll_options[header_description]',
 		array(
 			'type' => 'option', //  setup the option here
 			'capability' => 'manage_options',
@@ -35,7 +35,7 @@
 			'sanitize_callback' => 'sanitize_text_field'
 		) );
 
-	$wp_customize->add_control('wpwll_options[header_description]', array(
+	$this->customizer()->add_control('wpwll_options[header_description]', array(
 			'label'   => 'Change the description',
 			'section' => 'white_label_header',
 			'description' 	=> __( 'The header description text.' ),
@@ -46,7 +46,7 @@
 	 * Text Color
 	 * @var [type]
 	 */
-	$wp_customize->add_setting( 'wpwll_options[header_text_color]',
+	$this->customizer()->add_setting( 'wpwll_options[header_text_color]',
 		array(
 			'type' 							=> 'option',
 			'capability' 				=> 'manage_options',
@@ -55,9 +55,9 @@
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 
-	$wp_customize->add_control(
+	$this->customizer()->add_control(
 		 new WP_Customize_Color_Control(
-			$wp_customize, 'wpwll_options[header_text_color]',
+			$this->customizer(), 'wpwll_options[header_text_color]',
 			 array(
 			   'label' => __( 'Text Color' ),
 			   'description' => __( 'Select a color' ),
@@ -69,7 +69,7 @@
  * Background Color
  * @var [type]
  */
-$wp_customize->add_setting( 'wpwll_options[header_background_color]',
+$this->customizer()->add_setting( 'wpwll_options[header_background_color]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
@@ -78,9 +78,9 @@ $wp_customize->add_setting( 'wpwll_options[header_background_color]',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
-$wp_customize->add_control(
+$this->customizer()->add_control(
 	 new WP_Customize_Color_Control(
-		$wp_customize, 'wpwll_options[header_background_color]',
+		$this->customizer(), 'wpwll_options[header_background_color]',
 		 array(
 		   'label' => __( 'Background Color' ),
 		   'description' => __( 'Select a color' ),
@@ -92,7 +92,7 @@ $wp_customize->add_control(
  * Background Alignment
  * @var [type]
  */
-$wp_customize->add_setting( 'wpwll_options[header_alignment]',
+$this->customizer()->add_setting( 'wpwll_options[header_alignment]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
@@ -101,7 +101,7 @@ $wp_customize->add_setting( 'wpwll_options[header_alignment]',
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
-$wp_customize->add_control( 'wpwll_options[header_alignment]',
+$this->customizer()->add_control( 'wpwll_options[header_alignment]',
 	array(
 			'type' 				=> 'radio',
 			'section' 			=> 'white_label_header',

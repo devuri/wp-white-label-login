@@ -2,7 +2,7 @@
 
 
 // CSS
-$wp_customize->add_setting( 'wpwll_custom_css',
+$this->customizer()->add_setting( 'wpwll_custom_css',
 	array(
 		'type' => 'option', // or 'option'
 		'capability' => 'manage_options',
@@ -12,9 +12,9 @@ $wp_customize->add_setting( 'wpwll_custom_css',
 	) );
 
 // add control
-$wp_customize->add_control(
+$this->customizer()->add_control(
 	new WP_Customize_Code_Editor_Control(
-		$wp_customize,
+		$this->customizer(),
 		'wpwll_custom_css',
 		array(
 			'label'       => __( 'Login Page CSS' ),
