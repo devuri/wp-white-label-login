@@ -1,5 +1,5 @@
 <?php
-
+namespace WPWhiteLabel;
 /**
  * Upgrade Control
  */
@@ -8,7 +8,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 	/**
 	 * Displays the upgrade message .
 	 */
-	class WllCustomizeProControl extends WP_Customize_Control {
+	class ProControl extends WP_Customize_Control {
 		/**
 		 * Render Control
 		 */

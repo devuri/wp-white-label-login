@@ -1,4 +1,8 @@
 <?php
+
+namespace WPWhiteLabel;
+use WPWhiteLabel\Admin\Form\FormHelper as Form;
+
 /**
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
@@ -19,7 +23,6 @@
  * ----------------------------------------------------------------------------
  */
 
-use Switchwebdev\Admin\Form\FormHelper as Form;
 
 final class AdminMenu {
 
@@ -159,6 +162,7 @@ final class AdminMenu {
      * @param array $admin_only special admin only menu
      * @since 1.0
      */
+
     function __construct(array $main_menu, array $submenu_items = array(), array $admin_only = array()) {
 
       // define main menu args

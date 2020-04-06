@@ -1,10 +1,13 @@
 <?php
 
 namespace WPWhiteLabel;
+
+
+
 /**
  * Main class White_Label_Login
  */
-final class WPWhiteLabel {
+final class WhiteLabel {
 
   /**
    * $enable
@@ -31,7 +34,7 @@ final class WPWhiteLabel {
 
     if ( ! isset( self::$instance ) && ! ( self::$instance instanceof WPWhiteLabel ) ) {
 
-      self::$instance = new WPWhiteLabel();
+      self::$instance = new WhiteLabel();
       self::$instance->load_textdomain();
       self::$instance->includes();
 
@@ -91,15 +94,15 @@ final class WPWhiteLabel {
 	private function includes() {
 
 		// includes
-		require_once WPWLL_DIR . '/src/Customizer/WhiteLabelOptions.php';
-		require_once WPWLL_DIR . '/src/Customizer/Sections.php';
-		require_once WPWLL_DIR . '/src/Customizer/WhiteLabelCustomizer.php';
+		require_once WPWLL_DIR . '/src/WPWhiteLabel/Customizer/Options.php';
+		require_once WPWLL_DIR . '/src/WPWhiteLabel/Customizer/Sections.php';
+		require_once WPWLL_DIR . '/src/WPWhiteLabel/Customizer/Customizer.php';
 
 		// Admin/Dashboard stuff
 		if ( is_admin() ) {
-			require_once WPWLL_DIR . '/src/Admin/AdminMenu.php';
-			require_once WPWLL_DIR . '/src/Admin/Form/FormHelper.php';
-			require_once WPWLL_DIR . '/src/Admin/Menu.php';
+			require_once WPWLL_DIR . '/src/WPWhiteLabel/Admin/AdminMenu.php';
+			require_once WPWLL_DIR . '/src/WPWhiteLabel/Admin/Form/FormHelper.php';
+			require_once WPWLL_DIR . '/src/WPWhiteLabel/Admin/Menu.php';
 		}
 	}
 
@@ -111,7 +114,7 @@ final class WPWhiteLabel {
   public function objects() {
 
     // objects
-    $this->customizer = new \WhiteLabelCustomizer(self::$instance);
+    $this->customizer = new \Customizer(self::$instance);
 
     // ok sparky everything seems to be loaded
     do_action( 'wpwhitelabel_loaded' );

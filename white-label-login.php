@@ -89,7 +89,7 @@
    * require_once // Load the WhiteLabel class.
    * @var [type]
    */
-  require_once WPWLL_DIR . '/src/WPWhiteLabel.php';
+  require_once WPWLL_DIR . '/src/WPWhiteLabel/WhiteLabel.php';
 
   /**
    * [wpwhitelabel description]
@@ -97,7 +97,7 @@
    */
   function wpwhitelabel() {
     // new up wll object
-  	return WPWhiteLabel\WPWhiteLabel::instance(true);
+  	return WPWhiteLabel\WhiteLabel::instance(true);
   }
 // initiate --------------------------------------------------------
     wpwhitelabel();
