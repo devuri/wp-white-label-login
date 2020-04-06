@@ -1,41 +1,5 @@
 <?php
 /**
- * Upgrade Control
- */
-if ( class_exists( 'WP_Customize_Control' ) ) :
-
-	/**
-	 * Displays the upgrade message .
-	 */
-	class WllCustomizeProControl extends WP_Customize_Control {
-		/**
-		 * Render Control
-		 */
-		public function render_content() {
-			?>
-
-			<div class="upgrade-pro-version">
-
-				<span class="customize-control-title"><?php esc_html_e( 'Pro Version Add-on', 'whitelabel-login' ); ?></span>
-
-				<span class="textfield">
-					<?php printf( esc_html__( 'Purchase the %s Add-on to get additional features and advanced customization options.', 'whitelabel-login' ), 'White Label Login Pro' ); ?>
-				</span>
-
-				<p>
-					<a href="<?php echo esc_url( __( 'https://whitelabelwp.net/add-ons/whitelabel-login-pro/', 'whitelabel-login' ) ); ?>" target="_blank" class="button button-secondary">
-						<?php printf( esc_html__( 'Learn more about %s', 'whitelabel-login' ), 'White Label Login Pro' ); ?>
-					</a>
-				</p>
-
-			</div>
-
-			<?php
-		}
-	}
-
-endif;
-/**
  *
  */
 final class WhiteLabelCustomizer {
@@ -49,17 +13,27 @@ final class WhiteLabelCustomizer {
 	 */
 	public $plugin;
 
-	function __construct($wll){
+	function __construct($white_label_login){
+
 		/**
 		 * Register a section.
 		 * @link https://developer.wordpress.org/themes/customize-api/customizer-objects/
 		 * @credit WordPress Customize Manager classes
 		 */
-		add_action( 'customize_register', array( $this , 'customizer') , 12, 1 );
+		add_action( 'customize_register', array( $this , 'setup') , 12, 1 );
 
 		//load the plugin
-		$this->plugin = $wll;
+		$this->plugin = $white_label_login;
 	}
+
+	/**
+   * Sets up the WP_Customize_Manager
+   * @return object WP_Customize_Manager
+   */
+  public function customizer(){
+    global $wp_customize;
+    return $wp_customize;
+  }
 
 	/**
 	 * customizer
@@ -67,8 +41,34 @@ final class WhiteLabelCustomizer {
 	 * @return object
 	 * @link https://core.trac.wordpress.org/browser/tags/5.4/src/wp-includes/class-wp-customize-manager.php#L928
 	 */
-	public function customizer( $wp_customize ) {
+	public function setup() {
+		// Add Panel.
+		$this->customizer()->add_panel( 'wll_options_panel', array(
+			'priority'       => 180,
+			'capability'     => 'manage_options',
+			'theme_supports' => '',
+			'title'          => esc_html__( 'White  Label Login Options', 'whitelabel-login' ),
+			)
+		);
 
+		/**
+		 * [$this->sections description]
+		 * @var [type]
+		 */
+		$this->sections();
+
+		/**
+		 * Load up the Settings
+		 * @var [type]
+		 */
+		$this->settings();
+	}
+
+	/**
+	 * [description description]
+	 * @return [type] [description]
+	 */
+	public function description(){
 		/**
 		 * [$description panel description ]
 		 * @var string
@@ -84,119 +84,44 @@ final class WhiteLabelCustomizer {
 			__( '(opens in a new tab)' )
 		);
 		$description .= '</p>';
+		return $description;
+	}
 
-		// Add Panel.
-		$wp_customize->add_panel( 'wll_options_panel', array(
-			'priority'       => 180,
-			'capability'     => 'edit_theme_options',
-			'theme_supports' => '',
-			'title'          => esc_html__( 'White  Label Login Options', 'whitelabel-login' ),
-			)
-		);
+	/**
+	 * [sections description]
+	 * @return [type] [description]
+	 */
+	public function sections(){
 
-		// Add Section.
-		$wp_customize->add_section( 'white_label_layout',
-			array(
-				'title'              => __( 'Layout' ),
-				//'priority'           => 210,
-				'capability'				 => 'manage_options',
-				//'description_hidden' => true,
-				'description'        => $description,
-				'panel'        			 => 'wll_options_panel',
-			)
-		);
+		foreach (wll_options() as $seckey => $section) {
 
-		// Add Section.
-		$wp_customize->add_section( 'white_label_header',
-			array(
-				'title'              => __( 'Header' ),
-				'capability'				 => 'manage_options',
-				'description'        => $description,
-				'panel'        			 => 'wll_options_panel',
-			)
-		);
-		// Add Section.
-		$wp_customize->add_section( 'white_label_logo',
-			array(
-				'title'              => __( 'Login Logo' ),
-				//'priority'           => 210,
-				'capability'				 => 'manage_options',
-				//'description_hidden' => true,
-				'description'        => $description,
-				'panel'        			 => 'wll_options_panel',
-			)
-		);
+			/**
+			 * build out each section.
+			 * @var [type]
+			 */
+			$this->customizer()->add_section( 'white_label_'.trim($section),
+				array(
+					'title'              => __( '* '. trim(ucwords($section)) ),
+					'capability'				 => 'manage_options',
+					'description'        => $this->description(),
+					'panel'        			 => 'wll_options_panel',
+				)
+			);
 
+		} // foreach
+	}
+
+	/**
+	 * [settings description]
+	 * @return [type] [description]
+	 */
+	public function settings(){
 		/**
-		 * [$wp_customize->add_section description]
+		 * Autoload the options page
 		 * @var [type]
 		 */
-		$wp_customize->add_section( 'white_label_background',
-			array(
-				'title'              => __( 'Login Background' ),
-				//'priority'           => 210,
-				'capability'				 => 'manage_options',
-				//'description_hidden' => true,
-				'description'        => $description,
-				'panel'        			 => 'wll_options_panel',
-			)
-		);
-
-		/**
-		 * [$wp_customize->add_section description]
-		 * @var [type]
-		 */
-		$wp_customize->add_section( 'white_label_css',
-			array(
-				'title'              => __( 'Custom Login CSS' ),
-				//'priority'           => 210,
-				'capability'				 => 'manage_options',
-				//'description_hidden' => true,
-				'description'        => $description,
-				'panel'        			 => 'wll_options_panel',
-			)
-		);
-
-		/**
-		 * [$wp_customize->add_section description]
-		 * @var [type]
-		 */
-		$wp_customize->add_section( 'white_label_footer',
-			array(
-				'title'              => __( 'Footer' ),
-				//'priority'           => 210,
-				'capability'				 => 'manage_options',
-				//'description_hidden' => true,
-				'description'        => $description,
-				'panel'        			 => 'wll_options_panel',
-			)
-		);
-
-		/**
-		 * [$wp_customize->add_section description]
-		 * @var [type]
-		 */
-		$wp_customize->add_section( 'white_label_extras',
-			array(
-				'title'              => __( 'Extras' ),
-				//'priority'           => 210,
-				'capability'				 => 'manage_options',
-				'description_hidden' => true,
-				'description'        => $description,
-				'panel'        			 => 'wll_options_panel',
-			)
-		);
-
-		/**
-		 * Load up the Settings
-		 * @var [type]
-		 */
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/header.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/logo.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/layout.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/background.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/css.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/footer.php';
-		require_once plugin_dir_path( __FILE__ )	. 'Settings/extras.php';
+		foreach (wll_options() as $optkey => $option) {
+			require_once plugin_dir_path( __FILE__ )	. 'Settings/'.$option.'.php';
+		}
 	}
 }

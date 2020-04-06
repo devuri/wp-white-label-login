@@ -12,7 +12,7 @@
  * Background Color
  * @var [type]
  */
-$wp_customize->add_setting( 'wpwll_options[background_color]',
+$this->customizer()->add_setting( 'wpwll_options[background_color]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
@@ -21,9 +21,9 @@ $wp_customize->add_setting( 'wpwll_options[background_color]',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
-$wp_customize->add_control(
+$this->customizer()->add_control(
 	 new WP_Customize_Color_Control(
-		$wp_customize, 'wpwll_options[background_color]',
+		$this->customizer(), 'wpwll_options[background_color]',
 		 array(
 		   'label' => __( 'Background Color' ),
 		   'description' => __( 'Select a color' ),
@@ -36,7 +36,7 @@ $wp_customize->add_control(
  * background image
  * @var [type]
  */
-$wp_customize->add_setting( 'wpwll_options[background_image]',
+$this->customizer()->add_setting( 'wpwll_options[background_image]',
 	array(
 		'type' 							=> 'option', //  setup the option here
 		'capability' 				=> 'manage_options',
@@ -44,9 +44,9 @@ $wp_customize->add_setting( 'wpwll_options[background_image]',
 		'sanitize_callback' => 'absint',
 	) );
 
-$wp_customize->add_control(
+$this->customizer()->add_control(
 	new WP_Customize_Media_Control(
-		$wp_customize, 'wpwll_options[background_image]',
+		$this->customizer(), 'wpwll_options[background_image]',
 			array(
 				'label' 		=> __( 'Background' ),
 				'section' 	=> 'white_label_background',
@@ -59,7 +59,7 @@ $wp_customize->add_control(
  * Background Attachment
  * @var [type]
  */
-$wp_customize->add_setting( 'wpwll_options[background_attachment]',
+$this->customizer()->add_setting( 'wpwll_options[background_attachment]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
@@ -68,7 +68,7 @@ $wp_customize->add_setting( 'wpwll_options[background_attachment]',
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
-$wp_customize->add_control( 'wpwll_options[background_attachment]',
+$this->customizer()->add_control( 'wpwll_options[background_attachment]',
 	array(
 		 'type' 				=> 'radio',
 		 'section' 			=> 'white_label_background',
@@ -85,7 +85,7 @@ $wp_customize->add_control( 'wpwll_options[background_attachment]',
  * Background Size
  * @var [type]
  */
-$wp_customize->add_setting( 'wpwll_options[background_size]',
+$this->customizer()->add_setting( 'wpwll_options[background_size]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
@@ -94,7 +94,7 @@ $wp_customize->add_setting( 'wpwll_options[background_size]',
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
-$wp_customize->add_control( 'wpwll_options[background_size]',
+$this->customizer()->add_control( 'wpwll_options[background_size]',
 	array(
 			'type' 				=> 'radio',
 			'section' 			=> 'white_label_background',
@@ -114,7 +114,7 @@ $wp_customize->add_control( 'wpwll_options[background_size]',
  * Background Repeat
  * @var [type]
  */
-$wp_customize->add_setting( 'wpwll_options[background_repeat]',
+$this->customizer()->add_setting( 'wpwll_options[background_repeat]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
@@ -123,7 +123,7 @@ $wp_customize->add_setting( 'wpwll_options[background_repeat]',
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
-$wp_customize->add_control( 'wpwll_options[background_repeat]',
+$this->customizer()->add_control( 'wpwll_options[background_repeat]',
 	array(
 			'type' 				=> 'radio',
 			'section' 			=> 'white_label_background',
@@ -143,7 +143,7 @@ $wp_customize->add_control( 'wpwll_options[background_repeat]',
  * Background Position
  * @var [type]
  */
-$wp_customize->add_setting( 'wpwll_options[background_position]',
+$this->customizer()->add_setting( 'wpwll_options[background_position]',
 	array(
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
@@ -152,7 +152,7 @@ $wp_customize->add_setting( 'wpwll_options[background_position]',
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
-$wp_customize->add_control( 'wpwll_options[background_position]',
+$this->customizer()->add_control( 'wpwll_options[background_position]',
 	array(
 			'type' 				=> 'radio',
 			'section' 			=> 'white_label_background',
