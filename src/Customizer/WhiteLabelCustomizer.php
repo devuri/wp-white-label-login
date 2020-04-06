@@ -93,7 +93,7 @@ final class WhiteLabelCustomizer {
 	 */
 	public function sections(){
 
-		foreach (wll_options() as $seckey => $section) {
+		foreach (wll_customizer_sections() as $seckey => $section) {
 
 			/**
 			 * build out each section.
@@ -120,7 +120,7 @@ final class WhiteLabelCustomizer {
 		 * Autoload the options page
 		 * @var [type]
 		 */
-		foreach (wll_options() as $optkey => $option) {
+		foreach (wll_customizer_sections() as $optkey => $option) {
 			require_once plugin_dir_path( __FILE__ )	. 'Settings/'.$option.'.php';
 		}
 	}

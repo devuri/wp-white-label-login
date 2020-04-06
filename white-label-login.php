@@ -5,7 +5,7 @@
  * Description: White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
  * Author:      SwitchWebdev.com
  * Author URI:  https://switchwebdev.com
- * Version:     5.1.3
+ * Version:     5.1.5
  * License:     GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: wp-white-label-login
@@ -97,9 +97,8 @@
    */
   function wpwhitelabel() {
     // new up wll object
-  	return WPWhiteLabel::instance(true);
+  	return WPWhiteLabel\WPWhiteLabel::instance(true);
   }
-
 // initiate --------------------------------------------------------
     wpwhitelabel();
 // initiate --------------------------------------------------------

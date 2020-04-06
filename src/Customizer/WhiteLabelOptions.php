@@ -28,10 +28,12 @@ class WhiteLabelOptions {
 
 		return self::$sections;
 	}
-
+	
+	/**
+	 * get the sections list
+	 * @return [type] [description]
+	 */
 	public static function sections(){
 		return self::new();
 	}
-
-
 }

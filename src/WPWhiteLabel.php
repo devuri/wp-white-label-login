@@ -1,6 +1,6 @@
 <?php
 
-
+namespace WPWhiteLabel;
 /**
  * Main class White_Label_Login
  */
@@ -111,7 +111,7 @@ final class WPWhiteLabel {
   public function objects() {
 
     // objects
-    $this->customizer = new WhiteLabelCustomizer(self::$instance);
+    $this->customizer = new \WhiteLabelCustomizer(self::$instance);
 
     // ok sparky everything seems to be loaded
     do_action( 'wpwhitelabel_loaded' );
@@ -403,5 +403,4 @@ final class WPWhiteLabel {
     $footer .= '</div> ';
   	echo $footer;
   }
-
 }
