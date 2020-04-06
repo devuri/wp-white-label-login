@@ -1,4 +1,4 @@
-> **Note:** This is the development version and contains features that may be in various satges of development. If you want to use this on a live website download here: [White Lable Custom Login for WordPress](https://wordpress.org/plugins/wp-white-label-login/).
+> **Note:** This is the development version and contains features that may be in various satges of development. If you want to use this on a live website download here: [White Label Custom Login for WordPress](https://wordpress.org/plugins/wp-white-label-login/).
 
 
 # White Label Login
