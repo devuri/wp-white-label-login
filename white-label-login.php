@@ -91,13 +91,16 @@
    */
   require_once WPWLL_DIR . '/src/WPWhiteLabel/WhiteLabel.php';
 
-  /**
-   * [wpwhitelabel description]
-   * @return object [description]
-   */
-  function wpwhitelabel() {
-    // new up wll object
-  	return WPWhiteLabel\WhiteLabel::instance(true);
+
+  if (! function_exists('wpwhitelabel')) {
+    /**
+     * [wpwhitelabel description]
+     * @return object [description]
+     */
+      function wpwhitelabel() {
+         // new up wll object
+         return WPWhiteLabel\WhiteLabel::instance(true);
+      }
   }
 // initiate --------------------------------------------------------
     wpwhitelabel();
