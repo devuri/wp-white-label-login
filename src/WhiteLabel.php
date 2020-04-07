@@ -94,15 +94,15 @@ final class WhiteLabel {
 	private function includes() {
 
 		// includes
-		require_once WPWLL_DIR . '/src/WPWhiteLabel/Customizer/Options.php';
-		require_once WPWLL_DIR . '/src/WPWhiteLabel/Customizer/Sections.php';
-		require_once WPWLL_DIR . '/src/WPWhiteLabel/Customizer/Customizer.php';
+		require_once WPWLL_DIR . '/src/Customizer/Options.php';
+		require_once WPWLL_DIR . '/src/Customizer/sections.php';
+		require_once WPWLL_DIR . '/src/Customizer/Customizer.php';
 
 		// Admin/Dashboard stuff
 		if ( is_admin() ) {
-			require_once WPWLL_DIR . '/src/WPWhiteLabel/Admin/AdminMenu.php';
-			require_once WPWLL_DIR . '/src/WPWhiteLabel/Admin/Form/FormHelper.php';
-			require_once WPWLL_DIR . '/src/WPWhiteLabel/Admin/Menu.php';
+			require_once WPWLL_DIR . '/src/Admin/AdminMenu.php';
+			require_once WPWLL_DIR . '/src/Admin/Form/FormHelper.php';
+			require_once WPWLL_DIR . '/src/Admin/Menu.php';
 		}
 	}
 
