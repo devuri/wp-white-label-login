@@ -94,14 +94,17 @@
 
   if (! function_exists('wpwhitelabel')) {
     /**
-     * [wpwhitelabel description]
-     * @return object [description]
+     * wpwhitelabel()
+     *
+     * we can turn the login style on and off here
+     * @param  boolean $enable
+     * @return object
      */
-      function wpwhitelabel() {
-         // new up wll object
-         return WPWhiteLabel\WhiteLabel::instance(true);
-      }
+    function wpwhitelabel( $enabled = true ) {
+      // new up wll object
+      return WPWhiteLabel\WhiteLabel::instance($enabled);
+    }
   }
 // initiate --------------------------------------------------------
-    wpwhitelabel();
+  wpwhitelabel();
 // initiate --------------------------------------------------------

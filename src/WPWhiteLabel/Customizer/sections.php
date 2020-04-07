@@ -1,6 +1,6 @@
 <?php
 
-namespace SimWhiteLabel;
+namespace WPWhiteLabel;
 
 	if (! function_exists('customizer_sections')) {
 		/**
