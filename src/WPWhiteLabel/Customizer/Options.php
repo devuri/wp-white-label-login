@@ -1,7 +1,7 @@
 <?php
+namespace WPWhiteLabel;
 
-
-class WhiteLabelOptions {
+class Options {
 
 	/**
 	 * $sections
@@ -28,7 +28,7 @@ class WhiteLabelOptions {
 
 		return self::$sections;
 	}
-	
+
 	/**
 	 * get the sections list
 	 * @return [type] [description]

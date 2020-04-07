@@ -1,6 +1,6 @@
 <?php
 
-namespace Switchwebdev\Admin\Form;
+namespace WPWhiteLabel\Admin\Form;
 
 /**
  * FormHelper

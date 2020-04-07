@@ -89,16 +89,22 @@
    * require_once // Load the WhiteLabel class.
    * @var [type]
    */
-  require_once WPWLL_DIR . '/src/WPWhiteLabel.php';
+  require_once WPWLL_DIR . '/src/WPWhiteLabel/WhiteLabel.php';
 
-  /**
-   * [wpwhitelabel description]
-   * @return object [description]
-   */
-  function wpwhitelabel() {
-    // new up wll object
-  	return WPWhiteLabel\WPWhiteLabel::instance(true);
+
+  if (! function_exists('wpwhitelabel')) {
+    /**
+     * wpwhitelabel()
+     *
+     * we can turn the login style on and off here
+     * @param  boolean $enable
+     * @return object
+     */
+    function wpwhitelabel( $enabled = true ) {
+      // new up wll object
+      return WPWhiteLabel\WhiteLabel::instance($enabled);
+    }
   }
 // initiate --------------------------------------------------------
-    wpwhitelabel();
+  wpwhitelabel();
 // initiate --------------------------------------------------------
