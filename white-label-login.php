@@ -89,7 +89,7 @@
    * require_once // Load the WhiteLabel class.
    * @var [type]
    */
-  require_once WPWLL_DIR . '/src/WPWhiteLabel/WhiteLabel.php';
+  require_once WPWLL_DIR . '/src/WhiteLabel.php';
 
 
   if (! function_exists('wpwhitelabel')) {
