@@ -1,4 +1,5 @@
 <?php
+namespace WPWhiteLabel\Customize;
 
 /**
  *
@@ -94,7 +95,7 @@ final class Customizer {
 	 */
 	public function sections(){
 
-		foreach (WPWhiteLabel\customizer_sections() as $seckey => $section) {
+		foreach (customizer_sections() as $seckey => $section) {
 
 			/**
 			 * build out each section.
@@ -121,7 +122,7 @@ final class Customizer {
 		 * Autoload the options page
 		 * @var [type]
 		 */
-		foreach (WPWhiteLabel\customizer_sections() as $optkey => $option) {
+		foreach (customizer_sections() as $optkey => $option) {
 			require_once plugin_dir_path( __FILE__ )	. 'Settings/'.$option.'.php';
 		}
 	}

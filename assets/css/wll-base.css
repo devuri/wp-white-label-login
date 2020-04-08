@@ -63,10 +63,6 @@ hr{
 #login {
     align: center;
 }
-.login form {
-    box-shadow: 0 1px 3px #ffffff;
-    border: none;
-}
 
 #loginrgstrfrm{
 	color: #999;
@@ -103,28 +99,6 @@ hr{
 .login #nav {
   margin: 8px 0 0;
   font-size: initial;
-}
-
-/** LOGO **/
-.login h1 a {
-	/*background-size: 190px;*/
-	/*height: 190px;*/
-	/*width: 100%;*/
-}
-/*** LOGIN FORM ***************************/
-
-.login form {
-    box-shadow: 0 1px 3px #ffffff;
-    border: none;
-}
-
-.login form {
-	margin-top: 0px;
-  box-shadow: none;
-  background-color: black;
-  border-radius: 0px;
-  background: none;
-  opacity: 0.99;
 }
 
 .login form .input, .login input[type="text"] {

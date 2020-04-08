@@ -2,7 +2,12 @@
 
 namespace WPWhiteLabel;
 
-
+use WPWhiteLabel\Style\LoginStyle;
+use WPWhiteLabel\Header\LoginHeader;
+use WPWhiteLabel\Logo\LoginLogo;
+use WPWhiteLabel\Background\LoginBackground;
+use WPWhiteLabel\Footer\LoginFooter;
+use WPWhiteLabel\Customize\Customizer;
 
 /**
  * Main class White_Label_Login
@@ -39,8 +44,7 @@ final class WhiteLabel {
       self::$instance->includes();
 
       /**
-       * check if the plugin$sections->whitelabel_options()
-       * is on or off
+       * check if the plugin is on or off
        * @var [type]
        */
       self::$instance->enable = $init;
@@ -78,13 +82,15 @@ final class WhiteLabel {
    */
   public function init(){
     add_action( 'admin_menu', array( $this , 'appearance_submenu') );
-    add_action( 'login_enqueue_scripts', array( $this , 'login_styles') );
-    add_action( 'login_enqueue_scripts', array( $this , 'login_logo') );
+    add_action( 'login_enqueue_scripts', array( LoginStyle::class, 'login_styles' ) );
+    add_action( 'login_enqueue_scripts', array( LoginLogo::class, 'login_logo') );
+    add_filter( 'login_head', array( LoginHeader::class, 'header') );
+    add_filter( 'login_head', array( LoginBackground::class, 'body') );
+    add_filter( 'login_footer', array( LoginFooter::class, 'footer') );
     add_filter( 'login_headerurl', array( $this , 'logo_link') );
-    add_filter( 'login_head', array( $this , 'header') );
-    add_filter( 'login_head', array( $this , 'body') );
-    add_filter( 'login_footer', array( $this , 'footer') );
   }
+
+
 
   /**
 	 * Include files.
@@ -94,8 +100,13 @@ final class WhiteLabel {
 	private function includes() {
 
 		// includes
-		require_once WPWLL_DIR . '/src/Customizer/Options.php';
-		require_once WPWLL_DIR . '/src/Customizer/sections.php';
+		require_once WPWLL_DIR . '/src/Login/Style.php';
+		require_once WPWLL_DIR . '/src/Login/Header.php';
+		require_once WPWLL_DIR . '/src/Login/Logo.php';
+		require_once WPWLL_DIR . '/src/Login/Background.php';
+		require_once WPWLL_DIR . '/src/Login/Footer.php';
+		require_once WPWLL_DIR . '/src/Customizer/Section.php';
+		require_once WPWLL_DIR . '/src/Customizer/helpers.php';
 		require_once WPWLL_DIR . '/src/Customizer/Customizer.php';
 
 		// Admin/Dashboard stuff
@@ -114,7 +125,7 @@ final class WhiteLabel {
   public function objects() {
 
     // objects
-    $this->customizer = new \Customizer(self::$instance);
+    $this->customizer = new Customizer(self::$instance);
 
     // ok sparky everything seems to be loaded
     do_action( 'wpwhitelabel_loaded' );
@@ -164,82 +175,6 @@ final class WhiteLabel {
    }
 
   /**
-   * enqueue_style
-   * @param  string $style stylesheet
-   * @return
-   */
-  public function enqueue_style($style = 'wll-base'){
-    $wp_login_styles = array(
-      'wll-base'              => 'wll-base.css',
-      'wll-loginform-background'  => 'wll-loginform-background.css',
-      'wll-login-background'  => 'wll-login-background.css',
-      'wll-bootstrap'         => 'wll-bootstrap.css',
-      'wll-color-scheme'      => 'wll-color-scheme.css',
-      'wll-header-shadow'     => 'wll-header-shadow.css',
-      'wll-default'           => 'wll-default.css',
-      'wll-align-right'       => 'wll-align-right.css',
-      'wll-align-left'        => 'wll-align-left.css',
-      'wll-user-styles'       => 'wll-user-stylesheet.css',
-    );
-    return wp_enqueue_style( $style, WPWLL_URL . 'assets/css/'.$wp_login_styles[$style], array(), WPWLL_VERSION, 'all' );
-  }
-
-  /**
-   * login_styles
-   *
-   * enqueue the login styles, users can turn these on and off as needed
-   * @return
-   */
-  public function login_styles() {
-    $this->enqueue_style('wll-header-shadow');
-    $this->enqueue_style('wll-base');
-    $this->enqueue_style('wll-default');
-    $this->align();
-    //$this->enqueue_style('wll-loginform-background');
-	  $this->enqueue_style('wll-login-background');
-	  //$this->enqueue_style('wll-color-scheme');
-	  //$this->enqueue_style('wll-bootstrap');
-
-
-    /**
-     * $user_custom_css
-     *
-     * lets add the user defined css to user stylesheet
-     * wp_add_inline_style Adds the extra CSS styles.
-     * @var string
-     * @link https://developer.wordpress.org/reference/functions/wp_add_inline_style/
-     */
-    $this->enqueue_style('wll-user-styles');
-    $user_custom_css = $this->option('custom_css');
-    wp_add_inline_style( 'wll-user-styles', $user_custom_css );
-
-    // use theme styles (users can turn this on if they want its off by default)
-    // wp_enqueue_style('wll-theme-style',get_stylesheet_directory_uri() . '/style.css',array(),wp_get_theme()->get('Version') );
-  }
-
-  /**
-   * align
-   *
-   * get the form alignment as set in the
-   * options section
-   * @return
-   */
-  public function align(){
-    switch ($this->setting('form_layout')) {
-    case 'left':
-        $align = $this->enqueue_style('wll-align-left');
-        break;
-    case 'right':
-        $align = $this->enqueue_style('wll-align-right');
-        break;
-    case 'center':
-        $align = '';
-        break;
-    }
-    return $align;
-  }
-
-  /**
    * Options
    *
    * setup some the options array
@@ -257,8 +192,8 @@ final class WhiteLabel {
   /**
    * settings
    *
-   * setup some the options array
-   * @param  string $opt
+   * setup some the options array to get a specific setting
+   * @param  string $set
    * @return string
    */
   public function setting($set = 'background'){
@@ -280,81 +215,8 @@ final class WhiteLabel {
       'admin_url' => get_admin_url(),
       'background_color' => 'none',
       'header_text' => get_bloginfo( 'description' ),
-      'footer_text' => '...',
     );
     return $site_info[$info];
-  }
-
-  /**
-   * header
-   *
-   * add a header section to the login page
-   * @return
-   */
-  public function header() {
-    $header  = '<div style="background-color: '.$this->setting('header_background_color').'; color: '.$this->setting('header_text_color').';" id="wll-header" class="wll-header" ';
-    $header .= 'align="'.$this->setting('header_alignment').'">';
-    $header .= '<h2 align="'.$this->setting('header_alignment').'">';
-    //$header .= '<a  href="'.$this->site_info('url').'" title="'.$this->site_info('name').'">';
-    $header .= $this->setting('header_title');
-    //$header .= '</a>';
-    $header .= '</h2>';
-    $header .= '<div class="wll-site-description">';
-    $header .= $this->setting('header_description');
-    $header .= '</div>';
-    $header .= '</div>';
-  	echo $header;
-  }
-
-  /**
-   * e_background
-   *
-   * Output the CSS property
-   * @return string
-   */
-  public function print_css( $property='background_repeat' ){
-    $css = $this->setting('background_repeat');
-    echo $css;
-  }
-
-  /**
-   * e_background
-   *
-   * echo the background for background-image css
-   * @return string
-   * @link https://developer.wordpress.org/reference/functions/wp_get_attachment_url/
-   */
-  public function e_background(){
-    $background_img = wp_get_attachment_url($this->setting('background_image'));
-    echo $background_img;
-  }
-  /**
-   * Body
-   *
-   * the page body
-   * @return
-   */
-  public function body() {
-    ?><style type="text/css">
-      body {
-        background-color: <?php echo $this->setting('background_color'); ?>;
-        background-image: url(<?php $this->e_background(); ?>);
-        background-attachment: <?php echo $this->setting('background_attachment'); ?>;
-        background-size: <?php echo $this->setting('background_size'); ?>;
-        background-repeat: <?php echo $this->setting('background_repeat'); ?>;
-        background-position: <?php echo $this->setting('background_position'); ?>;
-      }
-      </style><?php
-  }
-
-  /**
-   * logo
-   *
-   * get the logo
-   * @return string
-   */
-  public function logo(){
-    echo wp_get_attachment_url($this->setting('logo'));
   }
 
   /**
@@ -367,43 +229,4 @@ final class WhiteLabel {
     return $this->site_info('url');
   }
 
-  /**
-   * login_logo
-   *
-   * set the login screen logo
-   * @return
-   */
-  public function login_logo() {
-    ?><style type="text/css">
-      #login h1 a, .login h1 a {
-        background-image: url(<?php $this->logo(); ?>);
-      }
-      </style><?php
-  }
-
-
-  /**
-   * footer
-   *
-   * add footer section to the login page
-   * @return string
-   */
-  public function footer() {
-  	$year = date("Y");
-
-    //$footer  = '<br/><br/> </div>';
-    $footer  = '<div  style="color: '.$this->setting('footer_text_color').';" id="footer" class="footer-copyright" align="'.$this->setting('footer_alignment').'">';
-    $footer .= '<p class="footer_text">';
-    $footer .= $this->site_info('footer_text');
-    $footer .= '</p>';
-    $footer .= 'Copyright © ';
-    //$footer .= '<a href=" '.$this->site_info('url').' ">';
-    $footer .= $this->site_info('name');
-    //$footer .= '</a> ';
-    $footer .= '<span class="wll-footer-copyright-text"> ';
-    $footer .= $this->setting('copyright_text');
-    $footer .= '</span> ';
-    $footer .= '</div> ';
-  	echo $footer;
-  }
 }
