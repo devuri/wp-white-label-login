@@ -6,6 +6,21 @@
  */
 $footer_preview_type = 'refresh';
 
+$this->customizer()->add_setting( 'wpwll_options[footer_text]',
+	array(
+		'type' => 'option', //  setup the option here
+		'capability' => 'manage_options',
+		'default' => '...',
+		'transport' => $footer_preview_type,
+		'sanitize_callback' => 'sanitize_textarea_field'
+	) );
+
+$this->customizer()->add_control('wpwll_options[footer_text]', array(
+		'label'   => 'Text',
+		'section' => 'white_label_footer',
+		'type'    => 'textarea',
+));
+
 $this->customizer()->add_setting( 'wpwll_options[copyright_text]',
 	array(
 		'type' => 'option', //  setup the option here

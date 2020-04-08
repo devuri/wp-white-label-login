@@ -1,7 +1,7 @@
 <?php
-namespace WPWhiteLabel;
+namespace WPWhiteLabel\Customize;
 
-class Options {
+final class Section {
 
 	/**
 	 * $sections
@@ -17,7 +17,7 @@ class Options {
 	 * Create new customizer sections here is where we will add new panel sections
 	 * @return array
 	 */
-	protected static function new_section(){
+	protected static function new_sections(){
 
 		self::$sections[] = 'layout';
 		self::$sections[] = 'header';
@@ -34,6 +34,6 @@ class Options {
 	 * @return [type] [description]
 	 */
 	public static function sections(){
-		return self::new_section();
+		return self::new_sections();
 	}
 }

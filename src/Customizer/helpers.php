@@ -1,13 +1,13 @@
 <?php
 
-namespace WPWhiteLabel;
+namespace WPWhiteLabel\Customize;
 
 	if (! function_exists('customizer_sections')) {
 		/**
-		 * [wll_options description]
+		 * customizer_sections() 
 		 * @return [type] [description]
 		 */
 		function customizer_sections(){
- 			return Options::sections();
+ 			return Section::sections();
  		}
 	}

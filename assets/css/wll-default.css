@@ -31,11 +31,6 @@ p {
 
 /** LOGO **/
 .login h1 a {
-    -webkit-background-size: 120px;
-    background-position: center;
-    background-size: 120px;
-    height: 120px;
-    width: 100%;
     background-repeat: no-repeat;
     color: #444;
     font-size: 20px;
