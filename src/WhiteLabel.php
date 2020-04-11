@@ -105,9 +105,9 @@ final class WhiteLabel {
 		require_once WPWLL_DIR . '/src/Login/Logo.php';
 		require_once WPWLL_DIR . '/src/Login/Background.php';
 		require_once WPWLL_DIR . '/src/Login/Footer.php';
-		require_once WPWLL_DIR . '/src/Customizer/Section.php';
-		require_once WPWLL_DIR . '/src/Customizer/helpers.php';
-		require_once WPWLL_DIR . '/src/Customizer/Customizer.php';
+		require_once WPWLL_DIR . '/src/Customize/Section.php';
+		require_once WPWLL_DIR . '/src/Customize/helpers.php';
+		require_once WPWLL_DIR . '/src/Customize/Customizer.php';
 
 		// Admin/Dashboard stuff
 		if ( is_admin() ) {
