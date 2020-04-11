@@ -1,11 +1,11 @@
 <?php
 
-namespace SimWP\Translate\Form;
+namespace WPWhiteLabel\Translate;
 
 /**
  *
  */
-class Sim_Translate_Easy {
+class TranslateEasy {
 
 	/**
 	 * $textdomain
