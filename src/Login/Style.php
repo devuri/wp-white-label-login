@@ -48,6 +48,26 @@ class LoginStyle {
     </style>
   <?php }
 
+  /**
+   * styles for the submit button
+   * @return [type] [description]
+   */
+  public static function submit_button(){
+    ?><style type="text/css">
+      #wp-submit, input[type="submit"] {
+        transition: all 0.2s linear 0s;
+        margin-top: 20px;
+        background-color: <?php echo wpwhitelabel()->setting('button_background_color'); ?>;
+        border-radius: 0px;
+        color: <?php echo wpwhitelabel()->setting('button_text_color'); ?>;
+        font-size: 18px !important;
+        width: 100%;
+        font-weight: normal;
+        border: solid thin <?php echo wpwhitelabel()->setting('button_background_color'); ?>;
+      }
+    </style><?php
+  }
+
 	/**
 	 * enqueue_style
 	 * @param  string $style stylesheet
@@ -66,6 +86,7 @@ class LoginStyle {
 		);
 		return wp_enqueue_style( $style, WPWLL_URL . 'assets/css/'.$wp_login_styles[$style], array(), WPWLL_VERSION, 'all' );
 	}
+
 	/**
    * login_styles
    *
@@ -102,6 +123,11 @@ class LoginStyle {
 		self::enqueue_style('wll-user-styles');
 		$user_custom_css = wpwhitelabel()->option('custom_css');
 		wp_add_inline_style( 'wll-user-styles', $user_custom_css );
+
+    /**
+     * login button
+     */
+    wp_add_inline_style( 'wll-user-styles', self::submit_button() );
 
 		// use theme styles (users can turn this on if they want its off by default)
 		//wp_enqueue_style('wll-theme-style',get_stylesheet_directory_uri() . '/style.css',array(),wp_get_theme()->get('Version') );
