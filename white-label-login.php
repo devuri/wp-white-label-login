@@ -5,7 +5,7 @@
  * Description: White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
  * Author:      SwitchWebdev.com
  * Author URI:  https://switchwebdev.com
- * Version:     5.2.9
+ * Version:     5.3.9
  * License:     GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: wp-white-label-login
@@ -54,24 +54,34 @@
 	//Activate
 	register_activation_hook( __FILE__, 'wpwll_activation' );
 	function wpwll_activation() {
-	   // set up some options
+	   /**
+      * $wpwlldefauts load some defauts
+      * @var array
+      */
 	   $wpwlldefauts = array(
        'form_layout' => 'center',
-       'footer_text' => '...',
-       'copyright_text' => 'All Rights Reserved',
-       'footer_text_color' => '#747474',
-       'footer_alignment' => 'center',
-       'background_attachment' => 'fixed',
-       'background_repeat' => 'no-repeat',
-       'background_position' => 'bottom',
-       'logo_display' => 'none',
-       'logo_position' => 'center',
-       'background_color' => '#ffffff',
+       // header
        'header_title' => get_bloginfo('name'),
        'header_description' => get_bloginfo('description'),
        'header_text_color' => '#737373',
        'header_background_color' => '#ffffff',
-       'header_alignment' => 'center'
+       'header_alignment' => 'center',
+       //logo
+       'logo_display' => 'none',
+       'logo_position' => 'center',
+       //button
+       'button_text_color' => '#ffffff',
+       'button_background_color' => '#007cba',
+       //background
+       'background_color' => '#ffffff',
+       'background_attachment' => 'fixed',
+       'background_repeat' => 'no-repeat',
+       'background_position' => 'bottom',
+       // footer
+       'footer_text' => '...',
+       'copyright_text' => 'All Rights Reserved',
+       'footer_text_color' => '#747474',
+       'footer_alignment' => 'center',
      );
 		update_option('wpwll_options', $wpwlldefauts );
 		update_option('wpwll_background', '0' );
