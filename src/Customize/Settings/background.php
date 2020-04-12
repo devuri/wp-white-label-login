@@ -36,7 +36,7 @@ $this->customizer()->add_control(
  * background image
  * @var [type]
  */
-$this->customizer()->add_setting( 'wpwll_options[background_image]',
+$this->customizer()->add_setting( 'wpwll_background',
 	array(
 		'type' 							=> 'option', //  setup the option here
 		'capability' 				=> 'manage_options',
@@ -46,7 +46,7 @@ $this->customizer()->add_setting( 'wpwll_options[background_image]',
 
 $this->customizer()->add_control(
 	new WP_Customize_Media_Control(
-		$this->customizer(), 'wpwll_options[background_image]',
+		$this->customizer(), 'wpwll_background',
 			array(
 				'label' 		=> __( 'Background' ),
 				'section' 	=> 'white_label_background',
