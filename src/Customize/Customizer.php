@@ -6,14 +6,17 @@ namespace WPWhiteLabel\Customize;
  */
 final class Customizer {
 
-
 	/**
-	 * Registered instances of WP_Customize_Setting.
+	 * Plugin Object in case we need it.
 	 *
-	 * @since 3.4.0
-	 * @var array
 	 */
 	public $plugin;
+
+	/**
+	 * Customizer JavaScript preview settings.
+	 * @link https://developer.wordpress.org/themes/customize-api/the-customizer-javascript-api/
+	 */
+	public $preview_type;
 
 	function __construct($white_label_login){
 
@@ -26,6 +29,9 @@ final class Customizer {
 
 		//load the plugin
 		$this->plugin = $white_label_login;
+
+		//set preview type ('postMessage' or 'refresh')
+		$this->preview_type = 'refresh';
 	}
 
 	/**
