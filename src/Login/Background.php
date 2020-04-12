@@ -14,7 +14,7 @@ class LoginBackground {
 	 * @link https://developer.wordpress.org/reference/functions/wp_get_attachment_url/
 	 */
 	public static function background(){
-		$background_img = wp_get_attachment_url(wpwhitelabel()->setting('background_image'));
+		$background_img = wp_get_attachment_url(wpwhitelabel()->option('background_image'));
 		echo $background_img;
 	}
 	/**
