@@ -56,23 +56,26 @@
 	function wpwll_activation() {
 	   // set up some options
 	   $wpwlldefauts = array(
-       'logo' => '0',
-       'background_image' => '0',
        'form_layout' => 'center',
+       'footer_text' => '...',
        'copyright_text' => 'All Rights Reserved',
        'footer_text_color' => '#747474',
        'footer_alignment' => 'center',
        'background_attachment' => 'fixed',
        'background_repeat' => 'no-repeat',
        'background_position' => 'bottom',
+       'logo_display' => 'none',
+       'logo_position' => 'center',
        'background_color' => '#ffffff',
        'header_title' => get_bloginfo('name'),
        'header_description' => get_bloginfo('description'),
-       'header_text_color' => '#000000',
+       'header_text_color' => '#737373',
        'header_background_color' => '#ffffff',
        'header_alignment' => 'center'
      );
 		update_option('wpwll_options', $wpwlldefauts );
+		update_option('wpwll_background', '0' );
+		update_option('wpwll_logo', '0' );
 		update_option('wpwll_custom_css', '' );
     // TODO redirect to a welcome admin page
 	}
