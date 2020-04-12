@@ -73,7 +73,7 @@ class LoginStyle {
    * @return
    */
 	public static function login_styles(){
-		//self::enqueue_style('wll-header-shadow');
+		self::enqueue_style('wll-header-shadow');
 		self::enqueue_style('wll-base');
 		self::enqueue_style('wll-default');
     self::align();
