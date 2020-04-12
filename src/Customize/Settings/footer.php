@@ -16,7 +16,8 @@ $this->customizer()->add_setting( 'wpwll_options[footer_text]',
 	) );
 
 $this->customizer()->add_control('wpwll_options[footer_text]', array(
-		'label'   => 'Text',
+		'label'   => 'Footer Text',
+		'description' 	=> __( 'Add Text to the footer.' ),
 		'section' => 'white_label_footer',
 		'type'    => 'textarea',
 ));
