@@ -13,7 +13,18 @@ class LoginLogo {
 	 * @return string
 	 */
 	public static function logo(){
-		echo wp_get_attachment_url(wpwhitelabel()->setting('logo'));
+		echo wp_get_attachment_url(wpwhitelabel()->option('logo'));
+	}
+
+	/**
+	 * [logo_text description]
+	 * @return [type] [description]
+	 * TODO this was Introduced in WordPress 5.2.0	check wordpress version.
+	 * @link https://developer.wordpress.org/reference/hooks/login_headertext/
+	 */
+	public static function logo_text() {
+	    $login_header_text = get_bloginfo( 'name' );
+	    return $login_header_text;
 	}
 
 	/**
@@ -31,6 +42,7 @@ class LoginLogo {
 				background-size: 120px;
 				height: 120px;
 				width: 100%;
+				display: <?php echo wpwhitelabel()->setting('logo_display') ?>;
 			}
 			</style><?php
 	}

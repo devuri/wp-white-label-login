@@ -19,11 +19,11 @@ final class FormHelper {
    * @param  string $message output message
    * @return string
    */
-  public function user_feedback($class = 'updated', $message = 'Options updated'){
+  public function user_feedback($message = 'Options updated', $class = 'updated'){
 
     //$message = 'Options updated';
 
-    $user_message  = '<div style="font-size: small; text-transform: capitalize; margin-bottom: 2.5em;" id="'.$class.'" class="updated">';
+    $user_message  = '<div style="font-size: small; text-transform: capitalize;" id="user-feedback" class="'.$class.' notice notice-my-class is-dismissible">';
     $user_message .= '<p>';
     $user_message .= $message;
     $user_message .= '</p>';
@@ -79,6 +79,52 @@ final class FormHelper {
     $input .= '</tr>';
     $input .= '<!-- input field '.$fieldname.'_input -->';
     return $input;
+  }
+
+  /**
+   * hidden Input Field
+   *
+   * @param  string  $fieldname     the name of the field
+   * @return
+   */
+  public function input_hidden($fieldname='name',$val = '...'){
+  	$fieldname = strtolower($fieldname);
+
+  	// lets build out the input
+  	$input_hidden  = '<!-- input field '.$fieldname.'_input -->';
+  	$input_hidden .= '<tr class="input">';
+  	$input_hidden .= '<th>';
+  	$input_hidden .= '</th>';
+  	$input_hidden .= '<td>';
+  	$input_hidden .= '<input type="hidden" name="'.str_replace(" ", "_", $fieldname).'" id="'.str_replace(" ", "_", $fieldname).'" aria-describedby="'.str_replace(" ", "-", $fieldname).'-description" value="'.$val.'" class="uk-input">';
+  	$input_hidden .= '</td>';
+  	$input_hidden .= '</tr>';
+  	$input_hidden .= '<!-- input field '.$fieldname.'_input -->';
+  	return $input_hidden;
+  }
+
+  public function upload($fieldname='upload_image_button',$val = 'Upload Image', $required = false,$type='button'){
+    $fieldname = strtolower($fieldname);
+    $upload_button  = '<tr class="input">';
+    $upload_button .= '<th>';
+    $upload_button .= '<label for="'.str_replace(" ", "_", $fieldname).'">';
+    $upload_button .= ucwords(str_replace("_", " ", $fieldname));
+    $upload_button .= '</label>';
+    $upload_button .= '</th>';
+    $upload_button .= '<td>';
+    $upload_button .= '<!-- upload field '.$fieldname.'_input -->';
+    $upload_button .= '<input id="'.str_replace(" ", "_", $fieldname).'"';
+    $upload_button .= 'type="'.$type.'" class="button"';
+    $upload_button .= 'value="'.$val.'" />';
+    $upload_button .= '<p class="description" id="'.str_replace(" ", "-", $fieldname).'-description">';
+    $upload_button .= strtolower(str_replace("_", " ", $fieldname));
+    $upload_button .= '<strong>.</strong>';
+    $upload_button .= '</p>';
+    $upload_button .= '</td>';
+    $upload_button .= '</tr>';
+    $upload_button .= '<!-- input field '.$fieldname.'_input -->';
+
+    return $upload_button;
   }
 
   /**
@@ -239,6 +285,21 @@ final class FormHelper {
       $table .= '</table>';
     }
     return $table;
+  }
+
+  /**
+   * [submit_button description]
+   * @param  string  $text             The text of the button. Default 'Save Changes'.
+   * @param  string  $type             The type and CSS class(es) of the button. Core values include 'primary', 'small', and 'large'.
+   * @param  string  $name             name of the submit button
+   * @param  boolean $wrap             True if the output button should be wrapped in a paragraph tag, false otherwise.
+   * @param  string  $other_attributes [description]
+   * @return [type]                    [description]
+   * @link https://developer.wordpress.org/reference/functions/get_submit_button/
+   */
+  public function submit_button($text = 'Save Changes', $type = 'primary large',$name ='submit',$wrap = ''){
+    $submit_button = get_submit_button($text,$type,$name,$wrap);
+    return $submit_button;
   }
 
   /**

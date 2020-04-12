@@ -84,6 +84,7 @@ final class WhiteLabel {
     add_action( 'admin_menu', array( $this , 'appearance_submenu') );
     add_action( 'login_enqueue_scripts', array( LoginStyle::class, 'login_styles' ) );
     add_action( 'login_enqueue_scripts', array( LoginLogo::class, 'login_logo') );
+    add_filter( 'login_headertext',array( LoginLogo::class, 'logo_text' ) );
     add_filter( 'login_head', array( LoginHeader::class, 'header') );
     add_filter( 'login_head', array( LoginBackground::class, 'body') );
     add_filter( 'login_footer', array( LoginFooter::class, 'footer') );
@@ -183,8 +184,10 @@ final class WhiteLabel {
    */
   public function option($opt = 'logo'){
     $option = array(
-      'wpwll_options' => get_option('wpwll_options'),
-      'custom_css'    => get_option('wpwll_custom_css')
+      'wpwll_options'     => get_option('wpwll_options'),
+      'background_image'  => get_option('wpwll_background'),
+      'logo'              => get_option('wpwll_logo'),
+      'custom_css'        => get_option('wpwll_custom_css')
     );
     return $option[$opt];
   }
