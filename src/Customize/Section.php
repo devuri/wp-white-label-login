@@ -22,6 +22,7 @@ final class Section {
 		self::$sections[] = 'layout';
 		self::$sections[] = 'header';
 		self::$sections[] = 'logo';
+		self::$sections[] = 'button';
 		self::$sections[] = 'background';
 		self::$sections[] = 'css';
 		self::$sections[] = 'footer';
