@@ -6,7 +6,7 @@ $this->customizer()->add_setting( 'wpwll_options[form_layout]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'center',
-		'transport' 				=> 'postMessage', // or 'refresh'
+		'transport' 				=> $this->preview_type, 
 		'sanitize_callback' => 'sanitize_title',
 	) );
 

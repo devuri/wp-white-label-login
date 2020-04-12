@@ -4,10 +4,10 @@
 // CSS
 $this->customizer()->add_setting( 'wpwll_custom_css',
 	array(
-		'type' => 'option', // or 'option'
+		'type' => 'option', 
 		'capability' => 'manage_options',
 		'default' => '',
-		'transport' => 'postMessage',
+		'transport' => $this->preview_type,
 		'sanitize_callback' => 'wp_strip_all_tags',
 	) );
 

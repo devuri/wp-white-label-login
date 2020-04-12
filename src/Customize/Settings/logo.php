@@ -8,7 +8,7 @@ $this->customizer()->add_setting( 'wpwll_options[logo_display]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'none',
-		'transport' 				=> 'postMessage', // or 'refresh'
+		'transport' 				=> $this->preview_type,
 		'sanitize_callback' => 'sanitize_title',
 	) );
 $this->customizer()->add_control( 'wpwll_options[logo_display]',
@@ -30,10 +30,10 @@ $this->customizer()->add_control( 'wpwll_options[logo_display]',
  */
 $this->customizer()->add_setting( 'wpwll_logo',
 	array(
-		'type' 							=> 'option', //  setup the option here
+		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> '',
-		'transport' 				=> 'postMessage', // or 'refresh'
+		'transport' 				=> $this->preview_type,
 		'sanitize_callback' => 'absint'
 	) );
 
@@ -60,7 +60,7 @@ $this->customizer()->add_control(
 			'type' 							=> 'option',
 			'capability' 				=> 'manage_options',
 			'default' 					=> 'center',
-			'transport' 				=> 'postMessage', // or 'refresh'
+			'transport' 				=> $this->preview_type, 
 			'sanitize_callback' => 'sanitize_title',
 		) );
 

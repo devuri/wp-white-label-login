@@ -1,20 +1,13 @@
 <?php
 
 
-	/**
-	 * [$header_preview_type description]
-	 * @var string //'postMessage' or 'refresh'
-	 * @link https://developer.wordpress.org/themes/customize-api/customizer-objects/
-	 */
-	$header_preview_type = 'refresh';
-
 
 	$this->customizer()->add_setting( 'wpwll_options[header_title]',
 		array(
 			'type' => 'option', //  setup the option here
 			'capability' => 'manage_options',
 			'default' => get_bloginfo( 'name' ),
-			'transport' => $header_preview_type, // or 'refresh'
+			'transport' => $this->preview_type, // or 'refresh'
 			'sanitize_callback' => 'sanitize_text_field'
 		) );
 
@@ -31,7 +24,7 @@
 			'type' => 'option', //  setup the option here
 			'capability' => 'manage_options',
 			'default' => get_bloginfo( 'description' ),
-			'transport' => $header_preview_type, // or 'refresh'
+			'transport' => $this->preview_type, // or 'refresh'
 			'sanitize_callback' => 'sanitize_text_field'
 		) );
 
@@ -51,7 +44,7 @@
 			'type' 							=> 'option',
 			'capability' 				=> 'manage_options',
 			'default' 					=> '#000000',
-			'transport' 				=> $header_preview_type,
+			'transport' 				=> $this->preview_type,
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 
@@ -74,7 +67,7 @@ $this->customizer()->add_setting( 'wpwll_options[header_background_color]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> '#ffffff',
-		'transport' 				=> $header_preview_type,
+		'transport' 				=> $this->preview_type,
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -97,7 +90,7 @@ $this->customizer()->add_setting( 'wpwll_options[header_alignment]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'center',
-		'transport' 				=> $header_preview_type, // or 'refresh'
+		'transport' 				=> $this->preview_type, 
 		'sanitize_callback' => 'sanitize_title',
 	) );
 

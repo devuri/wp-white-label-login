@@ -1,13 +1,5 @@
 <?php
 
-
-	/**
-	 * [$transport_type description]
-	 * @var string //'postMessage' or 'refresh'
-	 * @link https://developer.wordpress.org/themes/customize-api/customizer-objects/
-	 */
-	$transport_type = 'refresh';
-
 /**
  * Background Color
  * @var [type]
@@ -17,7 +9,7 @@ $this->customizer()->add_setting( 'wpwll_options[background_color]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> '#ffffff',
-		'transport' 				=> $transport_type,
+		'transport' 				=> $this->preview_type,
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -27,7 +19,7 @@ $this->customizer()->add_control(
 		 array(
 		   'label' => __( 'Background Color' ),
 		   'description' => __( 'Select a color' ),
-		   'section' => 'white_label_background', // Add a default or your own section
+		   'section' => 'white_label_background', 
 			)
 	) );
 
@@ -38,9 +30,9 @@ $this->customizer()->add_control(
  */
 $this->customizer()->add_setting( 'wpwll_background',
 	array(
-		'type' 							=> 'option', //  setup the option here
+		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
-		'transport' 				=> $transport_type, // or 'refresh'
+		'transport' 				=> $this->preview_type,
 		'sanitize_callback' => 'absint',
 	) );
 
@@ -64,7 +56,7 @@ $this->customizer()->add_setting( 'wpwll_options[background_attachment]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'fixed',
-		'transport' 				=> $transport_type, // or 'refresh'
+		'transport' 				=> $this->preview_type,
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
@@ -90,7 +82,7 @@ $this->customizer()->add_setting( 'wpwll_options[background_size]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'cover',
-		'transport' 				=> $transport_type, // or 'refresh'
+		'transport' 				=> $this->preview_type,
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
@@ -119,7 +111,7 @@ $this->customizer()->add_setting( 'wpwll_options[background_repeat]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'no-repeat',
-		'transport' 				=> $transport_type, // or 'refresh'
+		'transport' 				=> $this->preview_type,
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
@@ -148,7 +140,7 @@ $this->customizer()->add_setting( 'wpwll_options[background_position]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'bottom',
-		'transport' 				=> $transport_type, // or 'refresh'
+		'transport' 				=> $this->preview_type,
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
