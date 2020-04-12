@@ -1,7 +1,34 @@
 <?php
+/**
+ * turn on logo display
+ * @var [type]
+ */
+$this->customizer()->add_setting( 'wpwll_options[logo_display]',
+	array(
+		'type' 							=> 'option',
+		'capability' 				=> 'manage_options',
+		'default' 					=> 'none',
+		'transport' 				=> 'postMessage', // or 'refresh'
+		'sanitize_callback' => 'sanitize_title',
+	) );
+$this->customizer()->add_control( 'wpwll_options[logo_display]',
+	array(
+			'type' 					=> 'radio',
+			'section' 			=> 'white_label_logo',
+			'label' 				=> __( 'Logo Display' ),
+			'description' 	=> __( 'set logo image display.' ),
+			'choices' => array(
+				'block' 	=> __('Image'),
+				'contents' 	=> __('Text'),
+				'none' 			=> __('none'),
+			),
+	) );
 
-// LOGO
-$this->customizer()->add_setting( 'wpwll_options[logo]',
+/**
+ * Logo Image
+ * @var [type]
+ */
+$this->customizer()->add_setting( 'wpwll_logo',
 	array(
 		'type' 							=> 'option', //  setup the option here
 		'capability' 				=> 'manage_options',
@@ -12,7 +39,7 @@ $this->customizer()->add_setting( 'wpwll_options[logo]',
 
 $this->customizer()->add_control(
 	new WP_Customize_Cropped_Image_Control(
-		$this->customizer(), 'wpwll_options[logo]',
+		$this->customizer(), 'wpwll_logo',
 			array(
 				'label' 		=> __( 'Login logo' ),
 				'section' 	=> 'white_label_logo',
