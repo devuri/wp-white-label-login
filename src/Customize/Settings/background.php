@@ -19,7 +19,7 @@ $this->customizer()->add_control(
 		 array(
 		   'label' => __( 'Background Color' ),
 		   'description' => __( 'Select a color' ),
-		   'section' => 'white_label_background', 
+		   'section' => 'whitelabel_section_background',
 			)
 	) );
 
@@ -41,7 +41,7 @@ $this->customizer()->add_control(
 		$this->customizer(), 'wpwll_background',
 			array(
 				'label' 		=> __( 'Background' ),
-				'section' 	=> 'white_label_background',
+				'section' 	=> 'whitelabel_section_background',
 				'mime_type' => 'image',
 			)
 		)
@@ -63,7 +63,7 @@ $this->customizer()->add_setting( 'wpwll_options[background_attachment]',
 $this->customizer()->add_control( 'wpwll_options[background_attachment]',
 	array(
 		 'type' 				=> 'radio',
-		 'section' 			=> 'white_label_background',
+		 'section' 			=> 'whitelabel_section_background',
 		 'label' 				=> __( 'Background Attachment' ),
 		 'description' 	=> __( 'Set background attachment property, works with background image.' ),
 		 'choices' => array(
@@ -89,7 +89,7 @@ $this->customizer()->add_setting( 'wpwll_options[background_size]',
 $this->customizer()->add_control( 'wpwll_options[background_size]',
 	array(
 			'type' 				=> 'radio',
-			'section' 			=> 'white_label_background',
+			'section' 			=> 'whitelabel_section_background',
 			'label' 				=> __( 'Background Size' ),
 			'description' 	=> __( 'The background-size property specifies the size of the background images.' ),
 			'choices' => array(
@@ -118,7 +118,7 @@ $this->customizer()->add_setting( 'wpwll_options[background_repeat]',
 $this->customizer()->add_control( 'wpwll_options[background_repeat]',
 	array(
 			'type' 				=> 'radio',
-			'section' 			=> 'white_label_background',
+			'section' 			=> 'whitelabel_section_background',
 			'label' 				=> __( 'Background Repeat' ),
 			'description' 	=> __( 'The background-repeat property sets if/how a background image will be repeated.' ),
 			'choices' => array(
@@ -147,7 +147,7 @@ $this->customizer()->add_setting( 'wpwll_options[background_position]',
 $this->customizer()->add_control( 'wpwll_options[background_position]',
 	array(
 			'type' 				=> 'radio',
-			'section' 			=> 'white_label_background',
+			'section' 			=> 'whitelabel_section_background',
 			'label' 				=> __( 'Background Position' ),
 			'description' 	=> __( 'The background-position property sets the starting position of a background image.' ),
 			'choices' => array(
