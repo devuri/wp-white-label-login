@@ -31,7 +31,7 @@ But maybe you want to change the logo or change the login page background, well 
 * Add Custom Login Page CSS
 * Custom WordPress Login Page Footer
 
-![screenshot-2](https://user-images.githubusercontent.com/4777400/78468875-44ab0800-76e1-11ea-9dbb-71775642ff46.png)
+![screenshot-2](https://user-images.githubusercontent.com/4777400/79120567-cd1c4f00-7d58-11ea-9122-7ffb5448a0a6.png)
 
 By far the simplest login white label plugin for any WordPress Website no fiddles and strings, activate and you are done.
 
