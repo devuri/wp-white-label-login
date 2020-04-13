@@ -102,6 +102,7 @@ final class WhiteLabel {
 
 		// includes
 		require_once WPWLL_DIR . '/src/Login/Style.php';
+		require_once WPWLL_DIR . '/src/Login/css.php';
 		require_once WPWLL_DIR . '/src/Login/Header.php';
 		require_once WPWLL_DIR . '/src/Login/Logo.php';
 		require_once WPWLL_DIR . '/src/Login/Background.php';
