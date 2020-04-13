@@ -39,19 +39,16 @@ body.login h1{
 
 body h2 a{
 	font-weight: 100;
-	color: #008EC2;
 	padding-top: 40px;
 }
 
 
 body.login p#nav a {
-	color:#666666;
 	text-decoration:none;
 	margin:0 5px;
 }
 
 body a {
-	color:#474748 !important;
 	text-decoration:none;
 	margin:0 5px;
 }
@@ -77,7 +74,11 @@ hr{
 }
 /********* Login form *******/
 #login {
-    align: center;
+  align: center;
+  margin-top: 8%;
+  margin-right: auto;
+  margin-bottom: 4%;
+  padding: 26px;
 }
 
 #loginrgstrfrm{
