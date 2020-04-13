@@ -22,9 +22,13 @@ final class Section {
 		self::$sections[] = 'layout';
 		self::$sections[] = 'header';
 		self::$sections[] = 'logo';
+		self::$sections[] = 'login';
+		self::$sections[] = 'form';
+		self::$sections[] = 'button';
+		self::$sections[] = 'links';
 		self::$sections[] = 'background';
-		self::$sections[] = 'css';
 		self::$sections[] = 'footer';
+		self::$sections[] = 'css';
 
 		return self::$sections;
 	}

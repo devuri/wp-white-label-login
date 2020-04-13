@@ -10,14 +10,6 @@ p {
 	  width:360px;
 }
 
-#login {
-	background-repeat: repeat-x;
-	background-position: left top;
-	margin-top: 8%;
-	margin-right: auto;
-	margin-bottom: 4%;
-  padding: 26px;
-}
 
 .login form {
     margin-top: 0px;
