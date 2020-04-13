@@ -28,65 +28,6 @@ class LoginStyle {
     return $align;
   }
 
-  public static function login_form(){
-    ?><style type="text/css">
-        .login form {
-          box-shadow: 0 1px 3px #ffffff;
-          border: none;
-          border: none;
-        	margin-top: 0px;
-          box-shadow: none;
-          background-color: <?php echo wpwhitelabel()->setting('login_form_color'); ?> !important;
-          background: <?php echo wpwhitelabel()->setting('login_form_color'); ?> !important;
-          border-radius: 0px;
-          opacity: 0.99;
-        }
-    </style>
-  <?php }
-
-  /**
-   * styles for the submit button
-   * @return [type] [description]
-   */
-  public static function submit_button(){
-    ?><style type="text/css">
-      #wp-submit, input[type="submit"] {
-        transition: all 0.2s linear 0s;
-        margin-top: 20px;
-        background-color: <?php echo wpwhitelabel()->setting('button_background_color'); ?>;
-        border-radius: 0px;
-        color: <?php echo wpwhitelabel()->setting('button_text_color'); ?>;
-        font-size: 18px !important;
-        width: 100%;
-        font-weight: normal;
-        border: solid thin <?php echo wpwhitelabel()->setting('button_background_color'); ?>;
-      }
-    </style><?php
-  }
-
-  /**
-   * styles for the login_container
-   * @return [type] [description]
-   */
-  public static function login_container(){
-    ?><style type="text/css">
-      #login {
-        background-color: <?php echo wpwhitelabel()->setting('login_container_color'); ?>;
-        background-repeat: repeat-x;
-        background-position: left top;
-        margin-top: 8%;
-        margin-right: auto;
-        margin-bottom: 4%;
-        padding: 26px;
-      }
-      body.login {
-        color: <?php echo wpwhitelabel()->setting('login_text_color'); ?>;
-      }
-      body a {
-        color: <?php echo wpwhitelabel()->setting('link_color'); ?> !important;
-      }
-    </style><?php
-  }
 	/**
 	 * enqueue_style
 	 * @param  string $style stylesheet
@@ -106,6 +47,17 @@ class LoginStyle {
 		return wp_enqueue_style( $style, WPWLL_URL . 'assets/css/'.$wp_login_styles[$style], array(), WPWLL_VERSION, 'all' );
 	}
 
+  /**
+   * css()
+   *
+   * Load up the user defined css rules
+   * with the css_options() function in css.php
+   * @return [type] [description]
+   */
+  public static function css(){
+    return css_options();
+  }
+
 	/**
    * login_styles
    *
@@ -124,20 +76,8 @@ class LoginStyle {
      * enable bootstrap styles
      */
 		//self::enqueue_style('wll-bootstrap');
-
+		
     /**
-     * login form styles inline
-     * @var [type]
-     */
-    wp_add_inline_style( 'wll-user-styles', self::login_form() );
-
-    /**
-     * login_container styles inline
-     * @var [type]
-     */
-    wp_add_inline_style( 'wll-user-styles', self::login_container() );
-
-		/**
 		 * $user_custom_css
 		 *
 		 * lets add the user defined css to user stylesheet
@@ -150,9 +90,10 @@ class LoginStyle {
 		wp_add_inline_style( 'wll-user-styles', $user_custom_css );
 
     /**
-     * login button
+     * login form styles inline
+     * @var [type]
      */
-    wp_add_inline_style( 'wll-user-styles', self::submit_button() );
+    wp_add_inline_style( 'wll-user-styles', self::css() );
 
 		// use theme styles (users can turn this on if they want its off by default)
 		//wp_enqueue_style('wll-theme-style',get_stylesheet_directory_uri() . '/style.css',array(),wp_get_theme()->get('Version') );
