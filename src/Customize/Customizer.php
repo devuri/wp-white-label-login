@@ -107,9 +107,9 @@ final class Customizer {
 			 * build out each section.
 			 * @var [type]
 			 */
-			$this->customizer()->add_section( 'white_label_'.trim($section),
+			$this->customizer()->add_section( 'whitelabel_section_'.trim($section),
 				array(
-					'title'              => __( '* '. trim(ucwords($section)) ),
+					'title'              => __( ' » '. trim(ucwords($section)) ),
 					'capability'				 => 'manage_options',
 					'description'        => $this->description(),
 					'panel'        			 => 'wll_options_panel',
