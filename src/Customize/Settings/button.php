@@ -19,7 +19,7 @@ $this->customizer()->add_control(
 	 array(
 		 'label' => __( 'Background Color' ),
 		 'description' => __( 'Select a color' ),
-		 'section' => 'white_label_button', // Add a default or your own section
+		 'section' => 'whitelabel_section_button', // Add a default or your own section
 		)
 ) );
 
@@ -43,6 +43,6 @@ $this->customizer()->add_control(
 		 array(
 			 'label' => __( 'Text Color' ),
 			 'description' => __( 'Select a color' ),
-			 'section' => 'white_label_button', // Add a default or your own section
+			 'section' => 'whitelabel_section_button', // Add a default or your own section
 			)
 	) );
