@@ -14,7 +14,7 @@ $this->customizer()->add_setting( 'wpwll_options[logo_display]',
 $this->customizer()->add_control( 'wpwll_options[logo_display]',
 	array(
 			'type' 					=> 'radio',
-			'section' 			=> 'white_label_logo',
+			'section' 			=> 'whitelabel_section_logo',
 			'label' 				=> __( 'Logo Display' ),
 			'description' 	=> __( 'set logo image display.' ),
 			'choices' => array(
@@ -42,7 +42,7 @@ $this->customizer()->add_control(
 		$this->customizer(), 'wpwll_logo',
 			array(
 				'label' 		=> __( 'Login logo' ),
-				'section' 	=> 'white_label_logo',
+				'section' 	=> 'whitelabel_section_logo',
 				'mime_type' => 'image',
 				'width' => 120,
     		'height' => 120
@@ -60,14 +60,14 @@ $this->customizer()->add_control(
 			'type' 							=> 'option',
 			'capability' 				=> 'manage_options',
 			'default' 					=> 'center',
-			'transport' 				=> $this->preview_type, 
+			'transport' 				=> $this->preview_type,
 			'sanitize_callback' => 'sanitize_title',
 		) );
 
 	$this->customizer()->add_control( 'wpwll_options[logo_position]',
 		array(
 				'type' 				=> 'radio',
-				'section' 			=> 'white_label_logo',
+				'section' 			=> 'whitelabel_section_logo',
 				'label' 				=> __( 'Logo Position' ),
 				'description' 	=> __( 'Sets the alignment of the logo image.' ),
 				'choices' => array(
