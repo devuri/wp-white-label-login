@@ -4,7 +4,7 @@
 // CSS
 $this->customizer()->add_setting( 'wpwll_custom_css',
 	array(
-		'type' => 'option', 
+		'type' => 'option',
 		'capability' => 'manage_options',
 		'default' => '',
 		'transport' => $this->preview_type,
@@ -18,7 +18,7 @@ $this->customizer()->add_control(
 		'wpwll_custom_css',
 		array(
 			'label'       => __( 'Login Page CSS' ),
-			'section'     => 'white_label_css',
+			'section'     => 'whitelabel_section_css',
 			'code_type'   => 'text/css',
 			'input_attrs' => array(
 				'aria-describedby' => 'editor-keyboard-trap-help-1 editor-keyboard-trap-help-2 editor-keyboard-trap-help-3 editor-keyboard-trap-help-4',
