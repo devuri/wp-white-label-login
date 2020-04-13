@@ -13,7 +13,7 @@
 
 	$this->customizer()->add_control('wpwll_options[header_title]', array(
 			'label'   => 'Title',
-			'section' => 'white_label_header',
+			'section' => 'whitelabel_section_header',
 			'description' 	=> __( 'The header title text.' ),
 			'type'    => 'text',
 	));
@@ -30,7 +30,7 @@
 
 	$this->customizer()->add_control('wpwll_options[header_description]', array(
 			'label'   => 'Change the description',
-			'section' => 'white_label_header',
+			'section' => 'whitelabel_section_header',
 			'description' 	=> __( 'The header description text.' ),
 			'type'    => 'text',
 	));
@@ -54,7 +54,7 @@
 			 array(
 			   'label' => __( 'Text Color' ),
 			   'description' => __( 'Select a color' ),
-			   'section' => 'white_label_header', // Add a default or your own section
+			   'section' => 'whitelabel_section_header', // Add a default or your own section
 				)
 		) );
 
@@ -77,7 +77,7 @@ $this->customizer()->add_control(
 		 array(
 		   'label' => __( 'Background Color' ),
 		   'description' => __( 'Select a color' ),
-		   'section' => 'white_label_header', // Add a default or your own section
+		   'section' => 'whitelabel_section_header', // Add a default or your own section
 			)
 	) );
 
@@ -90,14 +90,14 @@ $this->customizer()->add_setting( 'wpwll_options[header_alignment]',
 		'type' 							=> 'option',
 		'capability' 				=> 'manage_options',
 		'default' 					=> 'center',
-		'transport' 				=> $this->preview_type, 
+		'transport' 				=> $this->preview_type,
 		'sanitize_callback' => 'sanitize_title',
 	) );
 
 $this->customizer()->add_control( 'wpwll_options[header_alignment]',
 	array(
 			'type' 				=> 'radio',
-			'section' 			=> 'white_label_header',
+			'section' 			=> 'whitelabel_section_header',
 			'label' 				=> __( 'Header Alignment' ),
 			'description' 	=> __( 'The header alignment sets the alignment of text.' ),
 			'choices' => array(
