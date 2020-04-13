@@ -42,7 +42,7 @@
     }
 
   # plugin directory
-	  define("WPWLL_VERSION", '5.1.61');
+	  define("WPWLL_VERSION", '5.3.9');
 
   # plugin directory
     define("WPWLL_DIR", dirname(__FILE__));
@@ -69,9 +69,16 @@
        //logo
        'logo_display' => 'none',
        'logo_position' => 'center',
+       //login
+       'login_text_color' => '#444444',
+       'login_container_color' => '#ffffff',
+       //form
+       'login_form_color' => '#ffffff',
        //button
        'button_text_color' => '#ffffff',
        'button_background_color' => '#007cba',
+       //links
+       'link_color' => '#474748',
        //background
        'background_color' => '#ffffff',
        'background_attachment' => 'fixed',
