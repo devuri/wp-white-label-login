@@ -30,19 +30,15 @@ class LoginStyle {
 
   public static function login_form(){
     ?><style type="text/css">
-        #login {
-        background-color: white;
-        }
-        /*** LOGIN FORM ***************************/
         .login form {
           box-shadow: 0 1px 3px #ffffff;
           border: none;
           border: none;
         	margin-top: 0px;
           box-shadow: none;
-          background-color: <?php echo wpwhitelabel()->setting('form_background_color'); ?>;
+          background-color: <?php echo wpwhitelabel()->setting('login_form_color'); ?> !important;
+          background: <?php echo wpwhitelabel()->setting('login_form_color'); ?> !important;
           border-radius: 0px;
-          background: none;
           opacity: 0.99;
         }
     </style>
@@ -68,6 +64,29 @@ class LoginStyle {
     </style><?php
   }
 
+  /**
+   * styles for the login_container
+   * @return [type] [description]
+   */
+  public static function login_container(){
+    ?><style type="text/css">
+      #login {
+        background-color: <?php echo wpwhitelabel()->setting('login_container_color'); ?>;
+        background-repeat: repeat-x;
+        background-position: left top;
+        margin-top: 8%;
+        margin-right: auto;
+        margin-bottom: 4%;
+        padding: 26px;
+      }
+      body.login {
+        color: <?php echo wpwhitelabel()->setting('login_text_color'); ?>;
+      }
+      body a {
+        color: <?php echo wpwhitelabel()->setting('link_color'); ?> !important;
+      }
+    </style><?php
+  }
 	/**
 	 * enqueue_style
 	 * @param  string $style stylesheet
@@ -111,6 +130,12 @@ class LoginStyle {
      * @var [type]
      */
     wp_add_inline_style( 'wll-user-styles', self::login_form() );
+
+    /**
+     * login_container styles inline
+     * @var [type]
+     */
+    wp_add_inline_style( 'wll-user-styles', self::login_container() );
 
 		/**
 		 * $user_custom_css
