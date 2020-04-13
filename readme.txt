@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: custom login, wordpress login, white label, login customizer, branding,
 Requires at least: 3.4
 Tested up to: 5.4
-Stable tag: 5.2.9
+Stable tag: 5.3.9
 Requires PHP: 5.6
 License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -67,8 +67,9 @@ The plugin options can be found by going to Appearance > Customize > White Label
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif).
-2. This is the second screen shot
+1. Custom login page.
+2. Customizer Options
+3. Custom login page.
 
 == Changelog ==
 
