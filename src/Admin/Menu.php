@@ -18,7 +18,7 @@ use WPWhiteLabel\AdminMenu;
     'Logo',
     'Custom Background',
     'Custom CSS',
-    'Login Redirect',
+    /*'Login Redirect',*/
   );
 
     //  initialize menu
