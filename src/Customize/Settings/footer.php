@@ -12,7 +12,7 @@ $this->customizer()->add_setting( 'wpwll_options[footer_text]',
 $this->customizer()->add_control('wpwll_options[footer_text]', array(
 		'label'   => 'Footer Text',
 		'description' 	=> __( 'Add Text to the footer.' ),
-		'section' => 'white_label_footer',
+		'section' => 'whitelabel_section_footer',
 		'type'    => 'textarea',
 ));
 
@@ -27,7 +27,7 @@ $this->customizer()->add_setting( 'wpwll_options[copyright_text]',
 
 $this->customizer()->add_control('wpwll_options[copyright_text]', array(
 		'label'   => 'Change Copyright Text',
-		'section' => 'white_label_footer',
+		'section' => 'whitelabel_section_footer',
 		'type'    => 'text',
 ));
 
@@ -50,7 +50,7 @@ $this->customizer()->add_control(
 		 array(
 			 'label' => __( 'Text Color' ),
 			 'description' => __( 'Select a color' ),
-			 'section' => 'white_label_footer',
+			 'section' => 'whitelabel_section_footer',
 			)
 	) );
 
@@ -70,7 +70,7 @@ $this->customizer()->add_setting( 'wpwll_options[footer_alignment]',
 $this->customizer()->add_control( 'wpwll_options[footer_alignment]',
 	array(
 			'type' 				=> 'radio',
-			'section' 			=> 'white_label_footer',
+			'section' 			=> 'whitelabel_section_footer',
 			'label' 				=> __( 'Footer Alignment' ),
 			'description' 	=> __( 'Sets the alignment of the footer text.' ),
 			'choices' => array(
