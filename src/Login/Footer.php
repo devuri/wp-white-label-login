@@ -12,7 +12,7 @@ namespace WPWhiteLabel\Footer;
     * add footer section to the login page
     * @return string
     */
-   public static function footer() {
+   protected static function set_footer() {
    	$year = date("Y");
 
      $footer  = '<div class="push"></div>';
@@ -31,4 +31,12 @@ namespace WPWhiteLabel\Footer;
      $footer .= '</div><!--footer-copyright--> ';
    	echo $footer;
    }
+
+   /**
+     * footer
+     * @return string
+     */
+    public static function footer() {
+      echo self::set_footer();
+    }
  }
