@@ -22,12 +22,10 @@
 	endif;
 
 ?><div class"wll-status">
-	<strong>Get Awesome free Photos:</strong>
-	<a target="_blank" href="https://pixabay.com/photos/search/">pixabay.com</a>
+
 </div>
-<hr/>
 <div class='logo-preview-wrapper'>
-	<img id='logo-preview' src='<?php echo wp_get_attachment_url(  get_option( 'wpwll_logo')); ?>' width="200">
+	<img id='logo-preview' src='<?php echo wp_get_attachment_url(  get_option( 'wpwll_logo')); ?>' width="120">
 </div>
 <hr/>
 <div id="frmwrap" >
@@ -94,7 +92,7 @@
         attachment = file_frame.state().get('selection').first().toJSON();
 
         // Do something with attachment.id and/or attachment.url here
-        $( '#logo-preview' ).attr( 'src', attachment.url ).css( 'width', '200px' );
+        $( '#logo-preview' ).attr( 'src', attachment.url ).css( 'width', '120px' );
         $( '#image_attachment_id' ).val( attachment.id );
 
         // Restore the main post ID
