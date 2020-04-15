@@ -144,6 +144,59 @@ final class WhiteLabel {
     return $wpslug;
   }
 
+  /**
+   * [photo_sites_list description]
+   * @param  string $thikboxID [description]
+   * @return [type]            [description]
+   */
+  public function photo_sites($thikboxID = 'freestockphotosites'){ ?>
+    <div id="<?php echo $thikboxID; ?>" style="display:none;">
+    <table class="widefat">
+    <tr style="background:#CFCFCF;">
+    <th> <b>Website</b></th>
+    </tr>
+      <?php
+      // sites list
+      $listofsites = array(
+        'stocksnap.io',
+        'pixabay.com',
+        'pexels.com',
+        'unsplash.com',
+        'burst.shopify.com',
+        'reshot.com',
+        'foodiesfeed.com',
+        'gratisography.com',
+        'gratisography.com',
+        'freestocks.org',
+        'picography.co',
+        'focastock.com',
+        'picjumbo.com',
+        'kaboompics.com',
+        'skitterphoto.com',
+        'lifeofpix.com',
+        'littlevisuals.co',
+        'jaymantri.com',
+        'picspree.com',
+        'isorepublic.com',
+        'styledstock.co',
+        'pikwizard.com',
+        'rawpixel.com',
+      );
+
+      // sort the array
+      sort($listofsites);
+      foreach ($listofsites as $skey => $site) {
+        echo '<tr>';
+        echo '<td>';
+        echo '<a target="_blank" href="https://'.$site.'">'.ucfirst($site).'</a>';
+        echo '</td>';
+        echo '</tr>';
+      }
+      ?>
+    </table>
+    </div>
+  <?php }
+
 
   /**
    * Appearance submenu
