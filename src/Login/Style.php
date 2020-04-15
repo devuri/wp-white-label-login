@@ -13,7 +13,7 @@ class LoginStyle {
    * options section
    * @return
    */
-  public static function align(){
+  protected static function align(){
     switch (wpwhitelabel()->setting('form_layout')) {
     case 'left':
         $align = self::enqueue_style('wll-align-left');
@@ -33,7 +33,7 @@ class LoginStyle {
 	 * @param  string $style stylesheet
 	 * @return
 	 */
-	public static function enqueue_style($style = 'wll-base'){
+	protected static function enqueue_style($style = 'wll-base'){
 		$wp_login_styles = array(
 			'wll-base'              => 'wll-base.css',
 			'wll-bootstrap'         => 'wll-bootstrap.css',
@@ -54,7 +54,7 @@ class LoginStyle {
    * with the css_options() function in css.php
    * @return [type] [description]
    */
-  public static function css(){
+  protected static function css(){
     return css_options();
   }
 
@@ -76,7 +76,7 @@ class LoginStyle {
      * enable bootstrap styles
      */
 		//self::enqueue_style('wll-bootstrap');
-		
+
     /**
 		 * $user_custom_css
 		 *

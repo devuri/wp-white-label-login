@@ -12,19 +12,8 @@ class LoginLogo {
 	 * get the logo
 	 * @return string
 	 */
-	public static function logo(){
+	protected static function logo(){
 		echo wp_get_attachment_url(wpwhitelabel()->option('logo'));
-	}
-
-	/**
-	 * [logo_text description]
-	 * @return [type] [description]
-	 * TODO this was Introduced in WordPress 5.2.0	check wordpress version.
-	 * @link https://developer.wordpress.org/reference/hooks/login_headertext/
-	 */
-	public static function logo_text() {
-	    $login_header_text = get_bloginfo( 'name' );
-	    return $login_header_text;
 	}
 
 	/**
@@ -33,7 +22,7 @@ class LoginLogo {
 	 * set the login screen logo
 	 * @return
 	 */
-	public static function login_logo() {
+	protected static function get_logo() {
 		?><style type="text/css">
 			#login h1 a, .login h1 a {
 				background-image: url(<?php self::logo(); ?>);
@@ -45,5 +34,32 @@ class LoginLogo {
 				display: <?php echo wpwhitelabel()->setting('logo_display') ?>;
 			}
 			</style><?php
+	}
+
+	/**
+	 * [logo_text description]
+	 * @return [type] [description]
+	 * TODO this was Introduced in WordPress 5.2.0	check wordpress version.
+	 * @link https://developer.wordpress.org/reference/hooks/login_headertext/
+	 */
+	protected static function set_logo_text() {
+			$login_header_text = get_bloginfo( 'name' );
+			return $login_header_text;
+	}
+
+	/**
+	 * [logo_text output
+	 */
+	public static function logo_text() {
+			return self::set_logo_text();
+	}
+
+	/**
+	 * login_logo output
+	 *
+	 * @return
+	 */
+	public static function login_logo() {
+		return self::get_logo();
 	}
 }
