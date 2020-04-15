@@ -30,6 +30,18 @@ final class FormHelper {
     $user_message .= '</div>';
     return $user_message;
   }
+
+  /**
+   * [thickbox_link description]
+   * @return [type] [description]
+   */
+  public function thickboxlink($linktext='click here',$id=''){
+    $link = '<a href="#TB_inline?width=auto&inlineId='.$id.'" class="thickbox">';
+    $link .= $linktext;
+    $link .= '</a>';
+    return $link;
+  }
+
   /**
    * is_required
    *
