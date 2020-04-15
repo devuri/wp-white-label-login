@@ -8,7 +8,7 @@
     wp_die();
   }
 
-
+  add_thickbox();
 
 ?><head>
 <div id="wll-important-notice">
