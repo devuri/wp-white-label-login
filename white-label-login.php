@@ -86,6 +86,8 @@
        'background_position' => 'bottom',
        // footer
        'footer_text' => '...',
+       'footer_nav' => false,
+       'footer_nav_alignment' => 'center',
        'copyright_text' => 'All Rights Reserved',
        'footer_text_color' => '#747474',
        'footer_alignment' => 'center',
@@ -128,3 +130,8 @@
 // initiate --------------------------------------------------------
   wpwhitelabel();
 // initiate --------------------------------------------------------
+// Footer Navigation
+add_action( 'init', 'wllfooter_nav' );
+function wllfooter_nav() {
+ register_nav_menu('wll-footer-nav',__( 'Login Page Footer Navigation' ));
+}

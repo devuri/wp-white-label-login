@@ -8,7 +8,7 @@
     wp_die();
   }
 
-
+  add_thickbox();
 
 ?><head>
 <div id="wll-important-notice">
@@ -20,9 +20,7 @@
   </span>
 </div>
 <header class="wll-header">
-</header>
-<div class="wll-container">
-  <div class="wll-admin-wrap"><?php
+  <?php
 
           if (!$this->admin_smenu) {
 
@@ -35,14 +33,17 @@
               #admin submenu items
               echo '<h2>';
               echo ucwords(
-                str_replace( '-', ' ',$this->get_thepage_name())
+              //  str_replace( '-', ' ',$this->get_thepage_name())
               );
               echo '</h2>';
               echo '<hr>';
             }
 
 
-         ?><div class="wll-child">
+         ?>
+</header>
+<div class="wll-container">
+  <div class="wll-admin-wrap"><div class="wll-child">
             <div class="wll-grid-item">
                 <div class="wll-padding">
                   <p><!---innner paragraph -->

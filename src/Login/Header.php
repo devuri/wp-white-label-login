@@ -3,8 +3,7 @@ namespace WPWhiteLabel\Header;
 /**
  *
  */
-class LoginHeader
-{
+class LoginHeader {
 
 	/**
    * header
@@ -12,7 +11,7 @@ class LoginHeader
    * add a header section to the login page
    * @return
    */
-  public static function header() {
+  protected static function login_header() {
     $header  = '<div class="wrapper">';
     $header .= '<div style="background-color: '.wpwhitelabel()->setting('header_background_color').'; color: '.wpwhitelabel()->setting('header_text_color').';" id="wll-header" class="wll-header" ';
     $header .= 'align="'.wpwhitelabel()->setting('header_alignment').'">';
@@ -26,5 +25,13 @@ class LoginHeader
     $header .= '</div>';
     $header .= '</div>';
   	echo $header;
+  }
+
+  /**
+   * [header description]
+   * @return [type] [description]
+   */
+  public static function header() {
+    return self::login_header();
   }
 }

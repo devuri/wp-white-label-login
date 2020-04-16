@@ -7,13 +7,13 @@ namespace WPWhiteLabel\Background;
 class LoginBackground {
 
 	/**
-	 * e_background
+	 * background
 	 *
 	 * echo the background for background-image css
 	 * @return string
 	 * @link https://developer.wordpress.org/reference/functions/wp_get_attachment_url/
 	 */
-	public static function background(){
+	protected static function background(){
 		$background_img = wp_get_attachment_url(wpwhitelabel()->option('background_image'));
 		echo $background_img;
 	}
@@ -23,7 +23,7 @@ class LoginBackground {
 	 * the page body
 	 * @return
 	 */
-	public static function body() {
+	protected static function css() {
 		?><style type="text/css">
 			body {
 				background-color: <?php echo wpwhitelabel()->setting('background_color'); ?>;
@@ -34,5 +34,15 @@ class LoginBackground {
 				background-position: <?php echo wpwhitelabel()->setting('background_position'); ?>;
 			}
 			</style><?php
+	}
+
+	/**
+	 * Body
+	 *
+	 * the page body
+	 * @return
+	 */
+	public static function body() {
+		return self::css();
 	}
 }

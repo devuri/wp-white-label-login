@@ -341,7 +341,7 @@ final class AdminMenu {
      */
     public function dynamic_tab_menu() {
 
-      echo '<h2 class="wll-admin nav-tab-wrapper wp-clearfix">';
+      echo '<h2 style="border: unset;" class="wll-admin nav-tab-wrapper wp-clearfix">';
       foreach ($this->submenu_args as $key => $subm_item) {
          #slugs
         if ($key == 0) {
@@ -352,9 +352,9 @@ final class AdminMenu {
 
           // build out the sub menu items
           if ($subm_slug == $this->get_thepage_name()) {
-            echo '<a href="'.admin_url('/admin.php?page='.strtolower($subm_slug).'').'" class="wll-admin-tab nav-tab nav-tab-active">'.ucwords($subm_item).'</a>';
+            echo '<a href="'.admin_url('/admin.php?page='.strtolower($subm_slug).'').'" class="wll-admin-tab nav-tab-active">'.ucwords($subm_item).'</a>';
           } else {
-            echo '<a href="'.admin_url('/admin.php?page='.strtolower($subm_slug).'').'" class="wll-admin-tab nav-tab nav-tab">'.ucwords($subm_item).'</a>';
+            echo '<a href="'.admin_url('/admin.php?page='.strtolower($subm_slug).'').'" class="wll-admin-tab">'.ucwords($subm_item).'</a>';
           }
         }
       echo '</h2>';
@@ -478,7 +478,9 @@ final class AdminMenu {
       $menu_title = '<h2 class="wll-admin-dashicons-before ';
       $menu_title .= $this->icon_url;
       $menu_title .= '">';
+      $menu_title .= '<span class="wll-admin-title">';
       $menu_title .= $this->page_title;
+      $menu_title .= '</span>';
       $menu_title .= '</h2>';
       return $menu_title;
     }

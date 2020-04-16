@@ -159,10 +159,19 @@ hr{
     opacity: 0.96;
 }
 
+.footer-navigation ul {
+    list-style-type: none;
+    list-style: none;
+    list-style-image: none;
+}
+
+.footer-navigation li {
+    padding: 20px;
+    display: inline;
+}
+
 #footer {
   /* position:absolute; if the form falls behind the footer we cant access the links */
-  padding-left: 12px;
-  padding-right: 12px;
   bottom:0;
    /*height:60px;*/
    /*background-color: #e2e2e2;*/

@@ -11,6 +11,14 @@
 	line-height: 2em;
 }
 
+.wll-container{
+    background-color: #fff;
+    box-shadow: 0 0 10px -5px rgba(0,0,0,0.5);
+    padding: 20px;
+    width: 90%;
+    margin-top: 20px;
+}
+
 #wll-textarea-css{
     width: 100%;
     background-color: black;
@@ -39,33 +47,55 @@
 }
 
 .wll-header {
-  box-shadow: 0 5px 15px rgba(0,0,0,.08);
-  width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #fff;
-  /*position: fixed;*/
-  z-index: 10;
-  margin-left: -20px;
-  margin-bottom: 20px;
+  /*box-shadow: 0 5px 15px rgba(0,0,0,.08);*/
+    padding-top: 10px;
+    background-color: #fff;
+    z-index: 10;
+    margin-left: -20px;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    /*border-bottom: solid #e5e5e5;*/
+}
+
+h2.wll-admin .nav-tab-wrapper .wp-clearfix{
+    border-bottom: 0px solid #ccc;
+    margin: 0;
+    padding-top: 9px;
+    padding-bottom: 0;
+    line-height: inherit;
+}
+
+.wll-admin-tab,
+.wll-admin-tab:focus,
+.wll-admin-tab:focus:active,
+.wll-admin-tab:hover{
+  color: #007cba;
+  border-bottom: none;
 }
 
 .wll-admin-wrap a {
   text-decoration: none;
 }
 
-.wll-admin-tab .nav-tab {
-  padding-right: 15px;
-  padding-left: 15px;
-  font-size: 18px;
-  font-weight: 500;
+a.wll-admin-tab {
+    float: left;
+    /* border: 1px solid #ccc; */
+    border-bottom: none;
+    margin-left: .5em;
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 1.71428571;
+    font-weight: 600;
+    /* background: #e5e5e5; */
+    color: #007cba;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
 .wll-admin-dashicons-before:before {
   font-family: dashicons;
-  display: inline-block;
   line-height: unset;
-  padding: 8px 12px;
+  padding: 4px 8px;
   font-weight: 400;
   font-style: normal;
   speak: none;
@@ -81,12 +111,12 @@
   text-align: center;
   transition: color .1s ease-in;
   color: #555555;
-  border: 0;
-  border-top: 2px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-bottom: 2px solid #fafafa;
-  border-right: 1px solid #fafafa;
-  border-radius: 8px;
   margin-right: 8px;
   margin-left: 9px;
+}
+
+.wll-admin-title{
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
 }
