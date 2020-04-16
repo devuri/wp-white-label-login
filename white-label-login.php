@@ -130,8 +130,3 @@
 // initiate --------------------------------------------------------
   wpwhitelabel();
 // initiate --------------------------------------------------------
-// Footer Navigation
-add_action( 'init', 'wllfooter_nav' );
-function wllfooter_nav() {
- register_nav_menu('wll-footer-nav',__( 'Login Page Footer Navigation' ));
-}

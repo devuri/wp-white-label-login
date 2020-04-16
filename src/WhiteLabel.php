@@ -8,6 +8,7 @@ use WPWhiteLabel\Logo\LoginLogo;
 use WPWhiteLabel\Background\LoginBackground;
 use WPWhiteLabel\Footer\LoginFooter;
 use WPWhiteLabel\Customize\Customizer;
+use WPWhiteLabel\UsefulPlugins\Plugins;
 
 /**
  * Main class White_Label_Login
@@ -82,6 +83,7 @@ final class WhiteLabel {
    */
   public function init(){
     add_action( 'admin_menu', array( $this , 'appearance_submenu') );
+    add_action( 'init', array( $this ,'footer_navigation') );
     add_action( 'login_enqueue_scripts', array( LoginStyle::class, 'login_styles' ) );
     add_action( 'login_enqueue_scripts', array( LoginLogo::class, 'login_logo') );
     add_filter( 'login_headertext',array( LoginLogo::class, 'logo_text' ) );
@@ -90,8 +92,6 @@ final class WhiteLabel {
     add_filter( 'login_footer', array( LoginFooter::class, 'footer') );
     add_filter( 'login_headerurl', array( $this , 'logo_link') );
   }
-
-
 
   /**
 	 * Include files.
@@ -113,6 +113,8 @@ final class WhiteLabel {
 
 		// Admin/Dashboard stuff
 		if ( is_admin() ) {
+			require_once WPWLL_DIR . '/vendor/connekt-plugin-installer/class-connekt-plugin-installer.php';
+			require_once WPWLL_DIR . '/src/UsefulPlugins/Plugins.php';
 			require_once WPWLL_DIR . '/src/Admin/AdminMenu.php';
 			require_once WPWLL_DIR . '/src/Admin/Form/FormHelper.php';
 			require_once WPWLL_DIR . '/src/Admin/Menu.php';
@@ -131,6 +133,14 @@ final class WhiteLabel {
 
     // ok sparky everything seems to be loaded
     do_action( 'wpwhitelabel_loaded' );
+  }
+
+  /**
+   * Footer Navigation
+   * @return [type] [description]
+   */
+  function footer_navigation() {
+   register_nav_menu('wll-footer-nav',__( 'Login Page Footer Navigation' ));
   }
 
   /**
