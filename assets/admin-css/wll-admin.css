@@ -11,12 +11,13 @@
 	line-height: 2em;
 }
 
-.wll-container{
+.wll-container {
     background-color: #fff;
     box-shadow: 0 0 10px -5px rgba(0,0,0,0.5);
     padding: 20px;
-    width: 90%;
     margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 #wll-textarea-css{
