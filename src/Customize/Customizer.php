@@ -27,6 +27,7 @@ final class Customizer {
 		 */
 		add_action( 'customize_register', array( $this , 'setup') , 12, 1 );
 
+
 		//load the plugin
 		$this->plugin = $white_label_login;
 

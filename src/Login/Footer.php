@@ -5,32 +5,55 @@ namespace WPWhiteLabel\Footer;
   *
   */
  class LoginFooter {
+    /**
+     * show footer navigation
+     * @var [type]
+     */
+    private static $nav;
 
-	 /**
-    * footer
-    *
-    * add footer section to the login page
-    * @return string
-    */
-   protected static function set_footer() {
-   	$year = date("Y");
+	  /**
+      * footer
+      *
+      * add footer section to the login page
+      * @return string
+      */
+    protected static function set_footer() {
+   	$year = date("Y"); ?>
+    <div class="push"></div>
+    </div><!--wrapper-->
+    <div  style="font-size: small; color:<?php echo wpwhitelabel()->setting('footer_text_color')?>;" id="footer" class="footer footer-copyright" align="<?php echo wpwhitelabel()->setting('footer_alignment') ?>">
+    <div style="width: 70%; margin-bottom:12px;" class="footer-text">
+    <?php echo wpwhitelabel()->setting('footer_text'); ?>
+    </div><!--footer-text-->
+    <?php self::menu(); ?>
+    <div style="width: 60%; margin-bottom:4px;" class="footer-copyright">
+    Copyright © <?php echo $year; ?>
+    <a href="<?php echo wpwhitelabel()->site_info('url') ?>">
+    <?php echo wpwhitelabel()->site_info('name'); ?>
+    </a>
+    <span class="wll-footer-copyright-text">
+    <?php echo wpwhitelabel()->setting('copyright_text'); ?>
+    </span>
+    </div><!--footer-copyright-->
+    </div><!--footer-->
+    <?php }
 
-     $footer  = '<div class="push"></div>';
-     $footer .= '</div><!--wrapper-->';
-     $footer .= '<div  style="font-size: small; color: '.wpwhitelabel()->setting('footer_text_color').';" id="footer" class="footer footer-copyright" align="'.wpwhitelabel()->setting('footer_alignment').'">';
-     $footer .= '<div style="width: 70%; font-size: small; margin-bottom:12px;" class="footer_text">';
-     $footer .= wpwhitelabel()->setting('footer_text');
-     $footer .= '</div><!--footer_text-->';
-     $footer .= 'Copyright © '.$year.' ';
-     $footer .= '<a href=" '.wpwhitelabel()->site_info('url').' ">';
-     $footer .= wpwhitelabel()->site_info('name');
-     $footer .= '</a> ';
-     $footer .= '<span class="wll-footer-copyright-text"> ';
-     $footer .= wpwhitelabel()->setting('copyright_text');
-     $footer .= '</span> ';
-     $footer .= '</div><!--footer-copyright--> ';
-   	echo $footer;
-   }
+    public static function menu(){
+      self::$nav = wpwhitelabel()->setting('footer_nav');
+      if (self::$nav): ?>
+        <div align="<?php echo wpwhitelabel()->setting('footer_nav_alignment'); ?>" style="padding: 12px;
+          border-top: solid thin #dadada;
+          border-bottom: solid thin #dadada;
+          background-color: #dadada;
+          box-shadow: 0 5px 15px rgba(0,0,0,.08);
+          margin-bottom: 8px;" class="footer-navigation">
+          <?php wp_nav_menu( array(
+   	 			  'theme_location' => 'wll-footer-nav',
+   	 			  'container_class' => 'footer-navigation navigation clearfix'
+          ) ); ?>
+        </div><!--footer-menu-->
+      <?php endif;
+    }
 
    /**
      * footer

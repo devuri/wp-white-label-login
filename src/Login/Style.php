@@ -98,5 +98,6 @@ class LoginStyle {
 		// use theme styles (users can turn this on if they want its off by default)
 		//wp_enqueue_style('wll-theme-style',get_stylesheet_directory_uri() . '/style.css',array(),wp_get_theme()->get('Version') );
 
+
 	}
 }
