@@ -16,8 +16,8 @@ use WPWhiteLabel\AdminMenu;
 
   $wllsubmenu = array(
     'Logo',
-    'Custom Background',
-    'Custom CSS',
+    'Background',
+    'CSS',
     /*'Login Redirect',*/
     'Useful Plugins',
   );
