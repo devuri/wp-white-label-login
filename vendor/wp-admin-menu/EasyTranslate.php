@@ -1,11 +1,11 @@
 <?php
 
-namespace SimWP\Translate\Form;
+namespace WPAdminMenu\Translate\Form;
 
 /**
  *
  */
-class Sim_Translate_Easy {
+class Translate_Easy {
 
 	/**
 	 * $textdomain

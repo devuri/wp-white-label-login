@@ -15,7 +15,7 @@
     Do you have suggestions head over to the
     <a href="https://wordpress.org/support/plugin/<?php print($this->slug); ?>" target="_blank" rel="noopener noreferrer">Plugins Support Section</a>.
     If you enjoy using this plugin
-    <a href="https://wordpress.org/plugins/wp-white-label-login/#reviews" target="_blank" rel="noopener noreferrer">please leave a positive feedback here.</a>.
+    <a href="https://wordpress.org/plugins/<?php print($this->slug); ?>/#reviews" target="_blank" rel="noopener noreferrer">please leave a positive feedback here.</a>.
   </span>
 </div>
 <header class="wll-header"><?php

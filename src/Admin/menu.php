@@ -1,6 +1,6 @@
 <?php
 
-use WPWhiteLabel\AdminMenu;
+use WPAdminMenu\AdminMenu;
 
   $wllmenu = array(
     'White Label Login Settings',

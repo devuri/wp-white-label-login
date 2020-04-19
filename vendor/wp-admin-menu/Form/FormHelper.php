@@ -1,6 +1,6 @@
 <?php
 
-namespace WPWhiteLabel\Admin\Form;
+namespace WPAdminMenu\Admin\Form;
 
 /**
  * FormHelper
