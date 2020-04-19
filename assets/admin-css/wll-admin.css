@@ -44,12 +44,13 @@
 
 .wll-header {
   /*box-shadow: 0 5px 15px rgba(0,0,0,.08);*/
-    padding-top: 10px;
     background-color: #fff;
     z-index: 10;
     margin-left: -20px;
     margin-bottom: 10px;
-    padding-left: 12px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     /*border-bottom: solid #e5e5e5;*/
 }
 
