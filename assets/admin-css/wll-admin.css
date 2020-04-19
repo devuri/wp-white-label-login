@@ -4,12 +4,7 @@
     margin-left: -20px;
     text-align: center;
 }
-.wll-admin-wrap {
-  width: 90%;
-  margin: 0 auto;
-	font-size: initial;
-	line-height: 2em;
-}
+
 
 .wll-container {
     background-color: #fff;
@@ -49,12 +44,13 @@
 
 .wll-header {
   /*box-shadow: 0 5px 15px rgba(0,0,0,.08);*/
-    padding-top: 10px;
     background-color: #fff;
     z-index: 10;
     margin-left: -20px;
     margin-bottom: 10px;
-    padding-left: 12px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     /*border-bottom: solid #e5e5e5;*/
 }
 
@@ -85,6 +81,7 @@ a.wll-admin-tab {
     margin-left: .5em;
     padding: 5px 10px;
     font-size: 14px;
+    font-weight: 400;
     line-height: 1.71428571;
     font-weight: 600;
     /* background: #e5e5e5; */
