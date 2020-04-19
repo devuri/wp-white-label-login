@@ -12,14 +12,11 @@
 
 CSS Settings can be updated via the Customizer
 <hr/>
-
+	<br/>
+<?php echo $this->plugin()->customizer_button(); ?>
+	<br/>
+<img style="width: 100%;" src="<?php echo WPWLL_URL . '/assets/images/screenshot/screenshot-2.png'; ?>" alt="">
 <div id="frmwrap" >
+	<br/>
 	<?php echo $this->plugin()->customizer_button(); ?>
-	<!--<hr/>
-	<div class"wll-css">
-		<label for="input">CSS</label>
-  <textarea class="form-css-text" id="wll-textarea-css" rows="10" disabled>
-		<?php // echo $get_custom_css ?>
-  </textarea>
-</div>-->
 </div><!--frmwrap-->

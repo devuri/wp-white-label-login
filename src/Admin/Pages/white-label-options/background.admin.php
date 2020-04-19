@@ -52,7 +52,6 @@
 
 
 ?></form>
-<hr/>
 <br/>
 	<?php echo $this->plugin()->customizer_button(); ?>
 </div><!--frmwrap-->
