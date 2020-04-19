@@ -1,7 +1,7 @@
 <?php
 
-namespace WPWhiteLabel;
-use WPWhiteLabel\Admin\Form\FormHelper as Form;
+namespace WPAdminMenu;
+use WPAdminMenu\Admin\Form\FormHelper as Form;
 
 /**
  * ----------------------------------------------------------------------------
@@ -13,23 +13,24 @@ use WPWhiteLabel\Admin\Form\FormHelper as Form;
  * @link      	https://switchwebdev.com
  *
  * ----------------------------------------------------------------------------
- * How to use
+ * expecting the admin pages in the following dir
+ * /src/Admin/pages uses $this->admin_path()
  *
- * put in /includes/admin/class-sim-admin-menu.php
- * new up in /includes/admin/menu/my-new-custom-menu.php
- *
- * new Wll_Admin_Menu($my_new_menu);
+ * /src/Admin/Menu.php define menu items here
  *
  * ----------------------------------------------------------------------------
  */
-
-
 final class AdminMenu {
 
     /**
      * class version
      */
     const ADMINVERSION = '3.1.6';
+
+    /**
+     * admin pages path
+     */
+    const ADMINPAGES = '/src/Admin/pages/';
 
     /**
      * $page_title
@@ -130,6 +131,14 @@ final class AdminMenu {
     public $slug;
 
     /**
+     * $path
+     *
+     * set the current plugin dir we need this to ref file locations
+     * @var string
+     */
+    public $path;
+
+    /**
      * $submenu_args
      *
      * @var array submenu_args
@@ -179,6 +188,9 @@ final class AdminMenu {
       // setup the slug
       $this->slug     = $this->plugin->slug();
 
+      // get the plugin directory
+      $this->path     = $this->plugin->dir();
+
       // submenu
       $this->submenu_args = $submenu_items;
 
@@ -215,6 +227,14 @@ final class AdminMenu {
         $this->plugin
       );
       return $menu_args;
+    }
+    /**
+     * Load the FormHelper class
+     * @return [type] [description]
+     */
+    public function form(){
+      $form_helper = new Form();
+      return $form_helper;
     }
 
     /**
@@ -254,6 +274,10 @@ final class AdminMenu {
      */
     public function plugin(){
       return $this->plugin;
+    }
+
+    public function admin_path(){
+      return $this->path . self::ADMINPAGES;
     }
 
     /**
@@ -307,14 +331,78 @@ final class AdminMenu {
     }
 
     /**
-     * Admin Only Callback
-     *
-     * @since 2.0
+     * Load the admin page header
+     * @return [type] [description]
      */
-    public function adminonly_callback() {
-      # get page name
-      $mpage = $this->get_thepage_name();
-      $this->admin_submenu_page($mpage);
+    public function header(){
+      $header = plugin_dir_path( __FILE__ ).'pages/header.admin.php';
+      $this->require_page($header);
+    }
+
+
+    /**
+     * Load the admin page header
+     * @return [type] [description]
+     */
+    public function footer(){
+      $header = plugin_dir_path( __FILE__ ).'pages/footer.admin.php';
+      $this->require_page($header);
+    }
+
+    /**
+     * Load the admin page
+     *
+     * @since 1.0
+     * @param  string $admin_page the admin page name
+     * @return
+     */
+    public function autoload_admin_page($admin_page) {
+      if ($this->admin_smenu) {
+        $admin_file = $this->admin_path() . 'admin-options/'.$admin_page.'.admin.php';
+      } else {
+        $admin_file = $this->admin_path() . $this->menu_slug().'/'.$admin_page.'.admin.php';
+      }
+      return $admin_file;
+    }
+
+    /**
+     * Admin Page
+     *
+     * @since 1.0
+     * @param  string $page_name
+     * @return
+     */
+    public function admin_page($page_name = 'admin') {
+      $page_title = ucfirst($this->get_thepage_name());
+      /**
+       * setup the pages
+       * @var [type]
+       */
+      $page   = $this->autoload_admin_page($page_name);
+      // load pages
+      $this->header();
+      $this->require_page($page);
+      $this->footer();
+    }
+
+    /**
+     * [require_page description]
+     * @param  [type] $adminfile [description]
+     * @return [type]            [description]
+     */
+    public function require_page($adminfile){
+      if (file_exists($adminfile)) {
+        require_once $adminfile;
+      } else {
+        $file_location_error = '<h1> Menu file location error : Experiencing Technical Issues, Please Contact Admin </h1>';
+          # only show full file path to admin user
+        if ( current_user_can('manage_options') ) {
+          $file_location_error  = '<h2> Please check file location, Page Does not Exist</h2>';
+          $file_location_error .= '<span class="alert-danger">'. $adminfile . '</span> location of file was not found </p>';
+        }
+          // user feedback
+          echo $file_location_error;
+      }
     }
 
     /**
@@ -327,11 +415,26 @@ final class AdminMenu {
       # set page title
       $page_title = ucfirst($this->get_thepage_name());
       $this->admin_smenu = true;
+      /**
+       * setup the pages
+       * @var [type]
+       */
+      $page   = $this->autoload_admin_page($page_name);
+      // load pages
+      $this->header();
+      $this->require_page($page);
+      $this->footer();
+    }
 
-
-      require_once plugin_dir_path( __FILE__ ). 'Pages/head.php';
-      $this->autoload_admin_page($page_name);
-      require_once plugin_dir_path( __FILE__ ). 'Pages/footer.php';
+    /**
+     * Admin Only Callback
+     *
+     * @since 2.0
+     */
+    public function adminonly_callback() {
+      # get page name
+      $mpage = $this->get_thepage_name();
+      $this->admin_submenu_page($mpage);
     }
 
     /**
@@ -372,60 +475,6 @@ final class AdminMenu {
     }
 
     /**
-     * Load the admin page
-     *
-     * @since 1.0
-     * @param  string $admin_page the admin page name
-     * @return
-     */
-    public function autoload_admin_page($admin_page) {
-
-      if ($this->admin_smenu) {
-        $form = new Form();
-        $admin_file = plugin_dir_path( __FILE__ ). 'Pages/admin-options/'.$admin_page.'.admin.php';
-      } else {
-        $form = new Form();
-        $admin_file = plugin_dir_path( __FILE__ ). 'Pages/'.$this->menu_slug().'/'.$admin_page.'.admin.php';
-      }
-
-      /**
-       * Missing Admin file error
-       *
-       * provide some feedback here if we cant find the admin file
-       * only show this to the admin user
-       *
-       */
-      if (file_exists($admin_file)) {
-        require_once $admin_file;
-      } else {
-        $file_location_error = '<h1> Menu file location error : Experiencing Technical Issues, Please Contact Admin </h1>';
-          # only show full file path to admin user
-        if ( current_user_can('manage_options') ) {
-          $file_location_error  = '<h2> Please check file location, Page Does not Exist</h2>';
-          $file_location_error .= '<span class="alert-danger">'.$admin_file . '</span> location of file was not found </p>';
-        }
-          // user feedback
-          echo $file_location_error;
-      }
-    }
-
-    /**
-     * Admin Page
-     *
-     * @since 1.0
-     * @param  string $page_name
-     * @return
-     */
-    public function admin_page($page_name = 'admin') {
-
-      $page_title = ucfirst($this->get_thepage_name());
-
-      require_once plugin_dir_path( __FILE__ ). 'Pages/head.php';
-      $this->autoload_admin_page($page_name);
-      require_once plugin_dir_path( __FILE__ ). 'Pages/footer.php';
-    }
-
-    /**
      * Add Header Action
      *
      * @since 1.0
@@ -443,29 +492,6 @@ final class AdminMenu {
      */
     public static function admin_footer() {
       do_action('swa_footer');
-    }
-
-    /**
-     * Build the menu
-     *
-     * @since 1.0
-     * @return
-     */
-    public static function make_menu() {
-
-      $menu_items = func_get_args();
-      foreach ($menu_items as $menu_key => $menu_name) {
-        /**
-         * lets make it pretty
-         * @link https://developer.wordpress.org/reference/functions/sanitize_title/
-         */
-        $menu_name = sanitize_title($menu_name);
-        if ( file_exists( plugin_dir_path( __FILE__ ). 'Pages/'.$menu_name.'.php' ) ) {
-          require_once plugin_dir_path( __FILE__ ). 'Pages/'.$menu_name.'.php';
-        } else {
-          $debug['make_menu_error'] = plugin_dir_path( __FILE__ ). 'Pages/'.$menu_name.'.php';
-        }
-      }
     }
 
     /**

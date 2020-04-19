@@ -113,11 +113,11 @@ final class WhiteLabel {
 
 		// Admin/Dashboard stuff
 		if ( is_admin() ) {
+      require_once WPWLL_DIR . '/vendor/wp-admin-menu/AdminMenu.php';
+      require_once WPWLL_DIR . '/vendor/wp-admin-menu/Form/FormHelper.php';
 			require_once WPWLL_DIR . '/vendor/connekt-plugin-installer/class-connekt-plugin-installer.php';
 			require_once WPWLL_DIR . '/src/UsefulPlugins/Plugins.php';
-			require_once WPWLL_DIR . '/src/Admin/AdminMenu.php';
-			require_once WPWLL_DIR . '/src/Admin/Form/FormHelper.php';
-			require_once WPWLL_DIR . '/src/Admin/Menu.php';
+			require_once WPWLL_DIR . '/src/Admin/menu.php';
 		}
 	}
 
@@ -152,6 +152,17 @@ final class WhiteLabel {
   public function slug(){
     $wpslug = 'wp-white-label-login';
     return $wpslug;
+  }
+
+  /**
+   * plugin directory
+   *
+   * WordPress.org repo slug
+   * @return [type] [description]
+   */
+  public function dir(){
+    $dir_path = WPWLL_DIR;
+    return $dir_path;
   }
 
   /**

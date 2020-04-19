@@ -2,53 +2,51 @@
 
 	// load the wp media manager
 	wp_enqueue_media();
-	$wll_background = get_option('wpwll_background', 0);
+	$wll_logo = get_option('wpwll_logo', 0);
 
 	// Save attachment ID
 	if ( isset( $_POST['submit_image'] ) && isset( $_POST['image_attachment_id'] ) ) :
 
 		// lets verify the nonce
-		if ( ! $form->verify_nonce()  ) {
-			wp_die($form->user_feedback('Verification Failed !!!' , 'error'));
+		if ( ! $this->form()->verify_nonce()  ) {
+			wp_die($this->form()->user_feedback('Verification Failed !!!' , 'error'));
 		}
 
 		// get the image ID
 		$image_attachment = absint($_POST['image_attachment_id']);
 
 		// update the image and provide feedback
-	  update_option( 'wpwll_background', $image_attachment );
-		echo $form->user_feedback('Background Image has been updated !!!');
+	  update_option( 'wpwll_logo', $image_attachment );
+		echo $this->form()->user_feedback('Logo Image has been updated !!!');
 
 	endif;
 
 ?><div class"wll-status">
-	<strong>Get free Photos:</strong>
-	<?php echo $form->thickboxlink('Free Stock Photo Sites','freestockphotosites') ?>
+
 </div>
-<hr/>
-<div class='image-preview-wrapper'>
-	<img id='image-preview' src='<?php echo wp_get_attachment_url(  get_option( 'wpwll_background')); ?>' width="500">
+<div class='logo-preview-wrapper'>
+	<img id='logo-preview' src='<?php echo wp_get_attachment_url(  get_option( 'wpwll_logo')); ?>' width="120">
 </div>
 <hr/>
 <div id="frmwrap" >
 	<form action="" method="POST"	enctype="multipart/form-data"><?php
 	// open table
-	echo $form->table('open');
+	echo $this->form()->table('open');
 
 	// upload file
-	echo $form->upload('Login Background Image', 'Choose or Upload Background Image');
+	echo $this->form()->upload('Login Logo Image', 'Choose or Upload Logo Image');
 
 	// image_attachment_id
-	echo $form->input_hidden('Image Attachment Id', get_option( 'wpwll_background' ));
+	echo $this->form()->input_hidden('Image Attachment Id', get_option( 'wpwll_logo' ));
 
 	// close table
-	echo $form->table('close');
+	echo $this->form()->table('close');
 
 	// nonce_field
-	$form->nonce();
+	$this->form()->nonce();
 
 	// submit button
-	echo $form->submit_button('Save Background Image', 'primary large', 'submit_image');
+	echo $this->form()->submit_button('Save Logo Image', 'primary large', 'submit_image');
 
 
 ?></form>
@@ -61,8 +59,8 @@
 		// Uploading files
     var file_frame;
     var wp_media_post_id = wp.media.model.settings.post.id; // Store the old id
-    var set_to_post_id = <?php echo $wll_background; ?>; // Set this
-    jQuery('#login_background_image').on('click', function( event ){
+    var set_to_post_id = <?php echo $wll_logo; ?>; // Set this
+    jQuery('#login_logo_image').on('click', function( event ){
       event.preventDefault();
 
 			// If the media frame already exists, reopen it.
@@ -79,9 +77,9 @@
 
       // Create the media frame.
       file_frame = wp.media.frames.file_frame = wp.media({
-        title: 'Select or Upload a Background Image',
+        title: 'Select or Upload a Logo Image',
         button: {
-          text: 'Use as Background Image',
+          text: 'Use as Logo Image',
         },
         multiple: false	// Set to true to allow multiple files to be selected
       });
@@ -93,7 +91,7 @@
         attachment = file_frame.state().get('selection').first().toJSON();
 
         // Do something with attachment.id and/or attachment.url here
-        $( '#image-preview' ).attr( 'src', attachment.url ).css( 'width', '500px' );
+        $( '#logo-preview' ).attr( 'src', attachment.url ).css( 'width', '120px' );
         $( '#image_attachment_id' ).val( attachment.id );
 
         // Restore the main post ID
@@ -109,6 +107,3 @@
     });
   });
 </script>
-<?php
-	// thickbox for free photo sites list
-	wpwhitelabel()->photo_sites('freestockphotosites');
