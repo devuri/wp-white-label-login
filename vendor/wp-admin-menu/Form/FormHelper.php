@@ -1,6 +1,6 @@
 <?php
 
-namespace WPAdminMenu\Admin\Form;
+namespace SimAdminPage\Admin\Form;
 
 /**
  * FormHelper
