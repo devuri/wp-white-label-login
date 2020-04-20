@@ -42,9 +42,9 @@ namespace WPWhiteLabel\Footer;
       self::$nav = wpwhitelabel()->setting('footer_nav');
       if (self::$nav): ?>
         <div align="<?php echo wpwhitelabel()->setting('footer_nav_alignment'); ?>" style="padding: 12px;
-          border-top: solid thin #dadada;
-          border-bottom: solid thin #dadada;
-          background-color: #dadada;
+          border-top: solid thin <?php echo wpwhitelabel()->setting('footer_nav_backgorund'); ?>;
+          border-bottom: solid thin <?php echo wpwhitelabel()->setting('footer_nav_backgorund'); ?>;
+          background-color: <?php echo wpwhitelabel()->setting('footer_nav_backgorund'); ?>;
           box-shadow: 0 5px 15px rgba(0,0,0,.08);
           margin-bottom: 8px;" class="footer-navigation">
           <?php wp_nav_menu( array(
