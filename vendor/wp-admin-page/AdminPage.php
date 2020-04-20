@@ -1,7 +1,7 @@
 <?php
 
-namespace SimAdminPage;
-use SimAdminPage\Admin\Form\FormHelper as Form;
+namespace WPAdminPage;
+use WPAdminPage\Admin\Form\FormHelper as Form;
 
 /**
  * ----------------------------------------------------------------------------
