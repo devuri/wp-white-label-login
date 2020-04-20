@@ -6,7 +6,7 @@ use SimAdminPage\Admin\Form\FormHelper as Form;
 /**
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
- * @package   	AdminMenu
+ * @package   	AdminPage
  * @version   	3.3.1
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
