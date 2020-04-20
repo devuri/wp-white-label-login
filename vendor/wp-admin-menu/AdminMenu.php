@@ -7,7 +7,7 @@ use WPAdminMenu\Admin\Form\FormHelper as Form;
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
  * @package   	AdminMenu
- * @version   	3.2.0
+ * @version   	3.2.1
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
  * @link      	https://switchwebdev.com
@@ -31,6 +31,12 @@ final class AdminMenu {
      * admin pages path
      */
     const ADMINPAGES = '/src/Admin/pages/';
+
+    /**
+     * setup php requirement
+     * @var string
+     */
+    private $php_required = '5.6';
 
     /**
      * $page_title
@@ -217,12 +223,10 @@ final class AdminMenu {
      *
      * Chect to see if the PHP_VERSION matches the required version
      * for this plugin to work if not wp error with explanation "Minimum PHP Version 5.6 required"
-     *
-     * @param  string $min_version this is our min required version.
      * @return boolean if false then wp error
      */
-    public static function compare_php_version($min_version = '5.6'){
-      if (version_compare(PHP_VERSION, $min_version) >= 0) {
+    public function compare_php_version(){
+      if (version_compare(PHP_VERSION, $this->php_required) >= 0) {
         return true;
       } else {
         return false;
@@ -317,7 +321,6 @@ final class AdminMenu {
       $this->require_page($header);
     }
 
-
     /**
      * Load the admin page header
      * @return [type] [description]
@@ -351,15 +354,11 @@ final class AdminMenu {
      * @return
      */
     public function admin_page() {
-      $page_title = ucfirst($this->page_title());
       /**
        * setup the pages
-       * @var [type]
        */
-      $page   = $this->load_admin_page();
-      // load pages
       $this->header();
-      $this->require_page($page);
+      $this->require_page($this->load_admin_page());
       $this->footer();
     }
 
@@ -386,21 +385,16 @@ final class AdminMenu {
     /**
      * Admin Submenu
      *
-     * @param  string $page_name
      * @since 2.0
      */
     public function submenu_page() {
-      # set page title
-      $page_title = ucfirst($this->page_title());
+      # this is a submenu
       $this->admin_submenu = true;
       /**
        * setup the pages
-       * @var [type]
        */
-      $page   = $this->load_admin_page();
-      // load pages
       $this->header();
-      $this->require_page($page);
+      $this->require_page($this->load_admin_page());
       $this->footer();
     }
 
@@ -410,9 +404,7 @@ final class AdminMenu {
      * @since 2.0
      */
     public function adminonly_callback() {
-      # get page name
-      $mpage = $this->page_title();
-      $this->submenu_page($mpage);
+      $this->submenu_page($this->page_title());
     }
 
     /**
