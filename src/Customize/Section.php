@@ -27,9 +27,9 @@ final class Section {
 		self::$sections[] = 'button';
 		self::$sections[] = 'links';
 		self::$sections[] = 'background';
+		self::$sections[] = 'menu';
 		self::$sections[] = 'footer';
 		self::$sections[] = 'css';
-
 		return self::$sections;
 	}
 
