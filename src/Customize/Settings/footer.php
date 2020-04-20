@@ -19,55 +19,6 @@ $this->customizer()->add_control('wpwll_options[footer_text]', array(
 		'section' => 'whitelabel_section_footer',
 		'type'    => 'textarea',
 ));
-/**
- * footer nav
- * @var [type]
- */
- $this->customizer()->add_setting( 'wpwll_options[footer_nav]',
- 	array(
- 		'type' 							=> 'option',
- 		'capability' 				=> 'manage_options',
- 		'default' 					=> 'false',
- 		'transport' 				=> $this->preview_type,
- 		'sanitize_callback' => 'sanitize_title',
- 	) );
- $this->customizer()->add_control( 'wpwll_options[footer_nav]',
- 	array(
- 			'type' 					=> 'radio',
- 			'section' 			=> 'whitelabel_section_footer',
- 			'label' 				=> __( 'Footer Navigation Display' ),
- 			'description' 	=> __( 'Turn on the login footer navigation' ),
- 			'choices' => array(
- 				true 	=> __('On'),
- 				false => __('Off'),
- 			),
- 	) );
-
-	/**
-	 * Navigation Alignment
-	 * @var [type]
-	 */
-	$this->customizer()->add_setting( 'wpwll_options[footer_nav_alignment]',
-		array(
-			'type' 							=> 'option',
-			'capability' 				=> 'manage_options',
-			'default' 					=> 'center',
-			'transport' 				=> $this->preview_type,
-			'sanitize_callback' => 'sanitize_title',
-		) );
-
-	$this->customizer()->add_control( 'wpwll_options[footer_nav_alignment]',
-		array(
-				'type' 				=> 'radio',
-				'section' 			=> 'whitelabel_section_footer',
-				'label' 				=> __( 'Navigation Alignment' ),
-				'description' 	=> __( 'Set the alignment.' ),
-				'choices' => array(
-					'center' 	=> __('Center'),
-					'left' 		=> __('Left'),
-					'right' 		=> __('Right'),
-				),
-		) );
 
 /**
  * copyright_text

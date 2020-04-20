@@ -13,17 +13,17 @@
 ?><div id="wll-important-notice">
   <span class="wll-notice-message">
     Do you have suggestions head over to the
-    <a href="https://wordpress.org/support/plugin/<?php print($this->slug); ?>" target="_blank" rel="noopener noreferrer">Plugins Support Section</a>.
+    <a href="https://wordpress.org/support/plugin/<?php print($this->plugin->slug()); ?>" target="_blank" rel="noopener noreferrer">Plugins Support Section</a>.
     If you enjoy using this plugin
-    <a href="https://wordpress.org/plugins/<?php print($this->slug); ?>/#reviews" target="_blank" rel="noopener noreferrer">please leave a positive feedback here.</a>.
+    <a href="https://wordpress.org/plugins/<?php print($this->plugin->slug()); ?>/#reviews" target="_blank" rel="noopener noreferrer">please leave a positive feedback here.</a>.
   </span>
 </div>
 <header class="wll-header"><?php
-    if (!$this->admin_smenu) {
+    if (!$this->admin_submenu) {
       // do not show for admin submenu setttings pages
-        echo $this->get_menu_title();
-        $this->dynamic_tab_menu();
-    } elseif ($this->admin_smenu) {
+        echo $this->menu_title();
+        $this->tab_menu();
+    } elseif ($this->admin_submenu) {
       #admin submenu items
       echo '<h2>';
       echo ucwords(

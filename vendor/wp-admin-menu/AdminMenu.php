@@ -7,7 +7,7 @@ use WPAdminMenu\Admin\Form\FormHelper as Form;
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
  * @package   	AdminMenu
- * @version   	3.1.6
+ * @version   	3.2.1
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
  * @link      	https://switchwebdev.com
@@ -31,6 +31,12 @@ final class AdminMenu {
      * admin pages path
      */
     const ADMINPAGES = '/src/Admin/pages/';
+
+    /**
+     * setup php requirement
+     * @var string
+     */
+    private $php_required = '5.6';
 
     /**
      * $page_title
@@ -115,28 +121,11 @@ final class AdminMenu {
     /**
      * $plugin
      *
-     * get the current plugin object which gives access to plugin methods etc
+     * get the current plugin object which gives access to plugin methods,
+     * should include dir() and slug()
      * @var object
      */
     private $plugin;
-
-    /**
-     * $wp_slug
-     *
-     * set the current plugin slug if its not
-     * available in the WordPress repo use github user/slug
-     * we will get this from the $plugin object
-     * @var string
-     */
-    public $slug;
-
-    /**
-     * $path
-     *
-     * set the current plugin dir we need this to ref file locations
-     * @var string
-     */
-    public $path;
 
     /**
      * $submenu_args
@@ -155,13 +144,13 @@ final class AdminMenu {
      * @var array $settings_args List of settings items
      * @var string $parent_slugs the parent page, defaults to WordPress Settings Menu
      * @var string $admin_only_capability who can access, defaults to Admin user Role
-     * @var string $admin_smenu The admin menu
+     * @var string $admin_submenu The admin menu
      * @since 1.0
      */
     private $settings_args;
     private $parent_slug  = 'options-general.php';
     private $admin_only_capability  = 'manage_options';
-    private $admin_smenu;
+    private $admin_submenu;
 
     /**
      * Initialization
@@ -185,18 +174,11 @@ final class AdminMenu {
       $this->prefix     = $main_menu[7];
       $this->plugin     = $main_menu[8];
 
-      // setup the slug
-      $this->slug     = $this->plugin->slug();
-
-      // get the plugin directory
-      $this->path     = $this->plugin->dir();
-
       // submenu
       $this->submenu_args = $submenu_items;
 
       // Admin Only Settings Menu
       $this->settings_args = $admin_only;
-
 
       // ok lets create the menu
       add_action( 'admin_menu',array( $this, 'build_menu' ) );
@@ -206,7 +188,6 @@ final class AdminMenu {
 
       // footer_separator
       add_action( 'swa_footer',array( $this, 'footer_separator' ) );
-
     }
 
     /**
@@ -214,7 +195,7 @@ final class AdminMenu {
      *
      * @return array get the menu args
      */
-    public function menu_args(){
+    public function args(){
       $menu_args = array(
         $this->page_title,
         $this->menu_title,
@@ -233,7 +214,7 @@ final class AdminMenu {
      * @return [type] [description]
      */
     public function form(){
-      $form_helper = new Form();
+	    $form_helper = new Form();
       return $form_helper;
     }
 
@@ -242,12 +223,10 @@ final class AdminMenu {
      *
      * Chect to see if the PHP_VERSION matches the required version
      * for this plugin to work if not wp error with explanation "Minimum PHP Version 5.6 required"
-     *
-     * @param  string $min_version this is our min required version.
      * @return boolean if false then wp error
      */
-    public static function compare_php_version($min_version = '5.6'){
-      if (version_compare(PHP_VERSION, $min_version) >= 0) {
+    public function compare_php_version(){
+      if (version_compare(PHP_VERSION, $this->php_required) >= 0) {
         return true;
       } else {
         return false;
@@ -259,7 +238,7 @@ final class AdminMenu {
      * @return object
      */
     public function instance(){
-      return new self($this->menu_args(),$this->submenu_args,$this->settings_args);
+      return new self($this->args(),$this->submenu_args,$this->settings_args);
     }
 
 
@@ -277,7 +256,7 @@ final class AdminMenu {
     }
 
     public function admin_path(){
-      return $this->path . self::ADMINPAGES;
+      return $this->plugin->dir() . self::ADMINPAGES;
     }
 
     /**
@@ -304,7 +283,7 @@ final class AdminMenu {
      * @return string
      * @since 1.0
      */
-    public function get_thepage_name() {
+    public function page_title() {
       /**
        * wp page vars
        * @link https://developer.wordpress.org/reference/functions/get_current_screen/
@@ -324,10 +303,13 @@ final class AdminMenu {
      * @since 1.0
      */
     public function menu_callback() {
-      # get page name
-      # we dont need the prefix here so remove it
-      $mpage = str_replace($this->prefix.'-', '', $this->get_thepage_name());
-      $this->admin_page($mpage);
+      $this->admin_page();
+    }
+
+
+    public function page_name(){
+      $pagefile = str_replace($this->prefix.'-', '', $this->page_title());
+      return $pagefile;
     }
 
     /**
@@ -338,7 +320,6 @@ final class AdminMenu {
       $header = plugin_dir_path( __FILE__ ).'pages/header.admin.php';
       $this->require_page($header);
     }
-
 
     /**
      * Load the admin page header
@@ -356,11 +337,11 @@ final class AdminMenu {
      * @param  string $admin_page the admin page name
      * @return
      */
-    public function autoload_admin_page($admin_page) {
-      if ($this->admin_smenu) {
-        $admin_file = $this->admin_path() . 'admin-options/'.$admin_page.'.admin.php';
+    public function load_admin_page() {
+      if ($this->admin_submenu) {
+        $admin_file = $this->admin_path() . 'admin-options/'.$this->page_name().'.admin.php';
       } else {
-        $admin_file = $this->admin_path() . $this->menu_slug().'/'.$admin_page.'.admin.php';
+        $admin_file = $this->admin_path() . $this->menu_slug().'/'.$this->page_name().'.admin.php';
       }
       return $admin_file;
     }
@@ -372,16 +353,12 @@ final class AdminMenu {
      * @param  string $page_name
      * @return
      */
-    public function admin_page($page_name = 'admin') {
-      $page_title = ucfirst($this->get_thepage_name());
+    public function admin_page() {
       /**
        * setup the pages
-       * @var [type]
        */
-      $page   = $this->autoload_admin_page($page_name);
-      // load pages
       $this->header();
-      $this->require_page($page);
+      $this->require_page($this->load_admin_page());
       $this->footer();
     }
 
@@ -408,21 +385,16 @@ final class AdminMenu {
     /**
      * Admin Submenu
      *
-     * @param  string $page_name
      * @since 2.0
      */
-    public function admin_submenu_page() {
-      # set page title
-      $page_title = ucfirst($this->get_thepage_name());
-      $this->admin_smenu = true;
+    public function submenu_page() {
+      # this is a submenu
+      $this->admin_submenu = true;
       /**
        * setup the pages
-       * @var [type]
        */
-      $page   = $this->autoload_admin_page($page_name);
-      // load pages
       $this->header();
-      $this->require_page($page);
+      $this->require_page($this->load_admin_page());
       $this->footer();
     }
 
@@ -432,9 +404,7 @@ final class AdminMenu {
      * @since 2.0
      */
     public function adminonly_callback() {
-      # get page name
-      $mpage = $this->get_thepage_name();
-      $this->admin_submenu_page($mpage);
+      $this->submenu_page($this->page_title());
     }
 
     /**
@@ -442,22 +412,22 @@ final class AdminMenu {
      *
      * @since 1.0
      */
-    public function dynamic_tab_menu() {
+    public function tab_menu() {
 
       echo '<h2 style="border: unset;" class="wll-admin nav-tab-wrapper wp-clearfix">';
-      foreach ($this->submenu_args as $key => $subm_item) {
+      foreach ($this->submenu_args as $key => $submenu_item) {
          #slugs
         if ($key == 0) {
-            $subm_slug = $this->menu_slug;
+            $submenu_slug = $this->menu_slug;
         } else {
-            $subm_slug = sanitize_title($this->prefix.'-'.$subm_item);
+            $submenu_slug = sanitize_title($this->prefix.'-'.$submenu_item);
         }
 
           // build out the sub menu items
-          if ($subm_slug == $this->get_thepage_name()) {
-            echo '<a href="'.admin_url('/admin.php?page='.strtolower($subm_slug).'').'" class="wll-admin-tab nav-tab-active">'.ucwords($subm_item).'</a>';
+          if ($submenu_slug == $this->page_title()) {
+            echo '<a href="'.admin_url('/admin.php?page='.strtolower($submenu_slug).'').'" class="wll-admin-tab nav-tab-active">'.ucwords($submenu_item).'</a>';
           } else {
-            echo '<a href="'.admin_url('/admin.php?page='.strtolower($subm_slug).'').'" class="wll-admin-tab">'.ucwords($subm_item).'</a>';
+            echo '<a href="'.admin_url('/admin.php?page='.strtolower($submenu_slug).'').'" class="wll-admin-tab">'.ucwords($submenu_item).'</a>';
           }
         }
       echo '</h2>';
@@ -470,8 +440,8 @@ final class AdminMenu {
      * @return [type] [description]
      */
     public function menu_slug(){
-      $m_slug = str_replace($this->prefix.'-','',$this->menu_slug);
-      return $m_slug;
+      $slug = str_replace($this->prefix.'-','',$this->menu_slug);
+      return $slug;
     }
 
     /**
@@ -500,7 +470,7 @@ final class AdminMenu {
      * @return
      * @since 1.0
      */
-    public function get_menu_title(){
+    public function menu_title(){
       $menu_title = '<h2 class="wll-admin-dashicons-before ';
       $menu_title .= $this->icon_url;
       $menu_title .= '">';
@@ -541,22 +511,22 @@ final class AdminMenu {
        * for item 0 we will set the same slug as the main item
        * @link https://developer.wordpress.org/reference/functions/add_submenu_page/
        */
-      foreach ($this->submenu_args as $key => $subm_item) {
+      foreach ($this->submenu_args as $key => $submenu_item) {
         #slugs
         if ($key == 0) {
           // change the slug for first item to match parent slug
-          $subm_slug = $this->menu_slug;
+          $submenu_slug = $this->menu_slug;
         } else {
           // keep current slug
-          $subm_slug = sanitize_title($this->prefix.'-'.$subm_item);
+          $submenu_slug = sanitize_title($this->prefix.'-'.$submenu_item);
         }
           // build out the sub menu items
           add_submenu_page(
             $this->menu_slug,
-            ucfirst($subm_item),
-            ucwords($subm_item),
+            ucfirst($submenu_item),
+            ucwords($submenu_item),
             $this->capability,
-            $subm_slug,
+            $submenu_slug,
             array( $this, 'menu_callback' )
           );
         }
