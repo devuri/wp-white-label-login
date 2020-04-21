@@ -117,7 +117,7 @@ final class WhiteLabel {
       require_once WPWLL_DIR . '/vendor/wp-admin-page/Form/FormHelper.php';
 			require_once WPWLL_DIR . '/vendor/connekt-plugin-installer/class-connekt-plugin-installer.php';
 			require_once WPWLL_DIR . '/src/UsefulPlugins/Plugins.php';
-			require_once WPWLL_DIR . '/src/Admin/menu.php';
+			require_once WPWLL_DIR . '/src/Admin/WhiteLabelAdmin.php';
 		}
 	}
 
