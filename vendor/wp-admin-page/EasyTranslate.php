@@ -1,6 +1,6 @@
 <?php
 
-namespace SimAdminPage\Translate\Form;
+namespace WPAdminPage\Translate\Form;
 
 /**
  *
