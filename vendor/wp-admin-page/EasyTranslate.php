@@ -1,6 +1,6 @@
 <?php
 
-namespace WPAdminMenu\Translate\Form;
+namespace WPAdminPage\Translate\Form;
 
 /**
  *

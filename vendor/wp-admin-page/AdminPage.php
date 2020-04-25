@@ -1,13 +1,13 @@
 <?php
 
-namespace WPAdminMenu;
-use WPAdminMenu\Admin\Form\FormHelper as Form;
+namespace WPAdminPage;
+use WPAdminPage\Admin\Form\FormHelper as Form;
 
 /**
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
- * @package   	AdminMenu
- * @version   	3.2.1
+ * @package   	AdminPage
+ * @version   	3.3.1
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
  * @link      	https://switchwebdev.com
@@ -20,7 +20,7 @@ use WPAdminMenu\Admin\Form\FormHelper as Form;
  *
  * ----------------------------------------------------------------------------
  */
-final class AdminMenu {
+final class AdminPage {
 
     /**
      * class version
