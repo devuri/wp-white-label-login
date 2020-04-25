@@ -42,15 +42,15 @@ If you found a bug or have suggestions head over to the [Support Section](https:
 
 ## Getting Started
 
-**Activate** and forget about it....
+**Activate** 
 
 ### Prerequisites
 
-Tested up to WordPress: 4.7.3
+Tested up to WordPress: 5.4
 
 ```
-Requires PHP: 5.2+
-Tested up to PHP: 7.0
+Requires PHP: 5.6+
+Tested up to PHP: 7.3
 ```
 
 ### Installing
