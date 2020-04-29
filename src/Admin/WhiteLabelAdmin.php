@@ -6,7 +6,9 @@ use WPAdminPage\AdminPage;
 
 class WhiteLabelAdmin {
   /**
-   * [admin_menu description]
+   * admin_menu()
+   *
+   * Main top level admin menus
    * @return [type] [description]
    */
   private static function admin_menu(){
@@ -22,9 +24,10 @@ class WhiteLabelAdmin {
     $menu[] = wpwhitelabel();
     return $menu;
   }
-  
+
   /**
-   *
+   * submenu()
+   * array of submenu items
    * @return [type] [description]
    */
   private static function submenu(){
