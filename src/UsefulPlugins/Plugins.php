@@ -5,7 +5,7 @@ namespace WPWhiteLabel\UsefulPlugins;
 use \Connekt_Plugin_Installer;
 
 /**
- *
+ * usefull plugins list
  */
 final class Plugins extends Connekt_Plugin_Installer {
 
@@ -28,7 +28,12 @@ final class Plugins extends Connekt_Plugin_Installer {
 	    $plugin_list[]	= 'wp-mail-smtp';
 	    $plugin_list[]	= 'wp-dbmanager';
 
-
+			/**
+			 * load the plugins list
+			 *
+			 * uses the Connekt_Plugin_Installer class 
+			 * @var [type]
+			 */
 	    if(class_exists('Connekt_Plugin_Installer')){
 	      self::init($plugin_list);
 	    }
