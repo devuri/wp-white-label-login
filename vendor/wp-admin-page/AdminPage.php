@@ -7,7 +7,7 @@ use WPAdminPage\Admin\Form\FormHelper as Form;
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
  * @package   	AdminPage
- * @version   	3.1.6
+ * @version   	3.1.7
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
  * @link      	https://switchwebdev.com
@@ -25,7 +25,7 @@ final class AdminPage {
     /**
      * class version
      */
-    const ADMINVERSION = '3.1.6';
+    const ADMINVERSION = '3.1.7';
 
     /**
      * admin pages path
