@@ -4,7 +4,7 @@ namespace WPWhiteLabel;
 
 use WPAdminPage\AdminPage;
 
-class WhiteLabelAdmin {
+final class WhiteLabelAdmin extends AdminPage {
   /**
    * admin_menu()
    *
@@ -19,9 +19,8 @@ class WhiteLabelAdmin {
     $menu[] = 'white-label-options';
     $menu[] = 'wllmenu_callback';
     $menu[] = 'dashicons-art';
-    $menu[] = 6.5;
+    $menu[] =  null;
     $menu[] = 'wll';
-    $menu[] = wpwhitelabel();
     return $menu;
   }
 
@@ -43,7 +42,7 @@ class WhiteLabelAdmin {
    * @return [type] [description]
    */
   public static function init(){
-    return new AdminPage(self::admin_menu(),self::submenu());
+    return new WhiteLabelAdmin(self::admin_menu(),self::submenu());
   }
 }
 
