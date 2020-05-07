@@ -21,12 +21,12 @@ namespace WPWhiteLabel\Footer;
    	$year = date("Y"); ?>
     <div class="push"></div>
     </div><!--wrapper-->
-    <div  style="font-size: small; color:<?php echo wpwhitelabel()->setting('footer_text_color')?>;" id="footer" class="footer footer-copyright" align="<?php echo wpwhitelabel()->setting('footer_alignment') ?>">
-    <div style="width: 70%; margin-bottom:12px;" class="footer-text">
+    <div  style=" font-size: small; color:<?php echo wpwhitelabel()->setting('footer_text_color')?>;" id="footer" class="footer footer-copyright" align="<?php echo wpwhitelabel()->setting('footer_alignment') ?>">
+    <div style="padding:8px; width: 70%; margin-bottom:12px;" class="footer-text">
     <?php echo wpwhitelabel()->setting('footer_text'); ?>
     </div><!--footer-text-->
     <?php self::menu(); ?>
-    <div style="width: 60%; margin-bottom:4px;" class="footer-copyright">
+    <div style="padding:8px; width: 60%; margin-bottom:4px; color:<?php echo wpwhitelabel()->setting('footer_text_color')?>;" class="footer-copyright">
     Copyright © <?php echo $year; ?>
     <a href="<?php echo wpwhitelabel()->site_info('url') ?>">
     <?php echo wpwhitelabel()->site_info('name'); ?>

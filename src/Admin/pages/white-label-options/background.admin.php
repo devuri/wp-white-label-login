@@ -53,7 +53,7 @@
 
 ?></form>
 <br/>
-	<?php echo $this->plugin()->customizer_button(); ?>
+	<?php echo wpwhitelabel()->customizer_button(); ?>
 </div><!--frmwrap-->
 <script type='text/javascript'>
   jQuery( document ).ready( function( $ ) {
