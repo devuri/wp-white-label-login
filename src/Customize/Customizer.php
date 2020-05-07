@@ -32,7 +32,7 @@ final class Customizer {
 		$this->plugin = $white_label_login;
 
 		//set preview type ('postMessage' or 'refresh')
-		$this->preview_type = 'refresh';
+		$this->preview_type = 'postMessage';
 	}
 
 	/**
