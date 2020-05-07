@@ -20,7 +20,7 @@ use WPAdminPage\Admin\Form\FormHelper as Form;
  *
  * ----------------------------------------------------------------------------
  */
-final class AdminPage {
+abstract class AdminPage {
 
     /**
      * class version
@@ -119,15 +119,6 @@ final class AdminPage {
     private $prefix;
 
     /**
-     * $plugin
-     *
-     * get the current plugin object which gives access to plugin methods,
-     * should include dir() and slug()
-     * @var object
-     */
-    private $plugin;
-
-    /**
      * $submenu_args
      *
      * @var array submenu_args
@@ -172,7 +163,6 @@ final class AdminPage {
       $this->icon_url   = $main_menu[5];
       $this->position   = $main_menu[6];
       $this->prefix     = $main_menu[7];
-      $this->plugin     = $main_menu[8];
 
       // submenu
       $this->submenu_args = $submenu_items;
@@ -205,7 +195,6 @@ final class AdminPage {
         $this->icon_url,
         $this->position,
         $this->prefix,
-        $this->plugin
       );
       return $menu_args;
     }
@@ -241,22 +230,12 @@ final class AdminPage {
       return new self($this->args(),$this->submenu_args,$this->settings_args);
     }
 
-
-
     /**
-     * Get the current plugin object
-     *
-     * this is an object passed in as the last param
-     * when you define the $main_menu array that will give uss access
-     * to all the methods vars etc if we need them.
-     * @return object
+     * admin  path
+     * @return [type] [description]
      */
-    public function plugin(){
-      return $this->plugin;
-    }
-
     public function admin_path(){
-      return $this->plugin->dir() . self::ADMINPAGES;
+      return plugin_dir_path( __FILE__ ) . '../../' . self::ADMINPAGES;
     }
 
     /**
@@ -265,7 +244,7 @@ final class AdminPage {
      * Simple CSS Styles
      */
     public function admin_page_styles() {
-        wp_enqueue_style( 'wll-admin-style', WPWLL_URL . 'assets/admin-css/wll-admin.css', array(), self::ADMINVERSION, 'all' );
+        wp_enqueue_style( 'wll-admin-style', plugin_dir_url( __FILE__ ) . 'assets/wll-admin.css', array(), self::ADMINVERSION, 'all' );
     }
 
     /**
