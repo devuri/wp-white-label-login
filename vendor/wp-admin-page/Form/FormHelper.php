@@ -9,7 +9,7 @@ namespace WPAdminPage\Admin\Form;
  * @version   	1.0.2
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
- * @link      	https://github.com/devuri
+ * @link      	https://github.com/devuri/wp-admin-page/
  *
  * ----------------------------------------------------------------------------
  */

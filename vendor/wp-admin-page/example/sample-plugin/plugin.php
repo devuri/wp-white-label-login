@@ -26,7 +26,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  * ----------------------------------------------------------------------------
  * @category  	Plugin
- * @copyright 	Copyright © 2020 Uriel Wilson.
+ * @copyright 	Copyright © 2020 Author Name.
  * @package   	MyPlugin
  * @author    	Author Name
  * @link      	https://github.com/devuri
