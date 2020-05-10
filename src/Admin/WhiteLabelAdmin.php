@@ -21,6 +21,7 @@ final class WhiteLabelAdmin extends AdminPage {
     $menu[] = 'dashicons-art';
     $menu[] =  null;
     $menu[] = 'wll';
+    $menu[] = plugin_dir_path( __FILE__ );
     return $menu;
   }
 
