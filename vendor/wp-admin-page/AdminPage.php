@@ -10,10 +10,14 @@ use WPAdminPage\Admin\Form\FormHelper as Form;
  * @version   	3.3.2
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
- * @link      	https://switchwebdev.com
+ * @link      	https://github.com/devuri
  *
  * ----------------------------------------------------------------------------
  */
+
+if (!defined('ABSPATH')) exit;
+
+
 if (!class_exists('WPAdminPage\AdminPage')) {
   abstract class AdminPage {
 
