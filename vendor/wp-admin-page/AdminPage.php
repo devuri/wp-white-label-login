@@ -7,30 +7,27 @@ use WPAdminPage\Admin\Form\FormHelper as Form;
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
  * @package   	AdminPage
- * @version   	3.1.7
+ * @version   	3.3.2
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
  * @link      	https://switchwebdev.com
  *
  * ----------------------------------------------------------------------------
- * expecting the admin pages in the following dir
- * /src/Admin/pages uses $this->admin_path()
- *
- * /src/Admin/Menu.php define menu items here
- *
- * ----------------------------------------------------------------------------
  */
-abstract class AdminPage {
+if (!class_exists('WPAdminPage\AdminPage')) {
+  abstract class AdminPage {
 
     /**
      * class version
      */
-    const ADMINVERSION = '3.1.7';
+    const ADMINVERSION = '3.3.2';
 
     /**
-     * admin pages path
+     * get the current plugin dir path
+     * set this in the $main_menu array
+     * @var [type]
      */
-    const ADMINPAGES = '/src/Admin/pages/';
+    private $plugin_path;
 
     /**
      * setup php requirement
@@ -155,14 +152,15 @@ abstract class AdminPage {
     function __construct(array $main_menu, array $submenu_items = array(), array $admin_only = array()) {
 
       // define main menu args
-      $this->page_title = $main_menu[0];
-      $this->menu_title = $main_menu[1];
-      $this->capability = $main_menu[2];
-      $this->menu_slug  = $main_menu[3];
-      $this->function   = array( $this, 'menu_callback' );
-      $this->icon_url   = $main_menu[5];
-      $this->position   = $main_menu[6];
-      $this->prefix     = $main_menu[7];
+      $this->page_title   = $main_menu[0];
+      $this->menu_title   = $main_menu[1];
+      $this->capability   = $main_menu[2];
+      $this->menu_slug    = $main_menu[3];
+      $this->function     = array( $this, 'menu_callback' );
+      $this->icon_url     = $main_menu[5];
+      $this->position     = $main_menu[6];
+      $this->prefix       = $main_menu[7];
+      $this->plugin_path  = $main_menu[8];
 
       // submenu
       $this->submenu_args = $submenu_items;
@@ -198,12 +196,13 @@ abstract class AdminPage {
       );
       return $menu_args;
     }
+
     /**
      * Load the FormHelper class
      * @return [type] [description]
      */
     public function form(){
-	    $form_helper = new Form();
+  	  $form_helper = new Form();
       return $form_helper;
     }
 
@@ -235,7 +234,7 @@ abstract class AdminPage {
      * @return [type] [description]
      */
     public function admin_path(){
-      return plugin_dir_path( __FILE__ ) . '../../' . self::ADMINPAGES;
+      return $this->plugin_path . 'pages/';
     }
 
     /**
@@ -244,7 +243,7 @@ abstract class AdminPage {
      * Simple CSS Styles
      */
     public function admin_page_styles() {
-        wp_enqueue_style( 'wll-admin-style', plugin_dir_url( __FILE__ ) . 'assets/wll-admin.css', array(), self::ADMINVERSION, 'all' );
+      wp_enqueue_style( 'wll-admin-style', plugin_dir_url( __FILE__ ) . 'assets/wll-admin.css', array(), self::ADMINVERSION, 'all' );
     }
 
     /**
@@ -285,7 +284,10 @@ abstract class AdminPage {
       $this->admin_page();
     }
 
-
+    /**
+     * get the page name
+     * @return [type] [description]
+     */
     public function page_name(){
       $pagefile = str_replace($this->prefix.'-', '', $this->page_title());
       return $pagefile;
@@ -402,13 +404,13 @@ abstract class AdminPage {
             $submenu_slug = sanitize_title($this->prefix.'-'.$submenu_item);
         }
 
-          // build out the sub menu items
-          if ($submenu_slug == $this->page_title()) {
-            echo '<a href="'.admin_url('/admin.php?page='.strtolower($submenu_slug).'').'" class="wll-admin-tab nav-tab-active">'.ucwords($submenu_item).'</a>';
-          } else {
-            echo '<a href="'.admin_url('/admin.php?page='.strtolower($submenu_slug).'').'" class="wll-admin-tab">'.ucwords($submenu_item).'</a>';
-          }
+        // build out the sub menu items
+        if ($submenu_slug == $this->page_title()) {
+          echo '<a href="'.admin_url('/admin.php?page='.strtolower($submenu_slug).'').'" class="wll-admin-tab nav-tab-active">'.ucwords($submenu_item).'</a>';
+        } else {
+          echo '<a href="'.admin_url('/admin.php?page='.strtolower($submenu_slug).'').'" class="wll-admin-tab">'.ucwords($submenu_item).'</a>';
         }
+      }
       echo '</h2>';
     }
 
@@ -540,4 +542,5 @@ abstract class AdminPage {
         return $this->settings_args;
     }
 
+  }//class
 }

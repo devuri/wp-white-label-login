@@ -12,10 +12,7 @@
 
 ?><div id="wll-important-notice">
   <span class="wll-notice-message">
-    Do you have suggestions head over to the
-    <a href="https://wordpress.org/support/plugin/<?php echo wpwhitelabel()->slug(); ?>" target="_blank" rel="noopener noreferrer">Plugins Support Section</a>.
-    If you enjoy using this plugin
-    <a href="https://wordpress.org/plugins/<?php echo wpwhitelabel()->slug(); ?>/#reviews" target="_blank" rel="noopener noreferrer">please leave a positive feedback here.</a>.
+    <!-- notes -->
   </span>
 </div>
 <header class="wll-header"><?php
