@@ -18,7 +18,7 @@ final class MyPluginAdmin extends AdminPage {
     $menu[] = 'myplugin_callback';
     $menu[] = 'dashicons-admin-generic';
     $menu[] = null;
-    $menu[] = 'mls';
+    $menu[] = 'myp';
     $menu[] = plugin_dir_path( __FILE__ );
     return $menu;
   }
