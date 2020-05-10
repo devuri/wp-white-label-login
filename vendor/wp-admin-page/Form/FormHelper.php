@@ -3,12 +3,32 @@
 namespace WPAdminPage\Admin\Form;
 
 /**
- * FormHelper
+ * ----------------------------------------------------------------------------
+ * @copyright 	Copyright © 2020 Uriel Wilson.
+ * @package   	FormHelper
+ * @version   	1.0.2
+ * @license   	GPL-2.0+
+ * @author    	Uriel Wilson
+ * @link      	https://github.com/devuri
  *
- * form helper class
+ * ----------------------------------------------------------------------------
  */
+
+if (!defined('ABSPATH')) exit;
+
 if (!class_exists('WPAdminPage\Admin\Form\FormHelper')) {
   final class FormHelper {
+
+
+    /**
+     * class version
+     */
+    const ADMINVERSION = '1.0.2';
+
+    /**
+     * processing
+     * @var boolean
+     */
     public $processing = false;
 
     /**
