@@ -42,7 +42,7 @@
     }
 
   # plugin directory
-	  define("WPWLL_VERSION", '5.4.7');
+	  define("WPWLL_VERSION", '5.5.0');
 
   # plugin directory
     define("WPWLL_DIR", dirname(__FILE__));
