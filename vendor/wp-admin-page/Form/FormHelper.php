@@ -6,7 +6,7 @@ namespace WPAdminPage\Admin\Form;
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
  * @package   	FormHelper
- * @version   	1.0.2
+ * @version   	1.0.9
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
  * @link      	https://github.com/devuri/wp-admin-page/
@@ -23,7 +23,7 @@ if (!class_exists('WPAdminPage\Admin\Form\FormHelper')) {
     /**
      * class version
      */
-    const ADMINVERSION = '1.0.2';
+    const ADMINVERSION = '1.0.9';
 
     /**
      * processing
@@ -36,15 +36,16 @@ if (!class_exists('WPAdminPage\Admin\Form\FormHelper')) {
      *
      * give the user some feedback
      *
-     * @param  string $class   the css class
+     * @param  string $class the css class (success | info | warning | error)
      * @param  string $message output message
      * @return string
+     * @link https://developer.wordpress.org/reference/hooks/admin_notices/
      */
-    public function user_feedback($message = 'Options updated', $class = 'updated'){
+    public function user_feedback($message = 'Options updated', $class = 'success'){
 
       //$message = 'Options updated';
 
-      $user_message  = '<div style="font-size: small; text-transform: capitalize;" id="user-feedback" class="'.$class.' notice notice-my-class is-dismissible">';
+      $user_message  = '<div style="font-size: small; text-transform: capitalize;" id="user-feedback" class="notice notice-'.$class.' is-dismissible">';
       $user_message .= '<p>';
       $user_message .= $message;
       $user_message .= '</p>';

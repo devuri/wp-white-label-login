@@ -7,7 +7,7 @@ use WPAdminPage\Admin\Form\FormHelper as Form;
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
  * @package   	AdminPage
- * @version   	3.3.2
+ * @version   	3.4.0
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
  * @link      	https://github.com/devuri/wp-admin-page/
@@ -15,7 +15,14 @@ use WPAdminPage\Admin\Form\FormHelper as Form;
  * ----------------------------------------------------------------------------
  */
 
-if (!defined('ABSPATH')) exit;
+  if (!defined('ABSPATH')) exit;
+
+
+  /**
+   * Load the FormHelper class
+   * @var object
+   */
+  require_once plugin_dir_path( __FILE__ ) . 'Form/FormHelper.php';
 
 
 if (!class_exists('WPAdminPage\AdminPage')) {
@@ -24,7 +31,7 @@ if (!class_exists('WPAdminPage\AdminPage')) {
     /**
      * class version
      */
-    const ADMINVERSION = '3.3.2';
+    const ADMINVERSION = '3.4.0';
 
     /**
      * get the current plugin dir path
