@@ -7,7 +7,7 @@ use WPAdminPage\Admin\Form\FormHelper as Form;
  * ----------------------------------------------------------------------------
  * @copyright 	Copyright © 2020 Uriel Wilson.
  * @package   	AdminPage
- * @version   	3.4.0
+ * @version   	4.0.1
  * @license   	GPL-2.0+
  * @author    	Uriel Wilson
  * @link      	https://github.com/devuri/wp-admin-page/
@@ -31,7 +31,7 @@ if (!class_exists('WPAdminPage\AdminPage')) {
     /**
      * class version
      */
-    const ADMINVERSION = '3.4.0';
+    const ADMINVERSION = '4.0.1';
 
     /**
      * get the current plugin dir path
@@ -151,6 +151,8 @@ if (!class_exists('WPAdminPage\AdminPage')) {
     private $admin_only_capability  = 'manage_options';
     private $admin_submenu;
 
+    private $mcolor = '#0071A1';
+
     /**
      * Initialization
      *
@@ -162,7 +164,14 @@ if (!class_exists('WPAdminPage\AdminPage')) {
 
     function __construct(array $main_menu, array $submenu_items = array(), array $admin_only = array()) {
 
-      // define main menu args
+      /**
+       * add the color scheme
+       * use defualt if not defined
+       * @var [type]
+       */
+       if ( count($main_menu) > 9 ) {
+        $this->mcolor = array_shift($main_menu);
+       }
       $this->page_title   = $main_menu[0];
       $this->menu_title   = $main_menu[1];
       $this->capability   = $main_menu[2];
@@ -172,6 +181,8 @@ if (!class_exists('WPAdminPage\AdminPage')) {
       $this->position     = $main_menu[6];
       $this->prefix       = $main_menu[7];
       $this->plugin_path  = $main_menu[8];
+
+      //print_r(count($main_menu));
 
       // submenu
       $this->submenu_args = $submenu_items;
@@ -406,7 +417,7 @@ if (!class_exists('WPAdminPage\AdminPage')) {
      */
     public function tab_menu() {
 
-      echo '<h2 style="border: unset;" class="wll-admin nav-tab-wrapper wp-clearfix">';
+      echo '<h2 style="border: unset; " class="wll-admin nav-tab-wrapper wp-clearfix">';
       foreach ($this->submenu_args as $key => $submenu_item) {
          #slugs
         if ($key == 0) {
@@ -417,9 +428,9 @@ if (!class_exists('WPAdminPage\AdminPage')) {
 
         // build out the sub menu items
         if ($submenu_slug == $this->page_title()) {
-          echo '<a href="'.admin_url('/admin.php?page='.strtolower($submenu_slug).'').'" class="wll-admin-tab nav-tab-active">'.ucwords($submenu_item).'</a>';
+          echo '<a href="'.admin_url('/admin.php?page='.strtolower($submenu_slug).'').'" style="color:'.$this->mcolor.'" class="wll-admin-tab nav-tab-active">'.ucwords($submenu_item).'</a>';
         } else {
-          echo '<a href="'.admin_url('/admin.php?page='.strtolower($submenu_slug).'').'" class="wll-admin-tab">'.ucwords($submenu_item).'</a>';
+          echo '<a href="'.admin_url('/admin.php?page='.strtolower($submenu_slug).'').'" style="color:'.$this->mcolor.'" class="wll-admin-tab">'.ucwords($submenu_item).'</a>';
         }
       }
       echo '</h2>';

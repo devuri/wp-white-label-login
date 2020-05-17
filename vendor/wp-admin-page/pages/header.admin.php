@@ -10,7 +10,7 @@
 	// thickbox support
 	add_thickbox();
 
-?><div id="wll-important-notice">
+?><div id="wll-important-notice" style="background-color:<?php echo $this->mcolor; ?>;">
   <span class="wll-notice-message">
     <!-- notes -->
   </span>
@@ -23,11 +23,9 @@
     } elseif ($this->admin_submenu) {
       #admin submenu items
       echo '<h2>';
-      echo ucwords(
-      //  str_replace( '-', ' ',$this->get_thepage_name())
-      );
+      echo ucwords( str_replace( '-', ' ',$this->page_name()));
       echo '</h2>';
-      echo '<hr>';
+      echo '<br>';
       }
 ?></header>
 	<div class="wrap"><h2></h2></div><!---admin notices -->
