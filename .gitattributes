@@ -9,5 +9,6 @@
 /readme.md export-ignore
 /CHANGELOG.md export-ignore
 /composer.json export-ignore
+/composer.lock export-ignore
 /package.json export-ignore
 /LICENSE.md export-ignore
