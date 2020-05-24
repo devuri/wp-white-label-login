@@ -1,0 +1,46 @@
+[
+    {
+        "name": "devuri/wp-admin-page",
+        "version": "1.1.5",
+        "version_normalized": "1.1.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/devuri/wp-admin-page.git",
+            "reference": "bbe8fc134ec0b59a84e6d259fa913688ed597d3a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/devuri/wp-admin-page/zipball/bbe8fc134ec0b59a84e6d259fa913688ed597d3a",
+            "reference": "bbe8fc134ec0b59a84e6d259fa913688ed597d3a",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6"
+        },
+        "time": "2020-05-22T01:13:20+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "WPAdminPage\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Uriel Wilson",
+                "email": "hello@urielwilson.com"
+            }
+        ],
+        "description": "WP Admin Page is Quick and Easy way to build out Admin Menu Pages For WordPress",
+        "homepage": "https://github.com/devuri",
+        "keywords": [
+            "admin",
+            "wordpress",
+            "wp"
+        ]
+    }
+]
