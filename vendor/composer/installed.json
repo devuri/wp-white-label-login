@@ -1,23 +1,23 @@
 [
     {
         "name": "devuri/wp-admin-page",
-        "version": "1.1.5",
-        "version_normalized": "1.1.5.0",
+        "version": "1.1.7",
+        "version_normalized": "1.1.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/devuri/wp-admin-page.git",
-            "reference": "bbe8fc134ec0b59a84e6d259fa913688ed597d3a"
+            "reference": "844319302de1df35bec01f9a6d6ed430e698f268"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/devuri/wp-admin-page/zipball/bbe8fc134ec0b59a84e6d259fa913688ed597d3a",
-            "reference": "bbe8fc134ec0b59a84e6d259fa913688ed597d3a",
+            "url": "https://api.github.com/repos/devuri/wp-admin-page/zipball/844319302de1df35bec01f9a6d6ed430e698f268",
+            "reference": "844319302de1df35bec01f9a6d6ed430e698f268",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2020-05-22T01:13:20+00:00",
+        "time": "2020-05-24T17:23:37+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -27,12 +27,14 @@
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "GPL-2.0"
+            "GPL-2.0-only"
         ],
         "authors": [
             {
                 "name": "Uriel Wilson",
-                "email": "hello@urielwilson.com"
+                "email": "hello@urielwilson.com",
+                "homepage": "https://urielwilson.com",
+                "role": "Developer"
             }
         ],
         "description": "WP Admin Page is Quick and Easy way to build out Admin Menu Pages For WordPress",
