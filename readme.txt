@@ -3,8 +3,8 @@ Contributors: icelayer, sirwil
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6D6W2KXB88NKE
 Tags: custom login, wordpress login, white label, login customizer, branding,
 Requires at least: 3.4
-Tested up to: 5.4
-Stable tag: 5.6.3
+Tested up to: 5.5
+Stable tag: 5.6.5
 Requires PHP: 5.6
 License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
