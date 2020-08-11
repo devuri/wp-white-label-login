@@ -1,39 +1,26 @@
 <?php
 /**
- * Plugin Name: White Label Login
- * Plugin URI:  https://switchwebdev.com/wordpress-plugins/
- * Description: White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
- * Author:      SwitchWebdev.com
- * Author URI:  https://switchwebdev.com
- * Version:     5.6.3
- * License:     GPLv2
- * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: wp-white-label-login
- * Domain Path: languages
- * Usage:
- * Tags:
+ * White Label Login
  *
- * Requires PHP: 5.6+
- * Tested up to PHP: 7.0
+ * @package           WhiteLabelLogin
+ * @author            Uriel Wilson
+ * @copyright         2017 - 2020 Uriel Wilson
+ * @license           GPL-2.0
+ * @link           		https://urielwilson.com
  *
- * Copyright 2018 - 2020 Uriel Wilson, support@switchwebdev.com
- * License: GNU General Public License
- * GPLv2 Full license details in license.txt
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- * ----------------------------------------------------------------------------
- * @category  	Plugin
- * @copyright 	Copyright © 2020 Uriel Wilson.
- * @package   	WhiteLabelLogin
- * @author    	Uriel Wilson
- * @link      	https://switchwebdev.com
- *  ----------------------------------------------------------------------------
+ * @wordpress-plugin
+ * Plugin Name:       White Label Login
+ * Plugin URI:        https://switchwebdev.com/wordpress-plugins/
+ * Description:       White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
+ * Version:           5.7.0
+ * Requires at least: 3.4
+ * Requires PHP:      5.6
+ * Author:            SwitchWebdev.com
+ * Author URI:        https://switchwebdev.com
+ * Text Domain:       wp-white-label-login
+ * Domain Path:       languages
+ * License:           GPLv2
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
 	# deny direct access
@@ -42,7 +29,7 @@
 		}
 
 	# plugin directory
-		define("WPWLL_VERSION", '5.6.3');
+		define("WPWLL_VERSION", '5.7.0');
 
 	# plugin directory
 		define("WPWLL_DIR", dirname(__FILE__));

@@ -1,0 +1,3 @@
+ <?php
+
+ 	// display system info 

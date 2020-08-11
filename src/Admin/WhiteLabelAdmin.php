@@ -36,6 +36,7 @@ final class WhiteLabelAdmin extends AdminPage {
     $submenu[] = 'Background';
     $submenu[] = 'CSS';
     $submenu[] = 'Useful Plugins';
+    //$submenu[] = 'System Info';
     return $submenu;
   }
   /**
