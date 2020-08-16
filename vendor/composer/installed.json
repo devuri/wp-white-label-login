@@ -1,23 +1,23 @@
 [
     {
         "name": "devuri/wp-admin-page",
-        "version": "v2.0.0",
-        "version_normalized": "2.0.0.0",
+        "version": "2.1.0",
+        "version_normalized": "2.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/devuri/wp-admin-page.git",
-            "reference": "a0e49a703c93825921074a35b962eb90e149841d"
+            "reference": "4bb152513f0ae222b179f08483a7f653c8415572"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/devuri/wp-admin-page/zipball/a0e49a703c93825921074a35b962eb90e149841d",
-            "reference": "a0e49a703c93825921074a35b962eb90e149841d",
+            "url": "https://api.github.com/repos/devuri/wp-admin-page/zipball/4bb152513f0ae222b179f08483a7f653c8415572",
+            "reference": "4bb152513f0ae222b179f08483a7f653c8415572",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2020-08-09T03:00:53+00:00",
+        "time": "2020-08-16T06:27:04+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
