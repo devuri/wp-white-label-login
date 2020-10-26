@@ -68,7 +68,7 @@ class LoginStyle {
 		self::enqueue_style('wll-header-shadow');
 		self::enqueue_style('wll-base');
 		self::enqueue_style('wll-default');
-    self::align();
+    	self::align();
 
 		//self::enqueue_style('wll-color-scheme');
 

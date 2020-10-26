@@ -6,13 +6,13 @@
  * @author            Uriel Wilson
  * @copyright         2017 - 2020 Uriel Wilson
  * @license           GPL-2.0
- * @link           		https://urielwilson.com
+ * @link           	  https://urielwilson.com
  *
  * @wordpress-plugin
  * Plugin Name:       White Label Login
  * Plugin URI:        https://switchwebdev.com/wordpress-plugins/
  * Description:       White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
- * Version:           5.7.1
+ * Version:           5.7.3
  * Requires at least: 3.4
  * Requires PHP:      5.6
  * Author:            SwitchWebdev.com
@@ -29,7 +29,7 @@
 		}
 
 	# plugin directory
-		define("WPWLL_VERSION", '5.7.1');
+		define("WPWLL_VERSION", '5.7.3');
 
 	# plugin directory
 		define("WPWLL_DIR", dirname(__FILE__));
@@ -108,7 +108,7 @@
 	require_once WPWLL_DIR . '/src/WhiteLabel.php';
 
 
-	if (! function_exists('wpwhitelabel')) {
+	if ( ! function_exists('wpwhitelabel') ) {
 		/**
 		 * wpwhitelabel()
 		 *

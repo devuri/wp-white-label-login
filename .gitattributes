@@ -12,3 +12,5 @@
 /composer.lock export-ignore
 /package.json export-ignore
 /LICENSE.md export-ignore
+/.travis.yml export-ignore
+/phpcs.xml export-ignore
