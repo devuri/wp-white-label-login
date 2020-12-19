@@ -20,11 +20,18 @@ class ComposerStaticInit22cf752e2e4cb05153d3d107863bdf1f
         ),
     );
 
+    public static $classMap = array (
+        'WPAdminPage\\AdminPage' => __DIR__ . '/..' . '/devuri/wp-admin-page/src/AdminPage.php',
+        'WPAdminPage\\FormHelper' => __DIR__ . '/..' . '/devuri/wp-admin-page/src/FormHelper.php',
+        'WPAdminPage\\Translate_Easy' => __DIR__ . '/..' . '/devuri/wp-admin-page/src/EasyTranslate.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit22cf752e2e4cb05153d3d107863bdf1f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit22cf752e2e4cb05153d3d107863bdf1f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit22cf752e2e4cb05153d3d107863bdf1f::$classMap;
 
         }, null, ClassLoader::class);
     }
