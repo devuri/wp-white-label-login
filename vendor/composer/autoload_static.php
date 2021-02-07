@@ -21,9 +21,9 @@ class ComposerStaticInit22cf752e2e4cb05153d3d107863bdf1f
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'WPAdminPage\\AdminPage' => __DIR__ . '/..' . '/devuri/wp-admin-page/src/AdminPage.php',
         'WPAdminPage\\FormHelper' => __DIR__ . '/..' . '/devuri/wp-admin-page/src/FormHelper.php',
-        'WPAdminPage\\Translate_Easy' => __DIR__ . '/..' . '/devuri/wp-admin-page/src/EasyTranslate.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -12,7 +12,7 @@
  * Plugin Name:       White Label Login
  * Plugin URI:        https://switchwebdev.com/wordpress-plugins/
  * Description:       White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
- * Version:           5.7.4
+ * Version:           5.8.0
  * Requires at least: 3.4
  * Requires PHP:      5.6
  * Author:            SwitchWebdev.com

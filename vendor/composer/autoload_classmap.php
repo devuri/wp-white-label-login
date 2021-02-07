@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'WPAdminPage\\AdminPage' => $vendorDir . '/devuri/wp-admin-page/src/AdminPage.php',
     'WPAdminPage\\FormHelper' => $vendorDir . '/devuri/wp-admin-page/src/FormHelper.php',
-    'WPAdminPage\\Translate_Easy' => $vendorDir . '/devuri/wp-admin-page/src/EasyTranslate.php',
 );
