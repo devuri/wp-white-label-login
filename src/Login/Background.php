@@ -30,7 +30,7 @@ class LoginBackground {
 				background-color: <?php echo wpwhitelabel()->setting('background_color'); ?>;
 				background-image: url(<?php self::background(); ?>);
 				background-attachment: <?php echo wpwhitelabel()->setting('background_attachment'); ?>;
-				background-size: <?php //echo wpwhitelabel()->setting('background_size'); ?>;
+				background-size: <?php echo wpwhitelabel()->setting('background_size'); ?>;
 				background-repeat: <?php echo wpwhitelabel()->setting('background_repeat'); ?>;
 				background-position: <?php echo wpwhitelabel()->setting('background_position'); ?>;
 			}
