@@ -7,6 +7,16 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'WPAdminPage\\AdminPage' => $vendorDir . '/devuri/wp-admin-page/src/AdminPage.php',
-    'WPAdminPage\\FormHelper' => $vendorDir . '/devuri/wp-admin-page/src/FormHelper.php',
+    'WPWhiteLabel\\Admin\\WhiteLabelAdmin' => $baseDir . '/src/Admin/WhiteLabelAdmin.php',
+    'WPWhiteLabel\\Customize\\Customizer' => $baseDir . '/src/Customize/Customizer.php',
+    'WPWhiteLabel\\Customize\\Section' => $baseDir . '/src/Customize/Section.php',
+    'WPWhiteLabel\\Login\\Background' => $baseDir . '/src/Login/Background.php',
+    'WPWhiteLabel\\Login\\Footer' => $baseDir . '/src/Login/Footer.php',
+    'WPWhiteLabel\\Login\\Header' => $baseDir . '/src/Login/Header.php',
+    'WPWhiteLabel\\Login\\Logo' => $baseDir . '/src/Login/Logo.php',
+    'WPWhiteLabel\\Login\\Style' => $baseDir . '/src/Login/Style.php',
+    'WPWhiteLabel\\UsefulPlugins\\Plugins' => $baseDir . '/src/UsefulPlugins/Plugins.php',
+    'WPWhiteLabel\\WPAdmin\\AdminPage' => $baseDir . '/src/WPAdmin/AdminPage.php',
+    'WPWhiteLabel\\WPAdmin\\FormHelper' => $baseDir . '/src/WPAdmin/FormHelper.php',
+    'WPWhiteLabel\\WhiteLabel' => $baseDir . '/src/WhiteLabel.php',
 );

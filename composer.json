@@ -1,5 +1,10 @@
 {
-    "require": {
-        "devuri/wp-admin-page": "^2.0"
+    "autoload": {
+	      "psr-4": {
+	        "WPWhiteLabel\\":"src"
+		}
+    },
+    "config": {
+    "optimize-autoloader": true
     }
 }
