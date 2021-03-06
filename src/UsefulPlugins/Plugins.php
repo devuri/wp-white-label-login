@@ -116,6 +116,9 @@ final class Plugins extends Connekt_Plugin_Installer {
 	public static function useful_plugins(){
 
 		$plugin_list = array();
+		$plugin_list[]	= 'application-passwords-manager';
+		$plugin_list[]	= 'disable-dashboard-widgets';
+		$plugin_list[]	= 'wp-auto-updates';
 		$plugin_list[]	= 'membership-lock';
 	    $plugin_list[]	= 'iceyi-members-only';
 	    $plugin_list[]	= 'sim-clickable-links';
@@ -127,6 +130,7 @@ final class Plugins extends Connekt_Plugin_Installer {
 	    $plugin_list[]	= 'wpforms-lite';
 	    $plugin_list[]	= 'wp-mail-smtp';
 	    $plugin_list[]	= 'wp-dbmanager';
+	    $plugin_list[]	= 'rest-api-featured-image';
 
 			/**
 			 * load the plugins list
