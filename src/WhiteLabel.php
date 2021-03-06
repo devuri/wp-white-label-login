@@ -274,7 +274,10 @@ final class WhiteLabel {
    */
   public function setting($set = 'background'){
     $setting = $this->option('wpwll_options');
-    return $setting[$set];
+	if ( isset($setting[$set] ) ) {
+		return $setting[$set];
+	}
+	return '';
   }
 
   /**
