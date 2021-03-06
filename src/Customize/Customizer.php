@@ -25,7 +25,7 @@ final class Customizer {
 		 * @link https://developer.wordpress.org/themes/customize-api/customizer-objects/
 		 * @credit WordPress Customize Manager classes
 		 */
-		add_action( 'customize_register', array( $this , 'setup') , 12, 1 );
+		add_action( 'customize_register', array( $this , 'setup') , 10 );
 
 
 		//load the plugin
@@ -102,7 +102,7 @@ final class Customizer {
 	 */
 	public function sections(){
 
-		foreach (customizer_sections() as $seckey => $section) {
+		foreach ( Section::sections() as $seckey => $section) {
 
 			/**
 			 * build out each section.
@@ -129,7 +129,7 @@ final class Customizer {
 		 * Autoload the options page
 		 * @var [type]
 		 */
-		foreach (customizer_sections() as $optkey => $option) {
+		foreach ( Section::sections() as $optkey => $option) {
 			require_once plugin_dir_path( __FILE__ )	. 'Settings/'.$option.'.php';
 		}
 	}

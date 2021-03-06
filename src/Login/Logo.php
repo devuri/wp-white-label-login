@@ -1,10 +1,10 @@
 <?php
 
-namespace WPWhiteLabel\Logo;
+namespace WPWhiteLabel\Login;
 /**
  *
  */
-class LoginLogo {
+class Logo {
 
 	/**
 	 * logo

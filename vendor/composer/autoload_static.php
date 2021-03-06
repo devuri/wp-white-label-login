@@ -4,34 +4,44 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit22cf752e2e4cb05153d3d107863bdf1f
+class ComposerStaticInita339006b4c07d4d8576ca1163b0a7440
 {
     public static $prefixLengthsPsr4 = array (
         'W' => 
         array (
-            'WPAdminPage\\' => 12,
+            'WPWhiteLabel\\' => 13,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WPAdminPage\\' => 
+        'WPWhiteLabel\\' => 
         array (
-            0 => __DIR__ . '/..' . '/devuri/wp-admin-page/src',
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'WPAdminPage\\AdminPage' => __DIR__ . '/..' . '/devuri/wp-admin-page/src/AdminPage.php',
-        'WPAdminPage\\FormHelper' => __DIR__ . '/..' . '/devuri/wp-admin-page/src/FormHelper.php',
+        'WPWhiteLabel\\Admin\\WhiteLabelAdmin' => __DIR__ . '/../..' . '/src/Admin/WhiteLabelAdmin.php',
+        'WPWhiteLabel\\Customize\\Customizer' => __DIR__ . '/../..' . '/src/Customize/Customizer.php',
+        'WPWhiteLabel\\Customize\\Section' => __DIR__ . '/../..' . '/src/Customize/Section.php',
+        'WPWhiteLabel\\Login\\Background' => __DIR__ . '/../..' . '/src/Login/Background.php',
+        'WPWhiteLabel\\Login\\Footer' => __DIR__ . '/../..' . '/src/Login/Footer.php',
+        'WPWhiteLabel\\Login\\Header' => __DIR__ . '/../..' . '/src/Login/Header.php',
+        'WPWhiteLabel\\Login\\Logo' => __DIR__ . '/../..' . '/src/Login/Logo.php',
+        'WPWhiteLabel\\Login\\Style' => __DIR__ . '/../..' . '/src/Login/Style.php',
+        'WPWhiteLabel\\UsefulPlugins\\Plugins' => __DIR__ . '/../..' . '/src/UsefulPlugins/Plugins.php',
+        'WPWhiteLabel\\WPAdmin\\AdminPage' => __DIR__ . '/../..' . '/src/WPAdmin/AdminPage.php',
+        'WPWhiteLabel\\WPAdmin\\FormHelper' => __DIR__ . '/../..' . '/src/WPAdmin/FormHelper.php',
+        'WPWhiteLabel\\WhiteLabel' => __DIR__ . '/../..' . '/src/WhiteLabel.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit22cf752e2e4cb05153d3d107863bdf1f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit22cf752e2e4cb05153d3d107863bdf1f::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit22cf752e2e4cb05153d3d107863bdf1f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita339006b4c07d4d8576ca1163b0a7440::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita339006b4c07d4d8576ca1163b0a7440::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita339006b4c07d4d8576ca1163b0a7440::$classMap;
 
         }, null, ClassLoader::class);
     }

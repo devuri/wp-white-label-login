@@ -115,9 +115,8 @@ final class Plugins extends Connekt_Plugin_Installer {
 	 */
 	public static function useful_plugins(){
 
-			$plugin_list = array();
-			$plugin_list[]	= 'membership-lock';
-			$plugin_list[]	= 'wp-white-label-login';
+		$plugin_list = array();
+		$plugin_list[]	= 'membership-lock';
 	    $plugin_list[]	= 'iceyi-members-only';
 	    $plugin_list[]	= 'sim-clickable-links';
 	    $plugin_list[]	= 'better-search-replace';

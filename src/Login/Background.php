@@ -1,10 +1,10 @@
 <?php
-namespace WPWhiteLabel\Background;
+namespace WPWhiteLabel\Login;
 
 /**
  *
  */
-class LoginBackground {
+class Background {
 
 	/**
 	 * background

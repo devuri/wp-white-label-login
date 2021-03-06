@@ -1,10 +1,10 @@
 <?php
 
-namespace WPWhiteLabel\Footer;
+namespace WPWhiteLabel\Login;
  /**
   *
   */
- class LoginFooter {
+ class Footer {
     /**
      * show footer navigation
      * @var [type]

@@ -19,17 +19,17 @@ final class Section {
 	 */
 	protected static function new_sections(){
 
-		self::$sections[] = 'layout';
-		self::$sections[] = 'header';
-		self::$sections[] = 'logo';
-		self::$sections[] = 'login';
-		self::$sections[] = 'form';
-		self::$sections[] = 'button';
-		self::$sections[] = 'links';
-		self::$sections[] = 'background';
-		self::$sections[] = 'menu';
-		self::$sections[] = 'footer';
-		self::$sections[] = 'css';
+		self::$sections['layout']     = 'layout';
+		self::$sections['header']     = 'header';
+		self::$sections['logo']       = 'logo';
+		self::$sections['login']      = 'login';
+		self::$sections['form']       = 'form';
+		self::$sections['button']     = 'button';
+		self::$sections['links']      = 'links';
+		self::$sections['background'] = 'background';
+		self::$sections['menu']       = 'menu';
+		self::$sections['footer']     = 'footer';
+		self::$sections['css']        = 'css';
 		return self::$sections;
 	}
 

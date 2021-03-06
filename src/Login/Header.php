@@ -1,9 +1,9 @@
 <?php
-namespace WPWhiteLabel\Header;
+namespace WPWhiteLabel\Login;
 /**
  *
  */
-class LoginHeader {
+class Header {
 
 	/**
    * header

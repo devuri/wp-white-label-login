@@ -2,13 +2,14 @@
 
 namespace WPWhiteLabel;
 
-use WPWhiteLabel\Style\LoginStyle;
-use WPWhiteLabel\Header\LoginHeader;
-use WPWhiteLabel\Logo\LoginLogo;
-use WPWhiteLabel\Background\LoginBackground;
-use WPWhiteLabel\Footer\LoginFooter;
+use WPWhiteLabel\Login\Logo;
+use WPWhiteLabel\Login\Style;
+use WPWhiteLabel\Login\Background;
+use WPWhiteLabel\Login\Header;
+use WPWhiteLabel\Login\Footer;
 use WPWhiteLabel\Customize\Customizer;
 use WPWhiteLabel\UsefulPlugins\Plugins;
+use WPWhiteLabel\Admin\WhiteLabelAdmin;
 
 /**
  * Main class White_Label_Login
@@ -36,7 +37,7 @@ final class WhiteLabel {
    * @param  boolean $init active
    * @return object
    */
-  public static function instance($init = false) {
+  public static function init( $init = false ) {
 
     if ( ! isset( self::$instance ) && ! ( self::$instance instanceof WPWhiteLabel ) ) {
 
@@ -54,8 +55,9 @@ final class WhiteLabel {
        * if the plugin is on lets make the login pretty
        * @var [type]
        */
-      if (self::$instance->enable) {
-        self::$instance->init();
+      if ( self::$instance->enable ) {
+
+			self::$instance->loaded();
       }
 
       add_action( 'plugins_loaded', array( self::$instance, 'objects' ), 10 );
@@ -63,6 +65,17 @@ final class WhiteLabel {
     }
     return self::$instance;
   }
+
+	/**
+	 * setup.
+	 */
+	public function __construct() {
+
+	  	// create admin pages
+	  	WhiteLabelAdmin::init();
+
+	}
+
 
   /**
    * Loads the plugin language files.
@@ -81,15 +94,15 @@ final class WhiteLabel {
    * return status
    * @return boolean
    */
-  public function init(){
+  public function loaded(){
     add_action( 'admin_menu', array( $this , 'appearance_submenu') );
     add_action( 'init', array( $this ,'footer_navigation') );
-    add_action( 'login_enqueue_scripts', array( LoginStyle::class, 'login_styles' ) );
-    add_action( 'login_enqueue_scripts', array( LoginLogo::class, 'login_logo') );
-    add_filter( 'login_headertext',array( LoginLogo::class, 'logo_text' ) );
-    add_filter( 'login_head', array( LoginHeader::class, 'header') );
-    add_filter( 'login_head', array( LoginBackground::class, 'body') );
-    add_filter( 'login_footer', array( LoginFooter::class, 'footer') );
+    add_action( 'login_enqueue_scripts', array( Style::class, 'login_styles' ) );
+    add_action( 'login_enqueue_scripts', array( Logo::class, 'login_logo') );
+    add_filter( 'login_headertext',array( Logo::class, 'logo_text' ) );
+    add_filter( 'login_head', array( Header::class, 'header') );
+    add_filter( 'login_head', array( Background::class, 'body') );
+    add_filter( 'login_footer', array( Footer::class, 'footer') );
     add_filter( 'login_headerurl', array( $this , 'logo_link') );
   }
 
@@ -100,22 +113,9 @@ final class WhiteLabel {
 	 */
 	private function includes() {
 
-		// includes
-		require_once WPWLL_DIR . '/src/Login/Style.php';
-		require_once WPWLL_DIR . '/src/Login/css.php';
-		require_once WPWLL_DIR . '/src/Login/Header.php';
-		require_once WPWLL_DIR . '/src/Login/Logo.php';
-		require_once WPWLL_DIR . '/src/Login/Background.php';
-		require_once WPWLL_DIR . '/src/Login/Footer.php';
-		require_once WPWLL_DIR . '/src/Customize/Section.php';
-		require_once WPWLL_DIR . '/src/Customize/helpers.php';
-		require_once WPWLL_DIR . '/src/Customize/Customizer.php';
-
 		// Admin/Dashboard stuff
 		if ( is_admin() ) {
-			require_once WPWLL_DIR . '/vendor/connekt-plugin-installer/class-connekt-plugin-installer.php';
-			require_once WPWLL_DIR . '/src/UsefulPlugins/Plugins.php';
-			require_once WPWLL_DIR . '/src/Admin/WhiteLabelAdmin.php';
+			require_once WPWLL_DIR . '/lib/class-connekt-plugin-installer.php';
 		}
 	}
 
