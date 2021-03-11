@@ -399,8 +399,7 @@ if (!defined('ABSPATH')) exit;
      * @link https://developer.wordpress.org/reference/functions/get_submit_button/
      */
     public function submit_button($text = 'Save Changes', $type = 'primary large',$name ='submit',$wrap = ''){
-      $submit_button = get_submit_button($text,$type,$name,$wrap);
-      return $submit_button;
+        return get_submit_button($text,$type,$name,$wrap);
     }
 
     /**

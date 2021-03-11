@@ -148,8 +148,7 @@ final class WhiteLabel {
 	 * @return [type] [description]
 	 */
 	public function slug(){
-	    $wpslug = 'wp-white-label-login';
-	    return $wpslug;
+        return 'wp-white-label-login';
 	}
 
 	/**
@@ -159,8 +158,7 @@ final class WhiteLabel {
 	 * @return [type] [description]
 	 */
 	public function dir(){
-	    $dir_path = WPWLL_DIR;
-	    return $dir_path;
+        return WPWLL_DIR;
 	}
 
 	/**
@@ -215,12 +213,12 @@ final class WhiteLabel {
 		<?php
 	}
 
-	/**
-	 * Appearance submenu
-	 *
-	 * Lets add a submenu for the Customizer
-	 * @return [type] [description]
-	 */
+    /**
+     * Appearance submenu
+     *
+     * Lets add a submenu for the Customizer
+     * @return void [type] [description]
+     */
 	public function appearance_submenu() {
 	    add_submenu_page(
 	      'themes.php',

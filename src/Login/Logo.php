@@ -43,8 +43,7 @@ class Logo {
 	 * @link https://developer.wordpress.org/reference/hooks/login_headertext/
 	 */
 	protected static function set_logo_text() {
-			$login_header_text = get_bloginfo( 'name' );
-			return $login_header_text;
+        return get_bloginfo( 'name' );
 	}
 
 	/**
@@ -54,11 +53,11 @@ class Logo {
 			return self::set_logo_text();
 	}
 
-	/**
-	 * login_logo output
-	 *
-	 * @return
-	 */
+    /**
+     * login_logo output
+     *
+     * @return void
+     */
 	public static function login_logo() {
 		return self::get_logo();
 	}
