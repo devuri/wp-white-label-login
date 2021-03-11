@@ -213,17 +213,16 @@ abstract class AdminPage {
 	 * @return array get the menu args
 	 */
 	public function args() {
-	  	$menu_args = array(
-			$this->page_title,
-			$this->menu_title,
-			$this->capability,
-			$this->menu_slug,
-			$this->function,
-			$this->icon_url,
-			$this->position,
-			$this->prefix,
-	  	);
-	  	return $menu_args;
+        return array(
+          $this->page_title,
+          $this->menu_title,
+          $this->capability,
+          $this->menu_slug,
+          $this->function,
+          $this->icon_url,
+          $this->position,
+          $this->prefix,
+        );
 	}
 
 	/**
@@ -310,8 +309,7 @@ abstract class AdminPage {
 	 * @return string
 	 */
 	public function page_name() {
-		$pagefile = str_replace( $this->prefix . '-', '', $this->page_title() );
-		return $pagefile;
+        return str_replace( $this->prefix . '-', '', $this->page_title() );
 	}
 
 	/**
@@ -351,8 +349,7 @@ abstract class AdminPage {
 			$admin_path = $spage;
 		}
 
-		$admin_file = $admin_path . $this->menu_slug() . '/' . $this->page_name() . '.admin.php';
-		return $admin_file;
+        return $admin_path . $this->menu_slug() . '/' . $this->page_name() . '.admin.php';
 	}
 
 	/**
@@ -459,8 +456,7 @@ abstract class AdminPage {
 	 * @return string
 	 */
 	public function menu_slug() {
-		$slug = str_replace( $this->prefix . '-', '', $this->menu_slug );
-		return $slug;
+        return str_replace( $this->prefix . '-', '', $this->menu_slug );
 	}
 
 	/**
