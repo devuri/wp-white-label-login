@@ -12,7 +12,8 @@ Easy to use and very simple after you activate this plugin you can choose to cha
 
 But maybe you want to change the logo or change the login page background, well you can now easily change the default logo and set custom login page background.
 
-![screenshot](https://user-images.githubusercontent.com/4777400/77988677-8ce1b900-72e2-11ea-81cc-f93c835119b4.png)
+![screenshot-2](https://user-images.githubusercontent.com/4777400/79120567-cd1c4f00-7d58-11ea-9122-7ffb5448a0a6.png)
+
 
 ###  Custom Login Page Customizer detailed features:
 * Custom Login page header
@@ -31,7 +32,8 @@ But maybe you want to change the logo or change the login page background, well 
 * Add Custom Login Page CSS
 * Custom WordPress Login Page Footer
 
-![screenshot-2](https://user-images.githubusercontent.com/4777400/79120567-cd1c4f00-7d58-11ea-9122-7ffb5448a0a6.png)
+![1616648603680](https://user-images.githubusercontent.com/4777400/112421808-cb476380-8cfd-11eb-8412-befa52fbfe26.png)
+
 
 By far the simplest login white label plugin for any WordPress Website no fiddles and strings, activate and you are done.
 
@@ -39,6 +41,7 @@ Easy to use, simple settings options, simplified sensible defaults, you never ne
 
 If you found a bug or have suggestions head over to the [Support Section](https://wordpress.org/support/plugin/wp-white-label-login/)
 
+![screenshot](https://user-images.githubusercontent.com/4777400/77988677-8ce1b900-72e2-11ea-81cc-f93c835119b4.png)
 
 ## Getting Started
 
