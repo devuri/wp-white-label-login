@@ -6,11 +6,15 @@
 
 ### White Label Login, Custom WordPress Login Page, Registration, and Lost Password Page
 
-Simple one-click very lightweight, White Label Custom WordPress Login Page, Registration, and Lost Password Page.
+White Label Login is a useful and easy-to-use WordPress plugin that allows website owners to customize the login page, registration page, and lost password page on their website. The plugin offers a range of customization options, including the ability to add a custom logo, background image, and other design elements, to create a consistent and professional user experience.
 
-Easy to use and very simple after you activate this plugin you can choose to change some settings or leave everything as is the login page has already been white-labeled and customized.
+Once the plugin is installed and activated, the default login page is automatically customized with a professional-looking white-labeled design. However, users can easily modify this design to suit their branding or personal preferences by using the intuitive customization options provided by the plugin.
 
-But maybe you want to change the logo or change the login page background, well you can now easily change the default logo and set custom login page background.
+White Label Login is designed to be user-friendly, even for those with little experience in design or coding. Users can modify their login pages as much or as little as they want, and any changes they make will be immediately reflected on the page.
+
+In addition to customization options for the login page, the plugin also provides customization options for the registration and lost password pages. This feature is useful for websites that require additional user information beyond a simple login.
+
+White Label Login is an excellent solution for website owners who want to create a personalized and professional login experience for their users. With its simple and intuitive customization options, users can easily modify their login pages to align with their branding and create a consistent and engaging user experience.
 
 ![screenshot-2](https://user-images.githubusercontent.com/4777400/79120567-cd1c4f00-7d58-11ea-9122-7ffb5448a0a6.png)
 
