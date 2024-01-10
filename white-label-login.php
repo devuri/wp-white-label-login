@@ -8,7 +8,7 @@
  * Requires at least: 3.4
  * Requires PHP:      7.4
  * Author:            wpbrisko.com
- * Author URI:        hhttps://wpbrisko.com/
+ * Author URI:        https://wpbrisko.com/
  * Text Domain:       wp-white-label-login
  * Domain Path:       /languages
  * License:           GPLv2
