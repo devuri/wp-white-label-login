@@ -87,9 +87,9 @@ Upload the plugin to your WordPress website, Activate it,
 
 ## Authors
 
-* **Devuri** - *Initial work* - [SwitchWebdev.com](http://SwitchWebdev.com/)
+* **Devuri** - *Initial work* - [wpbrisko.com](http://wpbrisko.com/)
 
-More PLugins Here [SwitchWebdev.com WordPress Plugins](http://SwitchWebdev.com/wordpress-plugins/).
+More PLugins Here [wpbrisko.com WordPress Plugins](http://wpbrisko.com/wordpress-plugins/).
 
 ## License
 

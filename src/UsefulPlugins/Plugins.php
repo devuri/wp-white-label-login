@@ -115,22 +115,23 @@ final class Plugins extends Connekt_Plugin_Installer {
 	 */
 	public static function useful_plugins(){
 
-		$plugin_list = array();
-		$plugin_list[]	= 'application-passwords-manager';
-		$plugin_list[]	= 'disable-dashboard-widgets';
-		$plugin_list[]	= 'wp-auto-updates';
-		$plugin_list[]	= 'membership-lock';
-	    $plugin_list[]	= 'iceyi-members-only';
-	    $plugin_list[]	= 'sim-clickable-links';
-	    $plugin_list[]	= 'better-search-replace';
-	    $plugin_list[]	= 'disable-comments';
-	    $plugin_list[]	= 'wp-seopress';
-	    $plugin_list[]	= 'login-recaptcha';
-	    $plugin_list[]	= 'sucuri-scanner';
-	    $plugin_list[]	= 'wpforms-lite';
-	    $plugin_list[]	= 'wp-mail-smtp';
-	    $plugin_list[]	= 'wp-dbmanager';
-	    $plugin_list[]	= 'rest-api-featured-image';
+		$plugin_list = array(
+			'application-passwords-manager',
+			'disable-dashboard-widgets',
+			'wp-auto-updates',
+			'membership-lock',
+			'iceyi-members-only',
+			'sim-clickable-links',
+			'better-search-replace',
+			'disable-comments',
+			'wp-seopress',
+			'login-recaptcha',
+			'sucuri-scanner',
+			'wpforms-lite',
+			'wp-mail-smtp',
+			'wp-dbmanager',
+			'rest-api-featured-image',
+		);
 
 			/**
 			 * load the plugins list
