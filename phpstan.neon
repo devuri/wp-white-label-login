@@ -1,0 +1,27 @@
+includes:
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    bootstrapFiles:
+        - tests/stubs.php
+    tmpDir: tmp
+    level: 1
+    inferPrivatePropertyTypeFromConstructor: true
+    treatPhpDocTypesAsCertain: false
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        - message: '#Variable \$this might not be defined#'
+          paths:
+              - src/EasyWhiteLabel/Customize/Settings/*
+    excludePaths:
+        - tests/Integration/*
+        - tmp/*
+        - node_modules/*
+        - bin/*
+        - languages/*
+        - vendor/*
+    scanFiles:
+        - white-label-login.php
+    paths:
+        - src
+        - tests

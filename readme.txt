@@ -3,9 +3,9 @@ Contributors: icelayer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6D6W2KXB88NKE
 Tags: custom login page, custom login, wordpress login, white label, login customizer, branding,
 Requires at least: 3.4
-Tested up to: 5.7
-Stable tag: 6.0.5
-Requires PHP: 5.6
+Tested up to: 6.4
+Stable tag: 7.0.1
+Requires PHP: 7.4
 License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
