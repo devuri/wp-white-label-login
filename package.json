@@ -1,0 +1,39 @@
+{
+    "name": "wp-easy-white-label",
+    "description": "Easy White Label",
+    "license": "GPL-2.0-only",
+    "author": "Uriel Wilson",
+    "keywords": [
+        "WordPress"
+    ],
+    "homepage": "https://github.com/devuri/wp-easy-white-label",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/devuri/wp-easy-white-label.git"
+    },
+    "bugs": {
+        "url": "https://github.com/devuri/wp-easy-white-label/issues"
+    },
+    "devDependencies": {
+        "cypress": "^13.2.0",
+        "dir-archiver": "^1.1.1",
+        "laravel-mix": "^6.0.43"
+    },
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "hot": "mix watch --hot",
+        "prod": "mix --production",
+        "production": "mix --production",
+        "bundle": "dir-archiver --src . --dest ./wp-white-label-login.zip --exclude .git .wordpress-org .github .phpdoc build bug dev-notes cypress node_modules asset/src tests tmp report docs bin .vscode .idea .gitattributes cypress.config.js release-please-config.json .phpcs.xml.dist .php-cs-fixer.php stubs.php .gitignore README.md CHANGELOG.md composer.json composer.lock package.json package-lock.json evp-logo.png .travis.yml phpcs.xml ISSUE_TEMPLATE.md CODE_OF_CONDUCT.md phpunit.xml .phpunit.result.cache phpdoc.xml psalm.xml rules.neon phpstan.neon webpack.mix.js",
+        "clean:dir": "rm -rf trunk",
+        "prebuild": "mix --production && npm run clean:dir",
+        "build": "mix --mix-config=build/webpack.mix.js --production",
+        "postbuild": "npm run bundle --silent",
+        "cypress": "node_modules/.bin/cypress open"
+    },
+    "dependencies": {
+        "jquery": "^3.6.0"
+    }
+}
