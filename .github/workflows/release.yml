@@ -73,5 +73,5 @@ jobs:
             SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
             SLUG: wp-white-label-login
             BUILD_DIR: ./build/trunk/
-            INPUT_DRY_RUN: true
+            INPUT_DRY_RUN: false
             VERSION: ${{ steps.release.outputs.tag_name }}
