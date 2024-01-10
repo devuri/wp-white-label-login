@@ -1,5 +1,18 @@
 # Changelog
 
+## [7.0.1](https://github.com/devuri/wp-white-label-login/compare/7.0.0...7.0.1) (2024-01-10)
+
+
+### Bug Fixes
+
+* Update white-label-login.php fix url ([042e717](https://github.com/devuri/wp-white-label-login/commit/042e71799a531353258d348ff2180adcc128ee5f))
+
+
+### Miscellaneous Chores
+
+* Update readme.txt ver bump 7.0.1 ([869b672](https://github.com/devuri/wp-white-label-login/commit/869b6729863f101ed18d861b42ffbbcebd2455b7))
+* Update white-label-login.php version bump 7.0.1 ([1f491a0](https://github.com/devuri/wp-white-label-login/commit/1f491a0cebbb1391d2b6a3e440b310ee0071e475))
+
 ## [7.0.0](https://github.com/devuri/wp-white-label-login/compare/6.0.5...7.0.0) (2024-01-10)
 
 
