@@ -10,13 +10,13 @@
  *
  * @wordpress-plugin
  * Plugin Name:       White Label Login
- * Plugin URI:        https://switchwebdev.com/wordpress-plugins/
+ * Plugin URI:        https://wpbrisko.com/wordpress-plugins/
  * Description:       White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
  * Version:           6.0.5
  * Requires at least: 3.4
  * Requires PHP:      5.6
- * Author:            Uriel Wilson
- * Author URI:        https://urielwilson.com
+ * Author:            uriel
+ * Author URI:        https://wpbrisko.com/
  * Text Domain:       wp-white-label-login
  * Domain Path:       languages
  * License:           GPLv2

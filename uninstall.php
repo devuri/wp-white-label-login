@@ -9,7 +9,7 @@
  * @copyright 	Copyright © 2020 Uriel Wilson.
  * @package   	WhiteLabelLogin
  * @author    	Uriel Wilson
- * @link      	https://switchwebdev.com
+ * @link      	https://wpbrisko.com
  * ----------------------------------------------------------------------------
  */
 

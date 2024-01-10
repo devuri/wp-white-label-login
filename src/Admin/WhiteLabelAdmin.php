@@ -12,18 +12,16 @@ final class WhiteLabelAdmin extends AdminPage {
 	 * @return [type] [description]
 	 */
 	private static function admin_menu(){
-
-		$menu = array();
-		//$menu['mcolor']       = '#009688';
-		$menu['page_title']   = 'White Label Login Settings ';
-		$menu['menu_title']   = 'WP White Label';
-		$menu['capability']   = 'manage_options';
-		$menu['menu_slug']    = 'white-label-options';
-		$menu['function']     = 'wllmenu_callback';
-		$menu['icon_url']     = 'dashicons-art';
-		$menu['prefix']       = 'wll';
-		$menu['plugin_path']  =  plugin_dir_path( __FILE__ );
-	    return $menu;
+	    return array(
+			'page_title'  => 'White Label Login Settings ',
+			'menu_title'  => 'WP White Label',
+			'capability'  => 'manage_options',
+			'menu_slug'   => 'white-label-options',
+			'function'    => 'wllmenu_callback',
+			'icon_url'    => 'dashicons-art',
+			'prefix'      => 'wll',
+			'plugin_path' => plugin_dir_path( __FILE__ )
+		);
 	}
 
 	/**
@@ -32,12 +30,12 @@ final class WhiteLabelAdmin extends AdminPage {
 	 * @return [type] [description]
 	 */
 	private static function submenu(){
-	    $submenu = array();
-	    $submenu[] = 'Logo';
-	    $submenu[] = 'Background';
-	    $submenu[] = 'CSS';
-	    $submenu[] = 'Useful Plugins';
-	    return $submenu;
+	    return array(
+			'Logo',
+			'Background',
+			'CSS',
+			'Useful Plugins'
+		);
 	}
 
 	/**
