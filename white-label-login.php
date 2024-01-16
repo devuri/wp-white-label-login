@@ -4,7 +4,7 @@
  * Plugin Name:       Easy White Label
  * Plugin URI:        https://wpbrisko.com/wordpress-plugins/
  * Description:       White Label Login, Custom Login Page, Registration and Lost Password Page, Activate it and forget it...
- * Version:           7.0.1
+ * Version:           7.1.0
  * Requires at least: 3.4
  * Requires PHP:      7.4
  * Author:            wpbrisko.com
