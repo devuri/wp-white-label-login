@@ -1,5 +1,26 @@
 # Changelog
 
+## [7.1.0](https://github.com/devuri/wp-white-label-login/compare/7.0.1...7.1.0) (2024-01-16)
+
+
+### Features
+
+* update plugin info twice daily. ([da8b02b](https://github.com/devuri/wp-white-label-login/commit/da8b02bc67c3691aad718456d36a79821a592802))
+
+
+### Bug Fixes
+
+* adds second arg $default to `setting` ([ac7fce8](https://github.com/devuri/wp-white-label-login/commit/ac7fce8e885746283c1c678707a44205c65c1e75))
+* update copyright info ([0aaaf68](https://github.com/devuri/wp-white-label-login/commit/0aaaf68da2e4590406a86cbb193837a0b2506dfe))
+
+
+### Miscellaneous Chores
+
+* build ([6b060c0](https://github.com/devuri/wp-white-label-login/commit/6b060c02dda91f2e31e79d86bd0c4536711d9dbe))
+* build ([7789bb9](https://github.com/devuri/wp-white-label-login/commit/7789bb9aec855ee8184ef9ef6fb0eea4b37277b8))
+* fix ([073c5d9](https://github.com/devuri/wp-white-label-login/commit/073c5d9395f775d45459634ce21ec818fe8678d5))
+* version bump ([591ced6](https://github.com/devuri/wp-white-label-login/commit/591ced6fc6f225cd61c0d9e4b47fa7a7338dd28d))
+
 ## [7.0.1](https://github.com/devuri/wp-white-label-login/compare/7.0.0...7.0.1) (2024-01-10)
 
 
