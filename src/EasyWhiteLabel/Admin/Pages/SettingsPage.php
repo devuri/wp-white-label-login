@@ -30,7 +30,6 @@ class SettingsPage
 
         // Save attachment ID
         if ( isset( $post['image_attachment_id'] ) ) {
-
             // get the image ID
             $image_attachment = absint( $post['image_attachment_id'] );
 

@@ -12,26 +12,33 @@ namespace EasyWhiteLabel;
 
 use EasyWhiteLabel\Traits\Singleton;
 
-class DailyTask {
+class DailyTask
+{
+    use Singleton;
 
-	use Singleton;
+    protected const PLUGINS_DATA_TRANSIENT = 'ewl_plugins_data';
 
-	protected const PLUGINS_DATA_TRANSIENT = 'ewl_plugins_data';
-
-    public function scheduled() {
+    public function scheduled(): void
+    {
         if ( ! wp_next_scheduled( 'ewl_update_plugins_list' ) ) {
             wp_schedule_event( time(), 'twicedaily', 'ewl_update_plugins_list' );
         }
 
-        add_action( 'ewl_update_plugins_list', array( $this, 'execute_task' ) );
+        add_action( 'ewl_update_plugins_list', [ $this, 'execute_task' ] );
     }
 
-    public function execute_task()
-	{
+    public function execute_task(): void
+    {
         $this->get_plugins_data( Plugin::get_plugins() );
     }
 
-	protected function get_plugins_data( array $plugins )
+    public function deactivate(): void
+    {
+        $timestamp = wp_next_scheduled( 'ewl_update_plugins_list' );
+        wp_unschedule_event( $timestamp, 'ewl_update_plugins_list' );
+    }
+
+    protected function get_plugins_data( array $plugins ): void
     {
         $api_data = Transient::get( self::PLUGINS_DATA_TRANSIENT );
 
@@ -64,10 +71,5 @@ class DailyTask {
 
             Transient::set( self::PLUGINS_DATA_TRANSIENT, $plugin_info );
         }// end if
-    }
-
-    public function deactivate() {
-        $timestamp = wp_next_scheduled( 'ewl_update_plugins_list' );
-        wp_unschedule_event( $timestamp, 'ewl_update_plugins_list' );
     }
 }

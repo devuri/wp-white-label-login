@@ -41,7 +41,7 @@ register_activation_hook(
     function(): void {
         EasyWhiteLabel\Activate::init();
 
-		if ( ! wp_next_scheduled( 'ewl_update_plugins_list' ) ) {
+        if ( ! wp_next_scheduled( 'ewl_update_plugins_list' ) ) {
             wp_schedule_event( time(), 'twicedaily', 'ewl_update_plugins_list' );
         }
     }
@@ -49,11 +49,11 @@ register_activation_hook(
 
 // Deactivation
 register_deactivation_hook(
-	__FILE__,
+    __FILE__,
     function(): void {
-		$update_plugins_timestamp = wp_next_scheduled( 'ewl_update_plugins_list' );
+        $update_plugins_timestamp = wp_next_scheduled( 'ewl_update_plugins_list' );
 
-		if ( $update_plugins_timestamp ) {
+        if ( $update_plugins_timestamp ) {
             wp_unschedule_event( $update_plugins_timestamp, 'ewl_update_plugins_list' );
         }
     }
