@@ -15,5 +15,5 @@ delete_option( 'wpwll_custom_css' );
 delete_option( 'wpwll_copyright_text' );
 delete_option( 'wpwll_options' );
 
-  // finally clear the cache
-  wp_cache_flush();
+// finally clear the cache
+wp_cache_flush();

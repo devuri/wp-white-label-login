@@ -277,17 +277,18 @@ class Plugin
      * setup some the options array to get a specific setting
      *
      * @param string $set
+     * @param mixed  $default
      *
      * @return string
      */
-    public function setting( $set = 'background' )
+    public function setting( $set = 'background', $default = '' )
     {
         $setting = $this->option( 'wpwll_options' );
         if ( isset( $setting[ $set ] ) ) {
             return $setting[ $set ];
         }
 
-        return '';
+        return $default;
     }
 
     /**

@@ -1,6 +1,38 @@
 <?php
 
 /**
+ * wpwhitelabel().
+ *
+ * @return object
+ */
+function wpwhitelabel()
+{
+	// new up wll object
+	return EasyWhiteLabel\Plugin::init();
+}
+
+function ewl_get_plugins(): array
+{
+    return [
+        'application-passwords-manager',
+        'disable-dashboard-widgets',
+        'wp-auto-updates',
+        'membership-lock',
+        'iceyi-members-only',
+        'sim-clickable-links',
+        'better-search-replace',
+        'disable-comments',
+        'wp-seopress',
+        'login-recaptcha',
+        'sucuri-scanner',
+        'wpforms-lite',
+        'wp-mail-smtp',
+        'wp-dbmanager',
+        'rest-api-featured-image',
+    ];
+}
+
+/**
  * Exit On form failure.
  *
  * @param null|string $message

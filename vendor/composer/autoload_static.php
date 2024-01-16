@@ -45,6 +45,7 @@ class ComposerStaticInitfad86c4de6683a712b18e6702e3e65b3
         'EasyWhiteLabel\\Admin\\WhiteLabelAdmin' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Admin/WhiteLabelAdmin.php',
         'EasyWhiteLabel\\Customize\\Customizer' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Customizer.php',
         'EasyWhiteLabel\\Customize\\Section' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Section.php',
+        'EasyWhiteLabel\\DailyTask' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/DailyTask.php',
         'EasyWhiteLabel\\Lang' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Lang.php',
         'EasyWhiteLabel\\Lib\\ConnektInstaller' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Lib/ConnektInstaller.php',
         'EasyWhiteLabel\\Login\\Background' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Login/Background.php',

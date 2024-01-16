@@ -26,6 +26,7 @@ return array(
     'EasyWhiteLabel\\Admin\\WhiteLabelAdmin' => $baseDir . '/src/EasyWhiteLabel/Admin/WhiteLabelAdmin.php',
     'EasyWhiteLabel\\Customize\\Customizer' => $baseDir . '/src/EasyWhiteLabel/Customize/Customizer.php',
     'EasyWhiteLabel\\Customize\\Section' => $baseDir . '/src/EasyWhiteLabel/Customize/Section.php',
+    'EasyWhiteLabel\\DailyTask' => $baseDir . '/src/EasyWhiteLabel/DailyTask.php',
     'EasyWhiteLabel\\Lang' => $baseDir . '/src/EasyWhiteLabel/Lang.php',
     'EasyWhiteLabel\\Lib\\ConnektInstaller' => $baseDir . '/src/EasyWhiteLabel/Lib/ConnektInstaller.php',
     'EasyWhiteLabel\\Login\\Background' => $baseDir . '/src/EasyWhiteLabel/Login/Background.php',
