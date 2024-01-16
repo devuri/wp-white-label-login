@@ -44,7 +44,7 @@ class Background
 				background-image: url(<?php self::background(); ?>);
 				background-attachment: <?php echo wpwhitelabel()->setting( 'background_attachment' ); ?>;
 				background-size: <?php echo wpwhitelabel()->setting( 'background_size', 'cover' ); ?>;
-				background-repeat: <?php echo wpwhitelabel()->setting( 'background_repeat', 'no-repeat'); ?>;
+				background-repeat: <?php echo wpwhitelabel()->setting( 'background_repeat', 'no-repeat' ); ?>;
 				background-position: <?php echo wpwhitelabel()->setting( 'background_position', 'left' ); ?>;
 			}
 			</style>

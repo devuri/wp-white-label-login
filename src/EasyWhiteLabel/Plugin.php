@@ -277,6 +277,7 @@ class Plugin
      * setup some the options array to get a specific setting
      *
      * @param string $set
+     * @param mixed  $default
      *
      * @return string
      */
