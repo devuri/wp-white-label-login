@@ -5,4 +5,4 @@ use EasyWhiteLabel\UsefulPlugins\Installer;
 /**
  * List of plugins.
  */
-Installer::init( EasyWhiteLabel\Plugin::get_plugins() );
+Installer::init( ewl_get_plugins() );

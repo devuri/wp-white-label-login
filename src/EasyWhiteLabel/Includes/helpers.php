@@ -14,3 +14,24 @@ function ewl_fail_exit( ?string $message = null )
     }
     exit( $message );
 }
+
+function ewl_get_plugins(): array
+{
+	return [
+		'application-passwords-manager',
+		'disable-dashboard-widgets',
+		'wp-auto-updates',
+		'membership-lock',
+		'iceyi-members-only',
+		'sim-clickable-links',
+		'better-search-replace',
+		'disable-comments',
+		'wp-seopress',
+		'login-recaptcha',
+		'sucuri-scanner',
+		'wpforms-lite',
+		'wp-mail-smtp',
+		'wp-dbmanager',
+		'rest-api-featured-image',
+	];
+}

@@ -29,7 +29,7 @@ class DailyTask
 
     public function execute_task(): void
     {
-        $this->get_plugins_data( Plugin::get_plugins() );
+        $this->get_plugins_data( ewl_get_plugins() );
     }
 
     public function deactivate(): void
