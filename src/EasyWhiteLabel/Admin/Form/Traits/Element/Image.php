@@ -2,7 +2,7 @@
 /**
  * This file is part of the Easy Video Publisher WordPress PLugin.
  *
- * (c) Uriel Wilson <uriel@videopublisher.org>
+ * (c) Uriel Wilson 
  *
  * Please see the LICENSE file that was distributed with this source code
  * for full copyright and license information.
