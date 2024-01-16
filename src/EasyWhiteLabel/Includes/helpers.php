@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * wpwhitelabel().
+ *
+ * @return object
+ */
+function wpwhitelabel()
+{
+	// new up wll object
+	return EasyWhiteLabel\Plugin::init();
+}
+
 function ewl_get_plugins(): array
 {
     return [

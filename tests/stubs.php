@@ -12,7 +12,9 @@ if ( ! \defined('EASYWHITELABEL_DIR')) {
     \define('EASYWHITELABEL_DIR', true);
 }
 
-
+if ( ! \defined('EASYWHITELABEL_VERSION')) {
+    \define('EASYWHITELABEL_VERSION', true);
+}
 
 // Available unit tests only.
 function tests_add_filter($arg1, $arg2): void
