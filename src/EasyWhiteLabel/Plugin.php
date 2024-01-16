@@ -27,6 +27,27 @@ class Plugin
     public $enabled;
     public $customizer;
 
+	public static function get_plugins(): array
+	{
+		return [
+		    'application-passwords-manager',
+		    'disable-dashboard-widgets',
+		    'wp-auto-updates',
+		    'membership-lock',
+		    'iceyi-members-only',
+		    'sim-clickable-links',
+		    'better-search-replace',
+		    'disable-comments',
+		    'wp-seopress',
+		    'login-recaptcha',
+		    'sucuri-scanner',
+		    'wpforms-lite',
+		    'wp-mail-smtp',
+		    'wp-dbmanager',
+		    'rest-api-featured-image',
+		];
+	}
+
     /**
      * Add Shortcode [wpoption opt="myoption"].
      *
