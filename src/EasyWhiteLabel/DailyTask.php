@@ -42,6 +42,8 @@ class DailyTask
     {
         $api_data = Transient::get( self::PLUGINS_DATA_TRANSIENT );
 
+        require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+
         if ( ! $api_data ) {
             $plugin_info = [];
 
