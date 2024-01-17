@@ -1,5 +1,18 @@
 # Changelog
 
+## [7.1.1](https://github.com/devuri/wp-white-label-login/compare/7.1.0...7.1.1) (2024-01-17)
+
+
+### Bug Fixes
+
+* include plugin file ([44e12c4](https://github.com/devuri/wp-white-label-login/commit/44e12c4800504f61efb36e36af6ef74988fdda25))
+
+
+### Miscellaneous Chores
+
+* build ([e8e9eef](https://github.com/devuri/wp-white-label-login/commit/e8e9eefa288e70d13e52bf12fc1f8e84d85d0a23))
+* vbump 7.1.1 ([d9fc71a](https://github.com/devuri/wp-white-label-login/commit/d9fc71a5aa41c7c8a356bbebffa375441499b269))
+
 ## [7.1.0](https://github.com/devuri/wp-white-label-login/compare/7.0.1...7.1.0) (2024-01-16)
 
 
