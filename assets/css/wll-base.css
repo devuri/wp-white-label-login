@@ -1,142 +1,153 @@
-/*** misc ****/
-#lostpasswordform div.g-recaptcha, #loginform div.g-recaptcha, #registerform div.g-recaptcha {
-    margin: auto !important;
+/*** Misc ***/
+#lostpasswordform div.g-recaptcha,
+#loginform div.g-recaptcha,
+#registerform div.g-recaptcha {
+    margin: auto !important; /* Consider avoiding !important if possible */
 }
 
-.wll-header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 12px;
-  padding-right: 12px;
-	color: #747474;
-}
-
+.wll-header,
 .login .message {
-	color: #747474;
+    padding: 10px 12px;
+    color: #747474;
 }
 
-/* body **************************************/
+/* Body */
 html, body {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
+
 .wrapper {
-  min-height: 96%;
-
-  /* Equal to height of footer */
-  /* But also accounting for potential margin-bottom of last child */
-  margin-bottom: -50px;
-}
-.footer,
-.push {
-  height: 50px;
+    min-height: 96%;
+    margin-bottom: -50px; /* Equal to height of footer, accounting for margin-bottom of last child */
 }
 
-body.login h1{
-	font-weight: 100;
-	color: #008EC2;
+.footer, .push {
+    height: 50px;
 }
 
-body h2 a{
-	font-weight: 100;
-	padding-top: 40px;
+body.login h1 {
+    font-weight: 100;
+    color: #008EC2;
 }
 
-
-body.login p#nav a {
-	text-decoration:none;
-	margin:0 5px;
+body h2 a {
+    font-weight: 100;
+    padding-top: 40px;
 }
 
+body.login p#nav a,
 body a {
-	text-decoration:none;
-	margin:0 5px;
+    text-decoration: none;
+    margin: 0 5px;
 }
 
-hr{
-	background-color: #cccccc;
-	border: 0px none;
-	clear: both;
-	height: 1px;
+hr {
+    background-color: #cccccc;
+    border: none;
+    clear: both;
+    height: 1px;
 }
+
 .cptch_block {
-  border-radius:4px;
-	background-color: #333333;
-	font-size: 12px;
-	font-weight: bold;
-	padding-bottom: 12px;
-}
-
-#login #backtoblog{
-	display:none !important;
-	visibility:hidden;
-  padding: 25px;
-}
-/********* Login form *******/
-#login {
-  align: center;
-  margin-top: 8%;
-  margin-right: auto;
-  margin-bottom: 4%;
-  padding: 26px;
-}
-
-#loginrgstrfrm{
-	color: #999;
-}
-
-#loginrgstrfrm li{
-	list-style-position: inside;
-	list-style-type: square;
-	margin: 2px;
-}
-#loginrgstrfrm hr{
-	margin-bottom: 30px;
-}
-#loginrgstrfrm h3{
-	border-radius:5px;
-	color: #666666;
-	padding: 8px;
-	border: thin solid #CCCCCC;
-}
-#loginrgstrfrm .imprti{
-	 font-weight: bold;
-}
-
-#login_error, .login .message {
-    margin: 10px;
-    /* color: #CB4721; */
-}
-#login_error  {
- 	  border: solid thin #8a1f11;
     border-radius: 4px;
-    color: #8a1f11 !important;
+    background-color: #333333;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 12px;
+}
+
+#login #backtoblog {
+    display: none;
+    visibility: hidden;
+    padding: 25px;
+}
+
+/* Login Form */
+#login {
+    /* text-align: center; */
+    margin: 8% auto 4%;
+    padding: 26px;
+}
+
+#loginrgstrfrm {
+    color: #999;
+}
+
+#loginrgstrfrm li {
+    list-style: square inside;
+    margin: 2px;
+}
+
+#loginrgstrfrm hr {
+    margin-bottom: 30px;
+}
+
+#loginrgstrfrm h3 {
+    border-radius: 5px;
+    color: #666666;
+    padding: 8px;
+    border: thin solid #CCCCCC;
+}
+
+#loginrgstrfrm .imprti {
+    font-weight: bold;
+}
+
+#login_error,
+.login .message,
+.login #login_error {
+    margin: 10px;
+    /* border: solid thin #8a1f11; */
+    border-radius: 4px;
+    color: #8a1f11 !important; /* Consider removing !important if not necessary */
 }
 
 .login #nav {
-  margin: 8px 0 0;
-  font-size: initial;
+    margin: 8px 0 0;
+    font-size: initial;
 }
 
-.login form .input, .login input[type="text"] {
-  transition: all 0.2s linear 0s;
-  background: none repeat scroll 0% 0% rgba(255, 255, 255,);
-  padding: 8px;
-  border-radius: 0px;
-  color: rgb(68, 68, 68);
-	margin-bottom:1em;
-	font-size: 18px !important;
+.login form .input,
+.login input[type="text"] {
+    transition: all 0.2s linear;
+    background: rgba(255, 255, 255, 0); /* Corrected rgba value */
+    padding: 8px;
+    border-radius: 0;
+    color: #444;
+    margin-bottom: 1em;
+    font-size: 18px;
+    font-weight: normal;
+    width: 100%;
+}
+
+#wp-submit, input[type="submit"] {
+	transition: all 0.2s linear 0s;
+	margin-top: 20px;
+	font-size: 18px;
 	width: 100%;
-	font-weight: normal;
+}
+
+#login .admin-email__actions input[type="submit"]{
+	font-size: 18px;
+	width: inherit;
+}
+
+.admin-email__actions-secondary{
+	font-size: initial;
+}
+
+.button-large{
+    font-size: 18px !important;
 }
 
 .forgetmenot {
-	padding-top: 8px;
+    padding-top: 8px;
 }
 
-.footer-copyright{
-	padding-bottom: 20px;
-	color: #747474;
+.footer-copyright {
+    padding-bottom: 20px;
+    color: #747474;
 }
 
 #reg_passmail {
@@ -146,23 +157,21 @@ hr{
     font-size: initial;
 }
 
-.login #login_error, .login .message {
+.login #login_error,
+.login .message {
     border-left: 4px solid #00a0d2;
     font-size: initial;
-    border-left-color: rgb(0, 160, 210);
     padding: 12px;
     margin-left: 0;
     margin-bottom: 20px;
     background-color: #fff;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     opacity: 0.96;
 }
 
 .footer-navigation ul {
-    list-style-type: none;
     list-style: none;
-    list-style-image: none;
+    padding: 0;
 }
 
 .footer-navigation li {
@@ -171,8 +180,5 @@ hr{
 }
 
 #footer {
-  /* position:absolute; if the form falls behind the footer we cant access the links */
-  bottom:0;
-   /*height:60px;*/
-   /*background-color: #e2e2e2;*/
+    bottom: 0;
 }
