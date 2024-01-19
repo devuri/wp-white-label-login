@@ -90,7 +90,7 @@ class Style
     protected static function enqueue_style( $style = 'wll-base' )
     {
         $wp_login_styles = [
-            'wll-base'          => 'wll-base.css',
+            'wll-base'          => 'wll-base.min.css',
             'wll-bootstrap'     => 'wll-bootstrap.css',
             'wll-color-scheme'  => 'wll-color-scheme.css',
             'wll-header-shadow' => 'wll-header-shadow.css',
@@ -145,8 +145,6 @@ class Style
   				background-color: <?php echo wpwhitelabel()->setting( 'button_background_color' ); ?>;
   				border-radius: 0px;
   				color: <?php echo wpwhitelabel()->setting( 'button_text_color' ); ?>;
-  				font-size: 18px !important;
-  				width: 100%;
   				font-weight: normal;
   				border: solid thin <?php echo wpwhitelabel()->setting( 'button_background_color' ); ?>;
   			}
