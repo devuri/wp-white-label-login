@@ -1,5 +1,17 @@
 # Changelog
 
+## [7.1.2](https://github.com/devuri/wp-white-label-login/compare/7.1.1...7.1.2) (2024-01-19)
+
+
+### Bug Fixes
+
+* update and fix admin-email update reminder ([72269ec](https://github.com/devuri/wp-white-label-login/commit/72269ecd8608687c49a0469fb013b62941046141))
+
+
+### Miscellaneous Chores
+
+* version bump ([510044a](https://github.com/devuri/wp-white-label-login/commit/510044a408046415dcba28121ce8eaa2bb3f6773))
+
 ## [7.1.1](https://github.com/devuri/wp-white-label-login/compare/7.1.0...7.1.1) (2024-01-17)
 
 
