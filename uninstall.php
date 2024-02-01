@@ -14,6 +14,7 @@ delete_option( 'wpwll_align' );
 delete_option( 'wpwll_custom_css' );
 delete_option( 'wpwll_copyright_text' );
 delete_option( 'wpwll_options' );
+delete_option( 'wpwll_page_access' );
 
 // finally clear the cache
 wp_cache_flush();
