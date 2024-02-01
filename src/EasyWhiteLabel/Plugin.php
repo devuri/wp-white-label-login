@@ -52,17 +52,21 @@ class Plugin
                 $admin_menu,
                 [
                     esc_html__( 'Settings', 'wp-white-label-login' ),
-                    'background' => [
+                    'background'  => [
                         'name' => esc_html__( 'Background', 'wp-white-label-login' ),
                         // 'hidden' => true,
                         'icon' => 'dashicons-format-image',
                     ],
-                    'css'        => [
+                    'css'         => [
                         'name' => esc_html__( 'CSS Settings', 'wp-white-label-login' ),
                         // 'hidden' => true,
                         'icon' => 'dashicons-admin-customizer',
                     ],
-                    'plugins'    => [
+                    'page-access' => [
+                        'name' => esc_html__( 'Page Access Redirect', 'wp-white-label-login' ),
+                        'icon' => 'dashicons-lock',
+                    ],
+                    'plugins'     => [
                         'name' => esc_html__( 'Useful Plugins', 'wp-white-label-login' ),
                         // 'hidden' => true,
                         'icon' => 'dashicons-plugins-checked',

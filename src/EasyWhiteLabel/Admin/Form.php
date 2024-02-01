@@ -78,6 +78,21 @@ class Form
     }
 
     /**
+     * Retrieves and escapes an option value for HTML attribute use.
+     *
+     * Fetches an option from the WordPress database using `get_option` and
+     * sanitizes it with `esc_attr` for safe HTML attribute inclusion.
+     *
+     * @param string $option Name of the option to retrieve.
+     *
+     * @return mixed Escaped option value, or an empty string if the option does not exist.
+     */
+    public static function get_option( $option )
+    {
+        return esc_attr( get_option( $option ) );
+    }
+
+    /**
      * thickbox builder.
      *
      * @param string $linktext
@@ -166,6 +181,11 @@ class Form
     public static function tr( $html = null, $hr = '<hr>' ): string
     {
         return '<tr style="border-bottom: solid thin #e4e5e6;">' . $html . '</tr>';
+    }
+
+    public static function yield_nonce( string $option_group ): void
+    {
+        settings_fields( $option_group );
     }
 
     /**

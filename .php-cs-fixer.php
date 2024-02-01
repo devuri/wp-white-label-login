@@ -177,7 +177,7 @@ return (new PhpCsFixer\Config())
 		// Strict.
 		//'declare_strict_types' => true,
 		// 'strict_comparison' => true, // will break `evp_sanitize_checkbox`
-		'strict_param' => true,
+		//'strict_param' => true,
 
 		// Whitespace.
 		'array_indentation' => true,

@@ -8,7 +8,7 @@ class PageAccess
 {
     public const PAGE_ACCESS_OPTION = 'wpwll_page_access';
 
-    protected $option_name;
+    protected $input_name;
     protected $setting;
     protected $options;
     protected $site_pages;
@@ -54,8 +54,7 @@ class PageAccess
         foreach ( $this->site_pages as $page ) {
             $checked    = checked( $this->redirect_id, $page->ID, false );
             $page_title = 'login' === $page->ID ? esc_html( $page->post_title ) : esc_html( "$page->ID $page->post_title" );
-            echo '<input type="radio" id="spr_redirect_page_id_' . $page->ID . '" name="' . $this->input_name . '[redirect]" value="' . $page->ID . '" ' . $checked . '>';
-            echo '<label for="spr_redirect_page_id_' . $page->ID . '">' . $page_title . '</label><br>';
+            $this->render_redirect_input( $page_title, $page, $checked );
         }
     }
 
@@ -63,17 +62,25 @@ class PageAccess
     {
         $this->page_ids = $this->options['pages'] ?? [];
         foreach ( $this->site_pages as $page ) {
-            $checked = \in_array( $page->ID, $this->page_ids, true ) ? 'checked' : '';
-            echo '<input type="checkbox" id="spr_pages_' . $page->ID . '" name="' . $this->input_name . '[pages][' . $page->ID . ']" value="' . $page->ID . '" ' . $checked . '>';
-            echo '<label for="spr_pages_' . $page->ID . '">' . esc_html( $page->post_title ) . ' [' . $page->ID . ']</label><br>';
+            $checked = \in_array( $page->ID, $this->page_ids ) ? 'checked' : '';
+            $this->render_pages_input( $page, $checked );
         }
     }
 
     public function page_enable_access_redirect_cb(): void
     {
         $checked = $this->is_enabled ? 'checked' : '';
-        echo '<input type="checkbox" id="spr_pages_enable_access" name="' . $this->input_name . '[enabled]" value="1" ' . $checked . '>';
-        echo '<label for="spr_pages_enable_access">' . __( 'Enable Page Access Redirect', 'wp-white-label-login' ) . '</label><br>';
+
+        $this->setting::input(
+            __( 'Enable Page Access Redirect', 'wp-white-label-login' ),
+            1,
+            [
+                'type'    => 'checkbox',
+                'name'    => "{$this->input_name}[enabled]",
+                'id'      => 'spr_pages_enable_access',
+                'checked' => $checked,
+            ]
+        );
     }
 
     public function restrict_page_access(): void
@@ -100,6 +107,34 @@ class PageAccess
         }
     }
 
+    protected function render_redirect_input( string $page_title, object $page, $checked ): void
+    {
+        $this->setting::input(
+            $page_title,
+            $page->ID,
+            [
+                'type'    => 'radio',
+                'name'    => "{$this->input_name}[redirect]",
+                'id'      => 'spr_redirect_page_id',
+                'checked' => $checked,
+            ]
+        );
+    }
+
+    protected function render_pages_input( object $page, $checked ): void
+    {
+        $this->setting::input(
+            "$page->ID $page->post_title",
+            $page->ID,
+            [
+                'type'    => 'checkbox',
+                'name'    => "{$this->input_name}[pages][{$page->ID}]",
+                'id'      => "spr_pages_{$page->ID}",
+                'checked' => $checked,
+            ]
+        );
+    }
+
     protected function settings( $setting ): void
     {
         // Define sections and fields
@@ -118,7 +153,7 @@ class PageAccess
 
     private function _permalink(): string
     {
-        if ( 'login' === $this->redirect_id ) {
+        if ( 'login' === $this->redirect_id || ! $this->redirect_id ) {
             return esc_url( wp_login_url() );
         }
 
