@@ -62,7 +62,7 @@ class PageAccess
     {
         $this->page_ids = $this->options['pages'] ?? [];
         foreach ( $this->site_pages as $page ) {
-            $checked = \in_array( $page->ID, $this->page_ids, true ) ? 'checked' : '';
+            $checked = \in_array( $page->ID, $this->page_ids ) ? 'checked' : '';
             $this->render_pages_input( $page, $checked );
         }
     }
@@ -124,7 +124,7 @@ class PageAccess
     protected function render_pages_input( object $page, $checked ): void
     {
         $this->setting::input(
-            $page->post_title,
+            "$page->ID $page->post_title",
             $page->ID,
             [
                 'type'    => 'checkbox',
@@ -153,7 +153,7 @@ class PageAccess
 
     private function _permalink(): string
     {
-        if ( 'login' === $this->redirect_id ) {
+        if ( 'login' === $this->redirect_id || ! $this->redirect_id ) {
             return esc_url( wp_login_url() );
         }
 
