@@ -8,7 +8,7 @@ class PageAccess
 {
     public const PAGE_ACCESS_OPTION = 'wpwll_page_access';
 
-    protected $option_name;
+    protected $input_name;
     protected $setting;
     protected $options;
     protected $site_pages;
