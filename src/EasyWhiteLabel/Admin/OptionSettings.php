@@ -120,13 +120,45 @@ class OptionSettings
         ?>
         <div class="wrap">
             <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-            <form action="options.php" method="post">
-                <?php
-                settings_fields( $this->option_group );
-				do_settings_sections( $this->page_slug );
-				submit_button( $button_text );
-				?>
+            <form method="post" action="options.php">
+                <?php self::yield_nonce( $this->option_group ); ?>
+                <?php do_settings_sections( $this->page_slug ); ?>
+                <?php submit_button( $button_text ); ?>
             </form>
+        </div>
+        <?php
+    }
+
+    public static function input( $fieldname = 'item name', $val = '', array $args = [] ): void
+    {
+        // changed to item-name
+        $field_name = self::sanitize( $fieldname, true );
+
+        // changed to item_name
+        $field_id = self::sanitize( $fieldname );
+
+        $params = array_merge(
+            [
+                'id'       => esc_attr( $field_id ),
+                'name'     => esc_attr( $field_id ),
+                'required' => false,
+                'class'    => 'opt-input',
+                'type'     => 'text',
+                'button'   => null,
+                'hidden'   => false,
+                'disabled' => false,
+                'info'     => false,
+                'width'    => '200',
+                'checked'  => null,
+            ],
+            $args,
+        );
+
+        ?>
+        <div style="padding-bottom: 1em; color:#333333;font-weight:600">
+            <input name="<?php echo esc_attr( $params['name'] ); ?>" type="<?php echo esc_attr( $params['type'] ); ?>" id="<?php echo esc_attr( $params['id'] ); ?>" value="<?php echo esc_attr( $val ); ?>"  <?php echo esc_attr( $params['checked'] ); ?> >
+            <label for="<?php echo esc_attr( $params['id'] ); ?>"><?php echo esc_html( $fieldname ); ?></label>
+            <br/>
         </div>
         <?php
     }
@@ -141,5 +173,35 @@ class OptionSettings
             [ $this, 'page_html' ],
             $position
         );
+    }
+
+    public static function yield_nonce( string $option_group ): void
+    {
+        settings_fields( $option_group );
+    }
+
+    /**
+     * Sanitizes a given field name to ensure its safety for use as a key or file name.
+     *
+     * This method employs two WordPress-sanitization functions. Firstly, `sanitize_file_name`
+     * is applied to the field name to remove special characters and ensure valid file name characters.
+     * Secondly, `sanitize_key` is used to sanitize the string for use as a key, which involves
+     * lowercasing and removing characters that are not alphanumeric or dashes.s
+     *
+     * @param string $fieldname The field name to be sanitized.
+     *
+     * @return string Returns the sanitized version of the field name suitable for use as a key or file name.
+     */
+    protected static function sanitize( string $fieldname, bool $use_dashes = false ): string
+    {
+        $field_id = sanitize_key(
+            sanitize_file_name( $fieldname )
+        );
+
+        if ( $use_dashes ) {
+            return $field_id;
+        }
+
+        return str_replace( '-', '_', $field_id );
     }
 }

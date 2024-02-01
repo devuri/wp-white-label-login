@@ -3,7 +3,7 @@
         'name' => 'devuri/wp-easy-white-label',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'aefa9dee5161a7789fe810a33b4e95c0363b29ae',
+        'reference' => '4292b87c6040f70fef4c0a387baf3cfb03b649a6',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -126,7 +126,7 @@
         'devuri/wp-easy-white-label' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'aefa9dee5161a7789fe810a33b4e95c0363b29ae',
+            'reference' => '4292b87c6040f70fef4c0a387baf3cfb03b649a6',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
