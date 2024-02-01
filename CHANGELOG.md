@@ -1,5 +1,24 @@
 # Changelog
 
+## [7.2.0](https://github.com/devuri/wp-white-label-login/compare/7.1.2...7.2.0) (2024-02-01)
+
+
+### Features
+
+* adds page access redirect. ([4292b87](https://github.com/devuri/wp-white-label-login/commit/4292b87c6040f70fef4c0a387baf3cfb03b649a6))
+
+
+### Bug Fixes
+
+* add proper input field items ([4ffe6a7](https://github.com/devuri/wp-white-label-login/commit/4ffe6a7097bf198eb78b7ae21d67c5eb8519c3bd))
+
+
+### Miscellaneous Chores
+
+* build ([ece5459](https://github.com/devuri/wp-white-label-login/commit/ece5459dc0f5a18c0c5dd00691c4138fabcf423d))
+* codefix ([0ae475e](https://github.com/devuri/wp-white-label-login/commit/0ae475ef4bf6654ef87d9fb88dbf9dd746cd110e))
+* version bump 7.2.0 ([09fd820](https://github.com/devuri/wp-white-label-login/commit/09fd820d36bbda848e83bf60c197afcf26619e23))
+
 ## [7.1.2](https://github.com/devuri/wp-white-label-login/compare/7.1.1...7.1.2) (2024-01-19)
 
 
