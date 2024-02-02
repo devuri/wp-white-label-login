@@ -45,11 +45,11 @@ class Logo
 			#login h1 a, .login h1 a {
 				background-image: url(<?php self::logo(); ?>);
 				-webkit-background-size: 120px;
-				background-position: <?php echo wpwhitelabel()->setting( 'logo_position' ); ?>;
+				background-position: <?php echo wpwhitelabel()->get_setting( 'logo_position' ); ?>;
 				background-size: 120px;
 				height: 120px;
 				width: 100%;
-				display: <?php echo wpwhitelabel()->setting( 'logo_display' ); ?>;
+				display: <?php echo wpwhitelabel()->get_setting( 'logo_display' ); ?>;
 			}
 			</style>
             <?php

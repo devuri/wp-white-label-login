@@ -6,8 +6,6 @@ use EasyWhiteLabel\Admin\OptionSettings;
 
 class PageAccess
 {
-    public const PAGE_ACCESS_OPTION = 'wpwll_page_access';
-
     protected $input_name;
     protected $setting;
     protected $options;
@@ -17,10 +15,10 @@ class PageAccess
     protected $redirect_id;
     protected $page_ids;
 
-    public function __construct()
+    public function __construct( OptionSettings $setting )
     {
-        $this->input_name = self::PAGE_ACCESS_OPTION;
-        $this->setting    = new OptionSettings( self::PAGE_ACCESS_OPTION, 'selective_page_access', 'wll-page-access' );
+        $this->setting    = $setting;
+        $this->input_name = $this->setting->get_opt_name();
         $this->options    = $this->setting->get_option();
         $this->site_pages = get_pages();
 
@@ -40,9 +38,9 @@ class PageAccess
         add_action( 'template_redirect', [ $this, 'restrict_page_access' ] );
     }
 
-    public static function init()
+    public static function init( OptionSettings $setting )
     {
-        return new self();
+        return new self( $setting );
     }
 
     public function page_redirect_cb(): void

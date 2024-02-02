@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitfad86c4de6683a712b18e6702e3e65b3
+class ComposerStaticInit6483f736902c11ee3a970ff08d8b5c9d
 {
     public static $files = array (
         '536316a08db3d840f2ffee3f1fc26715' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Includes/helpers.php',
@@ -44,8 +44,19 @@ class ComposerStaticInitfad86c4de6683a712b18e6702e3e65b3
         'EasyWhiteLabel\\Admin\\Pages\\SettingsPage' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Admin/Pages/SettingsPage.php',
         'EasyWhiteLabel\\Admin\\Validate' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Admin/Validate.php',
         'EasyWhiteLabel\\Admin\\WhiteLabelAdmin' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Admin/WhiteLabelAdmin.php',
-        'EasyWhiteLabel\\Customize\\Customizer' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Customizer.php',
-        'EasyWhiteLabel\\Customize\\Section' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Section.php',
+        'EasyWhiteLabel\\Customize\\CustomizerPanel' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/CustomizerPanel.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Background' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Background.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Button' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Button.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Css' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Css.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Footer' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Footer.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Form' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Form.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Header' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Header.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Layout' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Layout.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Links' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Links.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Login' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Login.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Logo' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Logo.php',
+        'EasyWhiteLabel\\Customize\\Settings\\Menu' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/Menu.php',
+        'EasyWhiteLabel\\Customize\\Settings\\SettingInterface' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Customize/Settings/SettingInterface.php',
         'EasyWhiteLabel\\DailyTask' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/DailyTask.php',
         'EasyWhiteLabel\\Lang' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Lang.php',
         'EasyWhiteLabel\\Lib\\ConnektInstaller' => __DIR__ . '/../..' . '/src/EasyWhiteLabel/Lib/ConnektInstaller.php',
@@ -64,9 +75,9 @@ class ComposerStaticInitfad86c4de6683a712b18e6702e3e65b3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitfad86c4de6683a712b18e6702e3e65b3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitfad86c4de6683a712b18e6702e3e65b3::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitfad86c4de6683a712b18e6702e3e65b3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6483f736902c11ee3a970ff08d8b5c9d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6483f736902c11ee3a970ff08d8b5c9d::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6483f736902c11ee3a970ff08d8b5c9d::$classMap;
 
         }, null, ClassLoader::class);
     }

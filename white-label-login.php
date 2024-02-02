@@ -78,5 +78,3 @@ EasyWhiteLabel\Plugin::init()->hooks();
 
 // run events.
 EasyWhiteLabel\DailyTask::init()->scheduled();
-
-EasyWhiteLabel\PageAccess::init();

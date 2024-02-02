@@ -9,10 +9,6 @@ parameters:
     inferPrivatePropertyTypeFromConstructor: true
     treatPhpDocTypesAsCertain: false
     checkMissingIterableValueType: false
-    ignoreErrors:
-        - message: '#Variable \$this might not be defined#'
-          paths:
-              - src/EasyWhiteLabel/Customize/Settings/*
     excludePaths:
         - tests/Integration/*
         - tmp/*

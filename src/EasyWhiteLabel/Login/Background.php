@@ -40,12 +40,12 @@ class Background
     {
         ?><style type="text/css">
 			body {
-				background-color: <?php echo wpwhitelabel()->setting( 'background_color', '#ffffff' ); ?>;
+				background-color: <?php echo wpwhitelabel()->get_setting( 'background_color', '#ffffff' ); ?>;
 				background-image: url(<?php self::background(); ?>);
-				background-attachment: <?php echo wpwhitelabel()->setting( 'background_attachment' ); ?>;
-				background-size: <?php echo wpwhitelabel()->setting( 'background_size', 'cover' ); ?>;
-				background-repeat: <?php echo wpwhitelabel()->setting( 'background_repeat', 'no-repeat' ); ?>;
-				background-position: <?php echo wpwhitelabel()->setting( 'background_position', 'left' ); ?>;
+				background-attachment: <?php echo wpwhitelabel()->get_setting( 'background_attachment' ); ?>;
+				background-size: <?php echo wpwhitelabel()->get_setting( 'background_size', 'cover' ); ?>;
+				background-repeat: <?php echo wpwhitelabel()->get_setting( 'background_repeat', 'no-repeat' ); ?>;
+				background-position: <?php echo wpwhitelabel()->get_setting( 'background_position', 'left' ); ?>;
 			}
 			</style>
             <?php

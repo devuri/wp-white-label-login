@@ -62,7 +62,7 @@ class Style
     {
         $align = null;
 
-        switch ( wpwhitelabel()->setting( 'form_layout' ) ) {
+        switch ( wpwhitelabel()->get_setting( 'form_layout' ) ) {
             case 'left':
                 $align = self::enqueue_style( 'wll-align-left' );
 
@@ -114,13 +114,13 @@ class Style
     {
         ?><style type="text/css">
   			body.login {
-  				color: <?php echo wpwhitelabel()->setting( 'login_text_color' ); ?>;
+  				color: <?php echo wpwhitelabel()->get_setting( 'login_text_color' ); ?>;
   			}
   			body a {
-  				color: <?php echo wpwhitelabel()->setting( 'link_color' ); ?> !important;
+  				color: <?php echo wpwhitelabel()->get_setting( 'link_color' ); ?> !important;
   			}
   			#login {
-  				background-color: <?php echo wpwhitelabel()->setting( 'login_container_color' ); ?>;
+  				background-color: <?php echo wpwhitelabel()->get_setting( 'login_container_color' ); ?>;
   				background-repeat: repeat-x;
   				background-position: left top;
   				margin-top: 8%;
@@ -134,19 +134,19 @@ class Style
   				border: none;
   				margin-top: 0px;
   				box-shadow: none;
-  				background-color: <?php echo wpwhitelabel()->setting( 'login_form_color' ); ?> !important;
-  				background: <?php echo wpwhitelabel()->setting( 'login_form_color' ); ?> !important;
+  				background-color: <?php echo wpwhitelabel()->get_setting( 'login_form_color' ); ?> !important;
+  				background: <?php echo wpwhitelabel()->get_setting( 'login_form_color' ); ?> !important;
   				border-radius: 0px;
   				opacity: 0.99;
   			}
   			#wp-submit, input[type="submit"] {
   				transition: all 0.2s linear 0s;
   				margin-top: 20px;
-  				background-color: <?php echo wpwhitelabel()->setting( 'button_background_color' ); ?>;
+  				background-color: <?php echo wpwhitelabel()->get_setting( 'button_background_color' ); ?>;
   				border-radius: 0px;
-  				color: <?php echo wpwhitelabel()->setting( 'button_text_color' ); ?>;
+  				color: <?php echo wpwhitelabel()->get_setting( 'button_text_color' ); ?>;
   				font-weight: normal;
-  				border: solid thin <?php echo wpwhitelabel()->setting( 'button_background_color' ); ?>;
+  				border: solid thin <?php echo wpwhitelabel()->get_setting( 'button_background_color' ); ?>;
   			}
   		</style>
         <?php
