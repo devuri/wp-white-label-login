@@ -18,7 +18,7 @@ html, body {
 }
 
 .wrapper {
-    min-height: 96%;
+    /* min-height: 96%; */
     margin-bottom: -50px; /* Equal to height of footer, accounting for margin-bottom of last child */
 }
 
