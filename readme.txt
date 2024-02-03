@@ -1,4 +1,4 @@
-=== White Label Custom WordPress Login Page ===
+=== Easy White Label ===
 Contributors: icelayer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6D6W2KXB88NKE
 Tags: custom login page, custom login, wordpress login, white label, login customizer, branding,
