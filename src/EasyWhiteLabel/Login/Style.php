@@ -69,7 +69,7 @@ class Style extends AbstractSettings
      *
      * @return
      */
-    protected static function align(): string
+    protected static function align(): ?string
     {
         $align = null;
 

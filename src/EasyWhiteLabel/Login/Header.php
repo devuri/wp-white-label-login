@@ -4,7 +4,12 @@ namespace EasyWhiteLabel\Login;
 
 class Header extends AbstractSettings
 {
-    public static function login_header()
+	public static function login_header()
+	{
+		echo self::_header();
+	}
+
+    private static function _header()
     {
         $style = sprintf(
             'background-color: %s; color: %s;',
