@@ -24,8 +24,7 @@ class Header extends AbstractSettings
 		                <a href="%s" title="%s">%s</a>
 		            </h2>
 		            <div class="wll-site-description">%s</div>
-		        </div>
-		    </div>',
+		        </div>',
             $style,
             esc_attr( self::$whitelabel->get_setting( 'header_alignment' ) ),
             esc_attr( self::$whitelabel->get_setting( 'header_alignment' ) ),
