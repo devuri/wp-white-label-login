@@ -64,3 +64,5 @@ EasyWhiteLabel\Plugin::init()->hooks();
 
 // run events.
 EasyWhiteLabel\DailyTask::init()->scheduled();
+
+new EasyWhiteLabel\Customize\LoginTemplate();

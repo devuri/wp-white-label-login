@@ -37,6 +37,8 @@ class Plugin implements PluginInterface
         'page_access'    => 'wpwll_page_access',
     ];
 
+	public const LOGIN_PREVIEW_URL = '/wpwl-login-preview';
+
     protected $settings;
     protected $options;
 
@@ -205,7 +207,8 @@ class Plugin implements PluginInterface
             __( 'White Label Login Customizer', 'wp-white-label-login' ),
             __( 'White Label Login', 'wp-white-label-login' ),
             'manage_options',
-            '/customize.php?url=' . urlencode( home_url( '/wp-login.php' ) )
+            //'/customize.php?url=' . urlencode( home_url( '/wp-login.php' ) )
+            '/customize.php?url=' . urlencode( home_url( self::LOGIN_PREVIEW_URL ) )
         );
     }
 
@@ -222,7 +225,7 @@ class Plugin implements PluginInterface
     {
         // render button
         $customizer_button  = '<a class="button button-hero"';
-        $customizer_button .= 'href="' . admin_url( '/customize.php?url=' . urlencode( home_url( '/wp-login.php' ) ) ) . '">';
+        $customizer_button .= 'href="' . admin_url( '/customize.php?url=' . urlencode( home_url( self::LOGIN_PREVIEW_URL ) ) ) . '">';
         $customizer_button .= $cbutton_text;
         $customizer_button .= '</a>';
 

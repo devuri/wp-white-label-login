@@ -85,6 +85,14 @@ class CustomizerPanel
         $panel->add( 'menu' )->setting( new Menu() );
     }
 
+	/**
+	 * JS handlers to make Theme Customizer preview reload changes.
+	 */
+	protected static function enqueue_customize_preview()
+	{
+	    wp_enqueue_script( 'wpwll-customizer', EASYWHITELABEL_URL . 'assets/js/customize.js', [ 'customize-preview' ], EASYWHITELABEL_VERSION, true );
+	}
+
     /**
      * Settings.
      *
