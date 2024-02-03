@@ -1,5 +1,21 @@
 # Changelog
 
+## [7.2.1](https://github.com/devuri/wp-white-label-login/compare/7.2.0...7.2.1) (2024-02-03)
+
+
+### Bug Fixes
+
+* fix main wrapper and footer ([05a99e4](https://github.com/devuri/wp-white-label-login/commit/05a99e40cf9ad399295a7b43163eecf51a07aef6))
+* fixes base css ([2aceba3](https://github.com/devuri/wp-white-label-login/commit/2aceba3d05ea2241f9ac641a4a941fc0e5621e48))
+* rfactor and update customizer ([2910647](https://github.com/devuri/wp-white-label-login/commit/2910647d44df777a021178b525f82ce74558cb14))
+
+
+### Miscellaneous Chores
+
+* fix header ([84eb779](https://github.com/devuri/wp-white-label-login/commit/84eb779ee9276b8493bc04258c81d2ed375b8162))
+* fix version ([ac1e96a](https://github.com/devuri/wp-white-label-login/commit/ac1e96a18444bb7300e9106716c329b66c715045))
+* version bump 7.2.1 ([d56472d](https://github.com/devuri/wp-white-label-login/commit/d56472d273ebb715b38d3013bd96ccbc6b9fb539))
+
 ## [7.2.0](https://github.com/devuri/wp-white-label-login/compare/7.1.2...7.2.0) (2024-02-01)
 
 
