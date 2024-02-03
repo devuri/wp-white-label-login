@@ -22,26 +22,24 @@ class Footer extends AbstractSettings
 
 	    <div class="push"></div>
 	    </div><!--wrapper-->
-	    <div id="footer" class="footer" style="color:<?php echo $footer_text_color; ?>; text-align:<?php echo $footer_alignment; ?>;">
-	        <div class="footer-text" style="padding:8px; width: 70%; margin-bottom:12px;">
-	            <?php echo $footer_text; ?>
-	        </div><!--footer-text-->
-	        <?php self::footer_nav_menu(); ?>
-	        <div class="footer-copy" style="padding:8px; width: 60%; margin-bottom:4px; color:<?php echo $footer_text_color; ?>;">
-	            Copyright © <?php echo $year; ?>
-	            <a href="<?php echo $site_url; ?>">
-	                <?php echo $site_name; ?>
-	            </a>
-	            <span>
-	                <?php echo $copyright_text; ?>
-	            </span>
-	        </div><!--footer-copy-->
-	    </div><!--footer-->
-
+		    <div  style=" font-size: small; color:<?php echo $footer_text_color; ?>;" id="footer" class="footer footer-copyright" align="<?php echo $footer_alignment; ?>">
+			    <div style="padding:8px; width: 70%; margin-bottom:12px;" class="footer-text">
+					<?php echo $footer_text; ?>
+			    </div><!--footer-text-->
+					<?php self::footer_nav_menu(); ?>
+				<div style="padding:8px; width: 60%; margin-bottom:4px; color:<?php echo $footer_text_color; ?>;" class="footer-copyright">
+			    	Copyright © <?php echo $year; ?>
+				    	<a href="<?php echo $site_url; ?>"> <?php echo $site_name; ?> </a>
+				    <span class="wll-footer-copyright-text">
+						<?php echo $copyright_text; ?>
+				    </span>
+			    </div><!--footer-copyright-->
+		    </div><!--footer-->
 	    <?php
         $output = ob_get_clean();
         echo $output;
     }
+
     private static function footer_nav_menu(): void
     {
         if ( self::$whitelabel->get_setting( 'footer_nav' ) ) {
