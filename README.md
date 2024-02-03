@@ -6,9 +6,9 @@ Transform your WordPress login experience with Easy White Label - the ultimate s
 
 ## Key Features
 
-With Easy White Label, you gain access to a wide range of customization options to enhance your WordPress login page:
+With Easy White Label, you gain access to a wide range of customization options to enhance your WordPress login:
 
-- **Customizable Header:** Tailor the login page header, including background color, description text, and header link.
+- **Customizable Header:** Tailor the login page header, including background color, description text, etc.
 - **Logo Personalization:** Replace the default WordPress logo with your own to strengthen your brand identity.
 - **Form Alignment & Background:** Adjust the login form's alignment and set a custom background image or color to match your brand's aesthetic.
 - **Advanced Background Settings:** Control the behavior and appearance of your background image with properties for attachment, size, repeat, and position.
