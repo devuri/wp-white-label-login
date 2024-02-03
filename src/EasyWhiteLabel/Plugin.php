@@ -21,7 +21,7 @@ use EasyWhiteLabel\Login\Style;
 use EasyWhiteLabel\Traits\Singleton;
 use EasyWhiteLabel\UsefulPlugins\Installer;
 
-class Plugin
+class Plugin implements PluginInterface
 {
     use Singleton;
 
@@ -70,12 +70,14 @@ class Plugin
         );
 
         add_action( 'admin_menu', [ $this, 'appearance_submenu' ] );
-        add_action( 'login_enqueue_scripts', [ Style::class, 'login_styles' ] );
+		// @phpstan-ignore-next-line.
+        add_filter( 'login_head', [ Background::class, 'body_css' ] );
+        // @phpstan-ignore-next-line.
+        add_filter( 'login_footer', [ Footer::class, 'footer' ] );
+        add_filter( 'login_head', [ Header::class, 'login_header' ] );
         add_action( 'login_enqueue_scripts', [ Logo::class, 'login_logo' ] );
         add_filter( 'login_headertext', [ Logo::class, 'logo_text' ] );
-        add_filter( 'login_head', [ Header::class, 'header' ] );
-        add_filter( 'login_head', [ Background::class, 'body' ] );
-        add_filter( 'login_footer', [ Footer::class, 'footer' ] );
+        add_action( 'login_enqueue_scripts', [ Style::class, 'login_styles' ] );
 
         // login url.
         add_filter(

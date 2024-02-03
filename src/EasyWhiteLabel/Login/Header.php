@@ -2,39 +2,32 @@
 
 namespace EasyWhiteLabel\Login;
 
-class Header
+class Header extends AbstractSettings
 {
-    /**
-     * [header description].
-     *
-     * @return [type] [description]
-     */
-    public static function header()
+    public static function login_header()
     {
-        return self::login_header();
-    }
+        $style = sprintf(
+            'background-color: %s; color: %s;',
+            esc_attr( self::$whitelabel->get_setting( 'header_background_color' ) ),
+            esc_attr( self::$whitelabel->get_setting( 'header_text_color' ) )
+        );
 
-    /**
-     * header.
-     *
-     * add a header section to the login page
-     *
-     * @return
-     */
-    protected static function login_header()
-    {
-        $header  = '<div class="wrapper">';
-        $header .= '<div style="background-color: ' . wpwhitelabel()->get_setting( 'header_background_color' ) . '; color: ' . wpwhitelabel()->get_setting( 'header_text_color' ) . ';" id="wll-header" class="wll-header" ';
-        $header .= 'align="' . wpwhitelabel()->get_setting( 'header_alignment' ) . '">';
-        $header .= '<h2 align="' . wpwhitelabel()->get_setting( 'header_alignment' ) . '">';
-        $header .= '<a  href="' . get_bloginfo( 'url' ) . '" title="' . get_bloginfo( 'name' ) . '">';
-        $header .= wpwhitelabel()->get_setting( 'header_title' );
-        $header .= '</a>';
-        $header .= '</h2>';
-        $header .= '<div class="wll-site-description">';
-        $header .= wpwhitelabel()->get_setting( 'header_description' );
-        $header .= '</div>';
-        $header .= '</div>';
-        echo $header;
+        return sprintf(
+            '<div class="wrapper">
+		        <div id="wll-header" class="wll-header" style="%s" align="%s">
+		            <h2 align="%s">
+		                <a href="%s" title="%s">%s</a>
+		            </h2>
+		            <div class="wll-site-description">%s</div>
+		        </div>
+		    </div>',
+            $style,
+            esc_attr( self::$whitelabel->get_setting( 'header_alignment' ) ),
+            esc_attr( self::$whitelabel->get_setting( 'header_alignment' ) ),
+            esc_url( get_bloginfo( 'url' ) ),
+            esc_html( get_bloginfo( 'name' ) ),
+            esc_html( self::$whitelabel->get_setting( 'header_title' ) ),
+            esc_html( self::$whitelabel->get_setting( 'header_description' ) ),
+        );
     }
 }
