@@ -10,8 +10,9 @@
 
 namespace EasyWhiteLabel;
 
+use EasyWhiteLabel\Admin\OptionSettings;
 use EasyWhiteLabel\Admin\WhiteLabelAdmin;
-use EasyWhiteLabel\Customize\Customizer;
+use EasyWhiteLabel\Customize\CustomizerPanel;
 use EasyWhiteLabel\Login\Background;
 use EasyWhiteLabel\Login\Footer;
 use EasyWhiteLabel\Login\Header;
@@ -20,75 +21,71 @@ use EasyWhiteLabel\Login\Style;
 use EasyWhiteLabel\Traits\Singleton;
 use EasyWhiteLabel\UsefulPlugins\Installer;
 
-class Plugin
+class Plugin implements PluginInterface
 {
     use Singleton;
 
-    public $enabled;
-    public $customizer;
+    public const OPTION = [
+        'logo'           => 'wpwll_logo',
+        'background'     => 'wpwll_background',
+        'logo_url'       => 'wpwll_logo_url',
+        'background_url' => 'wpwll_background_url',
+        'align'          => 'wpwll_align',
+        'custom_css'     => 'wpwll_custom_css',
+        'copyright'      => 'wpwll_copyright_text',
+        'options'        => 'wpwll_options',
+        'page_access'    => 'wpwll_page_access',
+    ];
+
+    protected $settings;
+    protected $options;
 
     /**
-     * Add Shortcode [wpoption opt="myoption"].
+     * Add Hooks.
      *
      * @param mixed $enabled
      */
-    public function hooks( $enabled = true ): void
+    public function hooks(): void
     {
-        $this->enabled    = $enabled;
-        $this->customizer = new Customizer();
-
-        if ( is_admin() ) {
-            $admin_menu = [
-                'page_title'  => 'White Label Login Settings ',
-                'menu_title'  => 'WP White Label',
-                'capability'  => 'manage_options',
-                'menu_slug'   => 'white-label-options',
-                'function'    => 'wllmenu_callback',
-                'icon_url'    => 'dashicons-art',
-                'prefix'      => 'wll',
-                'admin_views' => WhiteLabelAdmin::admin_views_dir(),
-            ];
-            WhiteLabelAdmin::init(
-                $admin_menu,
-                [
-                    esc_html__( 'Settings', 'wp-white-label-login' ),
-                    'background'  => [
-                        'name' => esc_html__( 'Background', 'wp-white-label-login' ),
-                        // 'hidden' => true,
-                        'icon' => 'dashicons-format-image',
-                    ],
-                    'css'         => [
-                        'name' => esc_html__( 'CSS Settings', 'wp-white-label-login' ),
-                        // 'hidden' => true,
-                        'icon' => 'dashicons-admin-customizer',
-                    ],
-                    'page-access' => [
-                        'name' => esc_html__( 'Page Access Redirect', 'wp-white-label-login' ),
-                        'icon' => 'dashicons-lock',
-                    ],
-                    'plugins'     => [
-                        'name' => esc_html__( 'Useful Plugins', 'wp-white-label-login' ),
-                        // 'hidden' => true,
-                        'icon' => 'dashicons-plugins-checked',
-                    ],
-                ]
-            );
-        }// end if
+        $this->setup_wll_plugin();
 
         /**
          * Loading the plugin translations.
          */
         add_action( 'init', [ Lang::class, 'i18n' ] );
 
+        /**
+         * Register Customizer panel.
+         */
+        add_action( 'customize_register', [ CustomizerPanel::class, 'setup_customizer_panel' ], 10 );
+
+        /**
+         * Footer navigation menu.
+         */
+        add_action(
+            'init',
+            function (): void {
+                register_nav_menu( 'wll-footer-nav', __( 'Login Page Footer Navigation' ) );
+            }
+        );
+
         add_action( 'admin_menu', [ $this, 'appearance_submenu' ] );
-        add_action( 'init', [ $this, 'footer_navigation' ] );
-        add_action( 'login_enqueue_scripts', [ Style::class, 'login_styles' ] );
+		// @phpstan-ignore-next-line.
+        add_filter( 'login_head', [ Background::class, 'body_css' ] );
+        // @phpstan-ignore-next-line.
+        add_filter( 'login_footer', [ Footer::class, 'footer' ] );
+        add_filter( 'login_head', [ Header::class, 'login_header' ] );
         add_action( 'login_enqueue_scripts', [ Logo::class, 'login_logo' ] );
         add_filter( 'login_headertext', [ Logo::class, 'logo_text' ] );
-        add_filter( 'login_head', [ Header::class, 'header' ] );
-        add_filter( 'login_head', [ Background::class, 'body' ] );
-        add_filter( 'login_footer', [ Footer::class, 'footer' ] );
-        add_filter( 'login_headerurl', [ $this, 'logo_link' ] );
+        add_action( 'login_enqueue_scripts', [ Style::class, 'login_styles' ] );
+
+        // login url.
+        add_filter(
+            'login_headerurl',
+            function () {
+                return get_bloginfo( 'url' );
+            }
+        );
 
         // plugins
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
@@ -126,16 +123,6 @@ class Plugin
     }
 
     /**
-     * Footer Navigation.
-     *
-     * @return void
-     */
-    public function footer_navigation(): void
-    {
-        register_nav_menu( 'wll-footer-nav', __( 'Login Page Footer Navigation' ) );
-    }
-
-    /**
      * wp_slug.
      *
      * WordPress.org repo slug
@@ -145,18 +132,6 @@ class Plugin
     public function slug()
     {
         return 'wp-white-label-login';
-    }
-
-    /**
-     * plugin directory.
-     *
-     * WordPress.org repo slug
-     *
-     * @return [type] [description]
-     */
-    public function dir()
-    {
-        return EASYWHITELABEL_DIR;
     }
 
     /**
@@ -255,27 +230,6 @@ class Plugin
     }
 
     /**
-     * Options.
-     *
-     * setup some the options array
-     *
-     * @param string $opt
-     *
-     * @return string
-     */
-    public function option( $opt = 'logo' )
-    {
-        $option = [
-            'wpwll_options'    => get_option( 'wpwll_options' ),
-            'background_image' => get_option( 'wpwll_background' ),
-            'logo'             => get_option( 'wpwll_logo' ),
-            'custom_css'       => get_option( 'wpwll_custom_css' ),
-        ];
-
-        return $option[ $opt ];
-    }
-
-    /**
      * settings.
      *
      * setup some the options array to get a specific setting
@@ -285,47 +239,84 @@ class Plugin
      *
      * @return string
      */
-    public function setting( $set = 'background', $default = '' )
+    public function option( $set = 'background', $default = '' )
     {
-        $setting = $this->option( 'wpwll_options' );
-        if ( isset( $setting[ $set ] ) ) {
-            return $setting[ $set ];
+        if ( isset( $this->settings[ $set ] ) ) {
+            return $this->settings[ $set ];
         }
 
         return $default;
     }
 
-    /**
-     * site_info.
-     *
-     * setup some site specific vars
-     *
-     * @param string $info
-     *
-     * @return string
-     */
-    public function site_info( $info = 'name' )
+    public function get_setting( string $key = 'background', $default = '' )
     {
-        $site_info = [
-            'name'             => get_bloginfo( 'name' ),
-            'url'              => get_bloginfo( 'url' ),
-            'admin_url'        => get_admin_url(),
-            'background_color' => 'none',
-            'header_text'      => get_bloginfo( 'description' ),
-        ];
-
-        return $site_info[ $info ];
+        return $this->settings['options'][ $key ] ?? $default;
     }
 
-    /**
-     * logo_link.
-     *
-     * change the login link to site url
-     *
-     * @return string
-     */
-    public function logo_link()
+    protected static function admin_menu(): void
     {
-        return $this->site_info( 'url' );
+        if ( ! is_admin() ) {
+            return;
+        }// end if
+
+        // main menu args.
+        $admin = [
+            'page_title'  => 'White Label Login Settings ',
+            'menu_title'  => 'WP White Label',
+            'capability'  => 'manage_options',
+            'menu_slug'   => 'white-label-options',
+            'function'    => 'wllmenu_callback',
+            'icon_url'    => 'dashicons-art',
+            'prefix'      => 'wll',
+            'admin_views' => WhiteLabelAdmin::admin_views_dir(),
+        ];
+
+        // init menu
+        WhiteLabelAdmin::init(
+            $admin,
+            [
+                esc_html__( 'Settings', 'wp-white-label-login' ),
+                'background'  => [
+                    'name' => esc_html__( 'Background', 'wp-white-label-login' ),
+                    // 'hidden' => true,
+                    'icon' => 'dashicons-format-image',
+                ],
+                'css'         => [
+                    'name' => esc_html__( 'CSS Settings', 'wp-white-label-login' ),
+                    // 'hidden' => true,
+                    'icon' => 'dashicons-admin-customizer',
+                ],
+                'page-access' => [
+                    'name' => esc_html__( 'Page Access Redirect', 'wp-white-label-login' ),
+                    'icon' => 'dashicons-lock',
+                ],
+                'plugins'     => [
+                    'name' => esc_html__( 'Useful Plugins', 'wp-white-label-login' ),
+                    // 'hidden' => true,
+                    'icon' => 'dashicons-plugins-checked',
+                ],
+            ]
+        );
+    }
+
+    private function setup_wll_plugin(): void
+    {
+        $this->settings = [
+            'logo'             => get_option( self::OPTION['logo'] ),
+            'background_image' => get_option( self::OPTION['background'] ),
+            'logo_url'         => get_option( self::OPTION['logo_url'] ),
+            'background_url'   => get_option( self::OPTION['background_url'] ),
+            'align'            => get_option( self::OPTION['align'] ),
+            'custom_css'       => get_option( self::OPTION['custom_css'] ),
+            'copyright'        => get_option( self::OPTION['copyright'] ),
+            'options'          => get_option( self::OPTION['options'] ),
+            'page_access'      => get_option( self::OPTION['page_access'] ),
+        ];
+
+        // add admin menu.
+        self::admin_menu();
+
+        // add page access.
+        PageAccess::init( new OptionSettings( self::OPTION['page_access'], 'selective_page_access', 'wll-page-access' ) );
     }
 }

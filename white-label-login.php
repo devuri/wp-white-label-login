@@ -59,24 +59,8 @@ register_deactivation_hook(
     }
 );
 
-
-if ( ! \function_exists( 'wpwhitelabel' ) ) {
-    /**
-     * wpwhitelabel().
-     *
-     * @return object
-     */
-    function wpwhitelabel()
-    {
-        // new up wll object
-        return EasyWhiteLabel\Plugin::init();
-    }
-}
-
 // The plugin.
 EasyWhiteLabel\Plugin::init()->hooks();
 
 // run events.
 EasyWhiteLabel\DailyTask::init()->scheduled();
-
-EasyWhiteLabel\PageAccess::init();

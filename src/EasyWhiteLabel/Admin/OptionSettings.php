@@ -39,11 +39,21 @@ class OptionSettings
     }
 
     /**
+     * Retrieves the option name.
+     *
+     * @return string The option name.
+     */
+    public function get_opt_name(): string
+    {
+        return $this->option_name;
+    }
+
+    /**
      * Retrieves the section ID.
      *
      * @return string The section ID.
      */
-    public function get_section_id()
+    public function get_section_id(): string
     {
         return $this->section_id;
     }
@@ -147,7 +157,7 @@ class OptionSettings
                 'button'   => null,
                 'hidden'   => false,
                 'disabled' => false,
-                'info'     => false,
+                'info'     => null,
                 'width'    => '200',
                 'checked'  => null,
             ],
@@ -155,10 +165,11 @@ class OptionSettings
         );
 
         ?>
-        <div style="padding-bottom: 1em; color:#333333;font-weight:600">
+        <div style="margin-bottom: 1.4em;" id="input-<?php echo esc_attr( $params['id'] ); ?>">
             <input name="<?php echo esc_attr( $params['name'] ); ?>" type="<?php echo esc_attr( $params['type'] ); ?>" id="<?php echo esc_attr( $params['id'] ); ?>" value="<?php echo esc_attr( $val ); ?>"  <?php echo esc_attr( $params['checked'] ); ?> >
-            <label for="<?php echo esc_attr( $params['id'] ); ?>"><?php echo esc_html( $fieldname ); ?></label>
+            <label style="color:#333333;font-weight:600" for="<?php echo esc_attr( $params['id'] ); ?>"><?php echo esc_html( $fieldname ); ?></label>
             <br/>
+            <?php self::_info( $params['info'] ); ?>
         </div>
         <?php
     }
@@ -203,5 +214,18 @@ class OptionSettings
         }
 
         return str_replace( '-', '_', $field_id );
+    }
+
+    private static function _info( ?string $description_info = null, string $item_id = 'item-description' ): void
+    {
+        if ( ! $description_info ) {
+            return;
+        }
+
+        ?>
+        <p class="description" id="<?php echo esc_attr( $item_id ); ?>">
+            <?php echo wp_kses_post( $description_info ); ?>
+        </p>
+        <?php
     }
 }

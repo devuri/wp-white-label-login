@@ -2,79 +2,64 @@
 
 namespace EasyWhiteLabel\Login;
 
-class Footer
+class Footer extends AbstractSettings
 {
     /**
-     * show footer navigation.
-     *
-     * @var [type]
+     * Outputs the footer content.
      */
-    private static $nav;
-
-    public static function menu(): void
+    public static function footer(): void
     {
-        self::$nav = wpwhitelabel()->setting( 'footer_nav' );
-        if ( self::$nav ) { ?>
-        <div align="<?php echo wpwhitelabel()->setting( 'footer_nav_alignment' ); ?>" style="padding: 12px;
-          border-top: solid thin <?php echo wpwhitelabel()->setting( 'footer_nav_backgorund' ); ?>;
-          border-bottom: solid thin <?php echo wpwhitelabel()->setting( 'footer_nav_backgorund' ); ?>;
-          background-color: <?php echo wpwhitelabel()->setting( 'footer_nav_backgorund' ); ?>;
-          box-shadow: 0 5px 15px rgba(0,0,0,.08);">
-			<?php
-            wp_nav_menu(
-                [
-                    'theme_location'  => 'wll-footer-nav',
-                    'container_class' => 'footer-navigation navigation clearfix',
-                ]
-            );
-            ?>
-            </div>
-            <?php
-        }
-    }
+        $year              = gmdate( 'Y' );
+        $footer_text_color = esc_attr( self::$whitelabel->get_setting( 'footer_text_color' ) );
+        $footer_alignment  = esc_attr( self::$whitelabel->get_setting( 'footer_alignment' ) );
+        $footer_text       = esc_html( self::$whitelabel->get_setting( 'footer_text' ) );
+        $site_url          = esc_url( get_bloginfo( 'url' ) );
+        $site_name         = esc_html( get_bloginfo( 'name' ) );
+        $copyright_text    = esc_html( self::$whitelabel->get_setting( 'copyright_text' ) );
 
-    /**
-     * footer.
-     *
-     * @return mixed
-     */
-    public static function footer()
-    {
-        echo self::set_footer();
-
-        return true;
-    }
-
-    /**
-     * footer.
-     *
-     * add footer section to the login page
-     *
-     * @return mixed
-     */
-    protected static function set_footer()
-    {
-        $year = gmdate( 'Y' );
+        ob_start();
         ?>
-    <div class="push"></div>
-    </div><!--wrapper-->
-    <div  style=" font-size: small; color:<?php echo wpwhitelabel()->setting( 'footer_text_color' ); ?>;" id="footer" class="footer footer-copyright" align="<?php echo wpwhitelabel()->setting( 'footer_alignment' ); ?>">
-    <div style="padding:8px; width: 70%; margin-bottom:12px;" class="footer-text">
-		<?php echo wpwhitelabel()->setting( 'footer_text' ); ?>
-    </div><!--footer-text-->
-		<?php self::menu(); ?>
-    <div style="padding:8px; width: 60%; margin-bottom:4px; color:<?php echo wpwhitelabel()->setting( 'footer_text_color' ); ?>;" class="footer-copyright">
-    Copyright © <?php echo $year; ?>
-    <a href="<?php echo wpwhitelabel()->site_info( 'url' ); ?>">
-		<?php echo wpwhitelabel()->site_info( 'name' ); ?>
-    </a>
-    <span class="wll-footer-copyright-text">
-		<?php echo wpwhitelabel()->setting( 'copyright_text' ); ?>
-    </span>
-    </div><!--footer-copyright-->
-    </div><!--footer-->
-		<?php
 
-        return true;
+	    <div class="push"></div>
+	    </div><!--wrapper-->
+	    <div id="footer" class="footer" style="color:<?php echo $footer_text_color; ?>; text-align:<?php echo $footer_alignment; ?>;">
+	        <div class="footer-text" style="padding:8px; width: 70%; margin-bottom:12px;">
+	            <?php echo $footer_text; ?>
+	        </div><!--footer-text-->
+	        <?php self::footer_nav_menu(); ?>
+	        <div class="footer-copy" style="padding:8px; width: 60%; margin-bottom:4px; color:<?php echo $footer_text_color; ?>;">
+	            Copyright © <?php echo $year; ?>
+	            <a href="<?php echo $site_url; ?>">
+	                <?php echo $site_name; ?>
+	            </a>
+	            <span>
+	                <?php echo $copyright_text; ?>
+	            </span>
+	        </div><!--footer-copy-->
+	    </div><!--footer-->
+
+	    <?php
+        $output = ob_get_clean();
+        echo $output;
+    }
+    private static function footer_nav_menu(): void
+    {
+        if ( self::$whitelabel->get_setting( 'footer_nav' ) ) {
+            $footer_nav_alignment  = esc_attr( self::$whitelabel->get_setting( 'footer_nav_alignment' ) );
+            $footer_nav_background = esc_attr( self::$whitelabel->get_setting( 'footer_nav_background' ) );
+
+            ?>
+	        <div class="footer-nav" style="text-align:<?php echo $footer_nav_alignment; ?>; background-color:<?php echo $footer_nav_background; ?>;">
+	            <?php
+                wp_nav_menu(
+                    [
+						'theme_location'  => 'wll-footer-nav',
+						'container_class' => 'footer-navigation navigation clearfix',
+					]
+                );
+				?>
+	        </div>
+	        <?php
+        }
     }
 }
