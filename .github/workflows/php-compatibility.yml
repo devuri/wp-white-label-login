@@ -24,4 +24,4 @@ jobs:
         run: composer install
 
       - name: 🧪 Run PHP Compatibility
-        run: vendor/bin/phpcs wp-white-label-login.php src/ --standard=PHPCompatibilityWP --extensions=php --runtime-set testVersion 7.4-
+        run: vendor/bin/phpcs white-label-login.php src/ --standard=PHPCompatibilityWP --extensions=php --runtime-set testVersion 7.4-
