@@ -8,13 +8,14 @@ use WP_Customize_Color_Control;
 class Header implements SettingInterface
 {
     /**
-     * Setting.
+     * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize
+     * @param CustomizerPanel $customize  The Customizer panel instance where settings will be added.
+     * @param string          $section_id The Customizer panel section ID.
      *
      * @return void
      */
-    public function create( CustomizerPanel $customize ): void
+    public function create( CustomizerPanel $customize, string $section_id ): void
     {
         $customize->get_customizer()->add_setting(
             'wpwll_options[header_title]',
@@ -32,7 +33,7 @@ class Header implements SettingInterface
             'wpwll_options[header_title]',
             [
                 'label'       => 'Title',
-                'section'     => 'whitelabel_section_header',
+                'section'     => $section_id,
                 'description' => __( 'The header title text.' ),
                 'type'        => 'text',
             ]
@@ -55,7 +56,7 @@ class Header implements SettingInterface
             'wpwll_options[header_description]',
             [
                 'label'       => 'Change the description',
-                'section'     => 'whitelabel_section_header',
+                'section'     => $section_id,
                 'description' => __( 'The header description text.' ),
                 'type'        => 'text',
             ]
@@ -84,7 +85,7 @@ class Header implements SettingInterface
                 [
                     'label'       => __( 'Text Color' ),
                     'description' => __( 'Select a color' ),
-                    'section'     => 'whitelabel_section_header',
+                    'section'     => $section_id,
                     // Add a default or your own section
                 ]
             )
@@ -113,7 +114,7 @@ class Header implements SettingInterface
                 [
                     'label'       => __( 'Background Color' ),
                     'description' => __( 'Select a color' ),
-                    'section'     => 'whitelabel_section_header',
+                    'section'     => $section_id,
                     // Add a default or your own section
                 ]
             )
@@ -139,7 +140,7 @@ class Header implements SettingInterface
             'wpwll_options[header_alignment]',
             [
                 'type'        => 'radio',
-                'section'     => 'whitelabel_section_header',
+                'section'     => $section_id,
                 'label'       => __( 'Header Alignment' ),
                 'description' => __( 'The header alignment sets the alignment of text.' ),
                 'choices'     => [

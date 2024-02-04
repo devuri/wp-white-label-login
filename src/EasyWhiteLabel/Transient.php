@@ -10,6 +10,8 @@
 
 namespace EasyWhiteLabel;
 
+use EasyWhiteLabel\Bridge\Option;
+
 /**
  * WordPress Transients API.
  *
@@ -137,7 +139,7 @@ class Transient
      */
     private static function update_transient_cache( string $transient_name, int $expiration, bool $is_site_transient = false ): void
     {
-        $transient_cache = get_option( 'ewl_plugin_transient_cache', [] );
+        $transient_cache = Option::init()->get( 'ewl_plugin_transient_cache', [] );
 
         if ( $is_site_transient ) {
             $transient_cache['site'][ $transient_name ] = $expiration;
@@ -158,7 +160,7 @@ class Transient
      */
     private static function delete_transient_cache( string $transient_name, bool $is_site_transient = false ): void
     {
-        $transient_cache = get_option( 'ewl_plugin_transient_cache', [] );
+        $transient_cache = Option::init()->get( 'ewl_plugin_transient_cache', [] );
 
         if ( $is_site_transient ) {
             if ( isset( $transient_cache['site'][ $transient_name ] ) ) {

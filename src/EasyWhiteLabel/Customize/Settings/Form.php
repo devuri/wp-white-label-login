@@ -8,13 +8,14 @@ use WP_Customize_Color_Control;
 class Form implements SettingInterface
 {
     /**
-     * Setting.
+     * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize
+     * @param CustomizerPanel $customize  The Customizer panel instance where settings will be added.
+     * @param string          $section_id The Customizer panel section ID.
      *
      * @return void
      */
-    public function create( CustomizerPanel $customize ): void
+    public function create( CustomizerPanel $customize, string $section_id ): void
     {
         /**
          * Form Background.
@@ -39,9 +40,30 @@ class Form implements SettingInterface
                 [
                     'label'       => __( 'Login Form Background Color' ),
                     'description' => __( 'Select a color' ),
-                    'section'     => 'whitelabel_section_form',
+                    'section'     => $section_id,
                 ]
             )
+        );
+
+        $customize->get_customizer()->add_setting(
+            'wpwll_options[form_border_radius]',
+            [
+                'type'              => 'option',
+                'capability'        => 'manage_options',
+                'default'           => 0,
+                'transport'         => $customize->get_preview(),
+                'sanitize_callback' => 'sanitize_key',
+            ]
+        );
+
+        $customize->get_customizer()->add_control(
+            'wpwll_options[form_border_radius]',
+            [
+                'type'        => 'checkbox',
+                'section'     => 'whitelabel_section_form',
+                'label'       => __( 'Form Border Radius' ),
+                'description' => __( 'add border radius the login form.' ),
+            ]
         );
     }
 }

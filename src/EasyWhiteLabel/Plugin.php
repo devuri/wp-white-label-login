@@ -20,6 +20,8 @@ use EasyWhiteLabel\Login\Logo;
 use EasyWhiteLabel\Login\Style;
 use EasyWhiteLabel\Traits\Singleton;
 use EasyWhiteLabel\UsefulPlugins\Installer;
+use EasyWhiteLabel\Bridge\OptionBridge;
+use EasyWhiteLabel\Bridge\OptionInterface;
 
 class Plugin implements PluginInterface
 {
@@ -37,8 +39,11 @@ class Plugin implements PluginInterface
         'page_access'    => 'wpwll_page_access',
     ];
 
+    public const LOGIN_PREVIEW_URL = '/wpwl-login-preview';
+
     protected $settings;
     protected $options;
+    protected $opt_manager;
 
     /**
      * Add Hooks.
@@ -47,7 +52,7 @@ class Plugin implements PluginInterface
      */
     public function hooks(): void
     {
-        $this->setup_wll_plugin();
+        $this->setup_wll_plugin( new OptionBridge() );
 
         /**
          * Loading the plugin translations.
@@ -70,22 +75,25 @@ class Plugin implements PluginInterface
         );
 
         add_action( 'admin_menu', [ $this, 'appearance_submenu' ] );
-		// @phpstan-ignore-next-line.
-        add_filter( 'login_head', [ Background::class, 'body_css' ] );
-        // @phpstan-ignore-next-line.
-        add_filter( 'login_footer', [ Footer::class, 'footer' ] );
-        add_filter( 'login_head', [ Header::class, 'login_header' ] );
-        add_action( 'login_enqueue_scripts', [ Logo::class, 'login_logo' ] );
-        add_filter( 'login_headertext', [ Logo::class, 'logo_text' ] );
-        add_action( 'login_enqueue_scripts', [ Style::class, 'login_styles' ] );
 
-        // login url.
-        add_filter(
-            'login_headerurl',
-            function () {
-                return get_bloginfo( 'url' );
-            }
-        );
+        if ( $this->get_setting( 'wll_is_enabled', true ) ) {
+            // @phpstan-ignore-next-line.
+            add_filter( 'login_head', [ Background::class, 'body_css' ] );
+            // @phpstan-ignore-next-line.
+            add_filter( 'login_footer', [ Footer::class, 'footer' ] );
+            add_filter( 'login_head', [ Header::class, 'login_header' ] );
+            add_action( 'login_enqueue_scripts', [ Logo::class, 'login_logo' ] );
+            add_filter( 'login_headertext', [ Logo::class, 'logo_text' ] );
+            add_action( 'login_enqueue_scripts', [ Style::class, 'login_styles' ] );
+
+            // login url.
+            add_filter(
+                'login_headerurl',
+                function () {
+                    return get_bloginfo( 'url' );
+                }
+            );
+        }
 
         // plugins
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
@@ -205,7 +213,8 @@ class Plugin implements PluginInterface
             __( 'White Label Login Customizer', 'wp-white-label-login' ),
             __( 'White Label Login', 'wp-white-label-login' ),
             'manage_options',
-            '/customize.php?url=' . urlencode( home_url( '/wp-login.php' ) )
+            // '/customize.php?url=' . urlencode( home_url( '/wp-login.php' ) )
+            '/customize.php?url=' . urlencode( home_url( self::LOGIN_PREVIEW_URL ) )
         );
     }
 
@@ -222,7 +231,7 @@ class Plugin implements PluginInterface
     {
         // render button
         $customizer_button  = '<a class="button button-hero"';
-        $customizer_button .= 'href="' . admin_url( '/customize.php?url=' . urlencode( home_url( '/wp-login.php' ) ) ) . '">';
+        $customizer_button .= 'href="' . admin_url( '/customize.php?url=' . urlencode( home_url( self::LOGIN_PREVIEW_URL ) ) ) . '">';
         $customizer_button .= $cbutton_text;
         $customizer_button .= '</a>';
 
@@ -299,18 +308,18 @@ class Plugin implements PluginInterface
         );
     }
 
-    private function setup_wll_plugin(): void
+    private function setup_wll_plugin( OptionInterface $manager ): void
     {
         $this->settings = [
-            'logo'             => get_option( self::OPTION['logo'] ),
-            'background_image' => get_option( self::OPTION['background'] ),
-            'logo_url'         => get_option( self::OPTION['logo_url'] ),
-            'background_url'   => get_option( self::OPTION['background_url'] ),
-            'align'            => get_option( self::OPTION['align'] ),
-            'custom_css'       => get_option( self::OPTION['custom_css'] ),
-            'copyright'        => get_option( self::OPTION['copyright'] ),
-            'options'          => get_option( self::OPTION['options'] ),
-            'page_access'      => get_option( self::OPTION['page_access'] ),
+            'logo'             => $manager->get( self::OPTION['logo'] ),
+            'background_image' => $manager->get( self::OPTION['background'] ),
+            'logo_url'         => $manager->get( self::OPTION['logo_url'] ),
+            'background_url'   => $manager->get( self::OPTION['background_url'] ),
+            'align'            => $manager->get( self::OPTION['align'] ),
+            'custom_css'       => $manager->get( self::OPTION['custom_css'] ),
+            'copyright'        => $manager->get( self::OPTION['copyright'] ),
+            'options'          => $manager->get( self::OPTION['options'] ),
+            'page_access'      => $manager->get( self::OPTION['page_access'] ),
         ];
 
         // add admin menu.

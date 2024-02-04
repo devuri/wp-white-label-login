@@ -8,13 +8,14 @@ use WP_Customize_Color_Control;
 class Menu implements SettingInterface
 {
     /**
-     * Setting.
+     * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize
+     * @param CustomizerPanel $customize  The Customizer panel instance where settings will be added.
+     * @param string          $section_id The Customizer panel section ID.
      *
      * @return void
      */
-    public function create( CustomizerPanel $customize ): void
+    public function create( CustomizerPanel $customize, string $section_id ): void
     {
         $customize->get_customizer()->add_setting(
             'wpwll_options[footer_nav]',
@@ -30,7 +31,7 @@ class Menu implements SettingInterface
             'wpwll_options[footer_nav]',
             [
                 'type'        => 'radio',
-                'section'     => 'whitelabel_section_menu',
+                'section'     => $section_id,
                 'label'       => __( 'Footer Navigation Display' ),
                 'description' => __( 'Turn on the login footer navigation you can find this in the "Login Page Footer Navigation" Apperance >> Menu settings' ),
                 'choices'     => [
@@ -60,7 +61,7 @@ class Menu implements SettingInterface
             'wpwll_options[footer_nav_alignment]',
             [
                 'type'        => 'radio',
-                'section'     => 'whitelabel_section_menu',
+                'section'     => $section_id,
                 'label'       => __( 'Navigation Alignment' ),
                 'description' => __( 'Set the alignment.' ),
                 'choices'     => [
@@ -94,7 +95,7 @@ class Menu implements SettingInterface
                 [
                     'label'       => __( 'Background Color' ),
                     'description' => __( 'Select a Background color' ),
-                    'section'     => 'whitelabel_section_menu',
+                    'section'     => $section_id,
                 ]
             )
         );
