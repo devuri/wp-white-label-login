@@ -13,8 +13,9 @@ interface SettingInterface
      * to the WordPress Customizer.
      *
      * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
+	 * @param string $section_id The Customizer panel section ID.
      *
      * @return void
      */
-    public function create( CustomizerPanel $customize): void;
+    public function create( CustomizerPanel $customize, string $section_id ): void;
 }

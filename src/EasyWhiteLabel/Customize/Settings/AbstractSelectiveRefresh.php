@@ -12,8 +12,9 @@ abstract class AbstractSelectiveRefresh implements SettingInterface
      * This method must be implemented in subclasses to define Customizer settings and controls.
      *
      * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
+     * @param string $section_id The Customizer panel section ID.
      */
-    abstract public function create( CustomizerPanel $customize): void;
+    abstract public function create( CustomizerPanel $customize, string $section_id ): void;
 
     /**
      * Adds a selective refresh partial to the Customizer.

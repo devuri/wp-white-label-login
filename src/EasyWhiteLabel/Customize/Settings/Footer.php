@@ -7,14 +7,15 @@ use WP_Customize_Color_Control;
 
 class Footer extends AbstractSelectiveRefresh
 {
-    /**
-     * Setting.
+	/**
+     * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize
+     * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
+	 * @param string $section_id The Customizer panel section ID.
      *
      * @return void
      */
-    public function create( CustomizerPanel $customize ): void
+    public function create( CustomizerPanel $customize, string $section_id ): void
     {
         /**
          * Footer Alignment.
@@ -36,7 +37,7 @@ class Footer extends AbstractSelectiveRefresh
             'wpwll_options[footer_alignment]',
             [
                 'type'        => 'radio',
-                'section'     => 'whitelabel_section_footer',
+                'section'     => $section_id,
                 'label'       => __( 'Footer Alignment' ),
                 'description' => __( 'Sets the alignment of the footer text.' ),
                 'choices'     => [

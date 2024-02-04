@@ -7,14 +7,15 @@ use WP_Customize_Color_Control;
 
 class Login implements SettingInterface
 {
-    /**
-     * Setting.
+	/**
+     * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize
+     * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
+	 * @param string $section_id The Customizer panel section ID.
      *
      * @return void
      */
-    public function create( CustomizerPanel $customize ): void
+    public function create( CustomizerPanel $customize, string $section_id ): void
     {
         $customize->get_customizer()->add_setting(
             'wpwll_options[login_container_color]',
@@ -34,7 +35,7 @@ class Login implements SettingInterface
                 [
                     'label'       => __( 'Login Container Background Color' ),
                     'description' => __( 'Select a color for the login container div' ),
-                    'section'     => 'whitelabel_section_login',
+                    'section'     => $section_id,
                     // Add a default or your own section
                 ]
             )
@@ -63,7 +64,7 @@ class Login implements SettingInterface
                 [
                     'label'       => __( 'Text Color' ),
                     'description' => __( 'input field label colors' ),
-                    'section'     => 'whitelabel_section_login',
+                    'section'     => $section_id,
                     // Add a default or your own section
                 ]
             )

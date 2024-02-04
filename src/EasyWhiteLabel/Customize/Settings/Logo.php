@@ -7,14 +7,15 @@ use WP_Customize_Cropped_Image_Control;
 
 class Logo implements SettingInterface
 {
-    /**
-     * Setting.
+	/**
+     * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize
+     * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
+	 * @param string $section_id The Customizer panel section ID.
      *
      * @return void
      */
-    public function create( CustomizerPanel $customize ): void
+    public function create( CustomizerPanel $customize, string $section_id ): void
     {
         $customize->get_customizer()->add_setting(
             'wpwll_options[logo_display]',
@@ -30,7 +31,7 @@ class Logo implements SettingInterface
             'wpwll_options[logo_display]',
             [
                 'type'        => 'radio',
-                'section'     => 'whitelabel_section_logo',
+                'section'     => $section_id,
                 'label'       => __( 'Logo Display' ),
                 'description' => __( 'set logo image display.' ),
                 'choices'     => [
@@ -63,7 +64,7 @@ class Logo implements SettingInterface
                 'wpwll_logo',
                 [
                     'label'     => __( 'Login logo' ),
-                    'section'   => 'whitelabel_section_logo',
+                    'section'   => $section_id,
                     'mime_type' => 'image',
                     'width'     => 120,
                     'height'    => 120,
@@ -91,7 +92,7 @@ class Logo implements SettingInterface
             'wpwll_options[logo_position]',
             [
                 'type'        => 'radio',
-                'section'     => 'whitelabel_section_logo',
+                'section'     => $section_id,
                 'label'       => __( 'Logo Position' ),
                 'description' => __( 'Sets the alignment of the logo image.' ),
                 'choices'     => [

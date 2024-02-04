@@ -6,14 +6,15 @@ use EasyWhiteLabel\Customize\CustomizerPanel;
 
 class Layout implements SettingInterface
 {
-    /**
-     * Setting.
+	/**
+     * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize
+     * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
+	 * @param string $section_id The Customizer panel section ID.
      *
      * @return void
      */
-    public function create( CustomizerPanel $customize ): void
+    public function create( CustomizerPanel $customize, string $section_id ): void
     {
         $customize->get_customizer()->add_setting(
             'wpwll_options[form_layout]',
@@ -30,7 +31,7 @@ class Layout implements SettingInterface
             'wpwll_options[form_layout]',
             [
                 'type'        => 'radio',
-                'section'     => 'whitelabel_section_layout',
+                'section'     => $section_id,
                 'label'       => __( 'Custom Form Alignment' ),
                 'description' => __( 'Choose how to align the login form.' ),
                 'choices'     => [

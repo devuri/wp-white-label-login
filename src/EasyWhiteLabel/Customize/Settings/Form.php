@@ -7,14 +7,15 @@ use WP_Customize_Color_Control;
 
 class Form implements SettingInterface
 {
-    /**
-     * Setting.
+	/**
+     * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize
+     * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
+	 * @param string $section_id The Customizer panel section ID.
      *
      * @return void
      */
-    public function create( CustomizerPanel $customize ): void
+    public function create( CustomizerPanel $customize, string $section_id ): void
     {
         /**
          * Form Background.
@@ -39,7 +40,7 @@ class Form implements SettingInterface
                 [
                     'label'       => __( 'Login Form Background Color' ),
                     'description' => __( 'Select a color' ),
-                    'section'     => 'whitelabel_section_form',
+                    'section'     => $section_id,
                 ]
             )
         );

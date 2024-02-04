@@ -7,14 +7,15 @@ use WP_Customize_Color_Control;
 
 class Advanced implements SettingInterface
 {
-    /**
-     * Setting.
+	/**
+     * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize
+     * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
+	 * @param string $section_id The Customizer panel section ID.
      *
      * @return void
      */
-    public function create( CustomizerPanel $customize ): void
+    public function create( CustomizerPanel $customize, string $section_id ): void
     {
 		$customize->get_customizer()->add_setting(
             'wpwll_options[wll_is_enabled]',
@@ -31,7 +32,7 @@ class Advanced implements SettingInterface
             'wpwll_options[wll_is_enabled]',
             [
                 'type'        => 'checkbox',
-                'section'     => 'whitelabel_section_advanced',
+                'section'     => $section_id,
                 'label'       => __( 'Enable/Disable White Label Login' ),
                 'description' => __( 'enable or disable the login form styles.' ),
             ]
