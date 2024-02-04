@@ -72,22 +72,26 @@ class Plugin implements PluginInterface
         );
 
         add_action( 'admin_menu', [ $this, 'appearance_submenu' ] );
-        // @phpstan-ignore-next-line.
-        add_filter( 'login_head', [ Background::class, 'body_css' ] );
-        // @phpstan-ignore-next-line.
-        add_filter( 'login_footer', [ Footer::class, 'footer' ] );
-        add_filter( 'login_head', [ Header::class, 'login_header' ] );
-        add_action( 'login_enqueue_scripts', [ Logo::class, 'login_logo' ] );
-        add_filter( 'login_headertext', [ Logo::class, 'logo_text' ] );
-        add_action( 'login_enqueue_scripts', [ Style::class, 'login_styles' ] );
 
-        // login url.
-        add_filter(
-            'login_headerurl',
-            function () {
-                return get_bloginfo( 'url' );
-            }
-        );
+
+        if ( $this->get_setting( 'wll_is_enabled', true ) ) {
+            // @phpstan-ignore-next-line.
+            add_filter( 'login_head', [ Background::class, 'body_css' ] );
+            // @phpstan-ignore-next-line.
+            add_filter( 'login_footer', [ Footer::class, 'footer' ] );
+            add_filter( 'login_head', [ Header::class, 'login_header' ] );
+            add_action( 'login_enqueue_scripts', [ Logo::class, 'login_logo' ] );
+            add_filter( 'login_headertext', [ Logo::class, 'logo_text' ] );
+            add_action( 'login_enqueue_scripts', [ Style::class, 'login_styles' ] );
+
+            // login url.
+            add_filter(
+                'login_headerurl',
+                function () {
+                    return get_bloginfo( 'url' );
+                }
+            );
+        }
 
         // plugins
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );

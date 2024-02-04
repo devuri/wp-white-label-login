@@ -2,6 +2,7 @@
 
 namespace EasyWhiteLabel\Customize;
 
+use EasyWhiteLabel\Customize\Settings\Advanced;
 use EasyWhiteLabel\Customize\Settings\Background;
 use EasyWhiteLabel\Customize\Settings\Button;
 use EasyWhiteLabel\Customize\Settings\Css;
@@ -72,6 +73,7 @@ class CustomizerPanel
             ]
         );
 
+        $panel->add( 'advanced' )->setting( new Advanced() );
         $panel->add( 'background' )->setting( new Background() );
         $panel->add( 'button' )->setting( new Button() );
         $panel->add( 'css' )->setting( new Css() );
