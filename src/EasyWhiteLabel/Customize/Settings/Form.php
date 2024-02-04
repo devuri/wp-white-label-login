@@ -7,11 +7,11 @@ use WP_Customize_Color_Control;
 
 class Form implements SettingInterface
 {
-	/**
+    /**
      * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
-	 * @param string $section_id The Customizer panel section ID.
+     * @param CustomizerPanel $customize  The Customizer panel instance where settings will be added.
+     * @param string          $section_id The Customizer panel section ID.
      *
      * @return void
      */
@@ -45,7 +45,7 @@ class Form implements SettingInterface
             )
         );
 
-                $customize->get_customizer()->add_setting(
+        $customize->get_customizer()->add_setting(
             'wpwll_options[form_border_radius]',
             [
                 'type'              => 'option',

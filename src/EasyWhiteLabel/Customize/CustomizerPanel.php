@@ -19,10 +19,11 @@ use WP_Customize_Manager;
 
 class CustomizerPanel
 {
-	/**
+    /**
      * Type of the preview—either 'postMessage' or 'refresh'.
      *
      * @var string
+     *
      * @see https://developer.wordpress.org/themes/customize-api/the-customizer-javascript-api/
      */
     protected $preview_type = 'postMessage';
@@ -30,7 +31,7 @@ class CustomizerPanel
     /**
      * Customizer manager instance.
      *
-     * @var WP_Customize_Manager|null
+     * @var null|WP_Customize_Manager
      */
     protected $customizer;
 
@@ -48,17 +49,17 @@ class CustomizerPanel
      */
     protected $sections = [];
 
-	/**
+    /**
      * Initializes the customizer panel with the customizer manager.
      *
-     * @param WP_Customize_Manager|null $wp_customize Customizer manager.
+     * @param null|WP_Customize_Manager $wp_customize Customizer manager.
      */
     public function __construct( ?WP_Customize_Manager $wp_customize = null )
     {
         $this->customizer = $wp_customize;
     }
 
-	/**
+    /**
      * Sets up the customizer panel and sections.
      *
      * @param WP_Customize_Manager $wp_customize Customizer manager.
@@ -92,23 +93,24 @@ class CustomizerPanel
         $panel->add( 'menu', __( 'Footer Navigation', 'wp-white-label-login' ), new Menu() );
     }
 
-	/**
-	 * Create settings for a specific section.
-	 *
-	 * Initializes settings configuration for the given section if it exists within the allowed sections.
-	 *
-	 * @param SettingInterface $settings The settings interface to create configurations.
-	 * @param string $section_id The ID of the section to create settings for.
-	 * @throws InvalidArgumentException If the section ID does not exist in the available sections.
-	 */
-	public function setting( SettingInterface $settings, string $section_id )
-	{
-	    if ( ! in_array( $section_id, $this->sections, true ) ) {
-	        throw new \InvalidArgumentException( "The section ID '{$section_id}' does not match any available sections." );
-	    }
+    /**
+     * Create settings for a specific section.
+     *
+     * Initializes settings configuration for the given section if it exists within the allowed sections.
+     *
+     * @param SettingInterface $settings   The settings interface to create configurations.
+     * @param string           $section_id The ID of the section to create settings for.
+     *
+     * @throws InvalidArgumentException If the section ID does not exist in the available sections.
+     */
+    public function setting( SettingInterface $settings, string $section_id ): void
+    {
+        if ( ! \in_array( $section_id, $this->sections, true ) ) {
+            throw new \InvalidArgumentException( "The section ID '{$section_id}' does not match any available sections." );
+        }
 
-	    $settings->create( $this, $section_id );
-	}
+        $settings->create( $this, $section_id );
+    }
 
     /**
      * Sets up the WP_Customize_Manager.
@@ -128,6 +130,40 @@ class CustomizerPanel
     public function get_preview(): string
     {
         return $this->preview_type;
+    }
+
+    /**
+     * Adds a section to the customizer panel.
+     *
+     * @param string                $section  Section identifier.
+     * @param null|string           $title    Section title.
+     * @param null|SettingInterface $settings Settings instance.
+     *
+     * @return self
+     */
+    public function add( string $section, ?string $title = null, ?SettingInterface $settings = null ): self
+    {
+        $title      = $title ?? trim( ucwords( $section ) );
+        $section_id = 'whitelabel_section_' . trim( $section );
+
+        // save section to array.
+        $this->sections[ $section ] = $section_id;
+
+        $this->get_customizer()->add_section(
+            $section_id,
+            [
+                'title'       => ' » ' . $title,
+                'capability'  => 'manage_options',
+                'description' => $this->description(),
+                'panel'       => $this->options_panel,
+            ]
+        );
+
+        if ( $settings instanceof SettingInterface ) {
+            $this->setting( $settings, $section_id );
+        }
+
+        return $this;
     }
 
     /**
@@ -151,38 +187,5 @@ class CustomizerPanel
     protected static function enqueue_customize_preview(): void
     {
         wp_enqueue_script( 'wpwll-customizer', EASYWHITELABEL_URL . 'assets/js/customize.js', [ 'customize-preview' ], EASYWHITELABEL_VERSION, true );
-    }
-
-	/**
-	 * Adds a section to the customizer panel.
-	 *
-	 * @param string $section Section identifier.
-	 * @param string|null $title Section title.
-	 * @param SettingInterface|null $settings Settings instance.
-	 * @return self
-	 */
-    public function add( string $section, ?string $title = null, ?SettingInterface $settings = null ): self
-    {
-        $title = $title ?? trim( ucwords( $section ) );
-		$section_id = 'whitelabel_section_' . trim( $section );
-
-		// save section to array.
-		$this->sections[$section] = $section_id;
-
-        $this->get_customizer()->add_section(
-            $section_id,
-            [
-                'title'       => ' » ' . $title,
-                'capability'  => 'manage_options',
-                'description' => $this->description(),
-                'panel'       => $this->options_panel,
-            ]
-        );
-
-        if ( $settings instanceof SettingInterface ) {
-            $this->setting( $settings, $section_id );
-        }
-
-        return $this;
     }
 }

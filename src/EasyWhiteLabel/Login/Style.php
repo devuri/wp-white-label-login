@@ -133,7 +133,6 @@ class Style extends AbstractSettings
         // conditionals
         $form_border_radius = $form_border_radius ? '12' : '0';
 
-
         return "
             body.login {
                 color: {$login_text_color};

@@ -12,8 +12,8 @@ interface SettingInterface
      * This method should be implemented by classes to add their own settings
      * to the WordPress Customizer.
      *
-     * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
-	 * @param string $section_id The Customizer panel section ID.
+     * @param CustomizerPanel $customize  The Customizer panel instance where settings will be added.
+     * @param string          $section_id The Customizer panel section ID.
      *
      * @return void
      */

@@ -3,21 +3,20 @@
 namespace EasyWhiteLabel\Customize\Settings;
 
 use EasyWhiteLabel\Customize\CustomizerPanel;
-use WP_Customize_Color_Control;
 
 class Advanced implements SettingInterface
 {
-	/**
+    /**
      * Initializes settings for the Customizer panel.
      *
-     * @param CustomizerPanel $customize The Customizer panel instance where settings will be added.
-	 * @param string $section_id The Customizer panel section ID.
+     * @param CustomizerPanel $customize  The Customizer panel instance where settings will be added.
+     * @param string          $section_id The Customizer panel section ID.
      *
      * @return void
      */
     public function create( CustomizerPanel $customize, string $section_id ): void
     {
-		$customize->get_customizer()->add_setting(
+        $customize->get_customizer()->add_setting(
             'wpwll_options[wll_is_enabled]',
             [
                 'type'              => 'option',

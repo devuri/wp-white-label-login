@@ -73,7 +73,6 @@ class Plugin implements PluginInterface
 
         add_action( 'admin_menu', [ $this, 'appearance_submenu' ] );
 
-
         if ( $this->get_setting( 'wll_is_enabled', true ) ) {
             // @phpstan-ignore-next-line.
             add_filter( 'login_head', [ Background::class, 'body_css' ] );
