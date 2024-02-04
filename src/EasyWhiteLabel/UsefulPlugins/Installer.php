@@ -27,7 +27,7 @@ final class Installer extends ConnektInstaller
 
 	    ?>
 	    <div class="plugin">
-		<?php if ($banner_image_url) { ?>
+		<?php if ( $banner_image_url ) { ?>
 	        <img style="width:100%;" src="<?php echo $banner_image_url; ?>" alt="<?php echo esc_attr( $api->name ); ?>">
 		<?php } ?>
 	        <div style="padding:20px;" class="plugin-wrap">

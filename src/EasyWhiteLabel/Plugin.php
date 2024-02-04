@@ -20,6 +20,8 @@ use EasyWhiteLabel\Login\Logo;
 use EasyWhiteLabel\Login\Style;
 use EasyWhiteLabel\Traits\Singleton;
 use EasyWhiteLabel\UsefulPlugins\Installer;
+use EasyWhiteLabel\Bridge\OptionBridge;
+use EasyWhiteLabel\Bridge\OptionInterface;
 
 class Plugin implements PluginInterface
 {
@@ -41,6 +43,7 @@ class Plugin implements PluginInterface
 
     protected $settings;
     protected $options;
+    protected $opt_manager;
 
     /**
      * Add Hooks.
@@ -49,7 +52,7 @@ class Plugin implements PluginInterface
      */
     public function hooks(): void
     {
-        $this->setup_wll_plugin();
+        $this->setup_wll_plugin( new OptionBridge() );
 
         /**
          * Loading the plugin translations.
@@ -305,18 +308,18 @@ class Plugin implements PluginInterface
         );
     }
 
-    private function setup_wll_plugin(): void
+    private function setup_wll_plugin( OptionInterface $manager ): void
     {
         $this->settings = [
-            'logo'             => get_option( self::OPTION['logo'] ),
-            'background_image' => get_option( self::OPTION['background'] ),
-            'logo_url'         => get_option( self::OPTION['logo_url'] ),
-            'background_url'   => get_option( self::OPTION['background_url'] ),
-            'align'            => get_option( self::OPTION['align'] ),
-            'custom_css'       => get_option( self::OPTION['custom_css'] ),
-            'copyright'        => get_option( self::OPTION['copyright'] ),
-            'options'          => get_option( self::OPTION['options'] ),
-            'page_access'      => get_option( self::OPTION['page_access'] ),
+            'logo'             => $manager->get( self::OPTION['logo'] ),
+            'background_image' => $manager->get( self::OPTION['background'] ),
+            'logo_url'         => $manager->get( self::OPTION['logo_url'] ),
+            'background_url'   => $manager->get( self::OPTION['background_url'] ),
+            'align'            => $manager->get( self::OPTION['align'] ),
+            'custom_css'       => $manager->get( self::OPTION['custom_css'] ),
+            'copyright'        => $manager->get( self::OPTION['copyright'] ),
+            'options'          => $manager->get( self::OPTION['options'] ),
+            'page_access'      => $manager->get( self::OPTION['page_access'] ),
         ];
 
         // add admin menu.
