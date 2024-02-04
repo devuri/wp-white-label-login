@@ -21,7 +21,7 @@ class Option
      */
     public static function init(): OptionInterface
     {
-        if (null === self::$instance) {
+        if ( null === self::$instance ) {
             self::$instance = new OptionBridge();
         }
 

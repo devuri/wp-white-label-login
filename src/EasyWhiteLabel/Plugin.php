@@ -13,6 +13,7 @@ namespace EasyWhiteLabel;
 use EasyWhiteLabel\Admin\OptionSettings;
 use EasyWhiteLabel\Admin\WhiteLabelAdmin;
 use EasyWhiteLabel\Customize\CustomizerPanel;
+use EasyWhiteLabel\Customize\LoginTemplate;
 use EasyWhiteLabel\Login\Background;
 use EasyWhiteLabel\Login\Footer;
 use EasyWhiteLabel\Login\Header;
@@ -58,6 +59,20 @@ class Plugin implements PluginInterface
          * Loading the plugin translations.
          */
         add_action( 'init', [ Lang::class, 'i18n' ] );
+
+		/**
+		 * Register stub LoginTemplate
+		 */
+		add_action( 'init', [ LoginTemplate::class, 'add_rewrite_rule' ] );
+		add_action( 'template_redirect', [ LoginTemplate::class, 'redirect_login_preview' ] );
+		add_filter(
+            'query_vars',
+            function ( $vars ) {
+				$vars[] = 'wpwl_login_preview';
+				return $vars;
+			},
+            0
+        );
 
         /**
          * Register Customizer panel.
