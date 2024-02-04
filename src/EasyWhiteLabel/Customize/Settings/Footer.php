@@ -5,7 +5,7 @@ namespace EasyWhiteLabel\Customize\Settings;
 use EasyWhiteLabel\Customize\CustomizerPanel;
 use WP_Customize_Color_Control;
 
-class Footer implements SettingInterface
+class Footer extends AbstractSelectiveRefresh
 {
     /**
      * Setting.
@@ -111,7 +111,7 @@ class Footer implements SettingInterface
                 'type'              => 'option',
                 'capability'        => 'manage_options',
                 'default'           => 'All Rights Reserved.',
-                'transport'         => $customize->get_preview(),
+                'transport'         => 'postMessage',
                 'sanitize_callback' => 'sanitize_text_field',
             ]
         );
@@ -123,6 +123,22 @@ class Footer implements SettingInterface
                 'section' => 'whitelabel_section_footer',
                 'type'    => 'text',
             ]
+        );
+
+        /**
+         * render the setting callback.
+         */
+        static::_render_partial(
+            'wpwll_options[copyright_text]',
+            // The ID of the setting.
+            $customize,
+            // The Customizer instance.
+            '.wll-footer-copyright-text',
+            // The CSS selector for the container
+            'copyright_text',
+            // The key in the 'wpwll_options' array
+            'All Rights Reserved.'
+            // default
         );
     }
 }

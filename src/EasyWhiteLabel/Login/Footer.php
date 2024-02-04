@@ -51,9 +51,9 @@ class Footer extends AbstractSettings
 	            <?php
                 wp_nav_menu(
                     [
-						'theme_location'  => 'wll-footer-nav',
-						'container_class' => 'footer-navigation navigation clearfix',
-					]
+                        'theme_location'  => 'wll-footer-nav',
+                        'container_class' => 'footer-navigation navigation clearfix',
+                    ]
                 );
 				?>
 	        </div>

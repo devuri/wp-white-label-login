@@ -37,7 +37,7 @@ class Plugin implements PluginInterface
         'page_access'    => 'wpwll_page_access',
     ];
 
-	public const LOGIN_PREVIEW_URL = '/wpwl-login-preview';
+    public const LOGIN_PREVIEW_URL = '/wpwl-login-preview';
 
     protected $settings;
     protected $options;
@@ -72,7 +72,7 @@ class Plugin implements PluginInterface
         );
 
         add_action( 'admin_menu', [ $this, 'appearance_submenu' ] );
-		// @phpstan-ignore-next-line.
+        // @phpstan-ignore-next-line.
         add_filter( 'login_head', [ Background::class, 'body_css' ] );
         // @phpstan-ignore-next-line.
         add_filter( 'login_footer', [ Footer::class, 'footer' ] );
@@ -207,7 +207,7 @@ class Plugin implements PluginInterface
             __( 'White Label Login Customizer', 'wp-white-label-login' ),
             __( 'White Label Login', 'wp-white-label-login' ),
             'manage_options',
-            //'/customize.php?url=' . urlencode( home_url( '/wp-login.php' ) )
+            // '/customize.php?url=' . urlencode( home_url( '/wp-login.php' ) )
             '/customize.php?url=' . urlencode( home_url( self::LOGIN_PREVIEW_URL ) )
         );
     }
