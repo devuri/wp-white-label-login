@@ -43,5 +43,26 @@ class Form implements SettingInterface
                 ]
             )
         );
+
+                $customize->get_customizer()->add_setting(
+            'wpwll_options[form_border_radius]',
+            [
+                'type'              => 'option',
+                'capability'        => 'manage_options',
+                'default'           => 0,
+                'transport'         => $customize->get_preview(),
+                'sanitize_callback' => 'sanitize_key',
+            ]
+        );
+
+        $customize->get_customizer()->add_control(
+            'wpwll_options[form_border_radius]',
+            [
+                'type'        => 'checkbox',
+                'section'     => 'whitelabel_section_form',
+                'label'       => __( 'Form Border Radius' ),
+                'description' => __( 'add border radius the login form.' ),
+            ]
+        );
     }
 }

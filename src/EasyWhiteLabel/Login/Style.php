@@ -128,6 +128,11 @@ class Style extends AbstractSettings
         $login_form_color        = self::$whitelabel->get_setting( 'login_form_color' );
         $button_background_color = self::$whitelabel->get_setting( 'button_background_color' );
         $button_text_color       = self::$whitelabel->get_setting( 'button_text_color' );
+        $form_border_radius      = self::$whitelabel->get_setting( 'form_border_radius' );
+
+        // conditionals
+        $form_border_radius = $form_border_radius ? '12' : '0';
+
 
         return "
             body.login {
@@ -152,7 +157,7 @@ class Style extends AbstractSettings
                 box-shadow: none;
                 background-color: {$login_form_color} !important;
                 background: {$login_form_color} !important;
-                border-radius: 0px;
+                border-radius: {$form_border_radius}px;
                 opacity: 0.99;
             }
             #wp-submit, input[type='submit'] {
