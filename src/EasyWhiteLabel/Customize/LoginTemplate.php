@@ -25,11 +25,8 @@ class LoginTemplate
 
     public function redirect_login_preview(): void
     {
-        if ( ! current_user_can( 'manage_options' ) ) {
-            wp_die( __( 'You are not allowed to manage options for this page.' ) );
-        }
         $login_preview = \intval( get_query_var( 'wpwl_login_preview' ) );
-        if ( $login_preview ) {
+        if ( $login_preview && current_user_can( 'manage_options' ) ) {
             wp_head();
             ob_start();
             $_REQUEST['action'] = 'login';
