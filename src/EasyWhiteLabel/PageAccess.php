@@ -6,6 +6,9 @@ use EasyWhiteLabel\Admin\OptionSettings;
 
 class PageAccess
 {
+    public const PAGE_ACCESS_OPTION = 'wpwll_page_access';
+    public const ALL_PAGES_TRANSIENT = 'wpwll_all_pages_cached';
+
     protected $input_name;
     protected $setting;
     protected $options;
@@ -15,12 +18,12 @@ class PageAccess
     protected $redirect_id;
     protected $page_ids;
 
-    public function __construct( OptionSettings $setting )
+    public function __construct()
     {
-        $this->setting    = $setting;
-        $this->input_name = $this->setting->get_opt_name();
+        $this->input_name = self::PAGE_ACCESS_OPTION;
+        $this->setting    = new OptionSettings( self::PAGE_ACCESS_OPTION, 'selective_page_access', 'wll-page-access' );
         $this->options    = $this->setting->get_option();
-        $this->site_pages = get_pages();
+        $this->site_pages = $this->get_pages();
 
         // Initialize settings
         add_action(
@@ -38,9 +41,9 @@ class PageAccess
         add_action( 'template_redirect', [ $this, 'restrict_page_access' ] );
     }
 
-    public static function init( OptionSettings $setting )
+    public static function init()
     {
-        return new self( $setting );
+        return new self();
     }
 
     public function page_redirect_cb(): void
@@ -161,4 +164,28 @@ class PageAccess
 
         return esc_url( get_home_url( '/' ) );
     }
+
+	private function get_pages()
+	{
+		global $wpdb;
+
+	    $cached_pages = get_transient(self::ALL_PAGES_TRANSIENT);
+
+	    if (false === $cached_pages) {
+	        $query = "SELECT ID, post_title FROM {$wpdb->posts} WHERE post_type = 'page' AND post_status = 'publish'";
+
+	        $pages = $wpdb->get_results($query);
+
+	        if (!empty($pages)) {
+	            set_transient(self::ALL_PAGES_TRANSIENT, $pages, HOUR_IN_SECONDS);
+	        } else {
+	            set_transient(self::ALL_PAGES_TRANSIENT, array(), HOUR_IN_SECONDS);
+	        }
+
+	        return $pages;
+	    }
+
+	    return $cached_pages;
+	}
+
 }
