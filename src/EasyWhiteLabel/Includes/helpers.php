@@ -27,9 +27,6 @@ function ewl_get_plugins(): array
         'wp-seopress',
         'login-recaptcha',
         'sucuri-scanner',
-        'wpforms-lite',
-        'wp-mail-smtp',
-        'wp-dbmanager',
         'rest-api-featured-image',
     ];
 }

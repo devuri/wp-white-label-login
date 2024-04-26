@@ -4,10 +4,10 @@ namespace EasyWhiteLabel\Login;
 
 class Header extends AbstractSettings
 {
-	public static function login_header()
-	{
-		echo self::_header();
-	}
+    public static function login_header(): void
+    {
+        echo self::_header();
+    }
 
     private static function _header()
     {

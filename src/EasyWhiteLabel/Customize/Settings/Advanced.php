@@ -4,7 +4,7 @@ namespace EasyWhiteLabel\Customize\Settings;
 
 use EasyWhiteLabel\Customize\CustomizerPanel;
 
-class Layout implements SettingInterface
+class Advanced implements SettingInterface
 {
     /**
      * Initializes settings for the Customizer panel.
@@ -17,28 +17,23 @@ class Layout implements SettingInterface
     public function create( CustomizerPanel $customize, string $section_id ): void
     {
         $customize->get_customizer()->add_setting(
-            'wpwll_options[form_layout]',
+            'wpwll_options[wll_is_enabled]',
             [
                 'type'              => 'option',
                 'capability'        => 'manage_options',
-                'default'           => 'center',
+                'default'           => 1,
                 'transport'         => $customize->get_preview(),
-                'sanitize_callback' => 'sanitize_title',
+                'sanitize_callback' => 'sanitize_key',
             ]
         );
 
         $customize->get_customizer()->add_control(
-            'wpwll_options[form_layout]',
+            'wpwll_options[wll_is_enabled]',
             [
-                'type'        => 'radio',
+                'type'        => 'checkbox',
                 'section'     => $section_id,
-                'label'       => __( 'Custom Form Alignment' ),
-                'description' => __( 'Choose how to align the login form.' ),
-                'choices'     => [
-                    'left'   => __( 'Left' ),
-                    'right'  => __( 'Right' ),
-                    'center' => __( 'Center' ),
-                ],
+                'label'       => __( 'Enable/Disable White Label Login' ),
+                'description' => __( 'enable or disable the login form styles.' ),
             ]
         );
     }
