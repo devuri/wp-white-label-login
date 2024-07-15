@@ -17,4 +17,9 @@ final class WhiteLabelAdmin extends AbstractAdminCore
             'Useful Plugins',
         ];
     }
+
+    public static function change_footer_text(): void
+    {
+        echo '&copy; ' . esc_html( gmdate( 'Y' ) ) . ' <a href="' . esc_url( home_url() ) . '" target="_blank">' . esc_html( get_bloginfo( 'name' ) ) . '</a> All Rights Reserved.';
+    }
 }
