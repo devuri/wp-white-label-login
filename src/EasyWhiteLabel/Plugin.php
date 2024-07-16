@@ -70,7 +70,7 @@ class Plugin implements PluginInterface
         );
 
         add_action( 'admin_menu', [ $this, 'appearance_submenu' ] );
-		// @phpstan-ignore-next-line.
+        // @phpstan-ignore-next-line.
         add_filter( 'login_head', [ Background::class, 'body_css' ] );
         // @phpstan-ignore-next-line.
         add_filter( 'login_footer', [ Footer::class, 'footer' ] );
@@ -78,7 +78,7 @@ class Plugin implements PluginInterface
         add_action( 'login_enqueue_scripts', [ Logo::class, 'login_logo' ] );
         add_filter( 'login_headertext', [ Logo::class, 'logo_text' ] );
         add_action( 'login_enqueue_scripts', [ Style::class, 'login_styles' ] );
-		add_filter( 'admin_footer_text', [ WhiteLabelAdmin::class, 'change_footer_text' ] );
+        add_filter( 'admin_footer_text', [ WhiteLabelAdmin::class, 'change_footer_text' ] );
 
         // login url.
         add_filter(
