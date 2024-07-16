@@ -1,5 +1,21 @@
 # Changelog
 
+## [7.2.2](https://github.com/devuri/wp-white-label-login/compare/7.2.1...7.2.2) (2024-07-16)
+
+
+### Bug Fixes
+
+* change footer text ([7ade445](https://github.com/devuri/wp-white-label-login/commit/7ade4450ef51c052f452bd56b6929c3b46a336b2))
+* header section fix ([caf3265](https://github.com/devuri/wp-white-label-login/commit/caf32657bcd3cf1e705625d83bee2d9052a5c5b7))
+
+
+### Miscellaneous Chores
+
+* codefix ([ff33365](https://github.com/devuri/wp-white-label-login/commit/ff33365cc845e684d94c7d6fdb10ddf13df28eb3))
+* **deps-dev:** bump express from 4.18.2 to 4.19.2 ([816f30e](https://github.com/devuri/wp-white-label-login/commit/816f30e61587253a5f895a28e9674acc2026668d))
+* **deps-dev:** bump follow-redirects from 1.15.4 to 1.15.6 ([1f2b6cf](https://github.com/devuri/wp-white-label-login/commit/1f2b6cf1324521526e3225a9d0fbb80dd517e40c))
+* **deps-dev:** bump webpack-dev-middleware from 5.3.3 to 5.3.4 ([04aac8e](https://github.com/devuri/wp-white-label-login/commit/04aac8e2fd230f6a254629b0ed6c9b6e0fa0b192))
+
 ## [7.2.1](https://github.com/devuri/wp-white-label-login/compare/7.2.0...7.2.1) (2024-02-03)
 
 
