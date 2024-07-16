@@ -4,10 +4,10 @@ namespace EasyWhiteLabel\Login;
 
 class Header extends AbstractSettings
 {
-	public static function login_header()
-	{
-		echo self::_header();
-	}
+    public static function login_header()
+    {
+        return self::_header();
+    }
 
     private static function _header()
     {
@@ -17,7 +17,7 @@ class Header extends AbstractSettings
             esc_attr( self::$whitelabel->get_setting( 'header_text_color' ) )
         );
 
-        return sprintf(
+        echo sprintf(
             '<div class="wrapper">
 		        <div id="wll-header" class="wll-header" style="%s" align="%s">
 		            <h2 align="%s">
